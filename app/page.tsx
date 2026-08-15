@@ -661,6 +661,11 @@ export default function Home() {
     setVerdictText,
   ] = useState("10+ Team Stream");
 
+  const [
+    seasonMinIP,
+    setSeasonMinIP,
+  ] = useState(30);
+
   const [loading, setLoading] =
     useState(true);
 
@@ -921,14 +926,41 @@ export default function Home() {
       return 0.5;
     }
 
-    const population = pitchers
-      .map((row) =>
-        numericValue(row[key])
-      )
-      .filter(
-        (value): value is number =>
-          value !== null
-      );
+    const isLast30 =
+      key.startsWith("L30 ");
+
+    const qualifiedPitchers =
+      pitchers.filter((row) => {
+        if (isLast30) {
+          const l30IP =
+            numericValue(
+              row["L30 IP"]
+            );
+
+          return (
+            l30IP !== null &&
+            l30IP >= 10
+          );
+        }
+
+        const seasonIP =
+          numericValue(row["IP"]);
+
+        return (
+          seasonIP !== null &&
+          seasonIP >= seasonMinIP
+        );
+      });
+
+    const population =
+      qualifiedPitchers
+        .map((row) =>
+          numericValue(row[key])
+        )
+        .filter(
+          (value): value is number =>
+            value !== null
+        );
 
     return percentileForValue(
       value,
@@ -1291,6 +1323,59 @@ export default function Home() {
                 </option>
               ))}
             </select>
+
+            {/* SEASON IP SLIDER */}
+
+            <div className="mb-6 rounded-xl border border-slate-700 bg-slate-800/70 p-4">
+
+              <div className="mb-3 flex items-center justify-between">
+
+                <div>
+                  <div className="text-sm font-bold text-slate-200">
+                    Season Min IP
+                  </div>
+
+                  <div className="mt-1 text-xs text-slate-400">
+                    Controls Season percentile qualification
+                  </div>
+                </div>
+
+                <div className="rounded-lg bg-slate-950 px-3 py-1 text-lg font-black text-white">
+                  {seasonMinIP}+
+                </div>
+
+              </div>
+
+              <input
+                type="range"
+                min="10"
+                max="100"
+                step="5"
+                value={seasonMinIP}
+                onChange={(e) =>
+                  setSeasonMinIP(
+                    Number(
+                      e.target.value
+                    )
+                  )
+                }
+                className="w-full cursor-pointer accent-sky-400"
+              />
+
+              <div className="mt-2 flex justify-between text-xs font-semibold text-slate-500">
+                <span>10 IP</span>
+                <span>100 IP</span>
+              </div>
+
+              <div className="mt-3 rounded-lg bg-slate-950/60 px-3 py-2 text-xs text-slate-400">
+                Last 30 percentiles always use pitchers with{" "}
+                <span className="font-bold text-white">
+                  10+ L30 IP
+                </span>
+                .
+              </div>
+
+            </div>
 
             <div className="mb-5 grid grid-cols-2 gap-3">
 
