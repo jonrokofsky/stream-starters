@@ -139,22 +139,16 @@ function percentileForValue(
   if (!population.length) return 0.5;
 
   const sorted = [...population].sort((a, b) => a - b);
+  const lessOrEqual = sorted.filter((n) => n <= value).length;
 
-  const lessOrEqual =
-    sorted.filter((n) => n <= value).length;
-
-  let percentile =
-    lessOrEqual / sorted.length;
+  let percentile = lessOrEqual / sorted.length;
 
   if (direction === "lower") {
     percentile =
       1 - percentile + 1 / sorted.length;
   }
 
-  return Math.max(
-    0,
-    Math.min(1, percentile)
-  );
+  return Math.max(0, Math.min(1, percentile));
 }
 
 function mixColor(
@@ -507,7 +501,6 @@ function StreamStartersLogo({
 function BaseballBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-
       <div
         className="absolute inset-0 opacity-[0.5]"
         style={{
@@ -588,7 +581,6 @@ function BaseballBackground() {
           strokeDasharray="9 15"
         />
       </svg>
-
     </div>
   );
 }
@@ -828,6 +820,24 @@ export default function Home() {
 
   const handLabel =
     isLefty ? "LHP" : "RHP";
+
+  const selectedSeasonIP =
+    numericValue(
+      selectedPitcher?.["IP"]
+    );
+
+  const selectedL30IP =
+    numericValue(
+      selectedPitcher?.["L30 IP"]
+    );
+
+  const seasonQualified =
+    selectedSeasonIP !== null &&
+    selectedSeasonIP >= seasonMinIP;
+
+  const last30Qualified =
+    selectedL30IP !== null &&
+    selectedL30IP >= 10;
 
   const pitcherDirections: Record<
     string,
@@ -1324,8 +1334,6 @@ export default function Home() {
               ))}
             </select>
 
-            {/* SEASON IP SLIDER */}
-
             <div className="mb-6 rounded-xl border border-slate-700 bg-slate-800/70 p-4">
 
               <div className="mb-3 flex items-center justify-between">
@@ -1336,7 +1344,7 @@ export default function Home() {
                   </div>
 
                   <div className="mt-1 text-xs text-slate-400">
-                    Controls Season percentile qualification
+                    Season qualification and percentile pool
                   </div>
                 </div>
 
@@ -1349,7 +1357,7 @@ export default function Home() {
               <input
                 type="range"
                 min="10"
-                max="100"
+                max="200"
                 step="5"
                 value={seasonMinIP}
                 onChange={(e) =>
@@ -1364,11 +1372,11 @@ export default function Home() {
 
               <div className="mt-2 flex justify-between text-xs font-semibold text-slate-500">
                 <span>10 IP</span>
-                <span>100 IP</span>
+                <span>200 IP</span>
               </div>
 
               <div className="mt-3 rounded-lg bg-slate-950/60 px-3 py-2 text-xs text-slate-400">
-                Last 30 percentiles always use pitchers with{" "}
+                Last 30 requires{" "}
                 <span className="font-bold text-white">
                   10+ L30 IP
                 </span>
@@ -1536,7 +1544,15 @@ export default function Home() {
                 <section className="relative z-10 border-t border-black/10">
 
                   <SectionTitle theme={theme}>
-                    Season Marks
+                    <div className="flex w-full items-center justify-between">
+                      <span>Season Marks</span>
+
+                      {!seasonQualified && (
+                        <span className="ml-4 rounded-full bg-white/10 px-3 py-1 text-xs font-black uppercase tracking-wide text-white/80">
+                          Below {seasonMinIP} IP
+                        </span>
+                      )}
+                    </div>
                   </SectionTitle>
 
                   <div className="grid grid-cols-3 md:grid-cols-9">
@@ -1546,18 +1562,25 @@ export default function Home() {
                           key={key}
                           label={label}
                           value={
-                            selectedPitcher?.[
-                              key
-                            ]
+                            seasonQualified
+                              ? selectedPitcher?.[
+                                  key
+                                ]
+                              : ""
                           }
-                          percentile={pitcherPercentile(
-                            key
-                          )}
+                          percentile={
+                            seasonQualified
+                              ? pitcherPercentile(
+                                  key
+                                )
+                              : 0.5
+                          }
                           neutral={
+                            !seasonQualified ||
                             pitcherDirections[
                               key
                             ] ===
-                            "neutral"
+                              "neutral"
                           }
                           theme={theme}
                         />
@@ -1570,7 +1593,15 @@ export default function Home() {
                 <section className="relative z-10 mt-3 border-t border-black/10">
 
                   <SectionTitle theme={theme}>
-                    Last 30 Days
+                    <div className="flex w-full items-center justify-between">
+                      <span>Last 30 Days</span>
+
+                      {!last30Qualified && (
+                        <span className="ml-4 rounded-full bg-white/10 px-3 py-1 text-xs font-black uppercase tracking-wide text-white/80">
+                          Below 10 L30 IP
+                        </span>
+                      )}
+                    </div>
                   </SectionTitle>
 
                   <div className="grid grid-cols-3 md:grid-cols-9">
@@ -1580,18 +1611,25 @@ export default function Home() {
                           key={key}
                           label={label}
                           value={
-                            selectedPitcher?.[
-                              key
-                            ]
+                            last30Qualified
+                              ? selectedPitcher?.[
+                                  key
+                                ]
+                              : ""
                           }
-                          percentile={pitcherPercentile(
-                            key
-                          )}
+                          percentile={
+                            last30Qualified
+                              ? pitcherPercentile(
+                                  key
+                                )
+                              : 0.5
+                          }
                           neutral={
+                            !last30Qualified ||
                             pitcherDirections[
                               key
                             ] ===
-                            "neutral"
+                              "neutral"
                           }
                           theme={theme}
                         />
@@ -1697,7 +1735,8 @@ export default function Home() {
                               matchupStats
                                 .handWRC.value,
                               matchupStats
-                                .handWRC.direction
+                                .handWRC
+                                .direction
                             )
                           : 0.5
                       }
