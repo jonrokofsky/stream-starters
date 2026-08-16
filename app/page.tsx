@@ -157,18 +157,15 @@ function mixColor(
   amount: number
 ) {
   const r = Math.round(
-    start[0] +
-      (end[0] - start[0]) * amount
+    start[0] + (end[0] - start[0]) * amount
   );
 
   const g = Math.round(
-    start[1] +
-      (end[1] - start[1]) * amount
+    start[1] + (end[1] - start[1]) * amount
   );
 
   const b = Math.round(
-    start[2] +
-      (end[2] - start[2]) * amount
+    start[2] + (end[2] - start[2]) * amount
   );
 
   return `rgb(${r}, ${g}, ${b})`;
@@ -245,7 +242,7 @@ function SectionTitle({
         }}
       />
 
-      <div className="text-2xl font-black tracking-tight">
+      <div className="w-full text-2xl font-black tracking-tight">
         {children}
       </div>
     </div>
@@ -319,8 +316,7 @@ function getTeamLogoUrl(team: string) {
     return null;
   }
 
-  const code =
-    getEspnLogoTeamCode(team);
+  const code = getEspnLogoTeamCode(team);
 
   return `https://a.espncdn.com/i/teamlogos/mlb/500/${code}.png`;
 }
@@ -332,8 +328,7 @@ function TeamLogo({
   team: string;
   size?: "small" | "large";
 }) {
-  const logoUrl =
-    getTeamLogoUrl(team);
+  const logoUrl = getTeamLogoUrl(team);
 
   const sizeClass =
     size === "large"
@@ -1201,9 +1196,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-slate-950 p-6 text-white md:p-8">
-
       <div className="mx-auto max-w-7xl">
-
         <h1 className="mb-2 text-4xl font-black tracking-tight">
           Stream Starters
         </h1>
@@ -1227,7 +1220,6 @@ export default function Home() {
         <div className="grid gap-6 md:grid-cols-[380px_1fr]">
 
           <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
-
             <h2 className="mb-5 text-xl font-bold">
               Graphic Setup
             </h2>
@@ -1237,7 +1229,6 @@ export default function Home() {
             </label>
 
             <div className="relative mb-5">
-
               <input
                 type="text"
                 value={pitcherSearch}
@@ -1263,7 +1254,6 @@ export default function Home() {
                 filteredPitchers.length >
                   0 && (
                   <div className="absolute z-50 mt-2 max-h-64 w-full overflow-y-auto rounded-xl border border-slate-700 bg-slate-800 shadow-2xl">
-
                     {filteredPitchers.map(
                       (pitcher) => (
                         <button
@@ -1306,7 +1296,6 @@ export default function Home() {
                         </button>
                       )
                     )}
-
                   </div>
                 )}
             </div>
@@ -1335,9 +1324,7 @@ export default function Home() {
             </select>
 
             <div className="mb-6 rounded-xl border border-slate-700 bg-slate-800/70 p-4">
-
               <div className="mb-3 flex items-center justify-between">
-
                 <div>
                   <div className="text-sm font-bold text-slate-200">
                     Season Min IP
@@ -1351,7 +1338,6 @@ export default function Home() {
                 <div className="rounded-lg bg-slate-950 px-3 py-1 text-lg font-black text-white">
                   {seasonMinIP}+
                 </div>
-
               </div>
 
               <input
@@ -1382,11 +1368,9 @@ export default function Home() {
                 </span>
                 .
               </div>
-
             </div>
 
             <div className="mb-5 grid grid-cols-2 gap-3">
-
               <div>
                 <label className="mb-2 block text-sm font-semibold text-slate-300">
                   ESPN Roster %
@@ -1428,7 +1412,6 @@ export default function Home() {
                   className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 text-white"
                 />
               </div>
-
             </div>
 
             <label className="mb-2 block text-sm font-semibold text-slate-300">
@@ -1458,22 +1441,18 @@ export default function Home() {
                 ? "Generating PNG..."
                 : "Generate Graphic"}
             </button>
-
           </div>
 
           <div className="rounded-2xl border border-slate-800 bg-slate-900 p-4">
-
             <h2 className="mb-4 text-xl font-bold">
               Preview
             </h2>
 
             <div className="overflow-auto">
-
               <div
                 ref={graphicRef}
                 className="relative overflow-hidden rounded-2xl border border-black/10 bg-[#f4f6f8] text-black shadow-xl"
               >
-
                 <BaseballBackground />
 
                 <div
@@ -1487,9 +1466,7 @@ export default function Home() {
                     )`,
                   }}
                 >
-
                   <div className="relative z-10">
-
                     <div
                       className="text-4xl font-black tracking-tight"
                       style={{
@@ -1506,11 +1483,9 @@ export default function Home() {
                       {pitcherTeam || "—"} •{" "}
                       {pitcherHand || "—"}
                     </div>
-
                   </div>
 
                   <div className="relative z-10 flex items-center gap-4">
-
                     <div
                       className="rounded-xl border border-white/20 px-5 py-3 text-right shadow-md"
                       style={{
@@ -1536,19 +1511,24 @@ export default function Home() {
                         size="small"
                       />
                     </div>
-
                   </div>
-
                 </div>
 
                 <section className="relative z-10 border-t border-black/10">
-
                   <SectionTitle theme={theme}>
-                    <div className="flex w-full items-center justify-between">
-                      <span>Season Marks</span>
+                    <div className="flex w-full items-center justify-between gap-4">
+                      <div className="flex items-baseline gap-3">
+                        <span>
+                          Season Marks
+                        </span>
+
+                        <span className="text-sm font-black uppercase tracking-wide text-white/70">
+                          Min. {seasonMinIP} IP
+                        </span>
+                      </div>
 
                       {!seasonQualified && (
-                        <span className="ml-4 rounded-full bg-white/10 px-3 py-1 text-xs font-black uppercase tracking-wide text-white/80">
+                        <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-black uppercase tracking-wide text-white/80">
                           Below {seasonMinIP} IP
                         </span>
                       )}
@@ -1587,18 +1567,24 @@ export default function Home() {
                       )
                     )}
                   </div>
-
                 </section>
 
                 <section className="relative z-10 mt-3 border-t border-black/10">
-
                   <SectionTitle theme={theme}>
-                    <div className="flex w-full items-center justify-between">
-                      <span>Last 30 Days</span>
+                    <div className="flex w-full items-center justify-between gap-4">
+                      <div className="flex items-baseline gap-3">
+                        <span>
+                          Last 30 Days
+                        </span>
+
+                        <span className="text-sm font-black uppercase tracking-wide text-white/70">
+                          Min. 10 IP
+                        </span>
+                      </div>
 
                       {!last30Qualified && (
-                        <span className="ml-4 rounded-full bg-white/10 px-3 py-1 text-xs font-black uppercase tracking-wide text-white/80">
-                          Below 10 L30 IP
+                        <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-black uppercase tracking-wide text-white/80">
+                          Below 10 IP
                         </span>
                       )}
                     </div>
@@ -1636,13 +1622,10 @@ export default function Home() {
                       )
                     )}
                   </div>
-
                 </section>
 
                 <section className="relative z-10 mx-4 mt-4 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
-
                   <div className="grid md:grid-cols-[1.1fr_repeat(3,1fr)]">
-
                     <div
                       className="row-span-2 flex items-center justify-center border-r border-white/15 px-5 py-5"
                       style={{
@@ -1651,7 +1634,6 @@ export default function Home() {
                       }}
                     >
                       <div className="flex flex-col items-center">
-
                         <div className="rounded-2xl bg-white p-3 shadow-md">
                           <TeamLogo
                             team={
@@ -1673,7 +1655,6 @@ export default function Home() {
                         <div className="mt-1 text-xs font-black uppercase tracking-wider text-white/60">
                           Opponent
                         </div>
-
                       </div>
                     </div>
 
@@ -1805,13 +1786,10 @@ export default function Home() {
                       }
                       theme={theme}
                     />
-
                   </div>
-
                 </section>
 
                 <section className="relative z-10 mx-6 mt-5 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
-
                   <div
                     className="px-6 py-2 text-center text-lg font-black"
                     style={{
@@ -1825,9 +1803,7 @@ export default function Home() {
                   </div>
 
                   <div className="grid grid-cols-2">
-
                     <div className="bg-red-600 px-6 py-4 text-center text-white">
-
                       <div className="text-xl font-black uppercase tracking-wide">
                         ESPN
                       </div>
@@ -1837,11 +1813,9 @@ export default function Home() {
                           ? `${espnRoster}%`
                           : "—"}
                       </div>
-
                     </div>
 
                     <div className="bg-purple-700 px-6 py-4 text-center text-white">
-
                       <div className="text-xl font-black uppercase tracking-wide">
                         Yahoo
                       </div>
@@ -1851,15 +1825,11 @@ export default function Home() {
                           ? `${yahooRoster}%`
                           : "—"}
                       </div>
-
                     </div>
-
                   </div>
-
                 </section>
 
                 <section className="relative z-10 mx-6 mt-4 overflow-hidden rounded-2xl border border-black/10 shadow-md">
-
                   <div
                     className="px-6 py-2 text-center text-lg font-black uppercase tracking-wider"
                     style={{
@@ -1873,24 +1843,19 @@ export default function Home() {
                   </div>
 
                   <div className="bg-lime-400 px-6 py-6 text-center">
-
                     <div className="break-words text-4xl font-black tracking-tight text-black">
                       {verdictText.trim() ||
                         "10+ Team Stream"}
                     </div>
-
                   </div>
-
                 </section>
 
                 <div className="relative z-10 mt-4 min-h-[130px] px-6 pb-6">
-
                   <div className="pointer-events-none absolute bottom-0 left-4 h-28 w-28 opacity-[0.045]">
                     <StreamStartersLogo compact />
                   </div>
 
                   <div className="mx-auto max-w-sm">
-
                     <div className="mb-1 text-center text-xs font-black uppercase tracking-[0.2em] text-neutral-500">
                       Percentile Key
                     </div>
@@ -1908,27 +1873,19 @@ export default function Home() {
                       <span>Average</span>
                       <span>Better</span>
                     </div>
-
                   </div>
 
                   <div className="absolute bottom-3 right-4 h-[42px] w-[165px] rounded-xl border border-slate-200/80 bg-white/90 px-2 py-1 shadow-sm">
-
                     <StreamStartersLogo />
-
                   </div>
-
                 </div>
 
               </div>
-
             </div>
-
           </div>
 
         </div>
-
       </div>
-
     </main>
   );
 }
