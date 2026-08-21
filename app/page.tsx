@@ -1,501 +1,412 @@
 import Link from "next/link";
 
-function StreamStartersLogo({
-  light = false,
-}: {
-  light?: boolean;
-}) {
+function StreamStartersLogo({ light = false }: { light?: boolean }) {
   return (
-    <svg
-      viewBox="0 0 400 100"
-      className="h-full w-full"
-      aria-label="Stream Starters"
-    >
-      <rect
-        x="4"
-        y="6"
-        width="88"
-        height="88"
-        rx="22"
-        fill={light ? "#FFFFFF" : "#0F172A"}
-      />
-
-      <path
-        d="M22 63 L38 50 L50 56 L72 33"
-        fill="none"
-        stroke="#2563EB"
-        strokeWidth="6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-
-      <path
-        d="M63 33 H72 V42"
-        fill="none"
-        stroke="#2563EB"
-        strokeWidth="6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-
-      <text
-        x="48"
-        y="82"
-        textAnchor="middle"
-        fill={light ? "#0F172A" : "#FFFFFF"}
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="21"
-        fontWeight="900"
+    <div className="flex items-center gap-3">
+      <div
+        className={`relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl shadow-lg ${
+          light ? "bg-white" : "bg-slate-950"
+        }`}
       >
-        SS
-      </text>
+        <div className="absolute h-8 w-8 rotate-45 rounded-sm border-2 border-sky-400" />
+        <div
+          className={`relative text-[11px] font-black tracking-tight ${
+            light ? "text-slate-950" : "text-white"
+          }`}
+        >
+          SS
+        </div>
+      </div>
 
-      <text
-        x="112"
-        y="43"
-        fill={light ? "#FFFFFF" : "#0F172A"}
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="28"
-        fontWeight="900"
-        letterSpacing="1.6"
-      >
-        STREAM
-      </text>
+      <div className="leading-none">
+        <div
+          className={`text-[11px] font-black tracking-[0.24em] ${
+            light ? "text-slate-400" : "text-slate-500"
+          }`}
+        >
+          STREAM
+        </div>
 
-      <text
-        x="112"
-        y="73"
-        fill={light ? "#60A5FA" : "#2563EB"}
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="28"
-        fontWeight="900"
-        letterSpacing="1.6"
-      >
-        STARTERS
-      </text>
+        <div
+          className={`text-xl font-black tracking-tight ${
+            light ? "text-white" : "text-slate-950"
+          }`}
+        >
+          STARTERS
+        </div>
 
-      <text
-        x="114"
-        y="91"
-        fill={light ? "#CBD5E1" : "#64748B"}
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="9"
-        fontWeight="700"
-        letterSpacing="1.4"
-      >
-        FANTASY SPORTS
-      </text>
-    </svg>
+        <div className="mt-1 text-[8px] font-bold tracking-[0.22em] text-sky-500">
+          FANTASY SPORTS
+        </div>
+      </div>
+    </div>
   );
 }
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-
+    <main className="min-h-screen bg-white text-slate-950">
       {/* NAV */}
-      <nav className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-6">
+      <header className="border-b border-slate-200 bg-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
+          <StreamStartersLogo />
 
-          <div className="h-[42px] w-[170px] md:h-[48px] md:w-[195px]">
-            <StreamStartersLogo />
-          </div>
-
-          <div className="hidden items-center gap-6 text-sm font-bold text-slate-600 md:flex">
-
+          <nav className="hidden items-center gap-6 text-sm font-bold text-slate-600 md:flex">
             <Link
               href="/baseball/pitchers"
-              className="transition hover:text-blue-600"
+              className="transition hover:text-sky-600"
             >
               Pitchers
             </Link>
 
             <Link
               href="/baseball/hitters"
-              className="transition hover:text-blue-600"
+              className="transition hover:text-sky-600"
             >
               Hitters
             </Link>
 
-            <span className="text-slate-400">
-              Football Soon
-            </span>
-
-          </div>
-
+            <Link
+              href="/football"
+              className="transition hover:text-sky-600"
+            >
+              Football
+            </Link>
+          </nav>
         </div>
-      </nav>
+      </header>
 
       {/* HERO */}
-      <section className="bg-[#020817]">
+      <section className="overflow-hidden bg-[#020817] text-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch lg:py-20">
+          <div className="flex flex-col justify-center">
+            <div className="mb-7">
+              <StreamStartersLogo light />
+            </div>
 
-        <div className="mx-auto grid max-w-7xl overflow-hidden lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="mb-4 inline-flex w-fit rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-sky-300 sm:text-xs">
+              Fantasy Baseball + Football
+            </div>
 
-          {/* HERO TEXT */}
-          <div className="relative flex items-center px-5 py-10 sm:px-6 md:px-10 md:py-16 lg:px-12 lg:py-20">
+            <h1 className="max-w-3xl text-4xl font-black leading-[0.98] tracking-tight sm:text-5xl lg:text-6xl">
+              Fast matchup tools.
+              <span className="mt-2 block text-sky-400">
+                Better fantasy decisions.
+              </span>
+            </h1>
 
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(circle at 30% 30%, rgba(37,99,235,0.22), transparent 40%)",
-              }}
-            />
+            <p className="mt-6 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base sm:leading-7">
+              Visual percentile grades, opponent trends, roster percentages,
+              and quick verdicts without digging through ten different tabs.
+            </p>
 
-            <div className="relative max-w-xl">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/baseball/pitchers"
+                className="rounded-xl bg-sky-500 px-5 py-3 text-center text-sm font-black text-white shadow-lg transition hover:bg-sky-400"
+              >
+                Pitcher Tool
+              </Link>
 
-              <div className="mb-5 h-[64px] w-[260px] max-w-full sm:h-[72px] sm:w-[290px] md:h-[82px] md:w-[330px]">
-                <StreamStartersLogo light />
-              </div>
+              <Link
+                href="/baseball/hitters"
+                className="rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-white/10"
+              >
+                Hitter Tool
+              </Link>
 
-              <div className="mb-4 inline-flex rounded-full border border-blue-400/30 bg-blue-500/10 px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-blue-300 sm:px-4 sm:text-xs">
-                Fantasy Baseball + Football
-              </div>
+              <Link
+                href="/football"
+                className="rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-5 py-3 text-center text-sm font-black text-emerald-300 transition hover:bg-emerald-400/20"
+              >
+                Football Tool
+              </Link>
+            </div>
 
-              <h1 className="text-4xl font-black leading-[1.05] text-white sm:text-5xl xl:text-6xl">
-                Fast matchup tools.
-                <br />
-                <span className="text-blue-400">
-                  Better fantasy decisions.
-                </span>
-              </h1>
-
-              <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-300 sm:text-lg">
-                Visual percentile grades, opponent trends, roster percentages,
-                and quick verdicts without digging through ten different tabs.
-              </p>
-
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-
-                <Link
-                  href="/baseball/pitchers"
-                  className="rounded-xl bg-blue-600 px-6 py-3 text-center font-black text-white shadow-lg transition hover:bg-blue-500"
-                >
-                  Pitcher Tool →
-                </Link>
-
-                <Link
-                  href="/baseball/hitters"
-                  className="rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-center font-black text-white transition hover:bg-white/20"
-                >
-                  Hitter Tool →
-                </Link>
-
-              </div>
-
-              <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
-
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-                  <div className="text-lg font-black text-blue-400 sm:text-xl">
-                    %
-                  </div>
-
-                  <div className="mt-1 text-[10px] font-black uppercase text-white sm:text-xs">
-                    Percentile
-                    <br />
-                    Grades
-                  </div>
+            <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="rounded-xl border border-white/10 bg-white/[0.04] px-2 py-3 sm:px-4">
+                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-sky-400 sm:text-xs">
+                  Percentile
                 </div>
-
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-                  <div className="text-lg font-black text-cyan-400 sm:text-xl">
-                    VS
-                  </div>
-
-                  <div className="mt-1 text-[10px] font-black uppercase text-white sm:text-xs">
-                    Matchup
-                    <br />
-                    Data
-                  </div>
+                <div className="mt-1 text-[11px] font-bold text-white sm:text-sm">
+                  Grades
                 </div>
-
-                <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-                  <div className="text-lg font-black text-lime-400 sm:text-xl">
-                    ✓
-                  </div>
-
-                  <div className="mt-1 text-[10px] font-black uppercase text-white sm:text-xs">
-                    Quick
-                    <br />
-                    Verdicts
-                  </div>
-                </div>
-
               </div>
 
+              <div className="rounded-xl border border-white/10 bg-white/[0.04] px-2 py-3 sm:px-4">
+                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-sky-400 sm:text-xs">
+                  Matchup
+                </div>
+                <div className="mt-1 text-[11px] font-bold text-white sm:text-sm">
+                  Data
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-white/10 bg-white/[0.04] px-2 py-3 sm:px-4">
+                <div className="text-[10px] font-black uppercase tracking-[0.12em] text-sky-400 sm:text-xs">
+                  Quick
+                </div>
+                <div className="mt-1 text-[11px] font-bold text-white sm:text-sm">
+                  Verdicts
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* HERO IMAGES */}
-          <div className="hidden min-h-[420px] grid-rows-2 sm:grid lg:min-h-[620px]">
-
-            <div className="relative overflow-hidden border-b border-blue-400/20">
-
+          {/* Hero images hidden on very small phones */}
+          <div className="hidden min-h-[500px] grid-rows-2 gap-4 sm:grid">
+            <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-slate-900 shadow-2xl">
               <img
                 src="/banner-pitcher.png"
-                alt="Baseball pitcher"
-                className="h-full w-full object-cover object-center"
+                alt="Fantasy baseball pitching analysis"
+                className="absolute inset-0 h-full w-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-r from-[#020817]/70 via-blue-950/10 to-blue-900/10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/20 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950/90 to-transparent" />
 
-              <div className="absolute bottom-5 left-5 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white backdrop-blur">
-                Pitching Analysis
+              <div className="absolute bottom-5 left-5">
+                <div className="text-xs font-black uppercase tracking-[0.16em] text-sky-300">
+                  Pitching Analysis
+                </div>
+                <div className="mt-1 text-xl font-black text-white">
+                  Matchups at a glance
+                </div>
               </div>
-
             </div>
 
-            <div className="relative overflow-hidden">
-
+            <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-slate-900 shadow-2xl">
               <img
                 src="/banner-hitter.png"
-                alt="Baseball hitter"
-                className="h-full w-full object-cover object-center"
+                alt="Fantasy baseball hitter analysis"
+                className="absolute inset-0 h-full w-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-r from-[#020817]/55 via-transparent to-blue-900/10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/20 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950/90 to-transparent" />
 
-              <div className="absolute bottom-5 left-5 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-white backdrop-blur">
-                Hitter Analysis
+              <div className="absolute bottom-5 left-5">
+                <div className="text-xs font-black uppercase tracking-[0.16em] text-sky-300">
+                  Hitter Analysis
+                </div>
+                <div className="mt-1 text-xl font-black text-white">
+                  Find the favorable spots
+                </div>
               </div>
-
             </div>
-
           </div>
-
         </div>
       </section>
 
       {/* BASEBALL */}
-      <section className="mx-auto max-w-7xl px-5 py-10 sm:px-6 sm:py-12">
+      <section className="bg-slate-50">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
+          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="text-xs font-black uppercase tracking-[0.18em] text-sky-600">
+                Fantasy Baseball
+              </div>
 
-        <div className="mb-6 flex flex-col justify-between gap-3 md:flex-row md:items-end">
+              <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">
+                Baseball Tools
+              </h2>
 
-          <div>
-
-            <div className="text-sm font-black uppercase tracking-[0.2em] text-blue-600">
-              Fantasy Baseball
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+                Pitcher and hitter matchup tools built around visual percentile
+                grades and quick fantasy decisions.
+              </p>
             </div>
 
-            <h2 className="mt-1 text-3xl font-black">
-              Baseball Tools
-            </h2>
-
+            <div className="w-fit rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-700">
+              Live Google Sheets Data
+            </div>
           </div>
 
-          <div className="w-fit rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-blue-700">
-            Live Google Sheets Data
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* Pitcher */}
+            <Link
+              href="/baseball/pitchers"
+              className="group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              {/* Mobile image */}
+              <div className="relative h-52 overflow-hidden md:hidden">
+                <img
+                  src="/baseball-pitcher.png"
+                  alt="Pitcher matchup tool"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 to-transparent" />
+              </div>
+
+              {/* Desktop image */}
+              <div className="absolute inset-y-0 left-0 hidden w-[35%] overflow-hidden md:block">
+                <img
+                  src="/baseball-pitcher.png"
+                  alt="Pitcher matchup tool"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20" />
+              </div>
+
+              <div className="p-6 md:ml-[35%] md:p-8">
+                <div className="text-xs font-black uppercase tracking-[0.16em] text-sky-600">
+                  Pitcher Tool
+                </div>
+
+                <h3 className="mt-2 text-2xl font-black tracking-tight">
+                  Starting Pitcher Matchups
+                </h3>
+
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  Season and recent performance, opponent splits, percentile
+                  heat maps, roster percentages, and shareable graphics.
+                </p>
+
+                <div className="mt-5 inline-flex items-center gap-2 text-sm font-black text-slate-950">
+                  Open Pitcher Tool
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </div>
+              </div>
+            </Link>
+
+            {/* Hitter */}
+            <Link
+              href="/baseball/hitters"
+              className="group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              {/* Mobile image */}
+              <div className="relative h-52 overflow-hidden md:hidden">
+                <img
+                  src="/baseball-hitter.png"
+                  alt="Hitter matchup tool"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 to-transparent" />
+              </div>
+
+              {/* Desktop image */}
+              <div className="absolute inset-y-0 left-0 hidden w-[35%] overflow-hidden md:block">
+                <img
+                  src="/baseball-hitter.png"
+                  alt="Hitter matchup tool"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20" />
+              </div>
+
+              <div className="p-6 md:ml-[35%] md:p-8">
+                <div className="text-xs font-black uppercase tracking-[0.16em] text-orange-600">
+                  Hitter Tool
+                </div>
+
+                <h3 className="mt-2 text-2xl font-black tracking-tight">
+                  Hitter Performance Grades
+                </h3>
+
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  Season and Last 30 performance, every key hitting metric,
+                  percentile grades, roster percentages, and exportable cards.
+                </p>
+
+                <div className="mt-5 inline-flex items-center gap-2 text-sm font-black text-slate-950">
+                  Open Hitter Tool
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </div>
+              </div>
+            </Link>
           </div>
-
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-
-          {/* PITCHER */}
-          <Link
-            href="/baseball/pitchers"
-            className="group overflow-hidden rounded-3xl border border-blue-200 bg-white shadow-lg transition duration-200 hover:-translate-y-1 hover:border-blue-400 hover:shadow-xl md:relative md:min-h-[270px]"
-          >
-
-            {/* MOBILE IMAGE */}
-            <div className="relative h-52 overflow-hidden md:hidden">
-
-              <img
-                src="/baseball-pitcher.png"
-                alt="Pitcher"
-                className="h-full w-full object-cover object-center"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
-
-            </div>
-
-            {/* DESKTOP IMAGE */}
-            <div className="absolute inset-y-0 left-0 hidden w-[42%] overflow-hidden md:block">
-
-              <img
-                src="/baseball-pitcher.png"
-                alt="Pitcher"
-                className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-900/15 to-white" />
-
-            </div>
-
-            <div className="relative p-6 md:ml-[35%] md:flex md:min-h-[270px] md:flex-col md:justify-center md:p-7">
-
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-xl font-black text-white shadow-md">
-                P
-              </div>
-
-              <h3 className="text-2xl font-black">
-                Pitcher Matchup Tool
-              </h3>
-
-              <p className="mt-2 leading-relaxed text-slate-600">
-                Compare Season and Last 30 performance with opponent tendencies,
-                roster rates, and streaming verdicts.
-              </p>
-
-              <div className="mt-5 font-black text-blue-600">
-                Open Pitcher Tool →
-              </div>
-
-            </div>
-
-          </Link>
-
-          {/* HITTER */}
-          <Link
-            href="/baseball/hitters"
-            className="group overflow-hidden rounded-3xl border border-cyan-200 bg-white shadow-lg transition duration-200 hover:-translate-y-1 hover:border-cyan-400 hover:shadow-xl md:relative md:min-h-[270px]"
-          >
-
-            {/* MOBILE IMAGE */}
-            <div className="relative h-52 overflow-hidden md:hidden">
-
-              <img
-                src="/baseball-hitter.png"
-                alt="Hitter"
-                className="h-full w-full object-cover object-center"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
-
-            </div>
-
-            {/* DESKTOP IMAGE */}
-            <div className="absolute inset-y-0 left-0 hidden w-[42%] overflow-hidden md:block">
-
-              <img
-                src="/baseball-hitter.png"
-                alt="Hitter"
-                className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/15 to-white" />
-
-            </div>
-
-            <div className="relative p-6 md:ml-[35%] md:flex md:min-h-[270px] md:flex-col md:justify-center md:p-7">
-
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500 text-xl font-black text-white shadow-md">
-                H
-              </div>
-
-              <h3 className="text-2xl font-black">
-                Hitter Matchup Tool
-              </h3>
-
-              <p className="mt-2 leading-relaxed text-slate-600">
-                Evaluate hitters with Season and Last 30 percentiles, PA
-                thresholds, roster rates, and quick verdicts.
-              </p>
-
-              <div className="mt-5 font-black text-cyan-600">
-                Open Hitter Tool →
-              </div>
-
-            </div>
-
-          </Link>
-
         </div>
       </section>
 
       {/* FOOTBALL */}
-      <section className="mx-auto max-w-7xl px-5 pb-12 sm:px-6 sm:pb-14">
-
-        <div className="mb-5">
-
-          <div className="text-sm font-black uppercase tracking-[0.2em] text-emerald-600">
-            Fantasy Football
-          </div>
-
-          <h2 className="mt-1 text-3xl font-black">
-            Football Tools
-          </h2>
-
-        </div>
-
-        <div className="overflow-hidden rounded-3xl border border-emerald-200 bg-[#06140d] shadow-xl md:relative md:min-h-[330px]">
-
-          {/* MOBILE FOOTBALL IMAGE */}
-          <div className="relative h-60 overflow-hidden md:hidden">
-
-            <img
-              src="/banner-football.png"
-              alt="Football player"
-              className="h-full w-full object-cover object-top"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06140d] via-transparent to-transparent" />
-
-          </div>
-
-          {/* DESKTOP FOOTBALL IMAGE */}
-          <img
-            src="/banner-football.png"
-            alt="Football player"
-            className="absolute right-0 top-0 hidden h-full w-[58%] object-cover object-top md:block"
-          />
-
-          <div className="absolute inset-0 hidden bg-gradient-to-r from-[#06140d] via-[#06140d]/95 to-transparent md:block" />
-
-          <div className="relative flex max-w-2xl flex-col justify-center p-6 sm:p-8 md:min-h-[330px] md:p-10">
-
-            <div className="mb-4 inline-flex w-fit rounded-full border border-lime-400/30 bg-lime-400/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-lime-300">
-              Coming Soon
+      <section className="bg-[#06110d]">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
+          <div className="mb-8">
+            <div className="text-xs font-black uppercase tracking-[0.18em] text-emerald-400">
+              Fantasy Football
             </div>
 
-            <h3 className="text-3xl font-black text-white md:text-4xl">
-              Position Matchup Tool
-            </h3>
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-white sm:text-4xl">
+              Football Tools
+            </h2>
 
-            <p className="mt-3 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-              See how defenses perform against QB, RB, WR, and TE using fantasy
-              points, yards, touchdowns, and matchup trends.
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400">
+              Defense-vs-position matchup analysis for quarterbacks, running
+              backs, wide receivers, and tight ends.
             </p>
+          </div>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+          <Link
+            href="/football"
+            className="group relative block overflow-hidden rounded-[30px] border border-emerald-400/20 bg-slate-950 shadow-2xl transition hover:-translate-y-1 hover:border-emerald-400/40"
+          >
+            {/* Mobile */}
+            <div className="relative h-60 overflow-hidden md:hidden">
+              <img
+                src="/banner-football.png"
+                alt="Fantasy football position matchup tool"
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              />
 
-              {["QB", "RB", "WR", "TE"].map(
-                (position) => (
-                  <div
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent" />
+            </div>
+
+            {/* Desktop image */}
+            <div className="absolute inset-y-0 right-0 hidden w-[50%] md:block">
+              <img
+                src="/banner-football.png"
+                alt="Fantasy football position matchup tool"
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/35 to-transparent" />
+            </div>
+
+            <div className="relative z-10 p-6 md:w-[58%] md:p-10 lg:p-12">
+              <div className="inline-flex rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-black uppercase tracking-[0.14em] text-emerald-300">
+                Live Now
+              </div>
+
+              <h3 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                Position Matchup Tool
+              </h3>
+
+              <p className="mt-4 max-w-xl text-sm leading-6 text-slate-300 sm:text-base">
+                Select QB, RB, WR, or TE and see how favorable the opposing
+                defense has been against that position, including 2025 raw
+                percentile grades and 2026 offseason-adjusted matchup grades.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["QB", "RB", "WR", "TE"].map((position) => (
+                  <span
                     key={position}
-                    className="rounded-lg border border-white/15 bg-white/10 px-4 py-2 text-sm font-black text-white"
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-black text-white"
                   >
                     {position}
-                  </div>
-                )
-              )}
+                  </span>
+                ))}
+              </div>
 
+              <div className="mt-7 inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-black text-white shadow-lg transition group-hover:bg-emerald-400">
+                Open Football Tool
+                <span className="transition group-hover:translate-x-1">→</span>
+              </div>
             </div>
-
-          </div>
-
+          </Link>
         </div>
-
       </section>
 
       {/* FOOTER */}
       <footer className="border-t border-slate-200 bg-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <StreamStartersLogo />
 
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 py-7 sm:px-6 md:flex-row">
-
-          <div className="h-[44px] w-[175px]">
-            <StreamStartersLogo />
+          <div className="text-xs font-bold text-slate-400">
+            Stream Starters Fantasy Sports
           </div>
-
-          <div className="text-center text-sm font-semibold text-slate-500 md:text-right">
-            Fantasy matchup tools for faster decisions.
-          </div>
-
         </div>
-
       </footer>
-
     </main>
   );
 }
