@@ -802,10 +802,8 @@ export default function HittersPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky-50 via-slate-100 to-white px-6 py-8 text-slate-900">
       <div className="mx-auto max-w-7xl">
-
         <header className="mb-8 rounded-3xl border border-sky-200 bg-white p-6 shadow-lg">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
             <div>
               <div className="mb-3 h-[60px] w-[240px]">
                 <StreamStartersLogo />
@@ -830,7 +828,6 @@ export default function HittersPage() {
             >
               ← Home
             </Link>
-
           </div>
         </header>
 
@@ -847,9 +844,7 @@ export default function HittersPage() {
         )}
 
         <div className="grid gap-6 md:grid-cols-[380px_1fr]">
-
           <section className="h-fit rounded-3xl border border-sky-200 bg-white p-6 shadow-lg">
-
             <div className="mb-5">
               <div className="text-xs font-black uppercase tracking-[0.2em] text-sky-500">
                 Controls
@@ -865,71 +860,132 @@ export default function HittersPage() {
             </label>
 
             <div className="relative mb-6">
-              <input
-                type="text"
-                value={hitterSearch}
-                onChange={(e) => {
-                  setHitterSearch(
-                    e.target.value
-                  );
+              <div className="relative">
+                <input
+                  type="text"
+                  value={hitterSearch}
+                  onChange={(e) => {
+                    setHitterSearch(
+                      e.target.value
+                    );
 
-                  setShowSuggestions(
-                    true
-                  );
-                }}
-                onFocus={() =>
-                  setShowSuggestions(true)
-                }
-                className="w-full rounded-xl border border-slate-300 bg-slate-50 p-3 text-slate-900 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
-                placeholder="Type a hitter name..."
-              />
+                    setShowSuggestions(
+                      true
+                    );
+                  }}
+                  onFocus={(e) => {
+                    e.target.select();
 
-              {showSuggestions &&
-                filteredHitters.length >
-                  0 && (
-                  <div className="absolute z-50 mt-2 max-h-64 w-full overflow-auto rounded-xl border border-slate-200 bg-white shadow-2xl">
+                    setShowSuggestions(
+                      true
+                    );
+                  }}
+                  onKeyDown={(e) => {
+                    if (
+                      e.key === "Escape"
+                    ) {
+                      setShowSuggestions(
+                        false
+                      );
+                    }
 
-                    {filteredHitters.map(
+                    if (
+                      e.key === "Enter" &&
+                      filteredHitters.length >
+                        0
+                    ) {
+                      e.preventDefault();
+
+                      chooseHitter(
+                        filteredHitters[0][
+                          "Name"
+                        ]
+                      );
+                    }
+                  }}
+                  className="w-full rounded-xl border border-slate-300 bg-slate-50 p-3 pr-10 text-slate-900 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
+                  placeholder="Type a hitter name..."
+                  autoComplete="off"
+                />
+
+                {hitterSearch && (
+                  <button
+                    type="button"
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                    }}
+                    onClick={() => {
+                      setHitterSearch("");
+                      setShowSuggestions(
+                        true
+                      );
+                    }}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-lg font-black text-slate-400 transition hover:text-slate-700"
+                    aria-label="Clear hitter search"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+
+              {showSuggestions && (
+                <div className="absolute z-50 mt-2 max-h-64 w-full overflow-auto rounded-xl border border-slate-200 bg-white shadow-2xl">
+                  {filteredHitters.length >
+                  0 ? (
+                    filteredHitters.map(
                       (hitter) => (
                         <button
                           type="button"
-                          key={
-                            hitter["Name"]
-                          }
+                          key={`${hitter["Name"]}-${hitter["Team"]}`}
+                          onMouseDown={(
+                            e
+                          ) => {
+                            e.preventDefault();
+                          }}
                           onClick={() =>
                             chooseHitter(
-                              hitter["Name"]
+                              hitter[
+                                "Name"
+                              ]
                             )
                           }
-                          className="block w-full border-b border-slate-100 px-4 py-3 text-left hover:bg-sky-50 last:border-b-0"
+                          className="block w-full border-b border-slate-100 px-4 py-3 text-left transition hover:bg-sky-50 last:border-b-0"
                         >
                           <div className="font-bold text-slate-900">
                             {
-                              hitter["Name"]
+                              hitter[
+                                "Name"
+                              ]
                             }
                           </div>
 
                           <div className="text-xs text-slate-500">
                             {
-                              hitter["Team"]
+                              hitter[
+                                "Team"
+                              ]
                             }{" "}
                             •{" "}
                             {
-                              hitter["Hand"]
+                              hitter[
+                                "Hand"
+                              ]
                             }
                           </div>
                         </button>
                       )
-                    )}
-
-                  </div>
-                )}
+                    )
+                  ) : (
+                    <div className="px-4 py-3 text-sm font-bold text-slate-500">
+                      No hitters found
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="mb-6 rounded-2xl border border-sky-200 bg-sky-50 p-4">
-
               <div className="mb-3 flex items-center justify-between">
-
                 <div>
                   <div className="font-black text-slate-900">
                     Season Min PA
@@ -943,7 +999,6 @@ export default function HittersPage() {
                 <div className="rounded-lg bg-sky-600 px-3 py-1 text-lg font-black text-white">
                   {seasonMinPA}+
                 </div>
-
               </div>
 
               <input
@@ -974,11 +1029,9 @@ export default function HittersPage() {
                 </span>
                 .
               </div>
-
             </div>
 
             <div className="mb-5 grid grid-cols-2 gap-3">
-
               <div>
                 <label className="mb-2 block text-sm font-bold text-slate-600">
                   ESPN Roster %
@@ -1020,7 +1073,6 @@ export default function HittersPage() {
                   className="w-full rounded-xl border border-slate-300 bg-slate-50 p-3 text-slate-900 outline-none focus:border-sky-400"
                 />
               </div>
-
             </div>
 
             <label className="mb-2 block text-sm font-bold text-slate-600">
@@ -1049,11 +1101,9 @@ export default function HittersPage() {
                 ? "Generating PNG..."
                 : "Generate Graphic"}
             </button>
-
           </section>
 
           <section className="rounded-3xl border border-sky-200 bg-white p-4 shadow-lg">
-
             <div className="mb-4 flex items-center justify-between px-1">
               <div>
                 <div className="text-xs font-black uppercase tracking-[0.2em] text-cyan-600">
@@ -1075,7 +1125,6 @@ export default function HittersPage() {
                 ref={graphicRef}
                 className="overflow-hidden rounded-2xl border border-slate-200 bg-[#f4f6f8] text-black shadow-xl"
               >
-
                 <div
                   className="flex items-center justify-between px-7 py-5"
                   style={{
@@ -1213,7 +1262,6 @@ export default function HittersPage() {
                 </div>
 
                 <section className="mx-6 mt-5 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
-
                   <div
                     className="px-6 py-2 text-center text-lg font-black"
                     style={{
@@ -1227,7 +1275,6 @@ export default function HittersPage() {
                   </div>
 
                   <div className="grid grid-cols-2">
-
                     <div className="bg-red-600 px-6 py-4 text-center text-white">
                       <div className="text-xl font-black uppercase tracking-wide">
                         ESPN
@@ -1251,13 +1298,10 @@ export default function HittersPage() {
                           : "—"}
                       </div>
                     </div>
-
                   </div>
-
                 </section>
 
                 <section className="mx-6 mt-4 overflow-hidden rounded-2xl border border-black/10 shadow-md">
-
                   <div
                     className="px-6 py-2 text-center text-lg font-black uppercase tracking-wider"
                     style={{
@@ -1276,12 +1320,10 @@ export default function HittersPage() {
                         "Start"}
                     </div>
                   </div>
-
                 </section>
 
                 <div className="px-6 py-7">
                   <div className="mx-auto mb-5 max-w-sm">
-
                     <div className="mb-1 text-center text-xs font-black uppercase tracking-[0.2em] text-slate-500">
                       Percentile Key
                     </div>
@@ -1299,19 +1341,15 @@ export default function HittersPage() {
                       <span>Average</span>
                       <span>Better</span>
                     </div>
-
                   </div>
 
                   <div className="mx-auto h-[45px] w-[180px] opacity-75">
                     <StreamStartersLogo />
                   </div>
                 </div>
-
               </section>
             </div>
-
           </section>
-
         </div>
       </div>
     </main>
