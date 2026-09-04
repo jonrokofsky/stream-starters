@@ -664,6 +664,9 @@ export default function Home() {
   const [exporting, setExporting] =
     useState(false);
 
+  const [copyStatus, setCopyStatus] =
+    useState<"idle" | "copied" | "error">("idle");
+
   useEffect(() => {
     async function loadData() {
       try {
@@ -1095,8 +1098,18 @@ export default function Home() {
     );
   }
 
-  async function generateGraphic() {
+  async function copyGraphicToClipboard() {
     if (!graphicRef.current) {
+      return;
+    }
+
+    if (
+      !navigator.clipboard ||
+      typeof ClipboardItem === "undefined"
+    ) {
+      alert(
+        "Image clipboard copying is not supported in this browser. Try Chrome or Edge on desktop."
+      );
       return;
     }
 
@@ -1113,6 +1126,7 @@ export default function Home() {
 
     try {
       setExporting(true);
+      setCopyStatus("idle");
 
       node.style.width = "1200px";
       node.style.maxWidth = "1200px";
@@ -1145,40 +1159,48 @@ export default function Home() {
           height: exportHeight,
         });
 
-      const safeName = (
-        selectedPitcherName ||
-        "stream-starter"
-      )
-        .replace(
-          /[^a-z0-9]+/gi,
-          "-"
-        )
-        .replace(/^-|-$/g, "")
-        .toLowerCase();
+      const response =
+        await fetch(dataUrl);
 
-      const safeOpponent = (
-        selectedOpponent ||
-        "opponent"
-      ).toLowerCase();
+      const blob =
+        await response.blob();
 
-      const link =
-        document.createElement("a");
+      const pngBlob =
+        blob.type === "image/png"
+          ? blob
+          : new Blob(
+              [await blob.arrayBuffer()],
+              {
+                type: "image/png",
+              }
+            );
 
-      link.download =
-        `${safeName}-vs-${safeOpponent}.png`;
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          "image/png": pngBlob,
+        }),
+      ]);
 
-      link.href = dataUrl;
+      setCopyStatus("copied");
 
-      link.click();
+      window.setTimeout(() => {
+        setCopyStatus("idle");
+      }, 1800);
     } catch (err) {
       console.error(
-        "Graphic export failed:",
+        "Graphic clipboard copy failed:",
         err
       );
 
+      setCopyStatus("error");
+
       alert(
-        "The graphic could not be exported. Check the browser console for details."
+        "The graphic could not be copied to the clipboard. Try Chrome or Edge and make sure clipboard permission is allowed."
       );
+
+      window.setTimeout(() => {
+        setCopyStatus("idle");
+      }, 2200);
     } finally {
       node.style.width =
         previousStyle.width;
@@ -1457,13 +1479,17 @@ export default function Home() {
 
             <button
               type="button"
-              onClick={generateGraphic}
+              onClick={copyGraphicToClipboard}
               disabled={exporting}
               className="w-full rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 p-3 font-black text-white shadow-md transition hover:from-sky-600 hover:to-cyan-600 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {exporting
-                ? "Generating PNG..."
-                : "Generate Graphic"}
+                ? "Copying Graphic..."
+                : copyStatus === "copied"
+                ? "Copied!"
+                : copyStatus === "error"
+                ? "Copy Failed"
+                : "Copy Graphic"}
             </button>
           </div>
 
