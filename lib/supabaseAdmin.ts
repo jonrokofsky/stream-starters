@@ -22,24 +22,24 @@ export const supabaseAdmin = createClient(
   }
 );
 
+type SupabaseErrorShape = {
+  error?: {
+    code?: string;
+    message?: string;
+  } | null;
+};
+
 export async function withSupabaseRetry<T>(
-  operation: () => Promise<T>,
+  operation: () => PromiseLike<T>,
   retries = 4
 ): Promise<T> {
-  let lastResult: T | null = null;
+  let lastResult: T | undefined;
 
   for (let attempt = 0; attempt < retries; attempt++) {
     const result = await operation();
     lastResult = result;
 
-    const maybeResult = result as {
-      error?: {
-        code?: string;
-        message?: string;
-      } | null;
-    };
-
-    const error = maybeResult?.error;
+    const error = (result as SupabaseErrorShape)?.error;
 
     if (!error) {
       return result;
@@ -47,25 +47,25 @@ export async function withSupabaseRetry<T>(
 
     const isFutureJwtError =
       error.code === "PGRST303" ||
-      error.message?.toLowerCase().includes("jwt issued at future");
+      error.message
+        ?.toLowerCase()
+        .includes("jwt issued at future");
 
     if (!isFutureJwtError) {
       return result;
     }
 
-    const delay =
-      attempt === 0
-        ? 400
-        : attempt === 1
-        ? 900
-        : attempt === 2
-        ? 1600
-        : 2500;
+    const delays = [400, 900, 1600, 2500];
+    const delay = delays[Math.min(attempt, delays.length - 1)];
 
-    await new Promise((resolve) =>
-      setTimeout(resolve, delay)
-    );
+    await new Promise<void>((resolve) => {
+      setTimeout(resolve, delay);
+    });
   }
 
-  return lastResult as T;
+  if (lastResult === undefined) {
+    throw new Error("Supabase operation did not return a result.");
+  }
+
+  return lastResult;
 }
