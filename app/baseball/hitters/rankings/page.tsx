@@ -152,8 +152,7 @@ const TEAM_THEMES: Record<string, TeamTheme> = {
 const STAT_GROUPS: StatGroup[] = [
   {
     title: "Plate Discipline",
-    subtitle:
-      "Swing decisions, zone aggression and strikeout control",
+    subtitle: "Swing decisions, zone aggression and strikeout control",
     stats: [
       {
         key: "BB%",
@@ -189,8 +188,7 @@ const STAT_GROUPS: StatGroup[] = [
   },
   {
     title: "Contact Quality",
-    subtitle:
-      "How often the hitter squares up hittable pitches",
+    subtitle: "How often the hitter squares up hittable pitches",
     stats: [
       {
         key: "SqUpSw%",
@@ -208,8 +206,7 @@ const STAT_GROUPS: StatGroup[] = [
   },
   {
     title: "Power",
-    subtitle:
-      "Home-run production and high-end exit velocity",
+    subtitle: "Home-run production and high-end exit velocity",
     stats: [
       {
         key: "HR",
@@ -233,8 +230,7 @@ const STAT_GROUPS: StatGroup[] = [
   },
   {
     title: "Production",
-    subtitle:
-      "Overall offensive value and speed",
+    subtitle: "Overall offensive value and speed",
     stats: [
       {
         key: "xwOBA",
@@ -258,9 +254,7 @@ const STAT_GROUPS: StatGroup[] = [
   },
 ];
 
-const ALL_STATS = STAT_GROUPS.flatMap(
-  (group) => group.stats
-);
+const ALL_STATS = STAT_GROUPS.flatMap((group) => group.stats);
 
 function normalizeTeam(team: string) {
   return team.trim().toUpperCase();
@@ -297,9 +291,7 @@ function playerHasPosition(
   return parsePositions(player.Pos).includes(position);
 }
 
-function getPoolPositions(
-  pool: MatchupPool
-): string[] {
+function getPoolPositions(pool: MatchupPool): string[] {
   if (pool === "All") return [];
 
   if (pool === "2B/SS") return ["2B", "SS"];
@@ -346,10 +338,7 @@ function parseCSV(text: string): Player[] {
       (char === "\n" || char === "\r") &&
       !inQuotes
     ) {
-      if (
-        char === "\r" &&
-        text[i + 1] === "\n"
-      ) {
+      if (char === "\r" && text[i + 1] === "\n") {
         i++;
       }
 
@@ -370,9 +359,7 @@ function parseCSV(text: string): Player[] {
 
   if (rows.length < 2) return [];
 
-  const headers = rows[0].map((header) =>
-    header.trim()
-  );
+  const headers = rows[0].map((header) => header.trim());
 
   return rows
     .slice(1)
@@ -403,9 +390,7 @@ function numericValue(
 
   const number = Number(cleaned);
 
-  return Number.isFinite(number)
-    ? number
-    : null;
+  return Number.isFinite(number) ? number : null;
 }
 
 function percentile(
@@ -415,16 +400,11 @@ function percentile(
 ) {
   const value = numericValue(playerValue);
 
-  if (
-    value === null ||
-    values.length < 2
-  ) {
+  if (value === null || values.length < 2) {
     return 50;
   }
 
-  const sorted = [...values].sort(
-    (a, b) => a - b
-  );
+  const sorted = [...values].sort((a, b) => a - b);
 
   let below = 0;
   let equal = 0;
@@ -435,19 +415,13 @@ function percentile(
   }
 
   const raw =
-    ((below +
-      Math.max(equal - 1, 0) / 2) /
+    ((below + Math.max(equal - 1, 0) / 2) /
       (sorted.length - 1)) *
     100;
 
-  const adjusted = higherIsBetter
-    ? raw
-    : 100 - raw;
+  const adjusted = higherIsBetter ? raw : 100 - raw;
 
-  return Math.max(
-    0,
-    Math.min(100, adjusted)
-  );
+  return Math.max(0, Math.min(100, adjusted));
 }
 
 function percentileStyle(pct: number) {
@@ -564,9 +538,7 @@ function formatContextValue(
 }
 
 function randomItem<T>(items: T[]) {
-  return items[
-    Math.floor(Math.random() * items.length)
-  ];
+  return items[Math.floor(Math.random() * items.length)];
 }
 
 function ratingKey(name: string) {
@@ -588,48 +560,30 @@ export default function HitterRankingsPage() {
   const [accessChecked, setAccessChecked] =
     useState(false);
 
-  const [players, setPlayers] =
-    useState<Player[]>([]);
+  const [players, setPlayers] = useState<Player[]>([]);
+  const [ratings, setRatings] = useState<RatingsMap>({});
+  const [history, setHistory] = useState<HistoryItem[]>([]);
 
-  const [ratings, setRatings] =
-    useState<RatingsMap>({});
-
-  const [history, setHistory] =
-    useState<HistoryItem[]>([]);
-
-  const [playerA, setPlayerA] =
-    useState<Player | null>(null);
-
-  const [playerB, setPlayerB] =
-    useState<Player | null>(null);
+  const [playerA, setPlayerA] = useState<Player | null>(null);
+  const [playerB, setPlayerB] = useState<Player | null>(null);
 
   const [tab, setTab] = useState<
     "compare" | "rankings" | "history"
   >("compare");
 
-  const [
-    rankingPosition,
-    setRankingPosition,
-  ] =
+  const [rankingPosition, setRankingPosition] =
     useState<PositionTab>("Overall");
 
   const [matchupPool, setMatchupPool] =
     useState<MatchupPool>("All");
 
-  const [loading, setLoading] =
-    useState(true);
-
-  const [saving, setSaving] =
-    useState(false);
-
-  const [message, setMessage] =
-    useState("");
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const granted =
-      localStorage.getItem(
-        EARLY_ACCESS_KEY
-      ) === "granted";
+      localStorage.getItem(EARLY_ACCESS_KEY) === "granted";
 
     if (!granted) {
       router.replace("/");
@@ -659,100 +613,59 @@ export default function HitterRankingsPage() {
           ]);
 
         if (!csvResponse.ok) {
-          throw new Error(
-            "Unable to load hitter sheet."
-          );
+          throw new Error("Unable to load hitter sheet.");
         }
 
         if (!rankingResponse.ok) {
-          throw new Error(
-            "Unable to load cloud rankings."
-          );
+          throw new Error("Unable to load cloud rankings.");
         }
 
-        const csvText =
-          await csvResponse.text();
+        const csvText = await csvResponse.text();
+        const cloudData = await rankingResponse.json();
 
-        const cloudData =
-          await rankingResponse.json();
+        const allPlayers = parseCSV(csvText);
 
-        const allPlayers =
-          parseCSV(csvText);
+        const eligiblePlayers = allPlayers.filter((player) => {
+          const pa = numericValue(player.PA);
 
-        const eligiblePlayers =
-          allPlayers.filter((player) => {
-            const pa = numericValue(
-              player.PA
-            );
+          return pa !== null && pa >= MIN_PA;
+        });
 
-            return (
-              pa !== null &&
-              pa >= MIN_PA
-            );
-          });
+        const initialRatings: RatingsMap = {};
 
-        const initialRatings: RatingsMap =
-          {};
+        eligiblePlayers.forEach((player) => {
+          initialRatings[ratingKey(player.Name)] =
+            defaultPlayerRating();
+        });
 
-        eligiblePlayers.forEach(
-          (player) => {
-            initialRatings[
-              ratingKey(player.Name)
-            ] = defaultPlayerRating();
+        const cloudRatings: ApiRating[] = Array.isArray(
+          cloudData?.ratings
+        )
+          ? cloudData.ratings
+          : [];
+
+        cloudRatings.forEach((rating) => {
+          const key = ratingKey(rating.playerName);
+
+          if (initialRatings[key]) {
+            initialRatings[key] = {
+              elo: rating.elo,
+              wins: rating.wins,
+              losses: rating.losses,
+              comparisons: rating.comparisons,
+            };
           }
-        );
+        });
 
-        const cloudRatings: ApiRating[] =
-          Array.isArray(
-            cloudData?.ratings
-          )
-            ? cloudData.ratings
-            : [];
+        const cloudHistory: HistoryItem[] = Array.isArray(
+          cloudData?.history
+        )
+          ? cloudData.history
+          : [];
 
-        cloudRatings.forEach(
-          (rating) => {
-            if (
-              initialRatings[
-                ratingKey(
-                  rating.playerName
-                )
-              ]
-            ) {
-              initialRatings[
-                ratingKey(
-                  rating.playerName
-                )
-              ] = {
-                elo: rating.elo,
-                wins: rating.wins,
-                losses:
-                  rating.losses,
-                comparisons:
-                  rating.comparisons,
-              };
-            }
-          }
-        );
-
-        const cloudHistory: HistoryItem[] =
-          Array.isArray(
-            cloudData?.history
-          )
-            ? cloudData.history
-            : [];
-
-        setPlayers(
-          eligiblePlayers
-        );
-
-        setRatings(
-          initialRatings
-        );
-
-        setHistory(
-          cloudHistory
-        );
-
+        setPlayers(eligiblePlayers);
+        setRatings(initialRatings);
+        setHistory(cloudHistory);
         setLoading(false);
 
         setTimeout(() => {
@@ -766,10 +679,7 @@ export default function HitterRankingsPage() {
       } catch (error) {
         console.error(error);
 
-        setMessage(
-          "Could not load hitter rankings."
-        );
-
+        setMessage("Could not load hitter rankings.");
         setLoading(false);
       }
     }
@@ -783,18 +693,11 @@ export default function HitterRankingsPage() {
     pool: MatchupPool = matchupPool,
     sourceHistory = history
   ) {
-    const eligiblePlayers =
-      sourcePlayers.filter(
-        (player) =>
-          playerInMatchupPool(
-            player,
-            pool
-          )
-      );
+    const eligiblePlayers = sourcePlayers.filter((player) =>
+      playerInMatchupPool(player, pool)
+    );
 
-    if (
-      eligiblePlayers.length < 2
-    ) {
+    if (eligiblePlayers.length < 2) {
       setMessage(
         `Not enough eligible hitters are available for the ${pool} matchup pool.`
       );
@@ -802,127 +705,71 @@ export default function HitterRankingsPage() {
       return;
     }
 
-    const leastCompared = [
-      ...eligiblePlayers,
-    ].sort((a, b) => {
-      const aRating =
-        sourceRatings[
-          ratingKey(a.Name)
-        ];
-
-      const bRating =
-        sourceRatings[
-          ratingKey(b.Name)
-        ];
+    const leastCompared = [...eligiblePlayers].sort((a, b) => {
+      const aRating = sourceRatings[ratingKey(a.Name)];
+      const bRating = sourceRatings[ratingKey(b.Name)];
 
       return (
-        (aRating?.comparisons ??
-          0) -
-        (bRating?.comparisons ??
-          0)
+        (aRating?.comparisons ?? 0) -
+        (bRating?.comparisons ?? 0)
       );
     });
 
-    const desiredPoolSize =
-      Math.ceil(
-        eligiblePlayers.length *
-          0.35
-      );
+    const desiredPoolSize = Math.ceil(
+      eligiblePlayers.length * 0.35
+    );
 
-    const poolSize =
-      Math.min(
-        eligiblePlayers.length,
-        Math.max(
-          2,
-          Math.min(
-            30,
-            desiredPoolSize
-          )
-        )
-      );
+    const poolSize = Math.min(
+      eligiblePlayers.length,
+      Math.max(2, Math.min(30, desiredPoolSize))
+    );
 
-    const candidatePool =
-      leastCompared.slice(
-        0,
-        poolSize
-      );
+    const candidatePool = leastCompared.slice(0, poolSize);
 
-    const first =
-      randomItem(candidatePool);
+    const first = randomItem(candidatePool);
 
     const firstRating =
-      sourceRatings[
-        ratingKey(first.Name)
-      ]?.elo ??
+      sourceRatings[ratingKey(first.Name)]?.elo ??
       STARTING_ELO;
 
-    const possibleOpponents =
-      eligiblePlayers
-        .filter(
-          (player) =>
-            player.Name !==
-            first.Name
-        )
-        .map((player) => {
-          const rating =
-            sourceRatings[
-              ratingKey(
-                player.Name
-              )
-            ]?.elo ??
-            STARTING_ELO;
+    const possibleOpponents = eligiblePlayers
+      .filter((player) => player.Name !== first.Name)
+      .map((player) => {
+        const rating =
+          sourceRatings[ratingKey(player.Name)]?.elo ??
+          STARTING_ELO;
 
-          const comparisons =
-            sourceRatings[
-              ratingKey(
-                player.Name
-              )
-            ]?.comparisons ??
-            0;
+        const comparisons =
+          sourceRatings[ratingKey(player.Name)]?.comparisons ?? 0;
 
-          const eloDistance =
-            Math.abs(
-              firstRating -
-                rating
-            );
+        const eloDistance = Math.abs(firstRating - rating);
 
-          const recentPenalty =
-            sourceHistory
-              .slice(-10)
-              .some(
-                (item) =>
-                  (item.winner ===
-                    first.Name &&
-                    item.loser ===
-                      player.Name) ||
-                  (item.winner ===
-                    player.Name &&
-                    item.loser ===
-                      first.Name)
-              )
-              ? 200
-              : 0;
+        const recentPenalty = sourceHistory
+          .slice(-10)
+          .some(
+            (item) =>
+              (item.winner === first.Name &&
+                item.loser === player.Name) ||
+              (item.winner === player.Name &&
+                item.loser === first.Name)
+          )
+          ? 200
+          : 0;
 
-          const score =
-            eloDistance +
-            comparisons * 5 +
-            recentPenalty +
-            Math.random() *
-              50;
+        const score =
+          eloDistance +
+          comparisons * 5 +
+          recentPenalty +
+          Math.random() * 50;
 
-          return {
-            player,
-            score,
-          };
-        })
-        .sort(
-          (a, b) =>
-            a.score - b.score
-        );
+        return {
+          player,
+          score,
+        };
+      })
+      .sort((a, b) => a.score - b.score);
 
-    if (
-      !possibleOpponents.length
-    ) {
+    if (!possibleOpponents.length) {
       setMessage(
         `No eligible matchup could be created for the ${pool} pool.`
       );
@@ -932,19 +779,12 @@ export default function HitterRankingsPage() {
 
     setMessage("");
 
-    const opponentPool =
-      possibleOpponents.slice(
-        0,
-        Math.min(
-          10,
-          possibleOpponents.length
-        )
-      );
+    const opponentPool = possibleOpponents.slice(
+      0,
+      Math.min(10, possibleOpponents.length)
+    );
 
-    const second =
-      randomItem(
-        opponentPool
-      ).player;
+    const second = randomItem(opponentPool).player;
 
     if (Math.random() > 0.5) {
       setPlayerA(first);
@@ -955,15 +795,24 @@ export default function HitterRankingsPage() {
     }
   }
 
-  function changeMatchupPool(
-    pool: MatchupPool
-  ) {
+  function changeMatchupPool(pool: MatchupPool) {
     setMatchupPool(pool);
 
     createNextMatchup(
       players,
       ratings,
       pool,
+      history
+    );
+  }
+
+  function skipMatchup() {
+    if (saving) return;
+
+    createNextMatchup(
+      players,
+      ratings,
+      matchupPool,
       history
     );
   }
@@ -983,8 +832,7 @@ export default function HitterRankingsPage() {
         {
           method: "POST",
           headers: {
-            "Content-Type":
-              "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             action: "pick",
@@ -995,45 +843,31 @@ export default function HitterRankingsPage() {
       );
 
       if (!response.ok) {
-        throw new Error(
-          "Unable to save selection."
-        );
+        throw new Error("Unable to save selection.");
       }
 
-      const result =
-        await response.json();
+      const result = await response.json();
 
-      const updatedRatings: RatingsMap =
-        {
-          ...ratings,
-        };
-
-      updatedRatings[
-        ratingKey(
-          result.winner.playerName
-        )
-      ] = {
-        elo: result.winner.elo,
-        wins: result.winner.wins,
-        losses:
-          result.winner.losses,
-        comparisons:
-          result.winner
-            .comparisons,
+      const updatedRatings: RatingsMap = {
+        ...ratings,
       };
 
       updatedRatings[
-        ratingKey(
-          result.loser.playerName
-        )
+        ratingKey(result.winner.playerName)
+      ] = {
+        elo: result.winner.elo,
+        wins: result.winner.wins,
+        losses: result.winner.losses,
+        comparisons: result.winner.comparisons,
+      };
+
+      updatedRatings[
+        ratingKey(result.loser.playerName)
       ] = {
         elo: result.loser.elo,
         wins: result.loser.wins,
-        losses:
-          result.loser.losses,
-        comparisons:
-          result.loser
-            .comparisons,
+        losses: result.loser.losses,
+        comparisons: result.loser.comparisons,
       };
 
       const nextHistory = [
@@ -1041,13 +875,8 @@ export default function HitterRankingsPage() {
         result.history,
       ];
 
-      setRatings(
-        updatedRatings
-      );
-
-      setHistory(
-        nextHistory
-      );
+      setRatings(updatedRatings);
+      setHistory(nextHistory);
 
       createNextMatchup(
         players,
@@ -1058,19 +887,14 @@ export default function HitterRankingsPage() {
     } catch (error) {
       console.error(error);
 
-      setMessage(
-        "Could not save that pick."
-      );
+      setMessage("Could not save that pick.");
     } finally {
       setSaving(false);
     }
   }
 
   async function undoLastPick() {
-    if (
-      saving ||
-      !history.length
-    ) {
+    if (saving || !history.length) {
       return;
     }
 
@@ -1083,8 +907,7 @@ export default function HitterRankingsPage() {
         {
           method: "POST",
           headers: {
-            "Content-Type":
-              "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             action: "undo",
@@ -1093,97 +916,64 @@ export default function HitterRankingsPage() {
       );
 
       if (!response.ok) {
-        throw new Error(
-          "Unable to undo."
-        );
+        throw new Error("Unable to undo.");
       }
 
-      const result =
-        await response.json();
+      const result = await response.json();
 
       if (result.empty) {
         setHistory([]);
         return;
       }
 
-      const updatedRatings: RatingsMap =
-        {
-          ...ratings,
-        };
+      const updatedRatings: RatingsMap = {
+        ...ratings,
+      };
 
       updatedRatings[
-        ratingKey(
-          result.winner.playerName
-        )
+        ratingKey(result.winner.playerName)
       ] = {
         elo: result.winner.elo,
         wins: result.winner.wins,
-        losses:
-          result.winner.losses,
-        comparisons:
-          result.winner
-            .comparisons,
+        losses: result.winner.losses,
+        comparisons: result.winner.comparisons,
       };
 
       updatedRatings[
-        ratingKey(
-          result.loser.playerName
-        )
+        ratingKey(result.loser.playerName)
       ] = {
         elo: result.loser.elo,
         wins: result.loser.wins,
-        losses:
-          result.loser.losses,
-        comparisons:
-          result.loser
-            .comparisons,
+        losses: result.loser.losses,
+        comparisons: result.loser.comparisons,
       };
 
-      setRatings(
-        updatedRatings
-      );
+      setRatings(updatedRatings);
 
       setHistory((previous) =>
         previous.filter(
-          (item) =>
-            item.id !==
-            result.undoneHistoryId
+          (item) => item.id !== result.undoneHistoryId
         )
       );
 
-      const winnerPlayer =
-        players.find(
-          (player) =>
-            player.Name ===
-            result.matchup
-              .winner
-        );
+      const winnerPlayer = players.find(
+        (player) =>
+          player.Name === result.matchup.winner
+      );
 
-      const loserPlayer =
-        players.find(
-          (player) =>
-            player.Name ===
-            result.matchup.loser
-        );
+      const loserPlayer = players.find(
+        (player) =>
+          player.Name === result.matchup.loser
+      );
 
-      if (
-        winnerPlayer &&
-        loserPlayer
-      ) {
-        setPlayerA(
-          winnerPlayer
-        );
-
-        setPlayerB(
-          loserPlayer
-        );
+      if (winnerPlayer && loserPlayer) {
+        setPlayerA(winnerPlayer);
+        setPlayerB(loserPlayer);
       }
     } catch (error) {
       console.error(error);
 
-      setMessage(
-        "Could not undo the last pick."
-      );
+      setMessage("Could not undo the last pick.");
     } finally {
       setSaving(false);
     }
@@ -1192,10 +982,9 @@ export default function HitterRankingsPage() {
   async function resetRankings() {
     if (saving) return;
 
-    const confirmed =
-      window.confirm(
-        "Reset all hitter Elo rankings and matchup history on every device?"
-      );
+    const confirmed = window.confirm(
+      "Reset all hitter Elo rankings and matchup history on every device?"
+    );
 
     if (!confirmed) return;
 
@@ -1208,44 +997,27 @@ export default function HitterRankingsPage() {
         {
           method: "POST",
           headers: {
-            "Content-Type":
-              "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             action: "reset",
-            playerNames:
-              players.map(
-                (player) =>
-                  player.Name
-              ),
+            playerNames: players.map((player) => player.Name),
           }),
         }
       );
 
       if (!response.ok) {
-        throw new Error(
-          "Unable to reset."
-        );
+        throw new Error("Unable to reset.");
       }
 
-      const resetRatings: RatingsMap =
-        {};
+      const resetRatings: RatingsMap = {};
 
-      players.forEach(
-        (player) => {
-          resetRatings[
-            ratingKey(
-              player.Name
-            )
-          ] =
-            defaultPlayerRating();
-        }
-      );
+      players.forEach((player) => {
+        resetRatings[ratingKey(player.Name)] =
+          defaultPlayerRating();
+      });
 
-      setRatings(
-        resetRatings
-      );
-
+      setRatings(resetRatings);
       setHistory([]);
 
       createNextMatchup(
@@ -1257,86 +1029,59 @@ export default function HitterRankingsPage() {
     } catch (error) {
       console.error(error);
 
-      setMessage(
-        "Could not reset rankings."
-      );
+      setMessage("Could not reset rankings.");
     } finally {
       setSaving(false);
     }
   }
 
-  const statPopulations =
-    useMemo(() => {
-      const map: Record<
-        string,
-        number[]
-      > = {};
+  const statPopulations = useMemo(() => {
+    const map: Record<string, number[]> = {};
 
-      ALL_STATS.forEach(
-        (stat) => {
-          map[stat.key] =
-            players
-              .map((player) =>
-                numericValue(
-                  player[
-                    stat.key
-                  ]
-                )
-              )
-              .filter(
-                (
-                  value
-                ): value is number =>
-                  value !== null
-              );
-        }
-      );
-
-      return map;
-    }, [players]);
-
-  const leaderboard =
-    useMemo(() => {
-      return [...players]
-        .filter((player) =>
-          playerHasPosition(
-            player,
-            rankingPosition
-          )
+    ALL_STATS.forEach((stat) => {
+      map[stat.key] = players
+        .map((player) =>
+          numericValue(player[stat.key])
         )
-        .map((player) => {
-          const rating =
-            ratings[
-              ratingKey(
-                player.Name
-              )
-            ] ??
-            defaultPlayerRating();
+        .filter(
+          (value): value is number =>
+            value !== null
+        );
+    });
 
-          return {
-            player,
-            ...rating,
-          };
-        })
-        .sort((a, b) => {
-          if (
-            b.elo !== a.elo
-          ) {
-            return (
-              b.elo - a.elo
-            );
-          }
+    return map;
+  }, [players]);
 
-          return (
-            b.comparisons -
-            a.comparisons
-          );
-        });
-    }, [
-      players,
-      ratings,
-      rankingPosition,
-    ]);
+  const leaderboard = useMemo(() => {
+    return [...players]
+      .filter((player) =>
+        playerHasPosition(
+          player,
+          rankingPosition
+        )
+      )
+      .map((player) => {
+        const rating =
+          ratings[ratingKey(player.Name)] ??
+          defaultPlayerRating();
+
+        return {
+          player,
+          ...rating,
+        };
+      })
+      .sort((a, b) => {
+        if (b.elo !== a.elo) {
+          return b.elo - a.elo;
+        }
+
+        return b.comparisons - a.comparisons;
+      });
+  }, [
+    players,
+    ratings,
+    rankingPosition,
+  ]);
 
   function StatCell({
     player,
@@ -1349,9 +1094,7 @@ export default function HitterRankingsPage() {
   }) {
     const pct = percentile(
       player[stat.key],
-      statPopulations[
-        stat.key
-      ] ?? [],
+      statPopulations[stat.key] ?? [],
       stat.higherIsBetter
     );
 
@@ -1359,9 +1102,7 @@ export default function HitterRankingsPage() {
       <div
         key={`${side}-${stat.key}`}
         className="rounded-xl border border-black/10 px-2 py-3 text-center"
-        style={
-          percentileStyle(pct)
-        }
+        style={percentileStyle(pct)}
       >
         <div className="text-[10px] font-black uppercase tracking-wide opacity-70">
           {stat.label}
@@ -1389,24 +1130,16 @@ export default function HitterRankingsPage() {
     side: "left" | "right";
   }) {
     const rating =
-      ratings[
-        ratingKey(
-          player.Name
-        )
-      ] ??
+      ratings[ratingKey(player.Name)] ??
       defaultPlayerRating();
 
-    const theme =
-      getTeamTheme(
-        player.Team
-      );
+    const theme = getTeamTheme(player.Team);
 
     return (
       <div
         className="overflow-hidden rounded-3xl border-2 bg-white shadow-sm"
         style={{
-          borderColor:
-            theme.primary,
+          borderColor: theme.primary,
         }}
       >
         <div
@@ -1419,8 +1152,7 @@ export default function HitterRankingsPage() {
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
               <div className="text-xs font-black uppercase tracking-[0.18em] opacity-85">
-                {player.Team} •{" "}
-                {player.Pos}
+                {player.Team} • {player.Pos}
               </div>
 
               <div className="mt-1 text-2xl font-black leading-tight md:text-3xl">
@@ -1447,9 +1179,7 @@ export default function HitterRankingsPage() {
 
               <div className="mt-0.5 text-base font-black">
                 {formatContextValue(
-                  player[
-                    "$ Value"
-                  ],
+                  player["$ Value"],
                   "money"
                 )}
               </div>
@@ -1474,8 +1204,7 @@ export default function HitterRankingsPage() {
               </div>
 
               <div className="mt-0.5 text-base font-black">
-                {rating.wins}-
-                {rating.losses}
+                {rating.wins}-{rating.losses}
               </div>
             </div>
 
@@ -1485,86 +1214,65 @@ export default function HitterRankingsPage() {
               </div>
 
               <div className="mt-0.5 text-base font-black">
-                {
-                  rating.comparisons
-                }
+                {rating.comparisons}
               </div>
             </div>
           </div>
         </div>
 
         <div className="space-y-4 p-4">
-          {STAT_GROUPS.map(
-            (group) => (
-              <section
-                key={
-                  group.title
-                }
-                className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50"
+          {STAT_GROUPS.map((group) => (
+            <section
+              key={group.title}
+              className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50"
+            >
+              <div
+                className="border-b border-slate-200 px-4 py-3"
+                style={{
+                  borderLeft: `5px solid ${theme.primary}`,
+                }}
               >
-                <div
-                  className="border-b border-slate-200 px-4 py-3"
-                  style={{
-                    borderLeft: `5px solid ${theme.primary}`,
-                  }}
-                >
-                  <div className="text-sm font-black uppercase tracking-wide text-slate-800">
-                    {
-                      group.title
-                    }
-                  </div>
-
-                  <div className="mt-0.5 text-[11px] font-semibold text-slate-500">
-                    {
-                      group.subtitle
-                    }
-                  </div>
+                <div className="text-sm font-black uppercase tracking-wide text-slate-800">
+                  {group.title}
                 </div>
 
-                <div
-                  className={`grid gap-2 p-3 ${
-                    group.stats
-                      .length === 5
-                      ? "grid-cols-2 sm:grid-cols-5"
-                      : group.stats
-                            .length ===
-                          3
-                        ? "grid-cols-3"
-                        : "grid-cols-2"
-                  }`}
-                >
-                  {group.stats.map(
-                    (stat) => (
-                      <StatCell
-                        key={`${side}-${group.title}-${stat.key}`}
-                        player={
-                          player
-                        }
-                        stat={stat}
-                        side={side}
-                      />
-                    )
-                  )}
+                <div className="mt-0.5 text-[11px] font-semibold text-slate-500">
+                  {group.subtitle}
                 </div>
-              </section>
-            )
-          )}
+              </div>
+
+              <div
+                className={`grid gap-2 p-3 ${
+                  group.stats.length === 5
+                    ? "grid-cols-2 sm:grid-cols-5"
+                    : group.stats.length === 3
+                    ? "grid-cols-3"
+                    : "grid-cols-2"
+                }`}
+              >
+                {group.stats.map((stat) => (
+                  <StatCell
+                    key={`${side}-${group.title}-${stat.key}`}
+                    player={player}
+                    stat={stat}
+                    side={side}
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
 
         <button
           type="button"
           disabled={saving}
           onClick={() => {
-            if (
-              !playerA ||
-              !playerB
-            ) {
+            if (!playerA || !playerB) {
               return;
             }
 
             const loser =
-              player.Name ===
-              playerA.Name
+              player.Name === playerA.Name
                 ? playerB
                 : playerA;
 
@@ -1577,8 +1285,7 @@ export default function HitterRankingsPage() {
           style={{
             background: `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})`,
             color: theme.text,
-            borderColor:
-              theme.primary,
+            borderColor: theme.primary,
           }}
         >
           {saving
@@ -1604,8 +1311,7 @@ export default function HitterRankingsPage() {
       <main className="min-h-screen bg-slate-100 p-6">
         <div className="mx-auto max-w-7xl">
           <div className="rounded-2xl border border-slate-200 bg-white p-6 font-bold">
-            Loading cloud
-            rankings...
+            Loading cloud rankings...
           </div>
         </div>
       </main>
@@ -1619,19 +1325,15 @@ export default function HitterRankingsPage() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                Stream Starters •
-                Fantasy Baseball
+                Stream Starters • Fantasy Baseball
               </div>
 
               <h1 className="mt-1 text-3xl font-black text-slate-900">
-                Hitter 1v1
-                Rankings
+                Hitter 1v1 Rankings
               </h1>
 
               <p className="mt-1 text-sm font-medium text-slate-500">
-                Cloud-synced Elo
-                rankings • Minimum{" "}
-                {MIN_PA} PA
+                Cloud-synced Elo rankings • Minimum {MIN_PA} PA
               </p>
             </div>
 
@@ -1653,12 +1355,9 @@ export default function HitterRankingsPage() {
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-2">
             <button
-              onClick={() =>
-                setTab("compare")
-              }
+              onClick={() => setTab("compare")}
               className={`rounded-full px-4 py-2 text-sm font-black ${
-                tab ===
-                "compare"
+                tab === "compare"
                   ? "bg-slate-900 text-white"
                   : "bg-white text-slate-700"
               }`}
@@ -1667,14 +1366,9 @@ export default function HitterRankingsPage() {
             </button>
 
             <button
-              onClick={() =>
-                setTab(
-                  "rankings"
-                )
-              }
+              onClick={() => setTab("rankings")}
               className={`rounded-full px-4 py-2 text-sm font-black ${
-                tab ===
-                "rankings"
+                tab === "rankings"
                   ? "bg-slate-900 text-white"
                   : "bg-white text-slate-700"
               }`}
@@ -1683,12 +1377,9 @@ export default function HitterRankingsPage() {
             </button>
 
             <button
-              onClick={() =>
-                setTab("history")
-              }
+              onClick={() => setTab("history")}
               className={`rounded-full px-4 py-2 text-sm font-black ${
-                tab ===
-                "history"
+                tab === "history"
                   ? "bg-slate-900 text-white"
                   : "bg-white text-slate-700"
               }`}
@@ -1699,22 +1390,15 @@ export default function HitterRankingsPage() {
 
           <div className="flex flex-wrap gap-2">
             <button
-              onClick={
-                undoLastPick
-              }
-              disabled={
-                !history.length ||
-                saving
-              }
+              onClick={undoLastPick}
+              disabled={!history.length || saving}
               className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-black text-slate-700 disabled:opacity-40"
             >
               Undo Last Pick
             </button>
 
             <button
-              onClick={
-                resetRankings
-              }
+              onClick={resetRankings}
               disabled={saving}
               className="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-sm font-black text-red-700 disabled:opacity-40"
             >
@@ -1731,92 +1415,83 @@ export default function HitterRankingsPage() {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {MATCHUP_POOLS.map(
-                  (pool) => (
-                    <button
-                      key={pool}
-                      onClick={() =>
-                        changeMatchupPool(
-                          pool
-                        )
-                      }
-                      className={`rounded-full px-4 py-2 text-sm font-black ${
-                        matchupPool ===
-                        pool
-                          ? "bg-blue-600 text-white"
-                          : "bg-slate-100 text-slate-700"
-                      }`}
-                    >
-                      {pool}
-                    </button>
-                  )
-                )}
+                {MATCHUP_POOLS.map((pool) => (
+                  <button
+                    key={pool}
+                    onClick={() =>
+                      changeMatchupPool(pool)
+                    }
+                    className={`rounded-full px-4 py-2 text-sm font-black ${
+                      matchupPool === pool
+                        ? "bg-blue-600 text-white"
+                        : "bg-slate-100 text-slate-700"
+                    }`}
+                  >
+                    {pool}
+                  </button>
+                ))}
               </div>
 
               <div className="mt-3 text-xs font-semibold text-slate-500">
-                Minimum{" "}
-                {MIN_PA} PA.{" "}
-                {matchupPool ===
-                "All"
+                Minimum {MIN_PA} PA.{" "}
+                {matchupPool === "All"
                   ? "Matchups can include any eligible hitter."
-                  : matchupPool ===
-                      "2B/SS"
-                    ? "Only hitters eligible at 2B or SS are included."
-                    : matchupPool ===
-                        "1B/3B"
-                      ? "Only hitters eligible at 1B or 3B are included."
-                      : `Only hitters eligible at ${matchupPool} are included.`}
+                  : matchupPool === "2B/SS"
+                  ? "Only hitters eligible at 2B or SS are included."
+                  : matchupPool === "1B/3B"
+                  ? "Only hitters eligible at 1B or 3B are included."
+                  : `Only hitters eligible at ${matchupPool} are included.`}
               </div>
             </div>
 
             <div className="mb-4 text-center">
               <div className="text-xs font-black uppercase tracking-[0.25em] text-slate-500">
-                Who would you
-                rather have?
+                Who would you rather have?
               </div>
             </div>
 
-            {playerA &&
-            playerB ? (
+            {playerA && playerB ? (
               <div className="grid gap-4 xl:grid-cols-[1fr_auto_1fr] xl:items-start">
                 <PlayerCard
-                  player={
-                    playerA
-                  }
+                  player={playerA}
                   side="left"
                 />
 
-                <div className="flex items-center justify-center xl:sticky xl:top-6 xl:pt-10">
+                <div className="flex flex-col items-center justify-center gap-3 xl:sticky xl:top-6 xl:pt-10">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-slate-900 text-xl font-black text-white">
                     VS
                   </div>
+
+                  <button
+                    type="button"
+                    onClick={skipMatchup}
+                    disabled={saving}
+                    className="rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-black text-slate-600 shadow-sm transition hover:border-slate-400 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Skip
+                  </button>
                 </div>
 
                 <PlayerCard
-                  player={
-                    playerB
-                  }
+                  player={playerB}
                   side="right"
                 />
               </div>
             ) : (
               <div className="rounded-2xl bg-white p-6 text-center font-bold text-slate-500">
-                Preparing
-                matchup...
+                Preparing matchup...
               </div>
             )}
 
             <div className="mt-5 flex justify-center">
               <div className="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-center text-xs font-bold text-slate-500">
-                Percentile
-                colors:{" "}
+                Percentile colors:{" "}
                 <span className="font-black text-blue-700">
                   Blue = Worse
                 </span>
                 {" • "}
                 <span className="font-black text-slate-700">
-                  White =
-                  Average
+                  White = Average
                 </span>
                 {" • "}
                 <span className="font-black text-red-700">
@@ -1827,38 +1502,29 @@ export default function HitterRankingsPage() {
           </>
         )}
 
-        {tab ===
-          "rankings" && (
+        {tab === "rankings" && (
           <>
             <div className="mb-4 rounded-2xl border border-slate-200 bg-white p-4">
               <div className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-slate-500">
-                Position
-                Rankings
+                Position Rankings
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {POSITION_TABS.map(
-                  (position) => (
-                    <button
-                      key={
-                        position
-                      }
-                      onClick={() =>
-                        setRankingPosition(
-                          position
-                        )
-                      }
-                      className={`rounded-full px-4 py-2 text-sm font-black ${
-                        rankingPosition ===
-                        position
-                          ? "bg-blue-600 text-white"
-                          : "bg-slate-100 text-slate-700"
-                      }`}
-                    >
-                      {position}
-                    </button>
-                  )
-                )}
+                {POSITION_TABS.map((position) => (
+                  <button
+                    key={position}
+                    onClick={() =>
+                      setRankingPosition(position)
+                    }
+                    className={`rounded-full px-4 py-2 text-sm font-black ${
+                      rankingPosition === position
+                        ? "bg-blue-600 text-white"
+                        : "bg-slate-100 text-slate-700"
+                    }`}
+                  >
+                    {position}
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -1867,28 +1533,18 @@ export default function HitterRankingsPage() {
                 <div className="flex flex-wrap items-end justify-between gap-2">
                   <div>
                     <div className="text-xl font-black">
-                      {rankingPosition ===
-                      "Overall"
+                      {rankingPosition === "Overall"
                         ? "Overall Hitter Rankings"
                         : `${rankingPosition} Rankings`}
                     </div>
 
                     <div className="mt-1 text-xs font-bold text-slate-300">
-                      Minimum{" "}
-                      {MIN_PA} PA •
-                      Multi-position
-                      hitters appear
-                      everywhere
-                      they are
-                      eligible.
+                      Minimum {MIN_PA} PA • Multi-position hitters appear everywhere they are eligible.
                     </div>
                   </div>
 
                   <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-black">
-                    {
-                      leaderboard.length
-                    }{" "}
-                    hitters
+                    {leaderboard.length} hitters
                   </div>
                 </div>
               </div>
@@ -1925,96 +1581,63 @@ export default function HitterRankingsPage() {
                   </thead>
 
                   <tbody>
-                    {leaderboard.map(
-                      (
-                        item,
-                        index
-                      ) => {
-                        const theme =
-                          getTeamTheme(
-                            item
-                              .player
-                              .Team
-                          );
-
-                        return (
-                          <tr
-                            key={
-                              item
-                                .player
-                                .Name
-                            }
-                            className="border-t border-slate-100"
-                          >
-                            <td className="px-4 py-3 font-black text-slate-500">
-                              #
-                              {index +
-                                1}
-                            </td>
-
-                            <td className="px-4 py-3">
-                              <div className="flex items-center gap-3">
-                                <div
-                                  className="h-8 w-2 rounded-full"
-                                  style={{
-                                    background:
-                                      theme.primary,
-                                  }}
-                                />
-
-                                <div className="font-black text-slate-900">
-                                  {
-                                    item
-                                      .player
-                                      .Name
-                                  }
-                                </div>
-                              </div>
-                            </td>
-
-                            <td className="px-4 py-3 font-bold text-slate-500">
-                              {
-                                item
-                                  .player
-                                  .Team
-                              }
-                            </td>
-
-                            <td className="px-4 py-3 font-bold text-slate-500">
-                              {
-                                item
-                                  .player
-                                  .Pos
-                              }
-                            </td>
-
-                            <td className="px-4 py-3 text-right text-lg font-black">
-                              {
-                                item.elo
-                              }
-                            </td>
-
-                            <td className="px-4 py-3 text-right font-bold">
-                              {
-                                item.wins
-                              }
-                            </td>
-
-                            <td className="px-4 py-3 text-right font-bold">
-                              {
-                                item.losses
-                              }
-                            </td>
-
-                            <td className="px-4 py-3 text-right font-bold">
-                              {
-                                item.comparisons
-                              }
-                            </td>
-                          </tr>
+                    {leaderboard.map((item, index) => {
+                      const theme =
+                        getTeamTheme(
+                          item.player.Team
                         );
-                      }
-                    )}
+
+                      return (
+                        <tr
+                          key={item.player.Name}
+                          className="border-t border-slate-100"
+                        >
+                          <td className="px-4 py-3 font-black text-slate-500">
+                            #{index + 1}
+                          </td>
+
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-3">
+                              <div
+                                className="h-8 w-2 rounded-full"
+                                style={{
+                                  background:
+                                    theme.primary,
+                                }}
+                              />
+
+                              <div className="font-black text-slate-900">
+                                {item.player.Name}
+                              </div>
+                            </div>
+                          </td>
+
+                          <td className="px-4 py-3 font-bold text-slate-500">
+                            {item.player.Team}
+                          </td>
+
+                          <td className="px-4 py-3 font-bold text-slate-500">
+                            {item.player.Pos}
+                          </td>
+
+                          <td className="px-4 py-3 text-right text-lg font-black">
+                            {item.elo}
+                          </td>
+
+                          <td className="px-4 py-3 text-right font-bold">
+                            {item.wins}
+                          </td>
+
+                          <td className="px-4 py-3 text-right font-bold">
+                            {item.losses}
+                          </td>
+
+                          <td className="px-4 py-3 text-right font-bold">
+                            {item.comparisons}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -2022,8 +1645,7 @@ export default function HitterRankingsPage() {
           </>
         )}
 
-        {tab ===
-          "history" && (
+        {tab === "history" && (
           <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
             <div className="bg-[#0b1f3a] px-5 py-4 text-white">
               <div className="text-xl font-black">
@@ -2031,73 +1653,53 @@ export default function HitterRankingsPage() {
               </div>
 
               <div className="mt-1 text-xs font-bold text-slate-300">
-                Synced across
-                devices
+                Synced across devices
               </div>
             </div>
 
             {!history.length ? (
               <div className="p-8 text-center font-bold text-slate-500">
-                No comparisons
-                yet.
+                No comparisons yet.
               </div>
             ) : (
               <div>
                 {[...history]
                   .reverse()
                   .slice(0, 50)
-                  .map(
-                    (
-                      item
-                    ) => (
-                      <div
-                        key={
-                          item.id
-                        }
-                        className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 px-5 py-4"
-                      >
-                        <div>
-                          <span className="font-black text-slate-900">
-                            {
-                              item.winner
-                            }
-                          </span>
+                  .map((item) => (
+                    <div
+                      key={item.id}
+                      className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 px-5 py-4"
+                    >
+                      <div>
+                        <span className="font-black text-slate-900">
+                          {item.winner}
+                        </span>
 
-                          <span className="mx-2 text-slate-400">
-                            over
-                          </span>
+                        <span className="mx-2 text-slate-400">
+                          over
+                        </span>
 
-                          <span className="font-bold text-slate-600">
-                            {
-                              item.loser
-                            }
-                          </span>
-                        </div>
-
-                        <div className="text-sm font-bold text-slate-500">
-                          {
-                            item.winnerBefore
-                          }{" "}
-                          →{" "}
-                          <span className="text-green-600">
-                            {
-                              item.winnerAfter
-                            }
-                          </span>
-                          {" | "}
-                          {
-                            item.loserBefore
-                          }{" "}
-                          →{" "}
-                          <span className="text-red-600">
-                            {
-                              item.loserAfter
-                            }
-                          </span>
-                        </div>
+                        <span className="font-bold text-slate-600">
+                          {item.loser}
+                        </span>
                       </div>
-                    )
-                  )}
+
+                      <div className="text-sm font-bold text-slate-500">
+                        {item.winnerBefore}{" "}
+                        →{" "}
+                        <span className="text-green-600">
+                          {item.winnerAfter}
+                        </span>
+                        {" | "}
+                        {item.loserBefore}{" "}
+                        →{" "}
+                        <span className="text-red-600">
+                          {item.loserAfter}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
               </div>
             )}
           </div>
