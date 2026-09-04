@@ -1,4 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+
+const EARLY_ACCESS_PASSWORD = "thesearemine";
+const EARLY_ACCESS_KEY = "stream-starters-hitter-rankings-access";
 
 function StreamStartersLogo({ light = false }: { light?: boolean }) {
   return (
@@ -9,7 +16,6 @@ function StreamStartersLogo({ light = false }: { light?: boolean }) {
         }`}
       >
         <div className="absolute h-8 w-8 rotate-45 rounded-sm border-2 border-sky-400" />
-
         <div
           className={`relative text-[11px] font-black tracking-tight ${
             light ? "text-slate-950" : "text-white"
@@ -45,6 +51,41 @@ function StreamStartersLogo({ light = false }: { light?: boolean }) {
 }
 
 export default function Home() {
+  const router = useRouter();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  function openEarlyAccess() {
+    setPassword("");
+    setPasswordError("");
+    setShowPassword(true);
+  }
+
+  function closeEarlyAccess() {
+    setPassword("");
+    setPasswordError("");
+    setShowPassword(false);
+  }
+
+  function submitPassword(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (password === EARLY_ACCESS_PASSWORD) {
+      localStorage.setItem(EARLY_ACCESS_KEY, "granted");
+
+      setShowPassword(false);
+      setPassword("");
+      setPasswordError("");
+
+      router.push("/baseball/hitters/rankings");
+      return;
+    }
+
+    setPasswordError("Incorrect password.");
+  }
+
   return (
     <main className="min-h-screen bg-white text-slate-950">
       {/* NAV */}
@@ -69,23 +110,9 @@ export default function Home() {
 
             <Link
               href="/football"
-              className="transition hover:text-emerald-600"
-            >
-              Football
-            </Link>
-
-            <Link
-              href="/football/rb"
               className="transition hover:text-sky-600"
             >
-              RB Profile
-            </Link>
-
-            <Link
-              href="/football/rb/matchup"
-              className="transition hover:text-violet-600"
-            >
-              RB Matchup
+              Football
             </Link>
           </nav>
         </div>
@@ -111,11 +138,11 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base sm:leading-7">
-              Visual percentile grades, matchup trends, player profiles, and
-              quick fantasy context without digging through ten different tabs.
+              Visual percentile grades, opponent trends, roster percentages,
+              and quick verdicts without digging through ten different tabs.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/baseball/pitchers"
                 className="rounded-xl bg-sky-500 px-5 py-3 text-center text-sm font-black text-white shadow-lg transition hover:bg-sky-400"
@@ -136,20 +163,6 @@ export default function Home() {
               >
                 Football Tool
               </Link>
-
-              <Link
-                href="/football/rb"
-                className="rounded-xl border border-sky-400/30 bg-sky-400/10 px-5 py-3 text-center text-sm font-black text-sky-300 transition hover:bg-sky-400/20"
-              >
-                RB Profile
-              </Link>
-
-              <Link
-                href="/football/rb/matchup"
-                className="rounded-xl border border-violet-400/30 bg-violet-400/10 px-5 py-3 text-center text-sm font-black text-violet-300 transition hover:bg-violet-400/20"
-              >
-                RB Matchup
-              </Link>
             </div>
 
             <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
@@ -157,7 +170,6 @@ export default function Home() {
                 <div className="text-[10px] font-black uppercase tracking-[0.12em] text-sky-400 sm:text-xs">
                   Percentile
                 </div>
-
                 <div className="mt-1 text-[11px] font-bold text-white sm:text-sm">
                   Grades
                 </div>
@@ -167,7 +179,6 @@ export default function Home() {
                 <div className="text-[10px] font-black uppercase tracking-[0.12em] text-sky-400 sm:text-xs">
                   Matchup
                 </div>
-
                 <div className="mt-1 text-[11px] font-bold text-white sm:text-sm">
                   Data
                 </div>
@@ -175,11 +186,10 @@ export default function Home() {
 
               <div className="rounded-xl border border-white/10 bg-white/[0.04] px-2 py-3 sm:px-4">
                 <div className="text-[10px] font-black uppercase tracking-[0.12em] text-sky-400 sm:text-xs">
-                  Player
+                  Quick
                 </div>
-
                 <div className="mt-1 text-[11px] font-bold text-white sm:text-sm">
-                  Profiles
+                  Verdicts
                 </div>
               </div>
             </div>
@@ -312,7 +322,7 @@ export default function Home() {
               <div className="relative h-52 overflow-hidden md:hidden">
                 <img
                   src="/baseball-hitter.png"
-                  alt="Hitter matchup tool"
+                  alt="Hitter performance tool"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
@@ -322,7 +332,7 @@ export default function Home() {
               <div className="absolute inset-y-0 left-0 hidden w-[35%] overflow-hidden md:block">
                 <img
                   src="/baseball-hitter.png"
-                  alt="Hitter matchup tool"
+                  alt="Hitter performance tool"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
@@ -339,7 +349,7 @@ export default function Home() {
                 </h3>
 
                 <p className="mt-3 text-sm leading-6 text-slate-600">
-                  Season and Last 30 performance, key hitting metrics,
+                  Season and Last 30 performance, every key hitting metric,
                   percentile grades, roster percentages, and exportable cards.
                 </p>
 
@@ -351,6 +361,65 @@ export default function Home() {
                 </div>
               </div>
             </Link>
+          </div>
+
+          {/* HITTER RANKINGS COMING SOON */}
+          <div className="relative mt-6 overflow-hidden rounded-[30px] border border-violet-200 bg-slate-950 shadow-xl">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(124,58,237,0.24),transparent_42%)]" />
+
+            <div className="relative grid gap-6 p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:p-10">
+              <div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="inline-flex rounded-full border border-violet-400/30 bg-violet-400/10 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-violet-300">
+                    Coming Soon
+                  </div>
+
+                  <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-black text-slate-300">
+                    🔒 Early Access
+                  </div>
+                </div>
+
+                <h3 className="mt-4 text-3xl font-black tracking-tight text-white">
+                  Hitter 1v1 Rankings
+                </h3>
+
+                <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
+                  Build your own hitter rankings through head-to-head choices.
+                  Compare full player profiles, percentile grades, position
+                  groups, and watch Elo rankings evolve with every pick.
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {[
+                    "1v1 Comparisons",
+                    "Elo Rankings",
+                    "Position Pools",
+                    "Percentile Profiles",
+                  ].map((feature) => (
+                    <span
+                      key={feature}
+                      className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-bold text-slate-300"
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="lg:min-w-[210px]">
+                <button
+                  type="button"
+                  onClick={openEarlyAccess}
+                  className="w-full rounded-2xl bg-violet-600 px-6 py-4 text-sm font-black text-white shadow-lg transition hover:bg-violet-500"
+                >
+                  🔒 Early Access
+                </button>
+
+                <div className="mt-2 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
+                  Password Required
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -368,8 +437,8 @@ export default function Home() {
             </h2>
 
             <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400">
-              Defensive matchup analysis and player profiling tools for smarter
-              fantasy football decisions.
+              Matchup analysis and player profiles built for faster weekly
+              fantasy decisions.
             </p>
           </div>
 
@@ -377,54 +446,37 @@ export default function Home() {
             {/* POSITION MATCHUP */}
             <Link
               href="/football"
-              className="group relative overflow-hidden rounded-[30px] border border-emerald-400/20 bg-slate-950 shadow-2xl transition hover:-translate-y-1 hover:border-emerald-400/40"
+              className="group overflow-hidden rounded-[28px] border border-emerald-400/20 bg-slate-950 transition hover:-translate-y-1 hover:border-emerald-400/40"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-52 overflow-hidden">
                 <img
                   src="/football-player.png"
-                  alt="Fantasy football position matchup tool"
-                  className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
+                  alt="Football position matchup tool"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
 
-                <div className="absolute bottom-5 left-5">
-                  <div className="inline-flex rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-emerald-300 backdrop-blur">
-                    Live Now
-                  </div>
+                <div className="absolute left-4 top-4 rounded-full border border-emerald-400/30 bg-slate-950/70 px-3 py-1 text-xs font-black uppercase tracking-wider text-emerald-300">
+                  Live
                 </div>
               </div>
 
               <div className="p-6">
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-emerald-400">
-                  Matchup Tool
+                  Matchups
                 </div>
 
-                <h3 className="mt-2 text-2xl font-black tracking-tight text-white">
+                <h3 className="mt-2 text-2xl font-black text-white">
                   Position Matchup Tool
                 </h3>
 
-                <p className="mt-3 text-sm leading-6 text-slate-300">
-                  See how favorable an opposing defense is against QB, RB, WR,
-                  or TE using raw and offseason-adjusted percentile grades.
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  Compare QB, RB, WR and TE matchups against opposing defenses.
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {["QB", "RB", "WR", "TE"].map((position) => (
-                    <span
-                      key={position}
-                      className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-black text-white"
-                    >
-                      {position}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-6 inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-black text-white shadow-lg transition group-hover:bg-emerald-400">
-                  Open Matchup Tool
-                  <span className="transition group-hover:translate-x-1">
-                    →
-                  </span>
+                <div className="mt-5 text-sm font-black text-emerald-300">
+                  Open Tool →
                 </div>
               </div>
             </Link>
@@ -432,54 +484,38 @@ export default function Home() {
             {/* RB PROFILE */}
             <Link
               href="/football/rb"
-              className="group relative overflow-hidden rounded-[30px] border border-sky-400/20 bg-slate-950 shadow-2xl transition hover:-translate-y-1 hover:border-sky-400/40"
+              className="group overflow-hidden rounded-[28px] border border-sky-400/20 bg-slate-950 transition hover:-translate-y-1 hover:border-sky-400/40"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-52 overflow-hidden">
                 <img
                   src="/rb-profile.png"
                   alt="Running back profile tool"
-                  className="h-full w-full object-cover object-[center_25%] transition duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
 
-                <div className="absolute bottom-5 left-5">
-                  <div className="inline-flex rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-sky-300 backdrop-blur">
-                    RB Analysis
-                  </div>
+                <div className="absolute left-4 top-4 rounded-full border border-sky-400/30 bg-slate-950/70 px-3 py-1 text-xs font-black uppercase tracking-wider text-sky-300">
+                  Live
                 </div>
               </div>
 
               <div className="p-6">
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-sky-400">
-                  Running Back Analysis
+                  RB Analysis
                 </div>
 
-                <h3 className="mt-2 text-2xl font-black tracking-tight text-white">
+                <h3 className="mt-2 text-2xl font-black text-white">
                   RB Profile Tool
                 </h3>
 
-                <p className="mt-3 text-sm leading-6 text-slate-300">
-                  Break down running backs using rushing, receiving,
-                  opportunity, and Rush Gain Profile scores.
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  Rushing, receiving and opportunity profiles with percentile
+                  component grades.
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {["Rushing", "Receiving", "Opportunity"].map((category) => (
-                    <span
-                      key={category}
-                      className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-black text-white"
-                    >
-                      {category}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-6 inline-flex items-center gap-2 rounded-xl bg-sky-500 px-5 py-3 text-sm font-black text-white shadow-lg transition group-hover:bg-sky-400">
-                  Open RB Profile
-                  <span className="transition group-hover:translate-x-1">
-                    →
-                  </span>
+                <div className="mt-5 text-sm font-black text-sky-300">
+                  Open Tool →
                 </div>
               </div>
             </Link>
@@ -487,54 +523,38 @@ export default function Home() {
             {/* RB MATCHUP */}
             <Link
               href="/football/rb/matchup"
-              className="group relative overflow-hidden rounded-[30px] border border-violet-400/20 bg-slate-950 shadow-2xl transition hover:-translate-y-1 hover:border-violet-400/40"
+              className="group overflow-hidden rounded-[28px] border border-violet-400/20 bg-slate-950 transition hover:-translate-y-1 hover:border-violet-400/40"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-52 overflow-hidden">
                 <img
                   src="/banner-football.png"
                   alt="Running back matchup tool"
-                  className="h-full w-full object-cover object-[center_35%] transition duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
 
-                <div className="absolute bottom-5 left-5">
-                  <div className="inline-flex rounded-full border border-violet-400/30 bg-violet-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-violet-300 backdrop-blur">
-                    New Tool
-                  </div>
+                <div className="absolute left-4 top-4 rounded-full border border-violet-400/30 bg-slate-950/70 px-3 py-1 text-xs font-black uppercase tracking-wider text-violet-300">
+                  Live
                 </div>
               </div>
 
               <div className="p-6">
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-violet-400">
-                  Player + Defense
+                  RB Matchups
                 </div>
 
-                <h3 className="mt-2 text-2xl font-black tracking-tight text-white">
+                <h3 className="mt-2 text-2xl font-black text-white">
                   RB Matchup Tool
                 </h3>
 
-                <p className="mt-3 text-sm leading-6 text-slate-300">
-                  View an RB&apos;s profile alongside the opposing
-                  defense&apos;s RB matchup grades and position-specific stats.
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  View an RB&apos;s profile alongside the opposing defense&apos;s
+                  matchup grade.
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {["RB Profile", "Defense", "Matchup"].map((category) => (
-                    <span
-                      key={category}
-                      className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-black text-white"
-                    >
-                      {category}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-6 inline-flex items-center gap-2 rounded-xl bg-violet-500 px-5 py-3 text-sm font-black text-white shadow-lg transition group-hover:bg-violet-400">
-                  Open RB Matchup
-                  <span className="transition group-hover:translate-x-1">
-                    →
-                  </span>
+                <div className="mt-5 text-sm font-black text-violet-300">
+                  Open Tool →
                 </div>
               </div>
             </Link>
@@ -552,6 +572,80 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* EARLY ACCESS PASSWORD MODAL */}
+      {showPassword && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 px-4 backdrop-blur-sm"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              closeEarlyAccess();
+            }
+          }}
+        >
+          <div className="w-full max-w-md overflow-hidden rounded-3xl border border-violet-300/30 bg-white shadow-2xl">
+            <div className="bg-slate-950 px-6 py-6 text-white">
+              <div className="inline-flex rounded-full border border-violet-400/30 bg-violet-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-violet-300">
+                Coming Soon
+              </div>
+
+              <h2 className="mt-4 text-2xl font-black">
+                Hitter Rankings Early Access
+              </h2>
+
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Enter the early-access password to open the Hitter 1v1 Rankings
+                tool.
+              </p>
+            </div>
+
+            <form onSubmit={submitPassword} className="p-6">
+              <label
+                htmlFor="rankings-password"
+                className="mb-2 block text-xs font-black uppercase tracking-[0.16em] text-slate-500"
+              >
+                Password
+              </label>
+
+              <input
+                id="rankings-password"
+                type="password"
+                value={password}
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                  setPasswordError("");
+                }}
+                autoFocus
+                placeholder="Enter password"
+                className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base font-bold text-slate-900 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
+              />
+
+              {passwordError && (
+                <div className="mt-2 text-sm font-bold text-red-600">
+                  {passwordError}
+                </div>
+              )}
+
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onClick={closeEarlyAccess}
+                  className="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-black text-slate-700 transition hover:bg-slate-50"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  className="rounded-xl bg-violet-600 px-4 py-3 text-sm font-black text-white transition hover:bg-violet-500"
+                >
+                  Unlock Tool
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
