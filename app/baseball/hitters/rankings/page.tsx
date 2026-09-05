@@ -96,7 +96,7 @@ type StatConfig = {
   key: string;
   label: string;
   higherIsBetter: boolean;
-  format?: "percent" | "decimal" | "money" | "number";
+  format?: "percent" | "decimal" | "money" | "number" | "number2";
 };
 
 type StatGroup = {
