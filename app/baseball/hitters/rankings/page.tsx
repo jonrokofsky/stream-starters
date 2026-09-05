@@ -48,6 +48,7 @@ type Player = {
   PA: string;
   "BB%": string;
   "K%": string;
+  xBA: string;
   "Z-Contact%": string;
   "SqUpSw%": string;
   HR: string;
@@ -59,6 +60,7 @@ type Player = {
   wOBA: string;
   xwOBA: string;
   SB: string;
+  "Team R/G": string;
   [key: string]: string;
 };
 
@@ -188,8 +190,14 @@ const STAT_GROUPS: StatGroup[] = [
   },
   {
     title: "Contact Quality",
-    subtitle: "How often the hitter squares up hittable pitches",
+    subtitle: "Expected average, contact ability and quality of contact",
     stats: [
+      {
+        key: "xBA",
+        label: "xBA",
+        higherIsBetter: true,
+        format: "decimal",
+      },
       {
         key: "SqUpSw%",
         label: "SqUpSw%",
@@ -230,7 +238,7 @@ const STAT_GROUPS: StatGroup[] = [
   },
   {
     title: "Production",
-    subtitle: "Overall offensive value and speed",
+    subtitle: "Overall offensive value, speed and team scoring environment",
     stats: [
       {
         key: "xwOBA",
@@ -247,6 +255,12 @@ const STAT_GROUPS: StatGroup[] = [
       {
         key: "SB",
         label: "SB",
+        higherIsBetter: true,
+        format: "number",
+      },
+      {
+        key: "Team R/G",
+        label: "Team R/G",
         higherIsBetter: true,
         format: "number",
       },
@@ -1245,6 +1259,8 @@ export default function HitterRankingsPage() {
                 className={`grid gap-2 p-3 ${
                   group.stats.length === 5
                     ? "grid-cols-2 sm:grid-cols-5"
+                    : group.stats.length === 4
+                    ? "grid-cols-2 sm:grid-cols-4"
                     : group.stats.length === 3
                     ? "grid-cols-3"
                     : "grid-cols-2"
