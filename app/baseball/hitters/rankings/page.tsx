@@ -115,6 +115,7 @@ type StatConfig = {
 
 type StatGroup = {
   title: string;
+  subtitle: string;
   stats: StatConfig[];
 };
 
@@ -122,6 +123,14 @@ type TeamTheme = {
   primary: string;
   secondary: string;
   text: string;
+};
+
+type ReorderItem = {
+  playerName: string;
+  currentElo: number;
+  wins: number;
+  losses: number;
+  comparisons: number;
 };
 
 const TEAM_THEMES: Record<
@@ -318,6 +327,8 @@ const TEAM_THEMES: Record<
 const STAT_GROUPS: StatGroup[] = [
   {
     title: "Plate Discipline",
+    subtitle:
+      "Swing decisions, zone aggression and strikeout control",
     stats: [
       {
         key: "BB%",
@@ -355,6 +366,8 @@ const STAT_GROUPS: StatGroup[] = [
   },
   {
     title: "Contact Quality",
+    subtitle:
+      "Expected average, contact ability and quality of contact",
     stats: [
       {
         key: "xBA",
@@ -379,6 +392,8 @@ const STAT_GROUPS: StatGroup[] = [
   },
   {
     title: "Power",
+    subtitle:
+      "Home-run production and high-end exit velocity",
     stats: [
       {
         key: "HR",
@@ -402,6 +417,8 @@ const STAT_GROUPS: StatGroup[] = [
   },
   {
     title: "Production",
+    subtitle:
+      "Overall offensive value, speed and team scoring environment",
     stats: [
       {
         key: "xwOBA",
@@ -434,7 +451,8 @@ const STAT_GROUPS: StatGroup[] = [
 
 const ALL_STATS =
   STAT_GROUPS.flatMap(
-    (group) => group.stats
+    (group) =>
+      group.stats
   );
 
 function normalizeTeam(
@@ -479,7 +497,8 @@ function playerHasPosition(
   position: PositionTab
 ) {
   if (
-    position === "Overall"
+    position ===
+    "Overall"
   ) {
     return true;
   }
@@ -492,16 +511,28 @@ function playerHasPosition(
 function getPoolPositions(
   pool: MatchupPool
 ): string[] {
-  if (pool === "All") {
+  if (
+    pool === "All"
+  ) {
     return [];
   }
 
-  if (pool === "2B/SS") {
-    return ["2B", "SS"];
+  if (
+    pool === "2B/SS"
+  ) {
+    return [
+      "2B",
+      "SS",
+    ];
   }
 
-  if (pool === "1B/3B") {
-    return ["1B", "3B"];
+  if (
+    pool === "1B/3B"
+  ) {
+    return [
+      "1B",
+      "3B",
+    ];
   }
 
   return [pool];
@@ -511,15 +542,21 @@ function playerInMatchupPool(
   player: Player,
   pool: MatchupPool
 ) {
-  if (pool === "All") {
+  if (
+    pool === "All"
+  ) {
     return true;
   }
 
   const playerPositions =
-    parsePositions(player.Pos);
+    parsePositions(
+      player.Pos
+    );
 
   const poolPositions =
-    getPoolPositions(pool);
+    getPoolPositions(
+      pool
+    );
 
   return poolPositions.some(
     (position) =>
@@ -532,7 +569,8 @@ function playerInMatchupPool(
 function parseCSV(
   text: string
 ): Player[] {
-  const rows: string[][] = [];
+  const rows: string[][] =
+    [];
 
   let row: string[] = [];
   let cell = "";
@@ -543,12 +581,16 @@ function parseCSV(
     i < text.length;
     i++
   ) {
-    const char = text[i];
+    const char =
+      text[i];
 
-    if (char === '"') {
+    if (
+      char === '"'
+    ) {
       if (
         inQuotes &&
-        text[i + 1] === '"'
+        text[i + 1] ===
+          '"'
       ) {
         cell += '"';
         i++;
@@ -563,13 +605,16 @@ function parseCSV(
       row.push(cell);
       cell = "";
     } else if (
-      (char === "\n" ||
-        char === "\r") &&
+      (
+        char === "\n" ||
+        char === "\r"
+      ) &&
       !inQuotes
     ) {
       if (
         char === "\r" &&
-        text[i + 1] === "\n"
+        text[i + 1] ===
+          "\n"
       ) {
         i++;
       }
@@ -619,7 +664,8 @@ function parseCSV(
         ) => {
           obj[header] =
             (
-              r[index] ?? ""
+              r[index] ??
+              ""
             ).trim();
         }
       );
@@ -643,9 +689,18 @@ function numericValue(
 
   const cleaned =
     String(value)
-      .replace(/\$/g, "")
-      .replace(/,/g, "")
-      .replace(/%/g, "")
+      .replace(
+        /\$/g,
+        ""
+      )
+      .replace(
+        /,/g,
+        ""
+      )
+      .replace(
+        /%/g,
+        ""
+      )
       .trim();
 
   if (!cleaned) {
@@ -683,7 +738,8 @@ function percentile(
 
   const sorted =
     [...values].sort(
-      (a, b) => a - b
+      (a, b) =>
+        a - b
     );
 
   let below = 0;
@@ -692,11 +748,15 @@ function percentile(
   for (
     const v of sorted
   ) {
-    if (v < value) {
+    if (
+      v < value
+    ) {
       below++;
     }
 
-    if (v === value) {
+    if (
+      v === value
+    ) {
       equal++;
     }
   }
@@ -708,7 +768,10 @@ function percentile(
         0
       ) /
         2) /
-      (sorted.length - 1)) *
+      (
+        sorted.length -
+        1
+      )) *
     100;
 
   const adjusted =
@@ -728,73 +791,99 @@ function percentile(
 function percentileStyle(
   pct: number
 ) {
-  if (pct >= 90) {
+  if (
+    pct >= 90
+  ) {
     return {
       background:
         "rgb(185, 28, 28)",
-      color: "white",
+      color:
+        "white",
     };
   }
 
-  if (pct >= 80) {
+  if (
+    pct >= 80
+  ) {
     return {
       background:
         "rgb(220, 38, 38)",
-      color: "white",
+      color:
+        "white",
     };
   }
 
-  if (pct >= 70) {
+  if (
+    pct >= 70
+  ) {
     return {
       background:
         "rgb(248, 113, 113)",
-      color: "#111827",
+      color:
+        "#111827",
     };
   }
 
-  if (pct >= 60) {
+  if (
+    pct >= 60
+  ) {
     return {
       background:
         "rgb(254, 202, 202)",
-      color: "#111827",
+      color:
+        "#111827",
     };
   }
 
-  if (pct >= 40) {
+  if (
+    pct >= 40
+  ) {
     return {
-      background: "white",
-      color: "#111827",
+      background:
+        "white",
+      color:
+        "#111827",
     };
   }
 
-  if (pct >= 30) {
+  if (
+    pct >= 30
+  ) {
     return {
       background:
         "rgb(191, 219, 254)",
-      color: "#111827",
+      color:
+        "#111827",
     };
   }
 
-  if (pct >= 20) {
+  if (
+    pct >= 20
+  ) {
     return {
       background:
         "rgb(96, 165, 250)",
-      color: "#111827",
+      color:
+        "#111827",
     };
   }
 
-  if (pct >= 10) {
+  if (
+    pct >= 10
+  ) {
     return {
       background:
         "rgb(37, 99, 235)",
-      color: "white",
+      color:
+        "white",
     };
   }
 
   return {
     background:
       "rgb(30, 64, 175)",
-    color: "white",
+    color:
+      "white",
   };
 }
 
@@ -809,7 +898,9 @@ function formatStat(
   }
 
   const number =
-    numericValue(value);
+    numericValue(
+      value
+    );
 
   if (
     number === null
@@ -858,7 +949,9 @@ function formatStat(
       number
     )
   ) {
-    return String(number);
+    return String(
+      number
+    );
   }
 
   return number.toFixed(
@@ -879,7 +972,9 @@ function formatContextValue(
   }
 
   const number =
-    numericValue(value);
+    numericValue(
+      value
+    );
 
   if (
     number === null
@@ -888,7 +983,8 @@ function formatContextValue(
   }
 
   if (
-    type === "money"
+    type ===
+    "money"
   ) {
     return `$${number.toFixed(
       2
@@ -900,7 +996,9 @@ function formatContextValue(
       number
     )
   ) {
-    return String(number);
+    return String(
+      number
+    );
   }
 
   return number.toFixed(
@@ -927,7 +1025,8 @@ function ratingKey(
 
 function defaultPlayerRating(): PlayerRating {
   return {
-    elo: STARTING_ELO,
+    elo:
+      STARTING_ELO,
     wins: 0,
     losses: 0,
     comparisons: 0,
@@ -941,14 +1040,16 @@ export default function HitterRankingsPage() {
   const [
     accessChecked,
     setAccessChecked,
-  ] = useState(false);
+  ] =
+    useState(false);
 
   const [
     players,
     setPlayers,
-  ] = useState<Player[]>(
-    []
-  );
+  ] =
+    useState<Player[]>(
+      []
+    );
 
   const [
     ratings,
@@ -962,25 +1063,25 @@ export default function HitterRankingsPage() {
     history,
     setHistory,
   ] =
-    useState<HistoryItem[]>(
-      []
-    );
+    useState<
+      HistoryItem[]
+    >([]);
 
   const [
     playerA,
     setPlayerA,
   ] =
-    useState<Player | null>(
-      null
-    );
+    useState<
+      Player | null
+    >(null);
 
   const [
     playerB,
     setPlayerB,
   ] =
-    useState<Player | null>(
-      null
-    );
+    useState<
+      Player | null
+    >(null);
 
   const [
     matchupMode,
@@ -993,31 +1094,36 @@ export default function HitterRankingsPage() {
   const [
     manualPlayerA,
     setManualPlayerA,
-  ] = useState("");
+  ] =
+    useState("");
 
   const [
     manualPlayerB,
     setManualPlayerB,
-  ] = useState("");
+  ] =
+    useState("");
 
   const [
     manualSearchA,
     setManualSearchA,
-  ] = useState("");
+  ] =
+    useState("");
 
   const [
     manualSearchB,
     setManualSearchB,
-  ] = useState("");
+  ] =
+    useState("");
 
   const [
     tab,
     setTab,
-  ] = useState<
-    | "compare"
-    | "rankings"
-    | "history"
-  >("compare");
+  ] =
+    useState<
+      | "compare"
+      | "rankings"
+      | "history"
+    >("compare");
 
   const [
     rankingPosition,
@@ -1038,62 +1144,101 @@ export default function HitterRankingsPage() {
   const [
     loading,
     setLoading,
-  ] = useState(true);
+  ] =
+    useState(true);
 
   const [
     saving,
     setSaving,
-  ] = useState(false);
+  ] =
+    useState(false);
 
   const [
     message,
     setMessage,
-  ] = useState("");
+  ] =
+    useState("");
+
+  const [
+    reorderMode,
+    setReorderMode,
+  ] =
+    useState(false);
+
+  const [
+    reorderItems,
+    setReorderItems,
+  ] =
+    useState<
+      ReorderItem[]
+    >([]);
+
+  const [
+    draggedIndex,
+    setDraggedIndex,
+  ] =
+    useState<
+      number | null
+    >(null);
 
   useEffect(() => {
     const granted =
       localStorage.getItem(
         EARLY_ACCESS_KEY
-      ) === "granted";
+      ) ===
+      "granted";
 
     if (!granted) {
-      router.replace("/");
+      router.replace(
+        "/"
+      );
       return;
     }
 
-    setAccessChecked(true);
+    setAccessChecked(
+      true
+    );
   }, [router]);
 
   useEffect(() => {
-    if (!accessChecked) {
+    if (
+      !accessChecked
+    ) {
       return;
     }
 
     async function loadData() {
       try {
-        setLoading(true);
-        setMessage("");
+        setLoading(
+          true
+        );
+
+        setMessage(
+          ""
+        );
 
         const [
           csvResponse,
           rankingResponse,
         ] =
-          await Promise.all([
-            fetch(
-              CSV_URL,
-              {
-                cache:
-                  "no-store",
-              }
-            ),
-            fetch(
-              "/api/hitter-rankings",
-              {
-                cache:
-                  "no-store",
-              }
-            ),
-          ]);
+          await Promise.all(
+            [
+              fetch(
+                CSV_URL,
+                {
+                  cache:
+                    "no-store",
+                }
+              ),
+              fetch(
+                "/api/hitter-rankings",
+                {
+                  cache:
+                    "no-store",
+                }
+              ),
+            ]
+          );
 
         if (
           !csvResponse.ok
@@ -1118,7 +1263,9 @@ export default function HitterRankingsPage() {
           await rankingResponse.json();
 
         const allPlayers =
-          parseCSV(csvText);
+          parseCSV(
+            csvText
+          );
 
         const eligiblePlayers =
           allPlayers.filter(
@@ -1130,7 +1277,8 @@ export default function HitterRankingsPage() {
 
               return (
                 pa !== null &&
-                pa >= MIN_PA
+                pa >=
+                  MIN_PA
               );
             }
           );
@@ -1164,13 +1312,17 @@ export default function HitterRankingsPage() {
               );
 
             if (
-              initialRatings[key]
+              initialRatings[
+                key
+              ]
             ) {
               initialRatings[
                 key
               ] = {
-                elo: rating.elo,
-                wins: rating.wins,
+                elo:
+                  rating.elo,
+                wins:
+                  rating.wins,
                 losses:
                   rating.losses,
                 comparisons:
@@ -1199,7 +1351,9 @@ export default function HitterRankingsPage() {
           cloudHistory
         );
 
-        setLoading(false);
+        setLoading(
+          false
+        );
 
         setTimeout(
           () => {
@@ -1221,12 +1375,16 @@ export default function HitterRankingsPage() {
           "Could not load hitter rankings."
         );
 
-        setLoading(false);
+        setLoading(
+          false
+        );
       }
     }
 
     loadData();
-  }, [accessChecked]);
+  }, [
+    accessChecked,
+  ]);
 
   const poolPlayers =
     useMemo(() => {
@@ -1238,10 +1396,14 @@ export default function HitterRankingsPage() {
               matchupPool
             )
         )
-        .sort((a, b) =>
-          a.Name.localeCompare(
-            b.Name
-          )
+        .sort(
+          (
+            a,
+            b
+          ) =>
+            a.Name.localeCompare(
+              b.Name
+            )
         );
     }, [
       players,
@@ -1263,7 +1425,9 @@ export default function HitterRankingsPage() {
         (player) =>
           player.Name
             .toLowerCase()
-            .includes(search)
+            .includes(
+              search
+            )
       );
     }, [
       poolPlayers,
@@ -1285,7 +1449,9 @@ export default function HitterRankingsPage() {
         (player) =>
           player.Name
             .toLowerCase()
-            .includes(search)
+            .includes(
+              search
+            )
       );
     }, [
       poolPlayers,
@@ -1293,11 +1459,14 @@ export default function HitterRankingsPage() {
     ]);
 
   function createNextMatchup(
-    sourcePlayers = players,
-    sourceRatings = ratings,
+    sourcePlayers =
+      players,
+    sourceRatings =
+      ratings,
     pool: MatchupPool =
       matchupPool,
-    sourceHistory = history
+    sourceHistory =
+      history
   ) {
     const eligiblePlayers =
       sourcePlayers.filter(
@@ -1322,28 +1491,37 @@ export default function HitterRankingsPage() {
     const leastCompared =
       [
         ...eligiblePlayers,
-      ].sort((a, b) => {
-        const aRating =
-          sourceRatings[
-            ratingKey(
-              a.Name
-            )
-          ];
+      ].sort(
+        (
+          a,
+          b
+        ) => {
+          const aRating =
+            sourceRatings[
+              ratingKey(
+                a.Name
+              )
+            ];
 
-        const bRating =
-          sourceRatings[
-            ratingKey(
-              b.Name
-            )
-          ];
+          const bRating =
+            sourceRatings[
+              ratingKey(
+                b.Name
+              )
+            ];
 
-        return (
-          (aRating?.comparisons ??
-            0) -
-          (bRating?.comparisons ??
-            0)
-        );
-      });
+          return (
+            (
+              aRating?.comparisons ??
+              0
+            ) -
+            (
+              bRating?.comparisons ??
+              0
+            )
+          );
+        }
+      );
 
     const desiredPoolSize =
       Math.ceil(
@@ -1389,60 +1567,76 @@ export default function HitterRankingsPage() {
             player.Name !==
             first.Name
         )
-        .map((player) => {
-          const rating =
-            sourceRatings[
-              ratingKey(
-                player.Name
-              )
-            ]?.elo ??
-            STARTING_ELO;
+        .map(
+          (
+            player
+          ) => {
+            const rating =
+              sourceRatings[
+                ratingKey(
+                  player.Name
+                )
+              ]?.elo ??
+              STARTING_ELO;
 
-          const comparisons =
-            sourceRatings[
-              ratingKey(
-                player.Name
-              )
-            ]?.comparisons ??
-            0;
+            const comparisons =
+              sourceRatings[
+                ratingKey(
+                  player.Name
+                )
+              ]?.comparisons ??
+              0;
 
-          const eloDistance =
-            Math.abs(
-              firstRating -
-                rating
-            );
+            const eloDistance =
+              Math.abs(
+                firstRating -
+                  rating
+              );
 
-          const recentPenalty =
-            sourceHistory
-              .slice(-10)
-              .some(
-                (item) =>
-                  (item.winner ===
-                    first.Name &&
-                    item.loser ===
-                      player.Name) ||
-                  (item.winner ===
-                    player.Name &&
-                    item.loser ===
-                      first.Name)
-              )
-              ? 200
-              : 0;
+            const recentPenalty =
+              sourceHistory
+                .slice(
+                  -10
+                )
+                .some(
+                  (
+                    item
+                  ) =>
+                    (
+                      item.winner ===
+                        first.Name &&
+                      item.loser ===
+                        player.Name
+                    ) ||
+                    (
+                      item.winner ===
+                        player.Name &&
+                      item.loser ===
+                        first.Name
+                    )
+                )
+                ? 200
+                : 0;
 
-          const score =
-            eloDistance +
-            comparisons * 5 +
-            recentPenalty +
-            Math.random() *
-              50;
+            const score =
+              eloDistance +
+              comparisons *
+                5 +
+              recentPenalty +
+              Math.random() *
+                50;
 
-          return {
-            player,
-            score,
-          };
-        })
+            return {
+              player,
+              score,
+            };
+          }
+        )
         .sort(
-          (a, b) =>
+          (
+            a,
+            b
+          ) =>
             a.score -
             b.score
         );
@@ -1457,7 +1651,9 @@ export default function HitterRankingsPage() {
       return;
     }
 
-    setMessage("");
+    setMessage(
+      ""
+    );
 
     const opponentPool =
       possibleOpponents.slice(
@@ -1477,23 +1673,46 @@ export default function HitterRankingsPage() {
       Math.random() >
       0.5
     ) {
-      setPlayerA(first);
-      setPlayerB(second);
+      setPlayerA(
+        first
+      );
+
+      setPlayerB(
+        second
+      );
     } else {
-      setPlayerA(second);
-      setPlayerB(first);
+      setPlayerA(
+        second
+      );
+
+      setPlayerB(
+        first
+      );
     }
   }
 
   function changeMatchupPool(
     pool: MatchupPool
   ) {
-    setMatchupPool(pool);
+    setMatchupPool(
+      pool
+    );
 
-    setManualPlayerA("");
-    setManualPlayerB("");
-    setManualSearchA("");
-    setManualSearchB("");
+    setManualPlayerA(
+      ""
+    );
+
+    setManualPlayerB(
+      ""
+    );
+
+    setManualSearchA(
+      ""
+    );
+
+    setManualSearchB(
+      ""
+    );
 
     if (
       matchupMode ===
@@ -1506,19 +1725,30 @@ export default function HitterRankingsPage() {
         history
       );
     } else {
-      setPlayerA(null);
-      setPlayerB(null);
+      setPlayerA(
+        null
+      );
+
+      setPlayerB(
+        null
+      );
     }
   }
 
   function changeMatchupMode(
     mode: MatchupMode
   ) {
-    setMatchupMode(mode);
-    setMessage("");
+    setMatchupMode(
+      mode
+    );
+
+    setMessage(
+      ""
+    );
 
     if (
-      mode === "generate"
+      mode ===
+      "generate"
     ) {
       createNextMatchup(
         players,
@@ -1527,12 +1757,29 @@ export default function HitterRankingsPage() {
         history
       );
     } else {
-      setPlayerA(null);
-      setPlayerB(null);
-      setManualPlayerA("");
-      setManualPlayerB("");
-      setManualSearchA("");
-      setManualSearchB("");
+      setPlayerA(
+        null
+      );
+
+      setPlayerB(
+        null
+      );
+
+      setManualPlayerA(
+        ""
+      );
+
+      setManualPlayerB(
+        ""
+      );
+
+      setManualSearchA(
+        ""
+      );
+
+      setManualSearchB(
+        ""
+      );
     }
   }
 
@@ -1544,6 +1791,7 @@ export default function HitterRankingsPage() {
       setMessage(
         "Choose two hitters first."
       );
+
       return;
     }
 
@@ -1554,6 +1802,7 @@ export default function HitterRankingsPage() {
       setMessage(
         "Choose two different hitters."
       );
+
       return;
     }
 
@@ -1578,12 +1827,21 @@ export default function HitterRankingsPage() {
       setMessage(
         "Could not find one of the selected hitters."
       );
+
       return;
     }
 
-    setPlayerA(selectedA);
-    setPlayerB(selectedB);
-    setMessage("");
+    setPlayerA(
+      selectedA
+    );
+
+    setPlayerB(
+      selectedB
+    );
+
+    setMessage(
+      ""
+    );
   }
 
   function skipMatchup() {
@@ -1607,37 +1865,50 @@ export default function HitterRankingsPage() {
     winner: Player,
     loser: Player
   ) {
-    if (saving) {
+    if (
+      saving
+    ) {
       return;
     }
 
     try {
-      setSaving(true);
-      setMessage("");
+      setSaving(
+        true
+      );
+
+      setMessage(
+        ""
+      );
 
       const response =
         await fetch(
           "/api/hitter-rankings",
           {
-            method: "POST",
+            method:
+              "POST",
+
             headers: {
               "Content-Type":
                 "application/json",
             },
-            body: JSON.stringify(
-              {
-                action:
-                  "pick",
-                winner:
-                  winner.Name,
-                loser:
-                  loser.Name,
-              }
-            ),
+
+            body:
+              JSON.stringify(
+                {
+                  action:
+                    "pick",
+                  winner:
+                    winner.Name,
+                  loser:
+                    loser.Name,
+                }
+              ),
           }
         );
 
-      if (!response.ok) {
+      if (
+        !response.ok
+      ) {
         throw new Error(
           "Unable to save selection."
         );
@@ -1662,11 +1933,9 @@ export default function HitterRankingsPage() {
         wins:
           result.winner.wins,
         losses:
-          result.winner
-            .losses,
+          result.winner.losses,
         comparisons:
-          result.winner
-            .comparisons,
+          result.winner.comparisons,
       };
 
       updatedRatings[
@@ -1680,17 +1949,16 @@ export default function HitterRankingsPage() {
         wins:
           result.loser.wins,
         losses:
-          result.loser
-            .losses,
+          result.loser.losses,
         comparisons:
-          result.loser
-            .comparisons,
+          result.loser.comparisons,
       };
 
-      const nextHistory = [
-        ...history,
-        result.history,
-      ];
+      const nextHistory =
+        [
+          ...history,
+          result.history,
+        ];
 
       setRatings(
         updatedRatings
@@ -1711,21 +1979,42 @@ export default function HitterRankingsPage() {
           nextHistory
         );
       } else {
-        setPlayerA(null);
-        setPlayerB(null);
-        setManualPlayerA("");
-        setManualPlayerB("");
-        setManualSearchA("");
-        setManualSearchB("");
+        setPlayerA(
+          null
+        );
+
+        setPlayerB(
+          null
+        );
+
+        setManualPlayerA(
+          ""
+        );
+
+        setManualPlayerB(
+          ""
+        );
+
+        setManualSearchA(
+          ""
+        );
+
+        setManualSearchB(
+          ""
+        );
       }
     } catch (error) {
-      console.error(error);
+      console.error(
+        error
+      );
 
       setMessage(
         "Could not save that pick."
       );
     } finally {
-      setSaving(false);
+      setSaving(
+        false
+      );
     }
   }
 
@@ -1738,28 +2027,37 @@ export default function HitterRankingsPage() {
     }
 
     try {
-      setSaving(true);
-      setMessage("");
+      setSaving(
+        true
+      );
+
+      setMessage(
+        ""
+      );
 
       const response =
         await fetch(
           "/api/hitter-rankings",
           {
-            method: "POST",
+            method:
+              "POST",
             headers: {
               "Content-Type":
                 "application/json",
             },
-            body: JSON.stringify(
-              {
-                action:
-                  "undo",
-              }
-            ),
+            body:
+              JSON.stringify(
+                {
+                  action:
+                    "undo",
+                }
+              ),
           }
         );
 
-      if (!response.ok) {
+      if (
+        !response.ok
+      ) {
         throw new Error(
           "Unable to undo."
         );
@@ -1768,8 +2066,13 @@ export default function HitterRankingsPage() {
       const result =
         await response.json();
 
-      if (result.empty) {
-        setHistory([]);
+      if (
+        result.empty
+      ) {
+        setHistory(
+          []
+        );
+
         return;
       }
 
@@ -1789,11 +2092,9 @@ export default function HitterRankingsPage() {
         wins:
           result.winner.wins,
         losses:
-          result.winner
-            .losses,
+          result.winner.losses,
         comparisons:
-          result.winner
-            .comparisons,
+          result.winner.comparisons,
       };
 
       updatedRatings[
@@ -1807,11 +2108,9 @@ export default function HitterRankingsPage() {
         wins:
           result.loser.wins,
         losses:
-          result.loser
-            .losses,
+          result.loser.losses,
         comparisons:
-          result.loser
-            .comparisons,
+          result.loser.comparisons,
       };
 
       setRatings(
@@ -1856,18 +2155,24 @@ export default function HitterRankingsPage() {
         );
       }
     } catch (error) {
-      console.error(error);
+      console.error(
+        error
+      );
 
       setMessage(
         "Could not undo the last pick."
       );
     } finally {
-      setSaving(false);
+      setSaving(
+        false
+      );
     }
   }
 
   async function resetRankings() {
-    if (saving) {
+    if (
+      saving
+    ) {
       return;
     }
 
@@ -1876,38 +2181,51 @@ export default function HitterRankingsPage() {
         "Reset all hitter Elo rankings and matchup history on every device?"
       );
 
-    if (!confirmed) {
+    if (
+      !confirmed
+    ) {
       return;
     }
 
     try {
-      setSaving(true);
-      setMessage("");
+      setSaving(
+        true
+      );
+
+      setMessage(
+        ""
+      );
 
       const response =
         await fetch(
           "/api/hitter-rankings",
           {
-            method: "POST",
+            method:
+              "POST",
+
             headers: {
               "Content-Type":
                 "application/json",
             },
-            body: JSON.stringify(
-              {
-                action:
-                  "reset",
-                playerNames:
-                  players.map(
-                    (player) =>
-                      player.Name
-                  ),
-              }
-            ),
+
+            body:
+              JSON.stringify(
+                {
+                  action:
+                    "reset",
+                  playerNames:
+                    players.map(
+                      (player) =>
+                        player.Name
+                    ),
+                }
+              ),
           }
         );
 
-      if (!response.ok) {
+      if (
+        !response.ok
+      ) {
         throw new Error(
           "Unable to reset."
         );
@@ -1931,7 +2249,17 @@ export default function HitterRankingsPage() {
         resetRatings
       );
 
-      setHistory([]);
+      setHistory(
+        []
+      );
+
+      setReorderMode(
+        false
+      );
+
+      setReorderItems(
+        []
+      );
 
       if (
         matchupMode ===
@@ -1944,17 +2272,26 @@ export default function HitterRankingsPage() {
           []
         );
       } else {
-        setPlayerA(null);
-        setPlayerB(null);
+        setPlayerA(
+          null
+        );
+
+        setPlayerB(
+          null
+        );
       }
     } catch (error) {
-      console.error(error);
+      console.error(
+        error
+      );
 
       setMessage(
         "Could not reset rankings."
       );
     } finally {
-      setSaving(false);
+      setSaving(
+        false
+      );
     }
   }
 
@@ -1967,20 +2304,26 @@ export default function HitterRankingsPage() {
 
       ALL_STATS.forEach(
         (stat) => {
-          map[stat.key] =
+          map[
+            stat.key
+          ] =
             players
-              .map((player) =>
-                numericValue(
-                  player[
-                    stat.key
-                  ]
-                )
+              .map(
+                (
+                  player
+                ) =>
+                  numericValue(
+                    player[
+                      stat.key
+                    ]
+                  )
               )
               .filter(
                 (
                   value
                 ): value is number =>
-                  value !== null
+                  value !==
+                  null
               );
         }
       );
@@ -1990,47 +2333,332 @@ export default function HitterRankingsPage() {
 
   const leaderboard =
     useMemo(() => {
-      return [...players]
-        .filter((player) =>
-          playerHasPosition(
-            player,
-            rankingPosition
-          )
+      return [
+        ...players,
+      ]
+        .filter(
+          (player) =>
+            playerHasPosition(
+              player,
+              rankingPosition
+            )
         )
-        .map((player) => {
-          const rating =
-            ratings[
-              ratingKey(
-                player.Name
-              )
-            ] ??
-            defaultPlayerRating();
+        .map(
+          (player) => {
+            const rating =
+              ratings[
+                ratingKey(
+                  player.Name
+                )
+              ] ??
+              defaultPlayerRating();
 
-          return {
-            player,
-            ...rating,
-          };
-        })
-        .sort((a, b) => {
-          if (
-            b.elo !== a.elo
-          ) {
-            return (
-              b.elo -
+            return {
+              player,
+              ...rating,
+            };
+          }
+        )
+        .sort(
+          (
+            a,
+            b
+          ) => {
+            if (
+              b.elo !==
               a.elo
+            ) {
+              return (
+                b.elo -
+                a.elo
+              );
+            }
+
+            return (
+              b.comparisons -
+              a.comparisons
             );
           }
-
-          return (
-            b.comparisons -
-            a.comparisons
-          );
-        });
+        );
     }, [
       players,
       ratings,
       rankingPosition,
     ]);
+
+  function startReorderMode() {
+    const items =
+      leaderboard.map(
+        (item) => ({
+          playerName:
+            item.player.Name,
+          currentElo:
+            item.elo,
+          wins:
+            item.wins,
+          losses:
+            item.losses,
+          comparisons:
+            item.comparisons,
+        })
+      );
+
+    setReorderItems(
+      items
+    );
+
+    setReorderMode(
+      true
+    );
+
+    setMessage(
+      ""
+    );
+  }
+
+  function cancelReorderMode() {
+    setReorderMode(
+      false
+    );
+
+    setReorderItems(
+      []
+    );
+
+    setDraggedIndex(
+      null
+    );
+  }
+
+  function handleDragStart(
+    index: number
+  ) {
+    setDraggedIndex(
+      index
+    );
+  }
+
+  function handleDragOver(
+    event:
+      React.DragEvent<HTMLTableRowElement>,
+    targetIndex: number
+  ) {
+    event.preventDefault();
+
+    if (
+      draggedIndex ===
+        null ||
+      draggedIndex ===
+        targetIndex
+    ) {
+      return;
+    }
+
+    setReorderItems(
+      (
+        previous
+      ) => {
+        const next =
+          [...previous];
+
+        const [
+          moved,
+        ] =
+          next.splice(
+            draggedIndex,
+            1
+          );
+
+        next.splice(
+          targetIndex,
+          0,
+          moved
+        );
+
+        return next;
+      }
+    );
+
+    setDraggedIndex(
+      targetIndex
+    );
+  }
+
+  function handleDragEnd() {
+    setDraggedIndex(
+      null
+    );
+  }
+
+  async function saveReorder() {
+    if (
+      saving ||
+      !reorderItems.length
+    ) {
+      return;
+    }
+
+    try {
+      setSaving(
+        true
+      );
+
+      setMessage(
+        ""
+      );
+
+      const currentElos =
+        reorderItems.map(
+          (item) =>
+            item.currentElo
+        );
+
+      const maxElo =
+        Math.max(
+          ...currentElos
+        );
+
+      const minElo =
+        Math.min(
+          ...currentElos
+        );
+
+      const itemCount =
+        reorderItems.length;
+
+      const range =
+        Math.max(
+          itemCount - 1,
+          maxElo -
+            minElo,
+          10
+        );
+
+      const step =
+        itemCount > 1
+          ? range /
+            (
+              itemCount -
+              1
+            )
+          : 0;
+
+      const rankings =
+        reorderItems.map(
+          (
+            item,
+            index
+          ) => ({
+            playerName:
+              item.playerName,
+
+            elo:
+              Math.round(
+                maxElo -
+                  step *
+                    index
+              ),
+          })
+        );
+
+      const response =
+        await fetch(
+          "/api/hitter-rankings",
+          {
+            method:
+              "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json",
+            },
+
+            body:
+              JSON.stringify(
+                {
+                  action:
+                    "rerank",
+                  rankings,
+                }
+              ),
+          }
+        );
+
+      if (
+        !response.ok
+      ) {
+        throw new Error(
+          "Unable to save reordered rankings."
+        );
+      }
+
+      const result =
+        await response.json();
+
+      const updatedRatings: RatingsMap =
+        {
+          ...ratings,
+        };
+
+      const returnedRatings: ApiRating[] =
+        Array.isArray(
+          result?.ratings
+        )
+          ? result.ratings
+          : [];
+
+      returnedRatings.forEach(
+        (rating) => {
+          updatedRatings[
+            ratingKey(
+              rating.playerName
+            )
+          ] = {
+            elo:
+              rating.elo,
+            wins:
+              rating.wins,
+            losses:
+              rating.losses,
+            comparisons:
+              rating.comparisons,
+          };
+        }
+      );
+
+      setRatings(
+        updatedRatings
+      );
+
+      setReorderMode(
+        false
+      );
+
+      setReorderItems(
+        []
+      );
+
+      setDraggedIndex(
+        null
+      );
+
+      setMessage(
+        "New ranking order saved."
+      );
+    } catch (error) {
+      console.error(
+        error
+      );
+
+      setMessage(
+        "Could not save the new ranking order."
+      );
+    } finally {
+      setSaving(
+        false
+      );
+    }
+  }
 
   function StatCell({
     player,
@@ -2065,7 +2693,9 @@ export default function HitterRankingsPage() {
         }
       >
         <div className="text-[10px] font-black uppercase tracking-wide opacity-70">
-          {stat.label}
+          {
+            stat.label
+          }
         </div>
 
         <div className="mt-1 text-lg font-black leading-none">
@@ -2179,13 +2809,19 @@ export default function HitterRankingsPage() {
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
               <div className="text-xs font-black uppercase tracking-[0.18em] opacity-85">
-                {player.Team}{" "}
+                {
+                  player.Team
+                }{" "}
                 •{" "}
-                {player.Pos}
+                {
+                  player.Pos
+                }
               </div>
 
               <div className="mt-1 text-2xl font-black leading-tight md:text-3xl">
-                {player.Name}
+                {
+                  player.Name
+                }
               </div>
             </div>
 
@@ -2195,7 +2831,9 @@ export default function HitterRankingsPage() {
               </div>
 
               <div className="text-2xl font-black">
-                {rating.elo}
+                {
+                  rating.elo
+                }
               </div>
             </div>
           </div>
@@ -2235,9 +2873,13 @@ export default function HitterRankingsPage() {
               </div>
 
               <div className="mt-0.5 text-base font-black">
-                {rating.wins}
+                {
+                  rating.wins
+                }
                 -
-                {rating.losses}
+                {
+                  rating.losses
+                }
               </div>
             </div>
 
@@ -2275,22 +2917,23 @@ export default function HitterRankingsPage() {
                       group.title
                     }
                   </div>
+
+                  <div className="mt-0.5 text-[11px] font-semibold text-slate-500">
+                    {
+                      group.subtitle
+                    }
+                  </div>
                 </div>
 
                 <div
                   className={`grid gap-2 p-3 ${
-                    group.stats
-                      .length ===
+                    group.stats.length ===
                     5
                       ? "grid-cols-2 sm:grid-cols-5"
-                      : group
-                            .stats
-                            .length ===
+                      : group.stats.length ===
                           4
                         ? "grid-cols-2 sm:grid-cols-4"
-                        : group
-                              .stats
-                              .length ===
+                        : group.stats.length ===
                             3
                           ? "grid-cols-3"
                           : "grid-cols-2"
@@ -2320,7 +2963,9 @@ export default function HitterRankingsPage() {
 
         <button
           type="button"
-          disabled={saving}
+          disabled={
+            saving
+          }
           onClick={() => {
             if (
               !playerA ||
@@ -2394,13 +3039,19 @@ export default function HitterRankingsPage() {
           }}
         >
           <div className="text-[8px] font-black uppercase tracking-wide opacity-80">
-            {player.Team}{" "}
+            {
+              player.Team
+            }{" "}
             •{" "}
-            {player.Pos}
+            {
+              player.Pos
+            }
           </div>
 
           <div className="mt-1 min-h-[36px] break-words text-[16px] font-black leading-[18px]">
-            {player.Name}
+            {
+              player.Name
+            }
           </div>
 
           <div className="mt-2 grid grid-cols-2 gap-1">
@@ -2408,8 +3059,11 @@ export default function HitterRankingsPage() {
               <div className="text-[7px] font-black uppercase opacity-70">
                 Elo
               </div>
+
               <div className="text-sm font-black">
-                {rating.elo}
+                {
+                  rating.elo
+                }
               </div>
             </div>
 
@@ -2417,10 +3071,15 @@ export default function HitterRankingsPage() {
               <div className="text-[7px] font-black uppercase opacity-70">
                 Record
               </div>
+
               <div className="text-sm font-black">
-                {rating.wins}
+                {
+                  rating.wins
+                }
                 -
-                {rating.losses}
+                {
+                  rating.losses
+                }
               </div>
             </div>
 
@@ -2428,6 +3087,7 @@ export default function HitterRankingsPage() {
               <div className="text-[7px] font-black uppercase opacity-70">
                 $ Value
               </div>
+
               <div className="truncate text-[11px] font-black">
                 {formatContextValue(
                   player[
@@ -2442,6 +3102,7 @@ export default function HitterRankingsPage() {
               <div className="text-[7px] font-black uppercase opacity-70">
                 PA
               </div>
+
               <div className="text-[11px] font-black">
                 {formatContextValue(
                   player.PA,
@@ -2469,13 +3130,10 @@ export default function HitterRankingsPage() {
 
                 <div
                   className={`grid gap-1 ${
-                    group.stats
-                      .length ===
+                    group.stats.length ===
                     5
                       ? "grid-cols-2"
-                      : group
-                            .stats
-                            .length ===
+                      : group.stats.length ===
                           4
                         ? "grid-cols-2"
                         : "grid-cols-1"
@@ -2502,7 +3160,9 @@ export default function HitterRankingsPage() {
 
         <button
           type="button"
-          disabled={saving}
+          disabled={
+            saving
+          }
           onClick={() => {
             if (
               !playerA ||
@@ -2535,17 +3195,22 @@ export default function HitterRankingsPage() {
     );
   }
 
-  if (!accessChecked) {
+  if (
+    !accessChecked
+  ) {
     return (
       <main className="min-h-screen bg-slate-100 p-6">
         <div className="mx-auto max-w-7xl text-center font-bold text-slate-500">
-          Checking access...
+          Checking
+          access...
         </div>
       </main>
     );
   }
 
-  if (loading) {
+  if (
+    loading
+  ) {
     return (
       <main className="min-h-screen bg-slate-100 p-6">
         <div className="mx-auto max-w-7xl">
@@ -2565,17 +3230,21 @@ export default function HitterRankingsPage() {
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <div className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 md:text-xs">
-                Stream Starters •
-                Fantasy Baseball
+                Stream
+                Starters •
+                Fantasy
+                Baseball
               </div>
 
               <h1 className="mt-1 text-2xl font-black text-slate-900 md:text-3xl">
-                Hitter 1v1 Rankings
+                Hitter 1v1
+                Rankings
               </h1>
 
               <p className="mt-1 text-xs font-medium text-slate-500 md:text-sm">
-                Cloud-synced Elo
-                rankings • Minimum{" "}
+                Cloud-synced
+                Elo rankings •
+                Minimum{" "}
                 {MIN_PA} PA
               </p>
             </div>
@@ -2715,7 +3384,8 @@ export default function HitterRankingsPage() {
                         : "bg-slate-100 text-slate-700"
                     }`}
                   >
-                    Choose Matchup
+                    Choose
+                    Matchup
                   </button>
                 </div>
               </div>
@@ -2745,7 +3415,9 @@ export default function HitterRankingsPage() {
                               : "bg-slate-100 text-slate-700"
                           }`}
                         >
-                          {pool}
+                          {
+                            pool
+                          }
                         </button>
                       )
                     )}
@@ -2967,7 +3639,6 @@ export default function HitterRankingsPage() {
                   )}
                 </div>
 
-                {/* MOBILE SIDE-BY-SIDE */}
                 <div className="grid grid-cols-2 gap-1.5 md:hidden">
                   <MobilePlayerCard
                     player={
@@ -2984,7 +3655,6 @@ export default function HitterRankingsPage() {
                   />
                 </div>
 
-                {/* DESKTOP ORIGINAL LAYOUT */}
                 <div className="hidden gap-4 md:grid xl:grid-cols-[1fr_auto_1fr] xl:items-start">
                   <PlayerCard
                     player={
@@ -3061,37 +3731,96 @@ export default function HitterRankingsPage() {
           "rankings" && (
           <>
             <div className="mb-4 rounded-2xl border border-slate-200 bg-white p-4">
-              <div className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-slate-500">
-                Position
-                Rankings
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+                    Position
+                    Rankings
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {POSITION_TABS.map(
+                      (
+                        position
+                      ) => (
+                        <button
+                          key={
+                            position
+                          }
+                          disabled={
+                            reorderMode
+                          }
+                          onClick={() =>
+                            setRankingPosition(
+                              position
+                            )
+                          }
+                          className={`rounded-full px-4 py-2 text-sm font-black ${
+                            rankingPosition ===
+                            position
+                              ? "bg-blue-600 text-white"
+                              : "bg-slate-100 text-slate-700"
+                          } disabled:opacity-40`}
+                        >
+                          {
+                            position
+                          }
+                        </button>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {!reorderMode ? (
+                    <button
+                      type="button"
+                      onClick={
+                        startReorderMode
+                      }
+                      className="rounded-full bg-slate-900 px-4 py-2 text-sm font-black text-white"
+                    >
+                      Reorder Rankings
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        type="button"
+                        onClick={
+                          cancelReorderMode
+                        }
+                        disabled={
+                          saving
+                        }
+                        className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-black text-slate-700 disabled:opacity-40"
+                      >
+                        Cancel
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={
+                          saveReorder
+                        }
+                        disabled={
+                          saving
+                        }
+                        className="rounded-full bg-blue-600 px-4 py-2 text-sm font-black text-white disabled:opacity-40"
+                      >
+                        {saving
+                          ? "Saving..."
+                          : "Save New Order"}
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-2">
-                {POSITION_TABS.map(
-                  (
-                    position
-                  ) => (
-                    <button
-                      key={
-                        position
-                      }
-                      onClick={() =>
-                        setRankingPosition(
-                          position
-                        )
-                      }
-                      className={`rounded-full px-4 py-2 text-sm font-black ${
-                        rankingPosition ===
-                        position
-                          ? "bg-blue-600 text-white"
-                          : "bg-slate-100 text-slate-700"
-                      }`}
-                    >
-                      {position}
-                    </button>
-                  )
-                )}
-              </div>
+              {reorderMode && (
+                <div className="mt-3 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-xs font-bold text-blue-700">
+                  Drag rows into the order you want, then click Save New Order. Only Elo changes — records, comparison counts and matchup history stay unchanged.
+                </div>
+              )}
             </div>
 
             <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
@@ -3116,9 +3845,9 @@ export default function HitterRankingsPage() {
                   </div>
 
                   <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-black">
-                    {
-                      leaderboard.length
-                    }{" "}
+                    {reorderMode
+                      ? reorderItems.length
+                      : leaderboard.length}{" "}
                     hitters
                   </div>
                 </div>
@@ -3128,6 +3857,12 @@ export default function HitterRankingsPage() {
                 <table className="w-full min-w-[760px]">
                   <thead className="bg-slate-100 text-xs uppercase text-slate-500">
                     <tr>
+                      {reorderMode && (
+                        <th className="px-3 py-3 text-center">
+                          Move
+                        </th>
+                      )}
+
                       <th className="px-4 py-3 text-left">
                         Rank
                       </th>
@@ -3163,96 +3898,206 @@ export default function HitterRankingsPage() {
                   </thead>
 
                   <tbody>
-                    {leaderboard.map(
-                      (
-                        item,
-                        index
-                      ) => {
-                        const theme =
-                          getTeamTheme(
-                            item
-                              .player
-                              .Team
-                          );
+                    {reorderMode
+                      ? reorderItems.map(
+                          (
+                            item,
+                            index
+                          ) => {
+                            const player =
+                              players.find(
+                                (
+                                  candidate
+                                ) =>
+                                  candidate.Name ===
+                                  item.playerName
+                              );
 
-                        return (
-                          <tr
-                            key={
-                              item
-                                .player
-                                .Name
+                            if (!player) {
+                              return null;
                             }
-                            className="border-t border-slate-100"
-                          >
-                            <td className="px-4 py-3 font-black text-slate-500">
-                              #
-                              {index +
-                                1}
-                            </td>
 
-                            <td className="px-4 py-3">
-                              <div className="flex items-center gap-3">
-                                <div
-                                  className="h-8 w-2 rounded-full"
-                                  style={{
-                                    background:
-                                      theme.primary,
-                                  }}
-                                />
+                            const theme =
+                              getTeamTheme(
+                                player.Team
+                              );
 
-                                <div className="font-black text-slate-900">
+                            return (
+                              <tr
+                                key={
+                                  item.playerName
+                                }
+                                draggable
+                                onDragStart={() =>
+                                  handleDragStart(
+                                    index
+                                  )
+                                }
+                                onDragOver={(
+                                  event
+                                ) =>
+                                  handleDragOver(
+                                    event,
+                                    index
+                                  )
+                                }
+                                onDragEnd={
+                                  handleDragEnd
+                                }
+                                className={`border-t border-slate-100 ${
+                                  draggedIndex ===
+                                  index
+                                    ? "bg-blue-50"
+                                    : "bg-white"
+                                } cursor-grab active:cursor-grabbing`}
+                              >
+                                <td className="px-3 py-3 text-center text-lg font-black text-slate-400">
+                                  ☰
+                                </td>
+
+                                <td className="px-4 py-3 font-black text-slate-500">
+                                  #
+                                  {index +
+                                    1}
+                                </td>
+
+                                <td className="px-4 py-3">
+                                  <div className="flex items-center gap-3">
+                                    <div
+                                      className="h-8 w-2 rounded-full"
+                                      style={{
+                                        background:
+                                          theme.primary,
+                                      }}
+                                    />
+
+                                    <div className="font-black text-slate-900">
+                                      {
+                                        item.playerName
+                                      }
+                                    </div>
+                                  </div>
+                                </td>
+
+                                <td className="px-4 py-3 font-bold text-slate-500">
                                   {
-                                    item
-                                      .player
-                                      .Name
+                                    player.Team
                                   }
-                                </div>
-                              </div>
-                            </td>
+                                </td>
 
-                            <td className="px-4 py-3 font-bold text-slate-500">
-                              {
-                                item
-                                  .player
-                                  .Team
-                              }
-                            </td>
+                                <td className="px-4 py-3 font-bold text-slate-500">
+                                  {
+                                    player.Pos
+                                  }
+                                </td>
 
-                            <td className="px-4 py-3 font-bold text-slate-500">
-                              {
-                                item
-                                  .player
-                                  .Pos
-                              }
-                            </td>
+                                <td className="px-4 py-3 text-right text-lg font-black">
+                                  {
+                                    item.currentElo
+                                  }
+                                </td>
 
-                            <td className="px-4 py-3 text-right text-lg font-black">
-                              {
-                                item.elo
-                              }
-                            </td>
+                                <td className="px-4 py-3 text-right font-bold">
+                                  {
+                                    item.wins
+                                  }
+                                </td>
 
-                            <td className="px-4 py-3 text-right font-bold">
-                              {
-                                item.wins
-                              }
-                            </td>
+                                <td className="px-4 py-3 text-right font-bold">
+                                  {
+                                    item.losses
+                                  }
+                                </td>
 
-                            <td className="px-4 py-3 text-right font-bold">
-                              {
-                                item.losses
-                              }
-                            </td>
+                                <td className="px-4 py-3 text-right font-bold">
+                                  {
+                                    item.comparisons
+                                  }
+                                </td>
+                              </tr>
+                            );
+                          }
+                        )
+                      : leaderboard.map(
+                          (
+                            item,
+                            index
+                          ) => {
+                            const theme =
+                              getTeamTheme(
+                                item.player.Team
+                              );
 
-                            <td className="px-4 py-3 text-right font-bold">
-                              {
-                                item.comparisons
-                              }
-                            </td>
-                          </tr>
-                        );
-                      }
-                    )}
+                            return (
+                              <tr
+                                key={
+                                  item.player.Name
+                                }
+                                className="border-t border-slate-100"
+                              >
+                                <td className="px-4 py-3 font-black text-slate-500">
+                                  #
+                                  {index +
+                                    1}
+                                </td>
+
+                                <td className="px-4 py-3">
+                                  <div className="flex items-center gap-3">
+                                    <div
+                                      className="h-8 w-2 rounded-full"
+                                      style={{
+                                        background:
+                                          theme.primary,
+                                      }}
+                                    />
+
+                                    <div className="font-black text-slate-900">
+                                      {
+                                        item.player.Name
+                                      }
+                                    </div>
+                                  </div>
+                                </td>
+
+                                <td className="px-4 py-3 font-bold text-slate-500">
+                                  {
+                                    item.player.Team
+                                  }
+                                </td>
+
+                                <td className="px-4 py-3 font-bold text-slate-500">
+                                  {
+                                    item.player.Pos
+                                  }
+                                </td>
+
+                                <td className="px-4 py-3 text-right text-lg font-black">
+                                  {
+                                    item.elo
+                                  }
+                                </td>
+
+                                <td className="px-4 py-3 text-right font-bold">
+                                  {
+                                    item.wins
+                                  }
+                                </td>
+
+                                <td className="px-4 py-3 text-right font-bold">
+                                  {
+                                    item.losses
+                                  }
+                                </td>
+
+                                <td className="px-4 py-3 text-right font-bold">
+                                  {
+                                    item.comparisons
+                                  }
+                                </td>
+                              </tr>
+                            );
+                          }
+                        )}
                   </tbody>
                 </table>
               </div>
@@ -3283,7 +4128,10 @@ export default function HitterRankingsPage() {
               <div>
                 {[...history]
                   .reverse()
-                  .slice(0, 50)
+                  .slice(
+                    0,
+                    50
+                  )
                   .map(
                     (
                       item
