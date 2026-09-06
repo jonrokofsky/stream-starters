@@ -42,11 +42,22 @@ const MATCHUP_POOLS = [
   "1B/3B",
 ] as const;
 
+const GENERATE_RANK_OPTIONS = [
+  "All",
+  10,
+  20,
+  30,
+  50,
+] as const;
+
 type PositionTab =
   (typeof POSITION_TABS)[number];
 
 type MatchupPool =
   (typeof MATCHUP_POOLS)[number];
+
+type GenerateRankLimit =
+  (typeof GENERATE_RANK_OPTIONS)[number];
 
 type MatchupMode =
   | "generate"
@@ -84,10 +95,7 @@ type PlayerRating = {
 };
 
 type RatingsMap =
-  Record<
-    string,
-    PlayerRating
-  >;
+  Record<string, PlayerRating>;
 
 type ApiRating = {
   playerName: string;
@@ -1170,6 +1178,16 @@ export default function HitterRankingsPage() {
     );
 
   const [
+    generateRankLimit,
+    setGenerateRankLimit,
+  ] =
+    useState<
+      GenerateRankLimit
+    >(
+      "All"
+    );
+
+  const [
     manualPlayerA,
     setManualPlayerA,
   ] =
@@ -1466,7 +1484,8 @@ export default function HitterRankingsPage() {
                 eligiblePlayers,
                 initialRatings,
                 "All",
-                cloudHistory
+                cloudHistory,
+                "All"
               );
             },
             0
@@ -1586,17 +1605,13 @@ export default function HitterRankingsPage() {
       ]
     );
 
-  function createNextMatchup(
-    sourcePlayers =
-      players,
-    sourceRatings =
-      ratings,
-    pool: MatchupPool =
-      matchupPool,
-    sourceHistory =
-      history
+  function getGeneratePlayerPool(
+    sourcePlayers: Player[],
+    sourceRatings: RatingsMap,
+    pool: MatchupPool,
+    rankLimit: GenerateRankLimit
   ) {
-    const eligiblePlayers =
+    const positionalPool =
       sourcePlayers.filter(
         (
           player
@@ -1605,6 +1620,104 @@ export default function HitterRankingsPage() {
             player,
             pool
           )
+      );
+
+    if (
+      rankLimit ===
+      "All"
+    ) {
+      return positionalPool;
+    }
+
+    return [
+      ...positionalPool,
+    ]
+      .sort(
+        (
+          a,
+          b
+        ) => {
+          const aRating =
+            sourceRatings[
+              ratingKey(
+                a.Name
+              )
+            ]?.elo ??
+            STARTING_ELO;
+
+          const bRating =
+            sourceRatings[
+              ratingKey(
+                b.Name
+              )
+            ]?.elo ??
+            STARTING_ELO;
+
+          if (
+            bRating !==
+            aRating
+          ) {
+            return (
+              bRating -
+              aRating
+            );
+          }
+
+          const aComparisons =
+            sourceRatings[
+              ratingKey(
+                a.Name
+              )
+            ]?.comparisons ??
+            0;
+
+          const bComparisons =
+            sourceRatings[
+              ratingKey(
+                b.Name
+              )
+            ]?.comparisons ??
+            0;
+
+          if (
+            bComparisons !==
+            aComparisons
+          ) {
+            return (
+              bComparisons -
+              aComparisons
+            );
+          }
+
+          return a.Name.localeCompare(
+            b.Name
+          );
+        }
+      )
+      .slice(
+        0,
+        rankLimit
+      );
+  }
+
+  function createNextMatchup(
+    sourcePlayers =
+      players,
+    sourceRatings =
+      ratings,
+    pool: MatchupPool =
+      matchupPool,
+    sourceHistory =
+      history,
+    rankLimit: GenerateRankLimit =
+      generateRankLimit
+  ) {
+    const eligiblePlayers =
+      getGeneratePlayerPool(
+        sourcePlayers,
+        sourceRatings,
+        pool,
+        rankLimit
       );
 
     if (
@@ -1823,6 +1936,27 @@ export default function HitterRankingsPage() {
     }
   }
 
+  function changeGenerateRankLimit(
+    limit: GenerateRankLimit
+  ) {
+    setGenerateRankLimit(
+      limit
+    );
+
+    if (
+      matchupMode ===
+      "generate"
+    ) {
+      createNextMatchup(
+        players,
+        ratings,
+        matchupPool,
+        history,
+        limit
+      );
+    }
+  }
+
   function changeMatchupPool(
     pool: MatchupPool
   ) {
@@ -1854,7 +1988,8 @@ export default function HitterRankingsPage() {
         players,
         ratings,
         pool,
-        history
+        history,
+        generateRankLimit
       );
     } else {
       setPlayerA(
@@ -1886,7 +2021,8 @@ export default function HitterRankingsPage() {
         players,
         ratings,
         matchupPool,
-        history
+        history,
+        generateRankLimit
       );
     } else {
       setPlayerA(
@@ -1993,7 +2129,8 @@ export default function HitterRankingsPage() {
       players,
       ratings,
       matchupPool,
-      history
+      history,
+      generateRankLimit
     );
   }
 
@@ -2112,7 +2249,8 @@ export default function HitterRankingsPage() {
           players,
           updatedRatings,
           matchupPool,
-          nextHistory
+          nextHistory,
+          generateRankLimit
         );
       } else {
         setPlayerA(
@@ -2426,7 +2564,8 @@ export default function HitterRankingsPage() {
           players,
           resetRatings,
           matchupPool,
-          []
+          [],
+          generateRankLimit
         );
       } else {
         setPlayerA(
@@ -3559,7 +3698,7 @@ export default function HitterRankingsPage() {
           "compare" && (
           <>
             <div className="mb-4 rounded-2xl border border-slate-200 bg-white p-3 md:mb-5 md:p-4">
-              <div className="mb-3">
+              <div className="mb-4">
                 <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 md:text-xs">
                   Matchup Mode
                 </div>
@@ -3636,7 +3775,54 @@ export default function HitterRankingsPage() {
                     )}
                   </div>
 
-                  <div className="mt-2 text-[10px] font-semibold text-slate-500 md:mt-3 md:text-xs">
+                  {matchupMode ===
+                    "generate" && (
+                    <div className="mt-4">
+                      <div className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 md:text-xs">
+                        Generate From
+                      </div>
+
+                      <div className="flex flex-wrap gap-1.5 md:gap-2">
+                        {GENERATE_RANK_OPTIONS.map(
+                          (
+                            option
+                          ) => (
+                            <button
+                              key={
+                                option
+                              }
+                              type="button"
+                              onClick={() =>
+                                changeGenerateRankLimit(
+                                  option
+                                )
+                              }
+                              className={`rounded-full px-3 py-1.5 text-[11px] font-black md:px-4 md:py-2 md:text-sm ${
+                                generateRankLimit ===
+                                option
+                                  ? "bg-emerald-600 text-white"
+                                  : "bg-slate-100 text-slate-700"
+                              }`}
+                            >
+                              {option ===
+                              "All"
+                                ? "All Ranked"
+                                : `Top ${option}`}
+                            </button>
+                          )
+                        )}
+                      </div>
+
+                      <div className="mt-2 text-[10px] font-semibold text-slate-500 md:text-xs">
+                        {generateRankLimit ===
+                        "All"
+                          ? `Generated matchups can use any ${matchupPool === "All" ? "eligible hitter" : `${matchupPool}-eligible hitter`}.`
+                          : `Generated matchups only use the top ${generateRankLimit} hitters by Elo within the ${matchupPool} pool.`}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="mt-3 text-[10px] font-semibold text-slate-500 md:text-xs">
                     Minimum{" "}
                     {MIN_PA} PA.
                   </div>
