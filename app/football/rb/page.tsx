@@ -140,7 +140,7 @@ const RUSHING_STATS: StatConfig[] = [
 const RECEIVING_STATS: StatConfig[] = [
   {
     label: "Targets/Game",
-    keys: ["Targets/Game"],
+    keys: ["Targets/Game", "Targets/G", "Tgt/G"],
     format: "decimal2",
   },
   {
@@ -304,6 +304,30 @@ function getValue(
       row[key] !== ""
     ) {
       return row[key];
+    }
+  }
+
+  // If the published CSV has not picked up Targets/Game yet,
+  // calculate it from total Targets and Games.
+  if (
+    keys.includes("Targets/Game") ||
+    keys.includes("Targets/G") ||
+    keys.includes("Tgt/G")
+  ) {
+    const targets =
+      toNumber(row["Targets"]);
+
+    const games =
+      toNumber(row["G"]);
+
+    if (
+      targets !== null &&
+      games !== null &&
+      games > 0
+    ) {
+      return (
+        targets / games
+      ).toString();
     }
   }
 
