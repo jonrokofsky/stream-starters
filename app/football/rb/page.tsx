@@ -11,7 +11,7 @@ type DataRow = Record<string, string>;
 type StatConfig = {
   label: string;
   keys: string[];
-  format?: "number" | "decimal" | "percent";
+  format?: "number" | "decimal" | "decimal2" | "percent";
 };
 
 const TEAM_CODES: Record<string, string> = {
@@ -139,9 +139,9 @@ const RUSHING_STATS: StatConfig[] = [
 
 const RECEIVING_STATS: StatConfig[] = [
   {
-    label: "Targets",
-    keys: ["Targets"],
-    format: "number",
+    label: "Targets/Game",
+    keys: ["Targets/Game"],
+    format: "decimal2",
   },
   {
     label: "Target Share",
@@ -432,6 +432,10 @@ function formatStatValue(
 
   if (format === "decimal") {
     return number.toFixed(1);
+  }
+
+  if (format === "decimal2") {
+    return number.toFixed(2);
   }
 
   return Math.round(number).toString();
