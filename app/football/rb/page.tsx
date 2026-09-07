@@ -282,7 +282,7 @@ function toNumber(value: string | undefined) {
     .trim();
 
   if (!cleaned || cleaned === "-") {
-    return 0;
+    return null;
   }
 
   const number = Number(cleaned);
@@ -292,11 +292,167 @@ function toNumber(value: string | undefined) {
     : null;
 }
 
+function getTargetsPerGame(
+  row: DataRow | undefined
+) {
+  if (!row) {
+    return "";
+  }
+
+  const directKeys = [
+    "Targets/Game",
+    "Targets/G",
+    "Tgt/G",
+  ];
+
+  for (const key of directKeys) {
+    const direct =
+      row[key];
+
+    if (
+      direct !== undefined &&
+      direct !== ""
+    ) {
+      return direct;
+    }
+  }
+
+  const targets =
+    toNumber(
+      row["Targets"]
+    );
+
+  if (
+    targets === null
+  ) {
+    return "";
+  }
+
+  /*
+    First fallback:
+    Use the new G column if Google's published CSV includes it.
+  */
+  const directGames =
+    toNumber(
+      row["G"]
+    );
+
+  if (
+    directGames !== null &&
+    directGames > 0
+  ) {
+    return (
+      targets /
+      directGames
+    ).toString();
+  }
+
+  /*
+    Second fallback:
+    Infer games from Receiving Yards / Receiving Yards Per Game.
+
+    Example:
+    291 receiving yards / 17.1 RecYds/G ≈ 17 games.
+  */
+  const receivingYards =
+    toNumber(
+      row["Rec Yards"]
+    ) ??
+    toNumber(
+      row["RecYards"]
+    );
+
+  const receivingYardsPerGame =
+    toNumber(
+      row["RecYds/G"]
+    ) ??
+    toNumber(
+      row["Rec Yds/G"]
+    );
+
+  if (
+    receivingYards !== null &&
+    receivingYardsPerGame !== null &&
+    receivingYardsPerGame > 0
+  ) {
+    const inferredGames =
+      Math.round(
+        receivingYards /
+          receivingYardsPerGame
+      );
+
+    if (
+      inferredGames > 0
+    ) {
+      return (
+        targets /
+        inferredGames
+      ).toString();
+    }
+  }
+
+  /*
+    Third fallback:
+    Infer games from Weighted Opportunity / Weighted Opportunity Per Game.
+  */
+  const weightedOpp =
+    toNumber(
+      row["Weighted Opp."]
+    ) ??
+    toNumber(
+      row["Weighted Opp"]
+    );
+
+  const weightedOppPerGame =
+    toNumber(
+      row["Weighted Opp./G"]
+    ) ??
+    toNumber(
+      row["Weighted Opp/G"]
+    ) ??
+    toNumber(
+      row["Weighted Opp. /G"]
+    );
+
+  if (
+    weightedOpp !== null &&
+    weightedOppPerGame !== null &&
+    weightedOppPerGame > 0
+  ) {
+    const inferredGames =
+      Math.round(
+        weightedOpp /
+          weightedOppPerGame
+      );
+
+    if (
+      inferredGames > 0
+    ) {
+      return (
+        targets /
+        inferredGames
+      ).toString();
+    }
+  }
+
+  return "";
+}
+
 function getValue(
   row: DataRow | undefined,
   keys: string[]
 ) {
   if (!row) return "";
+
+  if (
+    keys.includes("Targets/Game") ||
+    keys.includes("Targets/G") ||
+    keys.includes("Tgt/G")
+  ) {
+    return getTargetsPerGame(
+      row
+    );
+  }
 
   for (const key of keys) {
     if (
@@ -304,30 +460,6 @@ function getValue(
       row[key] !== ""
     ) {
       return row[key];
-    }
-  }
-
-  // If the published CSV has not picked up Targets/Game yet,
-  // calculate it from total Targets and Games.
-  if (
-    keys.includes("Targets/Game") ||
-    keys.includes("Targets/G") ||
-    keys.includes("Tgt/G")
-  ) {
-    const targets =
-      toNumber(row["Targets"]);
-
-    const games =
-      toNumber(row["G"]);
-
-    if (
-      targets !== null &&
-      games !== null &&
-      games > 0
-    ) {
-      return (
-        targets / games
-      ).toString();
     }
   }
 
@@ -439,6 +571,10 @@ function formatStatValue(
   if (!raw || raw === "-") {
     if (format === "percent") {
       return "0.0%";
+    }
+
+    if (format === "decimal2") {
+      return "0.00";
     }
 
     return "0";
@@ -1234,15 +1370,9 @@ export default function RBPage() {
                       />
 
                       <div className="mt-1 flex justify-between text-xs font-bold text-slate-500">
-                        <span>
-                          Worse
-                        </span>
-                        <span>
-                          Average
-                        </span>
-                        <span>
-                          Better
-                        </span>
+                        <span>Worse</span>
+                        <span>Average</span>
+                        <span>Better</span>
                       </div>
                     </div>
                   </div>
