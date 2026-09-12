@@ -115,12 +115,6 @@ export default function Home() {
               Football
             </Link>
 
-            <Link
-              href="/hq"
-              className="transition hover:text-sky-600"
-            >
-              Agent HQ
-            </Link>
           </nav>
         </div>
       </header>
@@ -171,12 +165,6 @@ export default function Home() {
                 Football Tool
               </Link>
 
-              <Link
-                href="/hq"
-                className="rounded-xl border border-sky-400/30 bg-sky-400/10 px-5 py-3 text-center text-sm font-black text-sky-300 transition hover:bg-sky-400/20"
-              >
-                Agent HQ
-              </Link>
             </div>
 
             <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">

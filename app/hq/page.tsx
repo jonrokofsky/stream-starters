@@ -166,6 +166,9 @@ export default function AgentHqPage() {
           <span className={styles.slash}>/ HQ</span>
         </Link>
         <span className={styles.demoBadge}>VISUAL PROTOTYPE · SAMPLE ACTIVITY</span>
+        <form action="/api/hq-logout" method="post">
+          <button type="submit" className={styles.signOut}>Sign out</button>
+        </form>
       </header>
 
       <div className={styles.shell}>
