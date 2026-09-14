@@ -11,14 +11,168 @@ import {
 import type { ReactNode } from "react";
 import { toPng } from "html-to-image";
 
-const PITCHER_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSv79k6WmmVy7nx9qfntanMdIxwBUWkPqu8L0B36iKekGYmrML_478QHxK15CinrTdKkWotB1FaigR1/pub?gid=371661956&single=true&output=csv";
-
-const TEAM_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSv79k6WmmVy7nx9qfntanMdIxwBUWkPqu8L0B36iKekGYmrML_478QHxK15CinrTdKkWotB1FaigR1/pub?gid=1810390724&single=true&output=csv";
+const PITCHER_DATA_URL = "/api/data/mlb_pitchers";
+const TEAM_DATA_URL = "/api/data/mlb_team_offense";
 
 type DataRow = Record<string, string>;
 type Direction = "higher" | "lower" | "neutral";
+
+const PITCHER_FIELDS = [
+  "Player",
+  "Team",
+  "Hand",
+  "IP",
+  "ERA",
+  "SIERA",
+  "K%",
+  "BB%",
+  "WHIP",
+  "Strike%",
+  "SwStr%",
+  "Stuff+",
+  "L30 IP",
+  "L30 ERA",
+  "L30 SIERA",
+  "L30 K%",
+  "L30 BB%",
+  "L30 WHIP",
+  "L30 Strike%",
+  "L30 SwStr%",
+  "L30 Stuff+",
+] as const;
+
+const PERCENTAGE_FIELDS = new Set([
+  "K%",
+  "BB%",
+  "Strike%",
+  "SwStr%",
+  "L30 K%",
+  "L30 BB%",
+  "L30 Strike%",
+  "L30 SwStr%",
+]);
+
+const TWO_DECIMAL_FIELDS = new Set([
+  "ERA",
+  "SIERA",
+  "WHIP",
+  "L30 ERA",
+  "L30 SIERA",
+  "L30 WHIP",
+]);
+
+const TEAM_OFFENSE_FIELDS = [
+  "Team",
+  "K% L30",
+  "BB% L30",
+  "wRC+ L30",
+  "K% vL",
+  "BB% vL",
+  "wRC+ vL",
+  "K% vR",
+  "BB% vR",
+  "wRC+ vR",
+] as const;
+
+function formatPitcherValue(
+  field: (typeof PITCHER_FIELDS)[number],
+  value: unknown
+) {
+  if (value === null || value === undefined || value === "") {
+    return "";
+  }
+
+  if (field === "Player" || field === "Team" || field === "Hand") {
+    if (typeof value !== "string") {
+      throw new Error(`Pitcher field ${field} must be text.`);
+    }
+
+    return value;
+  }
+
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    throw new Error(`Pitcher field ${field} must be numeric or blank.`);
+  }
+
+  if (PERCENTAGE_FIELDS.has(field)) {
+    return `${(value * 100).toFixed(2)}%`;
+  }
+
+  if (TWO_DECIMAL_FIELDS.has(field)) {
+    return value.toFixed(2);
+  }
+
+  if (field === "IP" || field === "L30 IP") {
+    return value.toFixed(1).replace(/\.0$/, "");
+  }
+
+  return value.toFixed(0);
+}
+
+function parsePitcherDataset(payload: unknown): DataRow[] {
+  if (
+    typeof payload !== "object" ||
+    payload === null ||
+    !("data" in payload) ||
+    !Array.isArray(payload.data)
+  ) {
+    throw new Error("Pitcher dataset response is invalid.");
+  }
+
+  return payload.data.map((source) => {
+    if (typeof source !== "object" || source === null) {
+      throw new Error("Pitcher dataset contains an invalid row.");
+    }
+
+    const row: DataRow = {};
+    for (const field of PITCHER_FIELDS) {
+      row[field] = formatPitcherValue(
+        field,
+        (source as Record<string, unknown>)[field]
+      );
+    }
+
+    return row;
+  });
+}
+
+function parseTeamOffenseDataset(payload: unknown): DataRow[] {
+  if (
+    typeof payload !== "object" ||
+    payload === null ||
+    !("data" in payload) ||
+    !Array.isArray(payload.data)
+  ) {
+    throw new Error("Team offense dataset response is invalid.");
+  }
+
+  return payload.data.map((source) => {
+    if (typeof source !== "object" || source === null) {
+      throw new Error("Team offense dataset contains an invalid row.");
+    }
+
+    const values = source as Record<string, unknown>;
+    const row: DataRow = {};
+    for (const field of TEAM_OFFENSE_FIELDS) {
+      const value = values[field];
+      if (field === "Team") {
+        if (typeof value !== "string") {
+          throw new Error("Team offense identity must be text.");
+        }
+        row[field] = value;
+      } else {
+        if (typeof value !== "number" || !Number.isFinite(value)) {
+          throw new Error(`Team offense field ${field} must be numeric.`);
+        }
+        row[field] = field.startsWith("wRC+")
+          ? value.toFixed(0)
+          : `${(value * 100).toFixed(2)}%`;
+      }
+    }
+
+    return row;
+  });
+}
 
 type TeamTheme = {
   primary: string;
@@ -66,56 +220,6 @@ const DEFAULT_THEME: TeamTheme = {
 };
 
 const VALID_TEAMS = new Set(Object.keys(TEAM_THEMES));
-
-function splitCsvLine(line: string) {
-  const result: string[] = [];
-  let current = "";
-  let inQuotes = false;
-
-  for (let i = 0; i < line.length; i++) {
-    const char = line[i];
-
-    if (char === '"') {
-      if (inQuotes && line[i + 1] === '"') {
-        current += '"';
-        i++;
-      } else {
-        inQuotes = !inQuotes;
-      }
-    } else if (char === "," && !inQuotes) {
-      result.push(current);
-      current = "";
-    } else {
-      current += char;
-    }
-  }
-
-  result.push(current);
-
-  return result.map((value) => value.trim());
-}
-
-function parseCSV(text: string): DataRow[] {
-  const lines = text
-    .trim()
-    .split(/\r?\n/)
-    .filter((line) => line.trim() !== "");
-
-  if (!lines.length) return [];
-
-  const headers = splitCsvLine(lines[0]);
-
-  return lines.slice(1).map((line) => {
-    const values = splitCsvLine(line);
-    const row: DataRow = {};
-
-    headers.forEach((header, index) => {
-      row[header] = values[index] ?? "";
-    });
-
-    return row;
-  });
-}
 
 function numericValue(value: string | undefined) {
   if (!value) return null;
@@ -675,11 +779,11 @@ export default function Home() {
 
         const [pitcherRes, teamRes] =
           await Promise.all([
-            fetch(PITCHER_CSV_URL, {
+            fetch(PITCHER_DATA_URL, {
               cache: "no-store",
             }),
 
-            fetch(TEAM_CSV_URL, {
+            fetch(TEAM_DATA_URL, {
               cache: "no-store",
             }),
           ]);
@@ -689,20 +793,20 @@ export default function Home() {
           !teamRes.ok
         ) {
           throw new Error(
-            "Failed to fetch sheet data."
+            "Failed to fetch pitcher or team data."
           );
         }
 
         const [
-          pitcherText,
-          teamText,
+          pitcherPayload,
+          teamPayload,
         ] = await Promise.all([
-          pitcherRes.text(),
-          teamRes.text(),
+          pitcherRes.json(),
+          teamRes.json(),
         ]);
 
         const pitcherRows =
-          parseCSV(pitcherText)
+          parsePitcherDataset(pitcherPayload)
             .filter(
               (row) => row["Player"]
             )
@@ -713,7 +817,7 @@ export default function Home() {
             );
 
         const teamRows =
-          parseCSV(teamText)
+          parseTeamOffenseDataset(teamPayload)
             .filter(
               (row) => row["Team"]
             )
@@ -745,7 +849,7 @@ export default function Home() {
         console.error(err);
 
         setError(
-          "Failed to load Google Sheets data."
+          "Failed to load Stream Starters data."
         );
       } finally {
         setLoading(false);
@@ -1253,7 +1357,7 @@ export default function Home() {
 
         {loading && (
           <div className="mb-6 rounded-2xl border border-sky-200 bg-white p-4 text-slate-600 shadow-sm">
-            Loading sheet data...
+            Loading Stream Starters data...
           </div>
         )}
 

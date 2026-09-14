@@ -1,0 +1,195 @@
+{
+  "taskId": "SS-20260912-automated-data-ingestion",
+  "criterion": "AC-P6",
+  "method": "same-capture-independent-legacy-reference",
+  "status": "PASS",
+  "runStartedAt": "2026-09-13T19:43:53.434Z",
+  "runCompletedAt": "2026-09-13T19:43:55.058Z",
+  "inputs": {
+    "season": {
+      "month": 33,
+      "startedAt": "2026-09-13T19:43:53.436Z",
+      "completedAt": "2026-09-13T19:43:54.959Z",
+      "rowCount": 251,
+      "byteCount": 2852450,
+      "sha256": "a02c04fe6c242a0475746cd1e3d692eb503ac1fed5af9e37a0325fa721f92bca"
+    },
+    "last30": {
+      "month": 3,
+      "startedAt": "2026-09-13T19:43:53.470Z",
+      "completedAt": "2026-09-13T19:43:54.035Z",
+      "rowCount": 154,
+      "byteCount": 1733525,
+      "sha256": "d61c5b35910c73ecfb3148ef28004206d1c03332ae81692198af121bedd80113"
+    }
+  },
+  "comparison": {
+    "fieldCount": 21,
+    "fields": [
+      "Player",
+      "Team",
+      "Hand",
+      "IP",
+      "ERA",
+      "SIERA",
+      "K%",
+      "BB%",
+      "WHIP",
+      "Strike%",
+      "SwStr%",
+      "Stuff+",
+      "L30 IP",
+      "L30 ERA",
+      "L30 SIERA",
+      "L30 K%",
+      "L30 BB%",
+      "L30 WHIP",
+      "L30 Strike%",
+      "L30 SwStr%",
+      "L30 Stuff+"
+    ],
+    "referenceImplementation": "Independent exact trimmed PlayerName XLOOKUP, documented field mapping, MLB team/hand normalization, Strike/Pitches guard, and legacy display formatting; no production mapping/join/normalization/format helper reused."
+  },
+  "rows": {
+    "production": 251,
+    "reference": 251,
+    "missingCount": 0,
+    "extraCount": 0,
+    "missing": [],
+    "extra": [],
+    "orderMismatchCount": 0,
+    "representativeOrderMismatches": []
+  },
+  "values": {
+    "comparisons": 5271,
+    "mismatchCount": 0,
+    "fieldTotals": {
+      "Player": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "Team": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "Hand": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "IP": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "ERA": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "SIERA": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "K%": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "BB%": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "WHIP": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "Strike%": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "SwStr%": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "Stuff+": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 0,
+        "representativeDifferences": []
+      },
+      "L30 IP": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 97,
+        "representativeDifferences": []
+      },
+      "L30 ERA": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 97,
+        "representativeDifferences": []
+      },
+      "L30 SIERA": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 97,
+        "representativeDifferences": []
+      },
+      "L30 K%": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 97,
+        "representativeDifferences": []
+      },
+      "L30 BB%": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 97,
+        "representativeDifferences": []
+      },
+      "L30 WHIP": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 97,
+        "representativeDifferences": []
+      },
+      "L30 Strike%": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 97,
+        "representativeDifferences": []
+      },
+      "L30 SwStr%": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 97,
+        "representativeDifferences": []
+      },
+      "L30 Stuff+": {
+        "matches": 251,
+        "mismatches": 0,
+        "matchingBlanks": 97,
+        "representativeDifferences": []
+      }
+    }
+  }
+}

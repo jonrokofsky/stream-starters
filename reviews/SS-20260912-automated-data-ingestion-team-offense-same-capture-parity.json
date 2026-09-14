@@ -1,0 +1,142 @@
+{
+  "taskId": "SS-20260912-automated-data-ingestion",
+  "criterion": "AC-T5",
+  "method": "same-capture-independent-legacy-reference",
+  "status": "PASS",
+  "runStartedAt": "2026-09-13T20:05:36.784Z",
+  "runCompletedAt": "2026-09-13T20:05:36.899Z",
+  "inputs": {
+    "last30": {
+      "month": 3,
+      "startedAt": "2026-09-13T20:05:36.786Z",
+      "completedAt": "2026-09-13T20:05:36.898Z",
+      "rowCount": 30,
+      "byteCount": 321525,
+      "sha256": "8c378f01b038871ca69c9d24df3278987951d37fb1f0bdbc8cd92e8caafcf273"
+    },
+    "versusLeft": {
+      "month": 13,
+      "startedAt": "2026-09-13T20:05:36.824Z",
+      "completedAt": "2026-09-13T20:05:36.890Z",
+      "rowCount": 30,
+      "byteCount": 55006,
+      "sha256": "4c10697310660002e44eab8c0c61e2f1397f6440dcd9ad4fe79dd51c9ebff9f2"
+    },
+    "versusRight": {
+      "month": 14,
+      "startedAt": "2026-09-13T20:05:36.825Z",
+      "completedAt": "2026-09-13T20:05:36.892Z",
+      "rowCount": 30,
+      "byteCount": 55333,
+      "sha256": "bdbd3c1a266244fffb918598c49e5f108ad1fb9c515ea45aea32423412e8082b"
+    }
+  },
+  "comparison": {
+    "fieldCount": 10,
+    "fields": [
+      "Team",
+      "K% L30",
+      "BB% L30",
+      "wRC+ L30",
+      "K% vL",
+      "BB% vL",
+      "wRC+ vL",
+      "K% vR",
+      "BB% vR",
+      "wRC+ vR"
+    ],
+    "referenceImplementation": "Independent L30-master exact TeamNameAbb merge, explicit 30-team validation, month-to-suffix mapping, percent normalization, wRC+ numeric handling, and legacy display formatting; no production mapping, join, normalization, or formatting helper reused.",
+    "displayFormatting": {
+      "percentages": "two decimal percentage points",
+      "wRCPlus": "whole number"
+    }
+  },
+  "rows": {
+    "production": 30,
+    "reference": 30,
+    "missingCount": 0,
+    "extraCount": 0,
+    "missing": [],
+    "extra": [],
+    "orderMismatchCount": 0,
+    "representativeOrderMismatches": []
+  },
+  "values": {
+    "canonicalComparisons": 300,
+    "canonicalMismatchCount": 0,
+    "displayComparisons": 300,
+    "displayMismatchCount": 0,
+    "fieldTotals": {
+      "Team": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      },
+      "K% L30": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      },
+      "BB% L30": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      },
+      "wRC+ L30": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      },
+      "K% vL": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      },
+      "BB% vL": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      },
+      "wRC+ vL": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      },
+      "K% vR": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      },
+      "BB% vR": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      },
+      "wRC+ vR": {
+        "matches": 30,
+        "mismatches": 0,
+        "displayMatches": 30,
+        "displayMismatches": 0,
+        "representativeDifferences": []
+      }
+    }
+  }
+}

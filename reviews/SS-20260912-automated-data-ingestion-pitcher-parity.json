@@ -1,0 +1,1517 @@
+{
+  "taskId": "SS-20260912-automated-data-ingestion",
+  "criterion": "AC-P6",
+  "capturedAt": "2026-09-13T15:09:57.774539+00:00",
+  "comparison": {
+    "canonicalFieldCount": 21,
+    "canonicalFields": [
+      "Player",
+      "Team",
+      "Hand",
+      "IP",
+      "ERA",
+      "SIERA",
+      "K%",
+      "BB%",
+      "WHIP",
+      "Strike%",
+      "SwStr%",
+      "Stuff+",
+      "L30 IP",
+      "L30 ERA",
+      "L30 SIERA",
+      "L30 K%",
+      "L30 BB%",
+      "L30 WHIP",
+      "L30 Strike%",
+      "L30 SwStr%",
+      "L30 Stuff+"
+    ],
+    "note": "The published CSV has 22 headers including one unnamed spacer; the canonical contract has 21 fields and excludes that spacer per the specification.",
+    "formatting": {
+      "IP": "one decimal when present, trailing .0 omitted",
+      "ERA/SIERA/WHIP": "two decimals",
+      "percentages": "two decimal percentage points",
+      "Stuff+": "whole number",
+      "blank": "empty string equals canonical null"
+    }
+  },
+  "sources": {
+    "pitcherAll": {
+      "label": "Published PitcherAll CSV",
+      "startedAt": "2026-09-13T15:09:57.774549+00:00",
+      "completedAt": "2026-09-13T15:09:58.653663+00:00",
+      "rowCount": 247,
+      "byteCount": 26784,
+      "sha256": "3fdbc453d2036b7077b3d151b517251b399515c2abb38d6c76d322bf7c63bc98"
+    },
+    "fanGraphsSeason": {
+      "label": "FanGraphs 2026 starters month=33",
+      "startedAt": "2026-09-13T15:09:58.653746+00:00",
+      "completedAt": "2026-09-13T15:09:58.758128+00:00",
+      "rowCount": 251,
+      "byteCount": 2852417,
+      "sha256": "638f72c263a34e4f425756dbce7208a28d364c788a27db6702c55c3f75c5ef9f"
+    },
+    "fanGraphsLast30": {
+      "label": "FanGraphs 2026 starters month=3",
+      "startedAt": "2026-09-13T15:09:58.758346+00:00",
+      "completedAt": "2026-09-13T15:09:58.833578+00:00",
+      "rowCount": 154,
+      "byteCount": 1733652,
+      "sha256": "b6e2b3da2f4c1236d48c1d6e897dd3cae09500b3b6176cdfeb39b248d969c1dc"
+    }
+  },
+  "identities": {
+    "commonCount": 247,
+    "sheetOnlyCount": 0,
+    "generatedOnlyCount": 4,
+    "common": [
+      "AJ Smith-Shawver",
+      "Aaron Civale",
+      "Aaron Nola",
+      "Adrian Houser",
+      "Alan Rangel",
+      "Andre Pallante",
+      "Andrew Abbott",
+      "Andrew Alvarez",
+      "Andrew Painter",
+      "Anthony Kay",
+      "Anthony Molina",
+      "Bailey Ober",
+      "Ben Brown",
+      "Blade Tidwell",
+      "Blake Snell",
+      "Brad Lord",
+      "Brady Singer",
+      "Brandon Pfaadt",
+      "Brandon Sproat",
+      "Brandon Williamson",
+      "Brandon Woodruff",
+      "Brandon Young",
+      "Braxton Ashcraft",
+      "Brayan Bello",
+      "Bryan Woo",
+      "Bryce Elder",
+      "Bryce Miller",
+      "Bubba Chandler",
+      "Cade Cavalli",
+      "Cade Povich",
+      "Cal Quantrill",
+      "Cam Schlittler",
+      "Carlos Rodón",
+      "Carmen Mlodzinski",
+      "Carson Palmquist",
+      "Carson Whisenhunt",
+      "Casey Legumina",
+      "Casey Mize",
+      "Chad Patrick",
+      "Chase Burns",
+      "Chase Dollander",
+      "Chase Petty",
+      "Chris Bassitt",
+      "Chris Paddack",
+      "Chris Sale",
+      "Christian Scott",
+      "Clay Holmes",
+      "Cody Bradford",
+      "Cole Ragans",
+      "Coleman Crow",
+      "Colin Rea",
+      "Connelly Early",
+      "Connor Prielipp",
+      "Cristian Javier",
+      "Cristopher Sánchez",
+      "Daniel Lynch IV",
+      "David Peterson",
+      "David Sandlin",
+      "Davis Martin",
+      "Dean Kremer",
+      "Drew Anderson",
+      "Drew Rasmussen",
+      "Dustin May",
+      "Dylan Cease",
+      "Eduardo Rodriguez",
+      "Edward Cabrera",
+      "Elmer Rodríguez",
+      "Emerson Hancock",
+      "Emmet Sheehan",
+      "Eric Lauer",
+      "Erick Fedde",
+      "Ethan Pecko",
+      "Eury Pérez",
+      "Foster Griffin",
+      "Framber Valdez",
+      "Freddy Peralta",
+      "Gabriel Hughes",
+      "Gage Jump",
+      "Garrett Crochet",
+      "Gavin Williams",
+      "George Kirby",
+      "George Klassen",
+      "Germán Márquez",
+      "Gerrit Cole",
+      "Grant Holmes",
+      "Grayson Rodriguez",
+      "Griffin Canning",
+      "Griffin Jax",
+      "Hayden Wesneski",
+      "Hunter Brown",
+      "Hunter Dobbins",
+      "Hunter Greene",
+      "Ian Seymour",
+      "J.T. Ginn",
+      "JP Sears",
+      "JR Ritchie",
+      "Jack Flaherty",
+      "Jack Kochanowicz",
+      "Jack Leiter",
+      "Jack Perkins",
+      "Jackson Jobe",
+      "Jackson Kent",
+      "Jacob Lopez",
+      "Jacob Misiorowski",
+      "Jacob deGrom",
+      "Jake Bennett",
+      "Jake Irvin",
+      "Jameson Taillon",
+      "Janson Junk",
+      "Jared Jones",
+      "Jason Alexander",
+      "Javier Assad",
+      "Jeffrey Springs",
+      "Jesse Scholtens",
+      "Jesús Luzardo",
+      "Joe Boyle",
+      "Joe Ryan",
+      "Joey Cantillo",
+      "Jose Cabrera",
+      "Jose Quintana",
+      "José Soriano",
+      "Justin Wrobleski",
+      "Kade Anderson",
+      "Kai-Wei Teng",
+      "Keider Montero",
+      "Kendry Rojas",
+      "Kevin Gausman",
+      "Kodai Senga",
+      "Kohl Drake",
+      "Kris Bubic",
+      "Kumar Rocker",
+      "Kyle Bradish",
+      "Kyle Freeland",
+      "Kyle Harrison",
+      "Kyle Leahy",
+      "Lake Bachar",
+      "Lance McCullers Jr.",
+      "Landen Roupp",
+      "Logan Gilbert",
+      "Logan Henderson",
+      "Logan Webb",
+      "Lucas Giolito",
+      "Luinder Avila",
+      "Luis Castillo",
+      "Luis Gil",
+      "Luis Severino",
+      "MacKenzie Gore",
+      "Martín Pérez",
+      "Mason Adams",
+      "Mason Barnett",
+      "Mason Englert",
+      "Matt Waldron",
+      "Matt Wilkinson",
+      "Matthew Boyd",
+      "Matthew Liberatore",
+      "Max Fried",
+      "Max Meyer",
+      "Max Scherzer",
+      "Merrill Kelly",
+      "Michael King",
+      "Michael Lorenzen",
+      "Michael McGreevy",
+      "Michael Soroka",
+      "Michael Wacha",
+      "Mick Abel",
+      "Mike Burrows",
+      "Mike Paredes",
+      "Miles Mikolas",
+      "Mitch Bratt",
+      "Mitch Keller",
+      "Nathan Eovaldi",
+      "Nick Lodolo",
+      "Nick Martinez",
+      "Nick Pivetta",
+      "Noah Cameron",
+      "Noah Schultz",
+      "Nolan McLean",
+      "PJ Poulin",
+      "Parker Messick",
+      "Patrick Corbin",
+      "Patrick Sandoval",
+      "Paul Skenes",
+      "Payton Tolle",
+      "Peter Lambert",
+      "Quinn Mathews",
+      "Randy Dobnak",
+      "Randy Vásquez",
+      "Ranger Suarez",
+      "Reid Detmers",
+      "Reynaldo López",
+      "Rhett Lowder",
+      "Robbie Ray",
+      "Robert Gasser",
+      "Robert Stock",
+      "Roki Sasaki",
+      "Ronel Blanco",
+      "Ryan Feltner",
+      "Ryan Gusto",
+      "Ryan Johnson",
+      "Ryan Weathers",
+      "Ryne Nelson",
+      "Sam Aldegheri",
+      "Sandy Alcantara",
+      "Sean Burke",
+      "Sean Manaea",
+      "Sean Sullivan",
+      "Seth Lugo",
+      "Shane Baz",
+      "Shane Bieber",
+      "Shane Drohan",
+      "Shane McClanahan",
+      "Shohei Ohtani",
+      "Shota Imanaga",
+      "Simeon Woods Richardson",
+      "Slade Cecconi",
+      "Sonny Gray",
+      "Spencer Arrighetti",
+      "Spencer Miles",
+      "Spencer Strider",
+      "Stephen Kolek",
+      "Steven Matz",
+      "Taijuan Walker",
+      "Taj Bradley",
+      "Tanner Bibee",
+      "Tanner Gordon",
+      "Tarik Skubal",
+      "Tatsuya Imai",
+      "Tomoyuki Sugano",
+      "Trevor McDonald",
+      "Trevor Rogers",
+      "Trey Gibson",
+      "Trey Yesavage",
+      "Troy Melton",
+      "Tyler Glasnow",
+      "Tyler Mahle",
+      "Tyler Phillips",
+      "Walbert Ureña",
+      "Walker Buehler",
+      "Will Warren",
+      "Yoshinobu Yamamoto",
+      "Yusei Kikuchi",
+      "Zac Gallen",
+      "Zac Thornton",
+      "Zach Agnos",
+      "Zack Littell",
+      "Zack Wheeler",
+      "Zebby Matthews"
+    ],
+    "sheetOnly": [],
+    "generatedOnly": [
+      "Andrew Sears",
+      "Brady Basso",
+      "Braydon Fisher",
+      "Cesar Perdomo"
+    ]
+  },
+  "fields": {
+    "Player": {
+      "matches": 247,
+      "mismatches": 0,
+      "matchingBlanks": 0,
+      "representativeDifferences": []
+    },
+    "Team": {
+      "matches": 229,
+      "mismatches": 18,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "Aaron Civale",
+          "sheet": "2 Tms",
+          "generated": "ATH"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "ATL",
+          "generated": "SFG"
+        },
+        {
+          "player": "Casey Legumina",
+          "sheet": "2 Tms",
+          "generated": "TBR"
+        },
+        {
+          "player": "Chris Paddack",
+          "sheet": "3 Tms",
+          "generated": "2 Tms"
+        },
+        {
+          "player": "Clay Holmes",
+          "sheet": "CHC",
+          "generated": "2 Tms"
+        },
+        {
+          "player": "Ethan Pecko",
+          "sheet": "#N/A",
+          "generated": "HOU"
+        },
+        {
+          "player": "Jose Quintana",
+          "sheet": "",
+          "generated": "COL"
+        },
+        {
+          "player": "Kade Anderson",
+          "sheet": "#N/A",
+          "generated": "SEA"
+        }
+      ]
+    },
+    "Hand": {
+      "matches": 240,
+      "mismatches": 7,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "Ethan Pecko",
+          "sheet": "#N/A",
+          "generated": "RHP"
+        },
+        {
+          "player": "Jose Quintana",
+          "sheet": "",
+          "generated": "LHP"
+        },
+        {
+          "player": "Kade Anderson",
+          "sheet": "#N/A",
+          "generated": "LHP"
+        },
+        {
+          "player": "Mason Adams",
+          "sheet": "#N/A",
+          "generated": "RHP"
+        },
+        {
+          "player": "Matt Wilkinson",
+          "sheet": "#N/A",
+          "generated": "LHP"
+        },
+        {
+          "player": "Michael McGreevy",
+          "sheet": "",
+          "generated": "RHP"
+        },
+        {
+          "player": "Sean Sullivan",
+          "sheet": "",
+          "generated": "LHP"
+        }
+      ]
+    },
+    "IP": {
+      "matches": 154,
+      "mismatches": 93,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "Aaron Nola",
+          "sheet": "155",
+          "generated": "161.1"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "141",
+          "generated": "146"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "152.1",
+          "generated": "154.1"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "68.1",
+          "generated": "75.1"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "134",
+          "generated": "138"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "10",
+          "generated": "13"
+        },
+        {
+          "player": "Blade Tidwell",
+          "sheet": "30.2",
+          "generated": "34.2"
+        },
+        {
+          "player": "Blake Snell",
+          "sheet": "32",
+          "generated": "37.2"
+        }
+      ]
+    },
+    "ERA": {
+      "matches": 156,
+      "mismatches": 91,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "Aaron Nola",
+          "sheet": "4.76",
+          "generated": "4.69"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "3.51",
+          "generated": "3.45"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "4.43",
+          "generated": "4.84"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "3.56",
+          "generated": "3.23"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "4.50",
+          "generated": "4.57"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "2.70",
+          "generated": "6.92"
+        },
+        {
+          "player": "Blade Tidwell",
+          "sheet": "4.99",
+          "generated": "5.45"
+        },
+        {
+          "player": "Blake Snell",
+          "sheet": "1.97",
+          "generated": "1.91"
+        }
+      ]
+    },
+    "SIERA": {
+      "matches": 5,
+      "mismatches": 242,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "5.29",
+          "generated": "5.30"
+        },
+        {
+          "player": "Aaron Civale",
+          "sheet": "4.96",
+          "generated": "4.98"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "3.84",
+          "generated": "3.93"
+        },
+        {
+          "player": "Adrian Houser",
+          "sheet": "4.73",
+          "generated": "4.75"
+        },
+        {
+          "player": "Alan Rangel",
+          "sheet": "5.44",
+          "generated": "5.46"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "4.32",
+          "generated": "4.28"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "4.95",
+          "generated": "4.99"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "4.39",
+          "generated": "4.40"
+        }
+      ]
+    },
+    "K%": {
+      "matches": 19,
+      "mismatches": 228,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "17.50%",
+          "generated": "17.48%"
+        },
+        {
+          "player": "Aaron Civale",
+          "sheet": "16.50%",
+          "generated": "16.51%"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "24.40%",
+          "generated": "23.91%"
+        },
+        {
+          "player": "Adrian Houser",
+          "sheet": "16.80%",
+          "generated": "16.77%"
+        },
+        {
+          "player": "Alan Rangel",
+          "sheet": "22.80%",
+          "generated": "22.81%"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "16.80%",
+          "generated": "16.94%"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "18.10%",
+          "generated": "17.67%"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "21.70%",
+          "generated": "22.47%"
+        }
+      ]
+    },
+    "BB%": {
+      "matches": 24,
+      "mismatches": 223,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "12.60%",
+          "generated": "12.62%"
+        },
+        {
+          "player": "Aaron Civale",
+          "sheet": "6.70%",
+          "generated": "6.73%"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "7.80%",
+          "generated": "7.97%"
+        },
+        {
+          "player": "Adrian Houser",
+          "sheet": "7.90%",
+          "generated": "7.93%"
+        },
+        {
+          "player": "Alan Rangel",
+          "sheet": "17.50%",
+          "generated": "17.54%"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "7.70%",
+          "generated": "7.48%"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "10.50%",
+          "generated": "10.31%"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "11.40%",
+          "generated": "11.71%"
+        }
+      ]
+    },
+    "WHIP": {
+      "matches": 165,
+      "mismatches": 82,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "Andre Pallante",
+          "sheet": "1.24",
+          "generated": "1.23"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "1.42",
+          "generated": "1.46"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "1.32",
+          "generated": "1.26"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "0.80",
+          "generated": "1.46"
+        },
+        {
+          "player": "Blade Tidwell",
+          "sheet": "1.30",
+          "generated": "1.36"
+        },
+        {
+          "player": "Brady Singer",
+          "sheet": "1.47",
+          "generated": "1.51"
+        },
+        {
+          "player": "Brandon Pfaadt",
+          "sheet": "1.05",
+          "generated": "1.08"
+        },
+        {
+          "player": "Bryan Woo",
+          "sheet": "1.06",
+          "generated": "1.05"
+        }
+      ]
+    },
+    "Strike%": {
+      "matches": 154,
+      "mismatches": 93,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "Aaron Nola",
+          "sheet": "63.44%",
+          "generated": "63.58%"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "62.07%",
+          "generated": "62.04%"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "62.75%",
+          "generated": "62.90%"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "60.99%",
+          "generated": "61.14%"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "62.56%",
+          "generated": "62.40%"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "67.28%",
+          "generated": "65.81%"
+        },
+        {
+          "player": "Blade Tidwell",
+          "sheet": "60.95%",
+          "generated": "60.54%"
+        },
+        {
+          "player": "Blake Snell",
+          "sheet": "64.77%",
+          "generated": "65.02%"
+        }
+      ]
+    },
+    "SwStr%": {
+      "matches": 15,
+      "mismatches": 232,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "9.20%",
+          "generated": "11.22%"
+        },
+        {
+          "player": "Aaron Civale",
+          "sheet": "8.30%",
+          "generated": "8.29%"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "11.70%",
+          "generated": "11.72%"
+        },
+        {
+          "player": "Adrian Houser",
+          "sheet": "8.10%",
+          "generated": "8.08%"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "8.70%",
+          "generated": "8.76%"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "9.20%",
+          "generated": "9.10%"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "9.60%",
+          "generated": "9.98%"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "10.00%",
+          "generated": "10.86%"
+        }
+      ]
+    },
+    "Stuff+": {
+      "matches": 213,
+      "mismatches": 34,
+      "matchingBlanks": 0,
+      "representativeDifferences": [
+        {
+          "player": "Andrew Painter",
+          "sheet": "103",
+          "generated": "104"
+        },
+        {
+          "player": "Blade Tidwell",
+          "sheet": "101",
+          "generated": "100"
+        },
+        {
+          "player": "Blake Snell",
+          "sheet": "118",
+          "generated": "119"
+        },
+        {
+          "player": "Chris Bassitt",
+          "sheet": "97",
+          "generated": "98"
+        },
+        {
+          "player": "Cristopher Sánchez",
+          "sheet": "117",
+          "generated": "116"
+        },
+        {
+          "player": "Daniel Lynch IV",
+          "sheet": "96",
+          "generated": "95"
+        },
+        {
+          "player": "Drew Anderson",
+          "sheet": "95",
+          "generated": "94"
+        },
+        {
+          "player": "Foster Griffin",
+          "sheet": "98",
+          "generated": "97"
+        }
+      ]
+    },
+    "L30 IP": {
+      "matches": 111,
+      "mismatches": 136,
+      "matchingBlanks": 89,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "13.1",
+          "generated": "16.2"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "30",
+          "generated": "31.1"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "17",
+          "generated": "16"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "23.2",
+          "generated": "21.1"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "25.2",
+          "generated": "32.2"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "30.1",
+          "generated": "30"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "25",
+          "generated": "29"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "10",
+          "generated": "13"
+        }
+      ]
+    },
+    "L30 ERA": {
+      "matches": 99,
+      "mismatches": 148,
+      "matchingBlanks": 89,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "8.10",
+          "generated": "8.64"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "1.80",
+          "generated": "2.01"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "2.65",
+          "generated": "3.38"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "7.23",
+          "generated": "9.28"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "3.16",
+          "generated": "2.48"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "3.26",
+          "generated": "4.20"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "6.84",
+          "generated": "6.83"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "2.70",
+          "generated": "6.92"
+        }
+      ]
+    },
+    "L30 SIERA": {
+      "matches": 91,
+      "mismatches": 156,
+      "matchingBlanks": 89,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "5.54",
+          "generated": "5.47"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "3.42",
+          "generated": "4.08"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "5.53",
+          "generated": "4.60"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "4.64",
+          "generated": "4.68"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "4.09",
+          "generated": "4.11"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "3.83",
+          "generated": "3.85"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "4.14",
+          "generated": "4.32"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "2.67",
+          "generated": "3.32"
+        }
+      ]
+    },
+    "L30 K%": {
+      "matches": 92,
+      "mismatches": 155,
+      "matchingBlanks": 89,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "16.90%",
+          "generated": "16.67%"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "27.70%",
+          "generated": "21.95%"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "11.90%",
+          "generated": "15.87%"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "19.30%",
+          "generated": "17.82%"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "24.80%",
+          "generated": "25.95%"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "23.90%",
+          "generated": "22.76%"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "19.30%",
+          "generated": "18.05%"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "30.80%",
+          "generated": "27.12%"
+        }
+      ]
+    },
+    "L30 BB%": {
+      "matches": 91,
+      "mismatches": 156,
+      "matchingBlanks": 89,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "13.80%",
+          "generated": "13.10%"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "7.60%",
+          "generated": "7.32%"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "11.90%",
+          "generated": "7.94%"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "8.30%",
+          "generated": "5.94%"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "10.50%",
+          "generated": "11.45%"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "7.70%",
+          "generated": "6.50%"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "6.10%",
+          "generated": "6.02%"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "2.60%",
+          "generated": "5.08%"
+        }
+      ]
+    },
+    "L30 WHIP": {
+      "matches": 101,
+      "mismatches": 146,
+      "matchingBlanks": 89,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "1.88",
+          "generated": "1.92"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "1.03",
+          "generated": "1.02"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "1.41",
+          "generated": "1.38"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "1.61",
+          "generated": "1.73"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "1.09",
+          "generated": "1.01"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "0.86",
+          "generated": "1.10"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "1.44",
+          "generated": "1.45"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "0.80",
+          "generated": "1.46"
+        }
+      ]
+    },
+    "L30 Strike%": {
+      "matches": 99,
+      "mismatches": 148,
+      "matchingBlanks": 89,
+      "representativeDifferences": [
+        {
+          "player": "Aaron Nola",
+          "sheet": "64.20%",
+          "generated": "65.71%"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "58.37%",
+          "generated": "60.48%"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "64.44%",
+          "generated": "66.76%"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "60.89%",
+          "generated": "61.28%"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "65.83%",
+          "generated": "67.22%"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "64.89%",
+          "generated": "63.83%"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "67.28%",
+          "generated": "65.81%"
+        },
+        {
+          "player": "Bailey Ober",
+          "sheet": "62.70%",
+          "generated": "63.48%"
+        }
+      ]
+    },
+    "L30 SwStr%": {
+      "matches": 91,
+      "mismatches": 156,
+      "matchingBlanks": 89,
+      "representativeDifferences": [
+        {
+          "player": "AJ Smith-Shawver",
+          "sheet": "13.90%",
+          "generated": "12.95%"
+        },
+        {
+          "player": "Aaron Nola",
+          "sheet": "12.60%",
+          "generated": "11.84%"
+        },
+        {
+          "player": "Andre Pallante",
+          "sheet": "7.00%",
+          "generated": "8.87%"
+        },
+        {
+          "player": "Andrew Abbott",
+          "sheet": "6.90%",
+          "generated": "7.89%"
+        },
+        {
+          "player": "Andrew Alvarez",
+          "sheet": "7.40%",
+          "generated": "8.78%"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "12.40%",
+          "generated": "12.86%"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "10.70%",
+          "generated": "9.48%"
+        },
+        {
+          "player": "Anthony Molina",
+          "sheet": "14.20%",
+          "generated": "13.25%"
+        }
+      ]
+    },
+    "L30 Stuff+": {
+      "matches": 150,
+      "mismatches": 97,
+      "matchingBlanks": 89,
+      "representativeDifferences": [
+        {
+          "player": "Andre Pallante",
+          "sheet": "93",
+          "generated": "95"
+        },
+        {
+          "player": "Andrew Painter",
+          "sheet": "109",
+          "generated": "110"
+        },
+        {
+          "player": "Anthony Kay",
+          "sheet": "102",
+          "generated": "101"
+        },
+        {
+          "player": "Bailey Ober",
+          "sheet": "91",
+          "generated": "90"
+        },
+        {
+          "player": "Blade Tidwell",
+          "sheet": "101",
+          "generated": "99"
+        },
+        {
+          "player": "Blake Snell",
+          "sheet": "117",
+          "generated": "118"
+        },
+        {
+          "player": "Brady Singer",
+          "sheet": "91",
+          "generated": "90"
+        },
+        {
+          "player": "Bryce Miller",
+          "sheet": "102",
+          "generated": "104"
+        }
+      ]
+    }
+  },
+  "representativeDifferences": [
+    {
+      "field": "Team",
+      "player": "Aaron Civale",
+      "sheet": "2 Tms",
+      "generated": "ATH"
+    },
+    {
+      "field": "Team",
+      "player": "Anthony Molina",
+      "sheet": "ATL",
+      "generated": "SFG"
+    },
+    {
+      "field": "Team",
+      "player": "Casey Legumina",
+      "sheet": "2 Tms",
+      "generated": "TBR"
+    },
+    {
+      "field": "Team",
+      "player": "Chris Paddack",
+      "sheet": "3 Tms",
+      "generated": "2 Tms"
+    },
+    {
+      "field": "Team",
+      "player": "Clay Holmes",
+      "sheet": "CHC",
+      "generated": "2 Tms"
+    },
+    {
+      "field": "Team",
+      "player": "Ethan Pecko",
+      "sheet": "#N/A",
+      "generated": "HOU"
+    },
+    {
+      "field": "Team",
+      "player": "Jose Quintana",
+      "sheet": "",
+      "generated": "COL"
+    },
+    {
+      "field": "Team",
+      "player": "Kade Anderson",
+      "sheet": "#N/A",
+      "generated": "SEA"
+    },
+    {
+      "field": "Team",
+      "player": "Lance McCullers Jr.",
+      "sheet": "2 Tms",
+      "generated": "HOU"
+    },
+    {
+      "field": "Team",
+      "player": "Mason Adams",
+      "sheet": "#N/A",
+      "generated": "COL"
+    },
+    {
+      "field": "Team",
+      "player": "Matt Wilkinson",
+      "sheet": "#N/A",
+      "generated": "SFG"
+    },
+    {
+      "field": "Team",
+      "player": "Michael McGreevy",
+      "sheet": "",
+      "generated": "STL"
+    },
+    {
+      "field": "Team",
+      "player": "Sean Sullivan",
+      "sheet": "",
+      "generated": "COL"
+    },
+    {
+      "field": "Team",
+      "player": "Simeon Woods Richardson",
+      "sheet": "2 Tms",
+      "generated": "MIN"
+    },
+    {
+      "field": "Team",
+      "player": "Spencer Arrighetti",
+      "sheet": "HOU",
+      "generated": "2 Tms"
+    },
+    {
+      "field": "Team",
+      "player": "Tyler Glasnow",
+      "sheet": "MIL",
+      "generated": "LAD"
+    },
+    {
+      "field": "Team",
+      "player": "Tyler Mahle",
+      "sheet": "ATL",
+      "generated": "2 Tms"
+    },
+    {
+      "field": "Team",
+      "player": "Zack Littell",
+      "sheet": "2 Tms",
+      "generated": "WSN"
+    },
+    {
+      "field": "Hand",
+      "player": "Ethan Pecko",
+      "sheet": "#N/A",
+      "generated": "RHP"
+    },
+    {
+      "field": "Hand",
+      "player": "Jose Quintana",
+      "sheet": "",
+      "generated": "LHP"
+    },
+    {
+      "field": "Hand",
+      "player": "Kade Anderson",
+      "sheet": "#N/A",
+      "generated": "LHP"
+    },
+    {
+      "field": "Hand",
+      "player": "Mason Adams",
+      "sheet": "#N/A",
+      "generated": "RHP"
+    },
+    {
+      "field": "Hand",
+      "player": "Matt Wilkinson",
+      "sheet": "#N/A",
+      "generated": "LHP"
+    },
+    {
+      "field": "Hand",
+      "player": "Michael McGreevy",
+      "sheet": "",
+      "generated": "RHP"
+    },
+    {
+      "field": "Hand",
+      "player": "Sean Sullivan",
+      "sheet": "",
+      "generated": "LHP"
+    },
+    {
+      "field": "IP",
+      "player": "Aaron Nola",
+      "sheet": "155",
+      "generated": "161.1"
+    },
+    {
+      "field": "IP",
+      "player": "Andre Pallante",
+      "sheet": "141",
+      "generated": "146"
+    },
+    {
+      "field": "IP",
+      "player": "Andrew Abbott",
+      "sheet": "152.1",
+      "generated": "154.1"
+    },
+    {
+      "field": "IP",
+      "player": "Andrew Alvarez",
+      "sheet": "68.1",
+      "generated": "75.1"
+    },
+    {
+      "field": "IP",
+      "player": "Anthony Kay",
+      "sheet": "134",
+      "generated": "138"
+    },
+    {
+      "field": "IP",
+      "player": "Anthony Molina",
+      "sheet": "10",
+      "generated": "13"
+    },
+    {
+      "field": "IP",
+      "player": "Blade Tidwell",
+      "sheet": "30.2",
+      "generated": "34.2"
+    },
+    {
+      "field": "IP",
+      "player": "Blake Snell",
+      "sheet": "32",
+      "generated": "37.2"
+    },
+    {
+      "field": "IP",
+      "player": "Brady Singer",
+      "sheet": "146.2",
+      "generated": "150.2"
+    },
+    {
+      "field": "IP",
+      "player": "Brandon Pfaadt",
+      "sheet": "96",
+      "generated": "102.2"
+    },
+    {
+      "field": "IP",
+      "player": "Bryan Woo",
+      "sheet": "156.1",
+      "generated": "162.1"
+    },
+    {
+      "field": "IP",
+      "player": "Cade Cavalli",
+      "sheet": "158.2",
+      "generated": "164.2"
+    },
+    {
+      "field": "IP",
+      "player": "Carlos Rodón",
+      "sheet": "64",
+      "generated": "70.1"
+    },
+    {
+      "field": "IP",
+      "player": "Chris Bassitt",
+      "sheet": "75",
+      "generated": "80"
+    },
+    {
+      "field": "IP",
+      "player": "Chris Sale",
+      "sheet": "150",
+      "generated": "157"
+    }
+  ],
+  "totals": {
+    "comparisons": 5187,
+    "matches": 2546,
+    "mismatches": 2641,
+    "matchingBlanks": 801
+  }
+}
