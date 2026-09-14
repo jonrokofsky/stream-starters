@@ -2,9 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import DataOperations from "./data-operations";
+import {
+  resolveDemoActivities,
+  safeActivitySummary,
+  type AgentActivity,
+  type AgentName,
+} from "./activity";
 import styles from "./hq.module.css";
-
-type AgentName = "Architect" | "Coder" | "Tester" | "Manager";
 
 type AgentProfile = {
   role: string;
@@ -124,9 +129,28 @@ function PixelPerson({ name, active }: { name: AgentName; active: boolean }) {
   );
 }
 
-function Workstation({ name, active }: { name: AgentName; active: boolean }) {
+function ActivityBubble({ activity, selected }: { activity: AgentActivity; selected: boolean }) {
+  const summary = safeActivitySummary(activity.summary);
+
+  return (
+    <div
+      className={`${styles.activityBubble} ${selected ? styles.selectedActivityBubble : ""}`}
+      data-state={activity.state}
+      style={{ "--agent-color": agents[activity.agent].color } as React.CSSProperties}
+      role="status"
+      aria-label={`${activity.agent} status: ${activity.state}. ${summary}`}
+      title={`${activity.agent} · ${activity.state}: ${summary}`}
+    >
+      <span className={styles.activityState}>{activity.state}</span>
+      <span className={styles.activitySummary}>{summary}</span>
+    </div>
+  );
+}
+
+function Workstation({ name, active, activity }: { name: AgentName; active: boolean; activity: AgentActivity }) {
   return (
     <div className={styles.station}>
+      <ActivityBubble activity={activity} selected={active} />
       <div className={styles.monitor}>
         <span style={{ backgroundColor: agents[name].color }} />
         <span />
@@ -146,6 +170,7 @@ export default function AgentHqPage() {
 
   const profile = agents[selected];
   const handoff = handoffs[step];
+  const activities = resolveDemoActivities(handoff.agent, paused);
 
   function selectAgent(name: AgentName) {
     setSelected(name);
@@ -189,12 +214,16 @@ export default function AgentHqPage() {
               <span>SPEC</span><span>BUILD</span><span>QA</span>
             </div>
             <div className={styles.window}><span /><span /><span /></div>
-            <div className={styles.speech}>{profile.tagline}</div>
             <div className={styles.plantLeft}>✦</div>
             <div className={styles.plantRight}>✦</div>
             <div className={styles.stations}>
               {agentOrder.map((name) => (
-                <Workstation key={name} name={name} active={selected === name} />
+                <Workstation
+                  key={name}
+                  name={name}
+                  active={selected === name}
+                  activity={activities[name]}
+                />
               ))}
             </div>
           </div>
@@ -210,6 +239,9 @@ export default function AgentHqPage() {
               >
                 {name}
                 <span>{agents[name].role.split(" & ")[0]}</span>
+                <span className={styles.srOnly}>
+                  {activities[name].state}: {safeActivitySummary(activities[name].summary)}
+                </span>
               </button>
             ))}
           </div>
@@ -230,6 +262,7 @@ export default function AgentHqPage() {
               {paused ? "Resume demo" : "Pause demo"}
             </button>
           </div>
+          <DataOperations />
         </section>
 
         <aside className={styles.sidebar} aria-live="polite">
