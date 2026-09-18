@@ -1,0 +1,52 @@
+name: Refresh RB data
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12,13 * * 1,2,5'
+permissions:
+  contents: write
+concurrency:
+  group: rb-data-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Check Eastern time and 2026 season
+        id: gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          node - <<'JS'
+          const fs = require('fs');
+          const now = new Date();
+          const parts = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',hourCycle:'h23'}).formatToParts(now).map(p=>[p.type,p.value]));
+          const date = `${parts.year}-${parts.month}-${parts.day}`;
+          const inSeason = date >= '2026-09-01' && date <= '2027-01-12';
+          const run = process.env.EVENT_NAME === 'workflow_dispatch' || (inSeason && parts.hour === '08');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `run=${run}\n`);
+          JS
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.run == 'true'
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+        if: steps.gate.outputs.run == 'true'
+      - run: npx playwright install --with-deps chromium
+        if: steps.gate.outputs.run == 'true'
+      - run: node --experimental-transform-types scripts/refresh-rb.mjs
+        if: steps.gate.outputs.run == 'true'
+      - name: Commit validated snapshot
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          if git diff --quiet -- public/data/rb-2026.json; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/data/rb-2026.json
+          git commit -m 'Refresh 2026 RB snapshot'
+          git push origin HEAD:main

@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-const RB_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRoMlTzy9AR2vn-fy2hv-JJUf83oCAyw5nqg7EmRNyxm8PXaE_lsa4jXJu41qJjK6BubYlHMtpo1elk/pub?gid=684746044&single=true&output=csv";
 
 type DataRow = Record<string, string>;
 
@@ -205,73 +203,6 @@ const OPPORTUNITY_STATS: StatConfig[] = [
     format: "number",
   },
 ];
-
-function parseCSV(text: string): DataRow[] {
-  const rows: string[][] = [];
-
-  let row: string[] = [];
-  let value = "";
-  let inQuotes = false;
-
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    const next = text[i + 1];
-
-    if (char === '"') {
-      if (inQuotes && next === '"') {
-        value += '"';
-        i++;
-      } else {
-        inQuotes = !inQuotes;
-      }
-    } else if (char === "," && !inQuotes) {
-      row.push(value);
-      value = "";
-    } else if (
-      (char === "\n" || char === "\r") &&
-      !inQuotes
-    ) {
-      if (char === "\r" && next === "\n") {
-        i++;
-      }
-
-      row.push(value);
-
-      if (row.some((cell) => cell.trim() !== "")) {
-        rows.push(row);
-      }
-
-      row = [];
-      value = "";
-    } else {
-      value += char;
-    }
-  }
-
-  if (value.length || row.length) {
-    row.push(value);
-    rows.push(row);
-  }
-
-  if (rows.length < 2) {
-    return [];
-  }
-
-  const headers = rows[0].map((header) =>
-    header.trim()
-  );
-
-  return rows.slice(1).map((cells) => {
-    const result: DataRow = {};
-
-    headers.forEach((header, index) => {
-      result[header] =
-        (cells[index] || "").trim();
-    });
-
-    return result;
-  });
-}
 
 function toNumber(value: string | undefined) {
   if (!value) return null;
@@ -607,14 +538,12 @@ function ScoreCard({
   subtitle,
 }: {
   title: string;
-  score: number;
+  score: number | null;
   subtitle: string;
 }) {
   return (
     <div
-      className={`overflow-hidden rounded-3xl border shadow-lg ${scoreStyle(
-        score
-      )}`}
+      className={`overflow-hidden rounded-3xl border shadow-lg ${score === null ? "border-slate-200 bg-slate-50 text-slate-600" : scoreStyle(score)}`}
     >
       <div className="p-6">
         <div className="text-xs font-black uppercase tracking-[0.18em] opacity-70">
@@ -623,12 +552,12 @@ function ScoreCard({
 
         <div className="mt-4 flex items-end justify-between gap-4">
           <div className="text-6xl font-black leading-none">
-            {Math.round(score)}
+            {score === null ? "—" : Math.round(score)}
           </div>
 
           <div className="text-right">
             <div className="text-sm font-black">
-              {scoreLabel(score)}
+              {score === null ? "Unavailable" : scoreLabel(score)}
             </div>
 
             <div className="mt-1 text-[10px] font-black uppercase tracking-[0.14em] opacity-60">
@@ -754,6 +683,7 @@ function ComponentSection({
 }
 
 export default function RBPage() {
+  const [updatedAt, setUpdatedAt] = useState("");
   const [players, setPlayers] =
     useState<DataRow[]>([]);
 
@@ -773,7 +703,7 @@ export default function RBPage() {
   const [
     minRushAttempts,
     setMinRushAttempts,
-  ] = useState(100);
+  ] = useState(5);
 
   const [loading, setLoading] =
     useState(true);
@@ -782,15 +712,17 @@ export default function RBPage() {
     useState("");
 
   useEffect(() => {
+    const controller = new AbortController();
     async function loadData() {
       try {
         setLoading(true);
         setError("");
 
         const response = await fetch(
-          RB_CSV_URL,
+          "/data/rb-2026.json",
           {
             cache: "no-store",
+            signal: controller.signal,
           }
         );
 
@@ -800,10 +732,13 @@ export default function RBPage() {
           );
         }
 
-        const text =
-          await response.text();
-
-        const rows = parseCSV(text)
+        const snapshot = await response.json();
+        if (snapshot.season !== 2026 || !Array.isArray(snapshot.rows) || snapshot.rows.length === 0 ||
+            !snapshot.rows.every((row: unknown) => row !== null && typeof row === "object" &&
+              Object.values(row).every(value => typeof value === "string") && "Name" in row)) {
+          throw new Error("Invalid 2026 RB snapshot.");
+        }
+        const rows = (snapshot.rows as DataRow[])
           .filter(
             (row) => row["Name"]
           )
@@ -815,7 +750,9 @@ export default function RBPage() {
             )
           );
 
+        if (controller.signal.aborted) return;
         setPlayers(rows);
+        setUpdatedAt(snapshot.copiedAt);
 
         if (rows.length) {
           setSelectedName(
@@ -827,17 +764,19 @@ export default function RBPage() {
           );
         }
       } catch (err) {
+        if (controller.signal.aborted) return;
         console.error(err);
 
         setError(
-          "Could not load the RB sheet."
+          "Could not load the 2026 RB data. Please try again."
         );
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) setLoading(false);
       }
     }
 
     loadData();
+    return () => controller.abort();
   }, []);
 
   const filteredPlayers =
@@ -896,14 +835,6 @@ export default function RBPage() {
     setShowSuggestions(false);
   }
 
-  const age =
-    toNumber(
-      getValue(
-        selectedPlayer,
-        ["2026 Age", "Age"]
-      )
-    ) ?? 0;
-
   const rushAttempts =
     toNumber(
       getValue(
@@ -921,17 +852,7 @@ export default function RBPage() {
         selectedPlayer,
         ["Rush Score"]
       )
-    ) ?? 0;
-
-  const ageAdjustedRushScore =
-    toNumber(
-      getValue(
-        selectedPlayer,
-        [
-          "Age Adjusted Rush Score",
-        ]
-      )
-    ) ?? rawRushScore;
+    ) ?? null;
 
   const recScore =
     toNumber(
@@ -942,7 +863,7 @@ export default function RBPage() {
           "Receiving Score",
         ]
       )
-    ) ?? 0;
+    ) ?? null;
 
   const opportunityScore =
     toNumber(
@@ -950,7 +871,7 @@ export default function RBPage() {
         selectedPlayer,
         ["Opportunity Score"]
       )
-    ) ?? 0;
+    ) ?? null;
 
   const team =
     getValue(
@@ -1012,6 +933,8 @@ export default function RBPage() {
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
             Evaluate running backs across rushing, receiving, and fantasy opportunity.
           </p>
+          <p className="mt-3 text-sm text-slate-600">2026 regular season · PPR · Fantasy Points · {updatedAt ? `Updated ${new Date(updatedAt).toLocaleString("en-US", { timeZone: "America/New_York" })} Eastern` : "Loading update time…"}.</p>
+          <p className="mt-2 text-sm text-slate-600">Profile scores compare all {players.length || "—"} RBs in this snapshot, including rookies. The attempts filter below applies only to component percentile grades.</p>
         </div>
 
         {loading && (
@@ -1183,7 +1106,7 @@ export default function RBPage() {
 
                     <input
                       type="range"
-                      min="25"
+                      min="5"
                       max="300"
                       step="5"
                       value={minRushAttempts}
@@ -1198,7 +1121,7 @@ export default function RBPage() {
                     />
 
                     <div className="mt-2 flex justify-between text-xs font-bold text-slate-500">
-                      <span>25 ATT</span>
+                      <span>5 ATT</span>
                       <span>300 ATT</span>
                     </div>
 
@@ -1241,7 +1164,7 @@ export default function RBPage() {
 
                     <div className="min-w-0 flex-1">
                       <div className="text-xs font-black uppercase tracking-[0.18em] text-white/70">
-                        RB Profile
+                        RB Profile · 2026 stats
                       </div>
 
                       <h2 className="mt-1 text-3xl font-black sm:text-4xl">
@@ -1253,11 +1176,7 @@ export default function RBPage() {
                       </h2>
 
                       <div className="mt-2 text-sm font-bold text-white/80">
-                        {team || "—"} • 2026 Age:{" "}
-                        <span className="text-white">
-                          {age || "—"}
-                        </span>{" "}
-                        •{" "}
+                        {team || "—"} •{" "}
                         <span className="text-white">
                           {Math.round(
                             rushAttempts
@@ -1282,11 +1201,9 @@ export default function RBPage() {
                     <ScoreCard
                       title="Rushing Score"
                       score={
-                        ageAdjustedRushScore
-                      }
-                      subtitle={`Raw Rush Score: ${Math.round(
                         rawRushScore
-                      )} • Age adjusted for 2026`}
+                      }
+                      subtitle="Rush gain profile, production, and efficiency"
                     />
 
                     <ScoreCard
