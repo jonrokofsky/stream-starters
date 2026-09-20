@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { toPng } from "html-to-image";
 import { calculateRbScores } from "../../../../lib/data/rbScores";
 import { mergeRbYac, type YacSnapshot } from "../../../../lib/data/rbYac";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const RB_DATA_URL = "/data/rb-2026.json";
 const RB_YAC_DATA_URL = "/data/rb-yac-2026.json";
@@ -374,6 +375,7 @@ function PlayerScoreCard({
 }
 
 export default function RBMatchupPage() {
+  const graphicRef = useRef<HTMLDivElement>(null);
   const [rbRows, setRbRows] = useState<DataRow[]>([]);
   const [defenseRows, setDefenseRows] = useState<DataRow[]>([]);
 
@@ -385,6 +387,8 @@ export default function RBMatchupPage() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [exporting, setExporting] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
 
   useEffect(() => {
     async function loadData() {
@@ -690,6 +694,63 @@ export default function RBMatchupPage() {
       "#2563EB",
     ];
 
+  async function copyGraphicToClipboard() {
+    const node = graphicRef.current;
+    if (!node) return;
+
+    if (!navigator.clipboard || typeof ClipboardItem === "undefined") {
+      alert("Image clipboard copying is not supported in this browser. Try Chrome or Edge on desktop.");
+      return;
+    }
+
+    const previousStyle = {
+      width: node.style.width,
+      maxWidth: node.style.maxWidth,
+      minWidth: node.style.minWidth,
+      borderRadius: node.style.borderRadius,
+    };
+
+    try {
+      setExporting(true);
+      setCopyStatus("idle");
+      node.style.width = "1200px";
+      node.style.maxWidth = "1200px";
+      node.style.minWidth = "1200px";
+      node.style.borderRadius = "0";
+
+      await waitForImages(node);
+      if (document.fonts) await document.fonts.ready;
+
+      const dataUrl = await toPng(node, {
+        pixelRatio: 1.5,
+        backgroundColor: "#ffffff",
+        width: 1200,
+        height: node.scrollHeight,
+      });
+      const blob = await (await fetch(dataUrl)).blob();
+      const pngBlob = blob.type === "image/png"
+        ? blob
+        : new Blob([await blob.arrayBuffer()], { type: "image/png" });
+
+      await navigator.clipboard.write([
+        new ClipboardItem({ "image/png": pngBlob }),
+      ]);
+      setCopyStatus("copied");
+      window.setTimeout(() => setCopyStatus("idle"), 1800);
+    } catch (err) {
+      console.error("RB matchup clipboard copy failed:", err);
+      setCopyStatus("error");
+      alert("The graphic could not be copied. Try Chrome or Edge and allow clipboard access.");
+      window.setTimeout(() => setCopyStatus("idle"), 2200);
+    } finally {
+      node.style.width = previousStyle.width;
+      node.style.maxWidth = previousStyle.maxWidth;
+      node.style.minWidth = previousStyle.minWidth;
+      node.style.borderRadius = previousStyle.borderRadius;
+      setExporting(false);
+    }
+  }
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky-50 via-slate-100 to-white text-slate-950">
       <header className="border-b border-slate-200 bg-white">
@@ -889,7 +950,24 @@ export default function RBMatchupPage() {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-xl">
+              <div className="mb-4 flex justify-end">
+                <button
+                  type="button"
+                  onClick={copyGraphicToClipboard}
+                  disabled={exporting}
+                  className="rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-5 py-3 text-sm font-black text-white shadow-md transition hover:from-sky-600 hover:to-cyan-600 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {exporting
+                    ? "Copying Graphic..."
+                    : copyStatus === "copied"
+                      ? "Copied!"
+                      : copyStatus === "error"
+                        ? "Copy Failed"
+                        : "Copy Graphic"}
+                </button>
+              </div>
+
+              <div ref={graphicRef} className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-xl">
                 <div className="grid md:grid-cols-2">
                   <div
                     className="relative overflow-hidden px-5 py-7 text-white sm:px-8 sm:py-9"
@@ -1105,5 +1183,18 @@ export default function RBMatchupPage() {
           )}
       </section>
     </main>
+  );
+}
+
+async function waitForImages(node: HTMLElement) {
+  const images = Array.from(node.querySelectorAll("img"));
+  await Promise.all(
+    images.map((image) => {
+      if (image.complete) return Promise.resolve();
+      return new Promise<void>((resolve) => {
+        image.addEventListener("load", () => resolve(), { once: true });
+        image.addEventListener("error", () => resolve(), { once: true });
+      });
+    })
   );
 }
