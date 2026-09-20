@@ -1,7 +1,8 @@
 /** User's sheet formulas. Pass the complete population for ONE statistical season. */
 export type RbScoreRow = Record<string, string | number | null | undefined>;
 type Weight = readonly [string, number];
-const gain: Weight[] = [["1+ RuYd%", .1], ["3+ RuYd%", .17], ["5+ RuYd%", .23], ["10+ RuYd%", .22], ["15+ RuYd%", .15], ["20+ RuYd%", .1], ["30+ RuYd%", .03]];
+// Remaining original gain weights sum to .82; preserve their relative influence.
+const gain: Weight[] = [["1+ RuYd%", .1 / .82], ["3+ RuYd%", .17 / .82], ["5+ RuYd%", .23 / .82], ["10+ RuYd%", .22 / .82], ["20+ RuYd%", .1 / .82]];
 const receiving: Weight[] = [["Targets", .2], ["Target Share", .25], ["RecYds/G", .25], ["RecYds/Tgt", .2], ["Team Rec Yards %", .1]];
 const opportunity: Weight[] = [["Weighted Opp./G", .35], ["Target Share", .2], ["Inside 10 Carry%", .15], ["Ins. 5 Carries", .1], ["Ins. 10 Rec.", .1], ["Total TD", .1]];
 const ageFactors: Record<number, number> = {21: 1.135, 22: .999, 23: 1.094, 24: 1.169, 25: 1.185, 26: 1.2, 27: 1.155, 28: 1.047, 29: .73, 30: .711, 31: .475, 32: .525, 33: .54, 34: .46, 35: .506};
@@ -47,7 +48,11 @@ export function calculateRbScores(input: { season: 2025 | 2026; ageColumn: strin
     const rushGain = weighted(row, gain, true);
     const yards = rank(row, "RuYds/G", false);
     const efficiency = rank(row, "RuYds/Rush", false);
-    const rush = rushGain === null || yards === null || efficiency === null ? null : Math.round(yards * .35 + efficiency * .25 + rushGain * .4);
+    const yac = rank(row, "YAC/Att", false);
+    const rush = rushGain === null || yards === null || efficiency === null ? null
+      : input.season === 2026
+        ? yac === null ? null : Math.round(yards * .28 + efficiency * .20 + rushGain * .32 + yac * .20)
+        : Math.round(yards * .35 + efficiency * .25 + rushGain * .4);
     return {
       season: input.season,
       rushGain,

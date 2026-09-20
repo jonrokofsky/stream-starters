@@ -20,3 +20,9 @@ User says TNF data is now on Fantasy Points. Direct retrieval still 403 and no b
 ## Browser importer release — 2026-09-18
 User approved scheduled automatic commits to main after automatic review explained that these can publish through Vercel. Added Playwright importer and GitHub Actions workflow (Mon/Tue/Fri at 08 Eastern, DST gated; season Sep1 2026-Jan12 2027; manual dispatch). Workflow keeps prior snapshot on capture/validation failure, commits only changed snapshot. GitHub scheduling may be delayed; production integration and first hosted run still require verification.
 Successful real import: 72 RBs / 77 player games, copied September18 10:26 Eastern. Browser verifies 72 rows, current timestamp, no age adjustment, default 5 ATT; search finds Gibbs with 45 ATT. Build and type check passed; focused lint has only existing img warning; scoring tests 3 passed. No provider login used. No claim of hosted-run success until observed.
+
+## 2026-09-19 metric display update
+User requested Inside5Carries -> Inside5Carry%, Inside10Rec -> Inside10Rec/Game. RB component configs now use Inside5Carry% percent and compute Inside10Rec./G (missing or zero games yields missing). Both displayed values and percentile pools use the same accessor. Overall Opportunity Score formula remains unchanged, as stated to user. Production build passed. Local preview restarted on3010. Hosted workflow/production verification from prior release remains outstanding.
+
+## 2026-09-19 gain formula change
+User removed 30+ then15+ from display AND gain calculation. Remaining1+/3+/5+/10+/20+ original weights rescaled by dividing by .82, retaining0-100 scale. Recalculated snapshot Gain and Rush scores without changing source copiedAt. Four score tests pass, including invariance to removed metrics and full100 maximum; build passes. Local preview rebuilt. Changes remain local pending push; scheduled cloud importer still runs last pushed formula until these changes are pushed.

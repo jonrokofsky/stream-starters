@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { calculateRbScores } from "../../../lib/data/rbScores";
+import { mergeRbYac, type YacSnapshot } from "../../../lib/data/rbYac";
+import { type CSSProperties, useEffect, useMemo, useState } from "react";
 
 
 type DataRow = Record<string, string>;
@@ -119,20 +121,11 @@ const RUSHING_STATS: StatConfig[] = [
     format: "percent",
   },
   {
-    label: "15+ Rush %",
-    keys: ["15+ RuYd%"],
-    format: "percent",
-  },
-  {
     label: "20+ Rush %",
     keys: ["20+ RuYd%"],
     format: "percent",
   },
-  {
-    label: "30+ Rush %",
-    keys: ["30+ RuYd%"],
-    format: "percent",
-  },
+  { label: "YAC/Att", keys: ["YAC/Att"], format: "decimal" },
 ];
 
 const RECEIVING_STATS: StatConfig[] = [
@@ -188,14 +181,14 @@ const OPPORTUNITY_STATS: StatConfig[] = [
     format: "percent",
   },
   {
-    label: "Inside 5 Carries",
-    keys: ["Ins. 5 Carries"],
-    format: "number",
+    label: "Inside 5 Carry %",
+    keys: ["Inside 5 Carry%"],
+    format: "percent",
   },
   {
-    label: "Inside 10 Rec",
-    keys: ["Ins. 10 Rec."],
-    format: "number",
+    label: "Inside 10 Rec/Game",
+    keys: ["Inside 10 Rec/Game"],
+    format: "decimal2",
   },
   {
     label: "Total TD",
@@ -375,6 +368,14 @@ function getValue(
 ) {
   if (!row) return "";
 
+  if (keys.includes("Inside 10 Rec/Game")) {
+    const receptions = toNumber(row["Ins. 10 Rec."]);
+    const games = toNumber(row["G"]);
+    return receptions !== null && games !== null && games > 0
+      ? String(receptions / games)
+      : "";
+  }
+
   if (
     keys.includes("Targets/Game") ||
     keys.includes("Targets/G") ||
@@ -398,7 +399,24 @@ function getValue(
 }
 
 function teamCode(team: string) {
-  return TEAM_CODES[team.trim()] || "";
+  const value = team.trim();
+  const aliases: Record<string, string> = { ARZ: "ARI", BLT: "BAL", CLV: "CLE", HST: "HOU", LA: "LAR", JAC: "JAX", WSH: "WAS" };
+  const code = aliases[value.toUpperCase()] || value.toUpperCase();
+  return TEAM_CODES[value] || (TEAM_COLORS[code] ? code : "");
+}
+
+function teamName(team: string) {
+  const code = teamCode(team);
+  return Object.entries(TEAM_CODES).find(([, value]) => value === code)?.[0] || team || "Team unavailable";
+}
+
+function themeText(hex: string) {
+  const channels = hex.slice(1).match(/../g)!.map((part) => {
+    const value = parseInt(part, 16) / 255;
+    return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  });
+  const luminance = channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+  return luminance > 0.179 ? "#000000" : "#FFFFFF";
 }
 
 function espnLogo(code: string) {
@@ -591,12 +609,12 @@ function ComponentSection({
 }) {
   return (
     <section className="mt-7 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-      <div className="border-b border-slate-200 bg-slate-950 px-5 py-4 text-white sm:px-6">
+      <div className="border-b-4 px-5 py-4 sm:px-6" style={{ backgroundColor: "var(--team-primary)", color: "var(--team-ink)", borderColor: "var(--team-secondary)" }}>
         <div className="text-lg font-black">
           {title}
         </div>
 
-        <div className="mt-1 text-xs font-bold text-slate-400">
+        <div className="mt-1 text-xs font-bold opacity-90">
           {description}
         </div>
       </div>
@@ -617,6 +635,7 @@ function ComponentSection({
 
           const numericValue =
             toNumber(rawValue) ?? 0;
+          const missingYac = stat.keys.includes("YAC/Att") && toNumber(rawValue) === null;
 
           const population =
             percentilePool
@@ -645,7 +664,7 @@ function ComponentSection({
             <div
               key={stat.label}
               className={`rounded-2xl border p-4 shadow-sm ${
-                qualified
+                qualified && !missingYac
                   ? percentileStyle(pct)
                   : "border-slate-200 bg-white text-slate-900"
               }`}
@@ -655,7 +674,7 @@ function ComponentSection({
                   {stat.label}
                 </div>
 
-                {qualified && (
+                {qualified && !missingYac && (
                   <div className="shrink-0 rounded-full bg-black/10 px-2 py-1 text-[10px] font-black">
                     P{Math.round(pct)}
                   </div>
@@ -663,14 +682,14 @@ function ComponentSection({
               </div>
 
               <div className="mt-3 text-3xl font-black">
-                {formatStatValue(
+                {missingYac ? "—" : formatStatValue(
                   rawValue,
                   stat.format
                 )}
               </div>
 
               <div className="mt-2 text-xs font-bold opacity-70">
-                {qualified
+                {missingYac ? "Not available from PFR" : qualified
                   ? scoreLabel(pct)
                   : "Below qualification"}
               </div>
@@ -684,6 +703,7 @@ function ComponentSection({
 
 export default function RBPage() {
   const [updatedAt, setUpdatedAt] = useState("");
+  const [yacNote, setYacNote] = useState("");
   const [players, setPlayers] =
     useState<DataRow[]>([]);
 
@@ -738,7 +758,20 @@ export default function RBPage() {
               Object.values(row).every(value => typeof value === "string") && "Name" in row)) {
           throw new Error("Invalid 2026 RB snapshot.");
         }
-        const rows = (snapshot.rows as DataRow[])
+        let merged: DataRow[];
+        try {
+          const yacResponse = await fetch("/data/rb-yac-2026.json", { cache: "no-store", signal: controller.signal });
+          if (!yacResponse.ok) throw Error("PFR unavailable");
+          const yacSnapshot: YacSnapshot = await yacResponse.json();
+          merged = mergeRbYac(snapshot.rows, yacSnapshot);
+          setYacNote(`YAC/Att: Pro Football Reference · Captured ${new Date(yacSnapshot.capturedAt).toLocaleDateString("en-US", { timeZone: "America/New_York" })}. ${yacSnapshot.coverageNote}`);
+        } catch {
+          merged = snapshot.rows.map((row: DataRow) => ({ ...row, "YAC/Att": "" }));
+          setYacNote("PFR YAC/Att is unavailable. Rushing Scores require this data.");
+        }
+        const scores = calculateRbScores({ season: 2026, ageColumn: "unused", rows: merged });
+        merged = merged.map((row, i) => ({ ...row, "Rush Score": scores[i].rush === null ? "" : String(scores[i].rush) }));
+        const rows = merged
           .filter(
             (row) => row["Name"]
           )
@@ -889,7 +922,15 @@ export default function RBPage() {
     ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-sky-50 via-slate-100 to-white text-slate-950">
+    <main
+      className="min-h-screen text-slate-950"
+      style={{
+        "--team-primary": colors[0],
+        "--team-secondary": colors[1],
+        "--team-ink": themeText(colors[0]),
+        background: `linear-gradient(180deg, ${colors[0]}18, #f8fafc 55%, #ffffff)`,
+      } as CSSProperties}
+    >
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6">
           <div>
@@ -934,6 +975,7 @@ export default function RBPage() {
             Evaluate running backs across rushing, receiving, and fantasy opportunity.
           </p>
           <p className="mt-3 text-sm text-slate-600">2026 regular season · PPR · Fantasy Points · {updatedAt ? `Updated ${new Date(updatedAt).toLocaleString("en-US", { timeZone: "America/New_York" })} Eastern` : "Loading update time…"}.</p>
+          <p className="mt-2 text-sm text-slate-600">{yacNote}</p>
           <p className="mt-2 text-sm text-slate-600">Profile scores compare all {players.length || "—"} RBs in this snapshot, including rookies. The attempts filter below applies only to component percentile grades.</p>
         </div>
 
@@ -1142,9 +1184,11 @@ export default function RBPage() {
 
               <section className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-xl">
                 <div
-                  className="relative overflow-hidden px-6 py-7 text-white sm:px-8 sm:py-9"
+                  className="relative overflow-hidden border-b-8 px-6 py-7 sm:px-8 sm:py-9"
                   style={{
-                    background: `linear-gradient(135deg, ${colors[0]} 0%, ${colors[0]} 60%, ${colors[1]} 150%)`,
+                    background: colors[0],
+                    color: themeText(colors[0]),
+                    borderColor: colors[1],
                   }}
                 >
                   <div className="absolute -right-10 -top-16 h-52 w-52 rounded-full bg-white/10 blur-2xl" />
@@ -1156,14 +1200,14 @@ export default function RBPage() {
                           src={espnLogo(
                             code
                           )}
-                          alt={`${team} logo`}
+                          alt={`${teamName(team)} logo`}
                           className="h-full w-full object-contain"
                         />
                       </div>
                     )}
 
                     <div className="min-w-0 flex-1">
-                      <div className="text-xs font-black uppercase tracking-[0.18em] text-white/70">
+                      <div className="text-xs font-black uppercase tracking-[0.18em] opacity-90">
                         RB Profile · 2026 stats
                       </div>
 
@@ -1175,9 +1219,9 @@ export default function RBPage() {
                         }
                       </h2>
 
-                      <div className="mt-2 text-sm font-bold text-white/80">
-                        {team || "—"} •{" "}
-                        <span className="text-white">
+                      <div className="mt-2 text-sm font-bold">
+                        {teamName(team)} •{" "}
+                        <span>
                           {Math.round(
                             rushAttempts
                           )}{" "}
@@ -1203,7 +1247,7 @@ export default function RBPage() {
                       score={
                         rawRushScore
                       }
-                      subtitle="Rush gain profile, production, and efficiency"
+                      subtitle="28% rush yards/game · 20% yards/rush · 32% gain profile · 20% YAC/Att"
                     />
 
                     <ScoreCard

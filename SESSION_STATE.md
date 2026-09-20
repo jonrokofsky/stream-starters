@@ -33,3 +33,9 @@ User asked to stop when finished or low on credits. Checked 25% five-hour / 20% 
 
 ## Latest: automatic RB importer — 2026-09-18
 Playwright browser capture succeeded without login. scripts/refresh-rb.mjs imports 72 RBs including updated games. Page now uses current copiedAt and count, threshold5, raw score. User explicitly approved GitHub Actions automatic main commits after auto-review rejection. .github/workflows/rb-refresh.yml targets Mon/Tue/Fri08 Eastern in2026 season. Need verify push, hosted Actions run, and Vercel release; local browser and build checks passed. Public/1.png remains unrelated. Local preview running port3010.
+
+## 2026-09-19 RB team theme
+Full team names and abbreviation-aware palettes implemented. Local browser verifies Lions, Bills, Steelers and mobile width; build passed. Sequential role review recorded in SS-20260919-rb-team-theme artifacts. Uncommitted; preview port3010. User next requests PFR YAC/Att (yards after contact per attempt); source access must be verified before adding data.
+
+## 2026-09-19 YAC/Att
+User approved separate PFR metric and weights 28% yards/game,20% yards/rush,32% gain,20% YAC. Added separate rb-yac-2026.json capture (72RB), validated merge, updated score/client/importer. Six tests/build/browser pass; Gibbs1.5YAC and67Rush. Local preview3010 session44370. Uncommitted/not deployed. PFR browser now accessible via CUA; direct403 remains. PFR auto refresh NOT implemented; FantasyPoints importer merges saved PFR capture. Page exposes capture date and PFR Week1 coverage caveat. Next: user review, then PFR refresh integration and pending hosted verification.

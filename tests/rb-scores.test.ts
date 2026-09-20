@@ -34,3 +34,13 @@ test("only rush gain substitutes a dash with zero; blank inputs stay missing", (
   assert.equal(result[2].rushGain, null);
   assert.equal(result[0].rush, null);
 });
+
+test("gain ignores 15+ and 30+ inputs and preserves a 100-point maximum", () => {
+  const fields = ["1+ RuYd%", "3+ RuYd%", "5+ RuYd%", "10+ RuYd%", "20+ RuYd%"];
+  const rows = [Object.fromEntries(fields.map(k => [k, 0])), Object.fromEntries(fields.map(k => [k, 1]))];
+  const score = (data: typeof rows) => calculateRbScores({season: 2026, ageColumn: "unused", rows: data});
+  const baseline = score(rows);
+  assert.equal(baseline[0].rushGain, 0);
+  assert.equal(baseline[1].rushGain, 100);
+  assert.deepEqual(score(rows.map((r, i) => ({...r, "15+ RuYd%": 100 - i, "30+ RuYd%": 100 - i}))), baseline);
+});
