@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { calculateRbScores } from "../../../../lib/data/rbScores";
+import { mergeRbYac, type YacSnapshot } from "../../../../lib/data/rbYac";
 import { useEffect, useMemo, useState } from "react";
 
 const RB_DATA_URL = "/data/rb-2026.json";
+const RB_YAC_DATA_URL = "/data/rb-yac-2026.json";
 const FOOTBALL_DATA_URL = "/data/nfl-defense-vs-position-2026.json";
 
 type DataRow = Record<string, string>;
@@ -389,21 +392,32 @@ export default function RBMatchupPage() {
         setLoading(true);
         setError("");
 
-        const [rbResponse, defenseResponse] = await Promise.all([
+        const [rbResponse, yacResponse, defenseResponse] = await Promise.all([
           fetch(RB_DATA_URL, { cache: "no-store" }),
+          fetch(RB_YAC_DATA_URL, { cache: "no-store" }),
           fetch(FOOTBALL_DATA_URL, { cache: "no-store" }),
         ]);
 
-        if (!rbResponse.ok || !defenseResponse.ok) {
+        if (!rbResponse.ok || !yacResponse.ok || !defenseResponse.ok) {
           throw new Error("Could not load matchup data.");
         }
 
-        const [rbPayload, defensePayload] = await Promise.all([
+        const [rbPayload, yacPayload, defensePayload] = await Promise.all([
           rbResponse.json(),
+          yacResponse.json() as Promise<YacSnapshot>,
           defenseResponse.json(),
         ]);
 
-        const parsedRB: DataRow[] = (rbPayload.rows || [])
+        const mergedRB = mergeRbYac(rbPayload.rows || [], yacPayload);
+        const scores = calculateRbScores({ season: 2026, ageColumn: "unused", rows: mergedRB });
+        const parsedRB: DataRow[] = mergedRB
+          .map((row, index) => ({
+            ...row,
+            "Rush Gain Profile": scores[index].rushGain === null ? "" : String(scores[index].rushGain),
+            "Rush Score": scores[index].rush === null ? "" : String(scores[index].rush),
+            "Rec Score": scores[index].receiving === null ? "" : String(scores[index].receiving),
+            "Opportunity Score": scores[index].opportunity === null ? "" : String(scores[index].opportunity),
+          }))
           .filter((row: DataRow) => row["Name"])
           .sort((a: DataRow, b: DataRow) =>
             (a["Name"] || "").localeCompare(b["Name"] || "")
@@ -475,7 +489,10 @@ export default function RBMatchupPage() {
   );
 
   const playerTeamCode =
-    TEAM_CODES[playerTeamName] || "";
+    TEAM_CODES[playerTeamName] || normalizeTeam(playerTeamName);
+
+  const playerTeamDisplayName =
+    TEAM_NAMES[playerTeamCode] || playerTeamName;
 
   const teamOptions = useMemo(() => {
     return defenseRows
@@ -539,20 +556,12 @@ export default function RBMatchupPage() {
     setShowSuggestions(false);
   }
 
-  const age =
-    toNumber(
-      getValue(selectedPlayer, ["2026 Age", "Age"])
-    ) ?? 0;
-
   const rawRushScore =
     toNumber(
       getValue(selectedPlayer, ["Rush Score"])
     ) ?? 0;
 
-  const rushingScore =
-    toNumber(
-      getValue(selectedPlayer, ["Age Adjusted Rush Score"])
-    ) ?? rawRushScore;
+  const rushingScore = rawRushScore;
 
   const receivingScore =
     toNumber(
@@ -568,6 +577,13 @@ export default function RBMatchupPage() {
     toNumber(
       getValue(selectedPlayer, ["Rush Gain Profile"])
     ) ?? 0;
+
+  const yacPerAttempt =
+    toNumber(getValue(selectedPlayer, ["YAC/Att"])) ?? 0;
+
+  const playerProfileScore = clampPercentile(
+    rushingScore * 0.4 + receivingScore * 0.25 + opportunityScore * 0.35
+  );
 
   const defenseStatResults = useMemo(() => {
     if (!selectedDefenseRow) return [];
@@ -652,6 +668,10 @@ export default function RBMatchupPage() {
 
   const adjustedOverallPercentile = clampPercentile(rawOverallPercentile);
 
+  const combinedMatchupScore = clampPercentile(
+    playerProfileScore * 0.6 + adjustedOverallPercentile * 0.4
+  );
+
   const defenseTeamName =
     selectedDefenseRow?.["Team"] &&
     selectedDefenseRow["Team"].trim().length > 3
@@ -720,8 +740,8 @@ export default function RBMatchupPage() {
           </h1>
 
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
-            Compare an RB&apos;s profile with the opposing defense&apos;s
-            Current 2026 RB matchup grades from Pro Football Reference.
+            Combine an RB&apos;s current profile with 2026 opponent results
+            from Pro Football Reference.
           </p>
         </div>
 
@@ -884,7 +904,7 @@ export default function RBMatchupPage() {
                             src={espnLogo(
                               playerTeamCode
                             )}
-                            alt={`${playerTeamName} logo`}
+                            alt={`${playerTeamDisplayName} logo`}
                             className="h-full w-full object-contain"
                           />
                         </div>
@@ -900,7 +920,7 @@ export default function RBMatchupPage() {
                         </h2>
 
                         <div className="mt-2 text-xs font-bold text-white/80 sm:text-sm">
-                          {playerTeamName} • 2026 Age {age || "—"}
+                          {playerTeamDisplayName} • 2026 season
                         </div>
                       </div>
                     </div>
@@ -963,7 +983,7 @@ export default function RBMatchupPage() {
                     </div>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
                     <PlayerScoreCard
                       title="Rushing Score"
                       score={rushingScore}
@@ -983,26 +1003,45 @@ export default function RBMatchupPage() {
                       title="Rush Gain Profile"
                       score={rushGainProfile}
                     />
+
+                    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
+                        YAC / Attempt
+                      </div>
+                      <div className="mt-4 text-5xl font-black leading-none text-slate-950">
+                        {yacPerAttempt.toFixed(1)}
+                      </div>
+                      <div className="mt-2 text-xs font-black text-slate-500">
+                        PFR rushing efficiency
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="border-b border-slate-200 bg-slate-950 px-5 py-6 text-white sm:px-8">
                   <div className="mb-5">
                     <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">
-                      2026 Overall RB Matchup Grade
+                      Combined RB Start Score
                     </div>
 
                     <div className="mt-1 text-2xl font-black">
                       {matchupLabel(
-                        adjustedOverallPercentile
+                        combinedMatchupScore
                       )}
                     </div>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="grid gap-3 sm:grid-cols-3">
                     <div className="rounded-2xl border border-slate-700 bg-slate-900 p-4">
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
-                        2026 Results
+                        Player Profile
+                      </div>
+                      <div className="mt-2 text-4xl font-black">{Math.round(playerProfileScore)}</div>
+                      <div className="mt-1 text-xs font-bold text-slate-400">60% of combined score</div>
+                    </div>
+                    <div className="rounded-2xl border border-slate-700 bg-slate-900 p-4">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
+                        Opponent Matchup
                       </div>
 
                       <div className="mt-2 flex items-end justify-between gap-3">
@@ -1021,31 +1060,31 @@ export default function RBMatchupPage() {
                         </div>
 
                         <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">
-                          Percentile
+                          40% of combined score
                         </div>
                       </div>
                     </div>
 
                     <div
                       className={`rounded-2xl border p-4 ${percentileStyle(
-                        adjustedOverallPercentile
+                        combinedMatchupScore
                       )}`}
                     >
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] opacity-70">
-                        2026 Grade
+                        Combined Score
                       </div>
 
                       <div className="mt-2 flex items-end justify-between gap-3">
                         <div>
                           <div className="text-4xl font-black">
                             {Math.round(
-                              adjustedOverallPercentile
+                              combinedMatchupScore
                             )}
                           </div>
 
                           <div className="mt-1 text-xs font-bold opacity-75">
                             {matchupLabel(
-                              adjustedOverallPercentile
+                              combinedMatchupScore
                             )}
                           </div>
                         </div>
@@ -1060,11 +1099,11 @@ export default function RBMatchupPage() {
                   <div className="mt-4 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <div className="text-xs font-bold text-slate-300">
-                          Current season results from Pro Football Reference
+                          Player profile: rushing 40% · receiving 25% · opportunity 35%
                       </div>
 
                       <div className="text-xs font-black text-white">
-                        No offseason adjustment
+                        Combined: player 60% · opponent 40%
                       </div>
                     </div>
                   </div>
