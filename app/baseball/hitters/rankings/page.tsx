@@ -48,6 +48,11 @@ const GENERATE_RANK_OPTIONS = [
   20,
   30,
   50,
+  100,
+  150,
+  200,
+  250,
+  300,
 ] as const;
 
 const RANKING_DISPLAY_LIMITS = [
