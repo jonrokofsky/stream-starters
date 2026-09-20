@@ -50,6 +50,14 @@ const GENERATE_RANK_OPTIONS = [
   50,
 ] as const;
 
+const RANKING_DISPLAY_LIMITS = [
+  100,
+  150,
+  200,
+  250,
+  300,
+] as const;
+
 type PositionTab =
   (typeof POSITION_TABS)[number];
 
@@ -58,6 +66,9 @@ type MatchupPool =
 
 type GenerateRankLimit =
   (typeof GENERATE_RANK_OPTIONS)[number];
+
+type RankingDisplayLimit =
+  (typeof RANKING_DISPLAY_LIMITS)[number];
 
 type MatchupMode =
   | "generate"
@@ -1232,6 +1243,11 @@ export default function HitterRankingsPage() {
     >(
       "Overall"
     );
+
+  const [
+    rankingDisplayLimit,
+    setRankingDisplayLimit,
+  ] = useState<RankingDisplayLimit>(100);
 
   const [
     matchupPool,
@@ -2698,6 +2714,11 @@ export default function HitterRankingsPage() {
       ]
     );
 
+  const displayedLeaderboard = useMemo(
+    () => leaderboard.slice(0, rankingDisplayLimit),
+    [leaderboard, rankingDisplayLimit]
+  );
+
   function startReorderMode() {
     const items =
       leaderboard.map(
@@ -4158,6 +4179,28 @@ export default function HitterRankingsPage() {
                       )
                     )}
                   </div>
+
+                  <div className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+                    Show Rankings
+                  </div>
+
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {RANKING_DISPLAY_LIMITS.map((limit) => (
+                      <button
+                        key={limit}
+                        type="button"
+                        disabled={reorderMode}
+                        onClick={() => setRankingDisplayLimit(limit)}
+                        className={`rounded-full px-4 py-2 text-sm font-black ${
+                          rankingDisplayLimit === limit
+                            ? "bg-emerald-600 text-white"
+                            : "bg-slate-100 text-slate-700"
+                        } disabled:opacity-40`}
+                      >
+                        Top {limit}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
@@ -4232,7 +4275,7 @@ export default function HitterRankingsPage() {
                   <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-black">
                     {reorderMode
                       ? reorderItems.length
-                      : leaderboard.length}{" "}
+                      : displayedLeaderboard.length}{" "}
                     hitters
                   </div>
                 </div>
@@ -4423,7 +4466,7 @@ export default function HitterRankingsPage() {
                             );
                           }
                         )
-                      : leaderboard.map(
+                      : displayedLeaderboard.map(
                           (
                             item,
                             index
