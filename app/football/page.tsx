@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-const CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRms3Mg29z1wsJMAFbzpP8Bpvh3MOMB4c_qa5Dtnrvtl2I-pIDtcCDihGTlWy5mJ3Zeja3ywNng5fyO/pub?gid=1795193849&single=true&output=csv";
+const DATA_URL = "/data/nfl-defense-vs-position-2026.json";
 
 type Position = "QB" | "RB" | "WR" | "TE";
 type Direction = "higher" | "lower" | "neutral";
@@ -485,7 +484,7 @@ export default function FootballPage() {
         setLoading(true);
         setError("");
 
-        const response = await fetch(CSV_URL, {
+        const response = await fetch(DATA_URL, {
           cache: "no-store",
         });
 
@@ -493,27 +492,9 @@ export default function FootballPage() {
           throw new Error("Could not load football data.");
         }
 
-        const text = await response.text();
-        const parsed = parseCSV(text);
-
-        if (parsed.length < 2) {
-          throw new Error("Football sheet is empty.");
-        }
-
-        const headers = parsed[0].map((header) => header.trim());
-
-        const mapped = parsed
-          .slice(1)
-          .map((cells) => {
-            const row: DefenseRow = {};
-
-            headers.forEach((header, index) => {
-              row[header] = (cells[index] || "").trim();
-            });
-
-            return row;
-          })
-          .filter((row) => {
+        const payload = await response.json();
+        const mapped: DefenseRow[] = (payload.rows || [])
+          .filter((row: DefenseRow) => {
             const team =
               row["Acronym"] ||
               row["Team Acronym"] ||
@@ -538,7 +519,7 @@ export default function FootballPage() {
         console.error(err);
 
         setError(
-          "I couldn't load the football sheet. Make sure the Google Sheet is published to the web as CSV."
+          "I couldn't load the current 2026 PFR matchup snapshot."
         );
       } finally {
         setLoading(false);
@@ -652,9 +633,7 @@ export default function FootballPage() {
 
   const percentileAdjustment = offseasonAdjustment * -7.5;
 
-  const adjustedOverallPercentile = clampPercentile(
-    rawOverallPercentile + percentileAdjustment
-  );
+  const adjustedOverallPercentile = clampPercentile(rawOverallPercentile);
 
   const teamName =
     selectedRow?.["Team"] && selectedRow["Team"].trim().length > 3
@@ -690,9 +669,8 @@ export default function FootballPage() {
           </h1>
 
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
-            Compare 2025 defense-vs-position performance with a 2026
-            offseason-adjusted matchup grade. Red is favorable for the
-            offensive player. Blue is tougher.
+            Compare current 2026 defense-vs-position results from Pro Football
+            Reference. Red is favorable for the offensive player. Blue is tougher.
           </p>
         </div>
 
@@ -803,8 +781,7 @@ export default function FootballPage() {
                         </span>
 
                         <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-black backdrop-blur">
-                          Adj {offseasonAdjustment > 0 ? "+" : ""}
-                          {offseasonAdjustment}
+                          2026 Live
                         </span>
                       </div>
                     </div>
@@ -825,7 +802,7 @@ export default function FootballPage() {
                   <div className="grid gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-slate-700 bg-slate-900 p-4">
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
-                        2025 Raw
+                        2026 Results
                       </div>
 
                       <div className="mt-2 flex items-end justify-between gap-3">
@@ -851,7 +828,7 @@ export default function FootballPage() {
                       )}`}
                     >
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] opacity-70">
-                        2026 Adjusted
+                        2026 Grade
                       </div>
 
                       <div className="mt-2 flex items-end justify-between gap-3">
@@ -875,13 +852,11 @@ export default function FootballPage() {
                   <div className="mt-4 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <div className="text-xs font-bold text-slate-300">
-                        {adjustmentText(offseasonAdjustment)}
+                        Current season results from Pro Football Reference
                       </div>
 
                       <div className="text-xs font-black text-white">
-                        Matchup adjustment:{" "}
-                        {percentileAdjustment > 0 ? "+" : ""}
-                        {percentileAdjustment.toFixed(1)} pts
+                        No offseason adjustment
                       </div>
                     </div>
                   </div>
@@ -891,11 +866,11 @@ export default function FootballPage() {
                   <div className="mb-4 flex items-center justify-between gap-3">
                     <div>
                       <div className="text-lg font-black text-slate-950">
-                        2025 {position} Matchup Stats
+                        2026 {position} Matchup Stats
                       </div>
 
                       <div className="text-xs text-slate-500">
-                        Raw 2025 performance compared with all NFL defenses
+                        Per-game 2026 performance compared with all NFL defenses
                       </div>
                     </div>
 
@@ -948,25 +923,23 @@ export default function FootballPage() {
                   <div className="mt-6 grid gap-4 md:grid-cols-2">
                     <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                       <div className="text-xs font-black uppercase tracking-[0.15em] text-slate-500">
-                        2025 Raw
+                        2026 Results
                       </div>
 
                       <p className="mt-2 text-sm leading-6 text-slate-600">
                         The individual stat cards and raw matchup percentile are
-                        calculated entirely from the 2025 defense-vs-position
-                        results in your sheet.
+                        calculated from current 2026 PFR defense-vs-position results.
                       </p>
                     </div>
 
                     <div className="rounded-2xl border border-sky-200 bg-sky-50 p-4">
                       <div className="text-xs font-black uppercase tracking-[0.15em] text-sky-700">
-                        2026 Offseason Adjustment
+                        Automatic Updates
                       </div>
 
                       <p className="mt-2 text-sm leading-6 text-slate-600">
-                        The overall 2026 grade adjusts the 2025 matchup
-                        percentile by up to 15 points based only on defensive
-                        changes made during the offseason and NFL Draft.
+                        The validated snapshot refreshes Monday, Tuesday, and
+                        Friday mornings during the season.
                       </p>
                     </div>
                   </div>

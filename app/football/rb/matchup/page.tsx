@@ -3,11 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-const RB_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRoMlTzy9AR2vn-fy2hv-JJUf83oCAyw5nqg7EmRNyxm8PXaE_lsa4jXJu41qJjK6BubYlHMtpo1elk/pub?gid=684746044&single=true&output=csv";
-
-const FOOTBALL_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRms3Mg29z1wsJMAFbzpP8Bpvh3MOMB4c_qa5Dtnrvtl2I-pIDtcCDihGTlWy5mJ3Zeja3ywNng5fyO/pub?gid=1795193849&single=true&output=csv";
+const RB_DATA_URL = "/data/rb-2026.json";
+const FOOTBALL_DATA_URL = "/data/nfl-defense-vs-position-2026.json";
 
 type DataRow = Record<string, string>;
 type Direction = "higher" | "lower" | "neutral";
@@ -393,26 +390,26 @@ export default function RBMatchupPage() {
         setError("");
 
         const [rbResponse, defenseResponse] = await Promise.all([
-          fetch(RB_CSV_URL, { cache: "no-store" }),
-          fetch(FOOTBALL_CSV_URL, { cache: "no-store" }),
+          fetch(RB_DATA_URL, { cache: "no-store" }),
+          fetch(FOOTBALL_DATA_URL, { cache: "no-store" }),
         ]);
 
         if (!rbResponse.ok || !defenseResponse.ok) {
           throw new Error("Could not load matchup data.");
         }
 
-        const [rbText, defenseText] = await Promise.all([
-          rbResponse.text(),
-          defenseResponse.text(),
+        const [rbPayload, defensePayload] = await Promise.all([
+          rbResponse.json(),
+          defenseResponse.json(),
         ]);
 
-        const parsedRB = parseCSV(rbText)
-          .filter((row) => row["Name"])
-          .sort((a, b) =>
+        const parsedRB: DataRow[] = (rbPayload.rows || [])
+          .filter((row: DataRow) => row["Name"])
+          .sort((a: DataRow, b: DataRow) =>
             (a["Name"] || "").localeCompare(b["Name"] || "")
           );
 
-        const parsedDefense = parseCSV(defenseText).filter((row) => {
+        const parsedDefense: DataRow[] = (defensePayload.rows || []).filter((row: DataRow) => {
           const team =
             row["Acronym"] ||
             row["Team Acronym"] ||
@@ -653,11 +650,7 @@ export default function RBMatchupPage() {
   const percentileAdjustment =
     offseasonAdjustment * -7.5;
 
-  const adjustedOverallPercentile =
-    clampPercentile(
-      rawOverallPercentile +
-        percentileAdjustment
-    );
+  const adjustedOverallPercentile = clampPercentile(rawOverallPercentile);
 
   const defenseTeamName =
     selectedDefenseRow?.["Team"] &&
@@ -728,7 +721,7 @@ export default function RBMatchupPage() {
 
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
             Compare an RB&apos;s profile with the opposing defense&apos;s
-            2025 and 2026-adjusted RB matchup grades.
+            Current 2026 RB matchup grades from Pro Football Reference.
           </p>
         </div>
 
@@ -951,11 +944,7 @@ export default function RBMatchupPage() {
                           </span>
 
                           <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-black">
-                            Adj{" "}
-                            {offseasonAdjustment > 0
-                              ? "+"
-                              : ""}
-                            {offseasonAdjustment}
+                            2026 Live
                           </span>
                         </div>
                       </div>
@@ -1013,7 +1002,7 @@ export default function RBMatchupPage() {
                   <div className="grid gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-slate-700 bg-slate-900 p-4">
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
-                        2025 Raw
+                        2026 Results
                       </div>
 
                       <div className="mt-2 flex items-end justify-between gap-3">
@@ -1043,7 +1032,7 @@ export default function RBMatchupPage() {
                       )}`}
                     >
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] opacity-70">
-                        2026 Adjusted
+                        2026 Grade
                       </div>
 
                       <div className="mt-2 flex items-end justify-between gap-3">
@@ -1071,20 +1060,11 @@ export default function RBMatchupPage() {
                   <div className="mt-4 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <div className="text-xs font-bold text-slate-300">
-                        {adjustmentText(
-                          offseasonAdjustment
-                        )}
+                          Current season results from Pro Football Reference
                       </div>
 
                       <div className="text-xs font-black text-white">
-                        Matchup adjustment:{" "}
-                        {percentileAdjustment > 0
-                          ? "+"
-                          : ""}
-                        {percentileAdjustment.toFixed(
-                          1
-                        )}{" "}
-                        pts
+                        No offseason adjustment
                       </div>
                     </div>
                   </div>
@@ -1094,11 +1074,11 @@ export default function RBMatchupPage() {
                   <div className="mb-4 flex items-center justify-between gap-3">
                     <div>
                       <div className="text-lg font-black">
-                        2025 RB Matchup Stats
+                        2026 RB Matchup Stats
                       </div>
 
                       <div className="text-xs text-slate-500">
-                        Raw 2025 performance compared with all NFL defenses
+                        Per-game 2026 performance compared with all NFL defenses
                       </div>
                     </div>
 
