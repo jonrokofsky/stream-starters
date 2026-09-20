@@ -972,139 +972,61 @@ export default function RBMatchupPage() {
                   </div>
                 </div>
 
-                <div className="border-b border-slate-200 p-5 sm:p-8">
-                  <div className="mb-4">
-                    <div className="text-lg font-black">
-                      RB Profile
-                    </div>
-
-                    <div className="text-xs text-slate-500">
-                      Player grades from the RB Profile Tool
-                    </div>
-                  </div>
-
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                    <PlayerScoreCard
-                      title="Rushing Score"
-                      score={rushingScore}
-                    />
-
-                    <PlayerScoreCard
-                      title="Receiving Score"
-                      score={receivingScore}
-                    />
-
-                    <PlayerScoreCard
-                      title="Opportunity Score"
-                      score={opportunityScore}
-                    />
-
-                    <PlayerScoreCard
-                      title="Rush Gain Profile"
-                      score={rushGainProfile}
-                    />
-
-                    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">
-                        YAC / Attempt
+                <div className="border-b border-slate-200 bg-slate-950 px-5 py-6 text-white sm:px-8">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div
+                      className={`rounded-2xl border p-4 ${percentileStyle(
+                        rawOverallPercentile
+                      )}`}
+                    >
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] opacity-70">
+                        Matchup Grade
                       </div>
-                      <div className="mt-4 text-5xl font-black leading-none text-slate-950">
-                        {yacPerAttempt.toFixed(1)}
+                      <div className="mt-2 flex items-end justify-between gap-3">
+                        <div>
+                          <div className="text-4xl font-black">
+                            {Math.round(rawOverallPercentile)}
+                          </div>
+                          <div className="mt-1 text-xs font-bold opacity-75">
+                            {matchupLabel(rawOverallPercentile)}
+                          </div>
+                        </div>
+                        <div className="text-[10px] font-black uppercase tracking-[0.12em] opacity-60">
+                          Opponent
+                        </div>
                       </div>
-                      <div className="mt-2 text-xs font-black text-slate-500">
-                        PFR rushing efficiency
+                    </div>
+                    <div className="rounded-2xl border border-sky-500 bg-sky-500 p-4 text-slate-950">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] opacity-70">
+                        Combined Start Score
+                      </div>
+                      <div className="mt-2 flex items-end justify-between gap-3">
+                        <div>
+                          <div className="text-4xl font-black">{Math.round(combinedMatchupScore)}</div>
+                          <div className="mt-1 text-xs font-bold opacity-75">{matchupLabel(combinedMatchupScore)}</div>
+                        </div>
+                        <div className="text-right text-[10px] font-black uppercase tracking-[0.12em] opacity-60">
+                          60% player · 40% matchup
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="border-b border-slate-200 bg-slate-950 px-5 py-6 text-white sm:px-8">
-                  <div className="mb-5">
-                    <div className="text-xs font-black uppercase tracking-[0.18em] text-slate-400">
-                      Combined RB Start Score
-                    </div>
-
-                    <div className="mt-1 text-2xl font-black">
-                      {matchupLabel(
-                        combinedMatchupScore
-                      )}
-                    </div>
+                <div className="border-b border-slate-200 p-5 sm:p-8">
+                  <div className="mb-4">
+                    <div className="text-lg font-black">Player Stats</div>
+                    <div className="text-xs text-slate-500">Current RB profile grades and rushing efficiency</div>
                   </div>
-
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    <div className="rounded-2xl border border-slate-700 bg-slate-900 p-4">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
-                        Player Profile
-                      </div>
-                      <div className="mt-2 text-4xl font-black">{Math.round(playerProfileScore)}</div>
-                      <div className="mt-1 text-xs font-bold text-slate-400">60% of combined score</div>
-                    </div>
-                    <div className="rounded-2xl border border-slate-700 bg-slate-900 p-4">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
-                        Opponent Matchup
-                      </div>
-
-                      <div className="mt-2 flex items-end justify-between gap-3">
-                        <div>
-                          <div className="text-4xl font-black">
-                            {Math.round(
-                              rawOverallPercentile
-                            )}
-                          </div>
-
-                          <div className="mt-1 text-xs font-bold text-slate-400">
-                            {matchupLabel(
-                              rawOverallPercentile
-                            )}
-                          </div>
-                        </div>
-
-                        <div className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">
-                          40% of combined score
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      className={`rounded-2xl border p-4 ${percentileStyle(
-                        combinedMatchupScore
-                      )}`}
-                    >
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] opacity-70">
-                        Combined Score
-                      </div>
-
-                      <div className="mt-2 flex items-end justify-between gap-3">
-                        <div>
-                          <div className="text-4xl font-black">
-                            {Math.round(
-                              combinedMatchupScore
-                            )}
-                          </div>
-
-                          <div className="mt-1 text-xs font-bold opacity-75">
-                            {matchupLabel(
-                              combinedMatchupScore
-                            )}
-                          </div>
-                        </div>
-
-                        <div className="text-[10px] font-black uppercase tracking-[0.12em] opacity-60">
-                          Percentile
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="text-xs font-bold text-slate-300">
-                          Player profile: rushing 40% · receiving 25% · opportunity 35%
-                      </div>
-
-                      <div className="text-xs font-black text-white">
-                        Combined: player 60% · opponent 40%
-                      </div>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                    <PlayerScoreCard title="Rushing Score" score={rushingScore} />
+                    <PlayerScoreCard title="Receiving Score" score={receivingScore} />
+                    <PlayerScoreCard title="Opportunity Score" score={opportunityScore} />
+                    <PlayerScoreCard title="Rush Gain Profile" score={rushGainProfile} />
+                    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">YAC / Attempt</div>
+                      <div className="mt-4 text-5xl font-black leading-none text-slate-950">{yacPerAttempt.toFixed(1)}</div>
+                      <div className="mt-2 text-xs font-black text-slate-500">PFR rushing efficiency</div>
                     </div>
                   </div>
                 </div>
@@ -1113,7 +1035,7 @@ export default function RBMatchupPage() {
                   <div className="mb-4 flex items-center justify-between gap-3">
                     <div>
                       <div className="text-lg font-black">
-                        2026 RB Matchup Stats
+                        Defense Stats
                       </div>
 
                       <div className="text-xs text-slate-500">

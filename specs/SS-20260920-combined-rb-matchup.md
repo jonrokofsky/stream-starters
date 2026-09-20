@@ -13,3 +13,10 @@ Combine the current RB profile and 2026 PFR defense-vs-RB results in one decisio
 ## Data and schedule
 
 The RB player snapshot, PFR YAC snapshot, and PFR defense-vs-position snapshot refresh through the same Monday, Tuesday, and Friday 8 AM Eastern in-season workflow.
+
+## Display order
+
+1. Matchup grade
+2. Combined start score
+3. Player stats
+4. Defense stats
