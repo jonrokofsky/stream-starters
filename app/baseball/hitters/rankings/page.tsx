@@ -9,8 +9,8 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMoQ6GKabXGL5IlKEQDJQOu3YwvnHkVl_SlSA2E3zBKUmA7hsX-a8yQW8wPmkuU5g0R3CZv9x4aGvj/pub?gid=842366536&single=true&output=csv";
+const HITTER_DATA_URL =
+  "/data/hitter-rankings-2026.json";
 
 const STARTING_ELO = 1500;
 const MIN_PA = 50;
@@ -612,145 +612,6 @@ function playerInMatchupPool(
         position
       )
   );
-}
-
-function parseCSV(
-  text: string
-): Player[] {
-  const rows: string[][] =
-    [];
-
-  let row: string[] = [];
-  let cell = "";
-  let inQuotes =
-    false;
-
-  for (
-    let i = 0;
-    i <
-    text.length;
-    i++
-  ) {
-    const char =
-      text[i];
-
-    if (
-      char === '"'
-    ) {
-      if (
-        inQuotes &&
-        text[
-          i + 1
-        ] === '"'
-      ) {
-        cell += '"';
-        i++;
-      } else {
-        inQuotes =
-          !inQuotes;
-      }
-    } else if (
-      char === "," &&
-      !inQuotes
-    ) {
-      row.push(
-        cell
-      );
-      cell = "";
-    } else if (
-      (
-        char ===
-          "\n" ||
-        char ===
-          "\r"
-      ) &&
-      !inQuotes
-    ) {
-      if (
-        char ===
-          "\r" &&
-        text[
-          i + 1
-        ] === "\n"
-      ) {
-        i++;
-      }
-
-      row.push(
-        cell
-      );
-
-      rows.push(
-        row
-      );
-
-      row = [];
-      cell = "";
-    } else {
-      cell +=
-        char;
-    }
-  }
-
-  if (
-    cell.length ||
-    row.length
-  ) {
-    row.push(
-      cell
-    );
-
-    rows.push(
-      row
-    );
-  }
-
-  if (
-    rows.length <
-    2
-  ) {
-    return [];
-  }
-
-  const headers =
-    rows[0].map(
-      (header) =>
-        header.trim()
-    );
-
-  return rows
-    .slice(1)
-    .map(
-      (r) => {
-        const obj: Record<
-          string,
-          string
-        > = {};
-
-        headers.forEach(
-          (
-            header,
-            index
-          ) => {
-            obj[
-              header
-            ] =
-              (
-                r[
-                  index
-                ] ??
-                ""
-              ).trim();
-          }
-        );
-
-        return obj as Player;
-      }
-    )
-    .filter(
-      (player) =>
-        player.Name
-    );
 }
 
 function numericValue(
@@ -1355,13 +1216,13 @@ export default function HitterRankingsPage() {
           );
 
           const [
-            csvResponse,
+            dataResponse,
             rankingResponse,
           ] =
             await Promise.all(
               [
                 fetch(
-                  CSV_URL,
+                  HITTER_DATA_URL,
                   {
                     cache:
                       "no-store",
@@ -1378,10 +1239,10 @@ export default function HitterRankingsPage() {
             );
 
           if (
-            !csvResponse.ok
+            !dataResponse.ok
           ) {
             throw new Error(
-              "Unable to load hitter sheet."
+              "Unable to load hitter data."
             );
           }
 
@@ -1393,16 +1254,22 @@ export default function HitterRankingsPage() {
             );
           }
 
-          const csvText =
-            await csvResponse.text();
+          const hitterData =
+            await dataResponse.json();
 
           const cloudData =
             await rankingResponse.json();
 
-          const allPlayers =
-            parseCSV(
-              csvText
+          const allPlayers: Player[] =
+            Array.isArray(hitterData?.rows)
+              ? hitterData.rows
+              : [];
+
+          if (allPlayers.length === 0) {
+            throw new Error(
+              "Hitter data snapshot is empty."
             );
+          }
 
           const eligiblePlayers =
             allPlayers.filter(
