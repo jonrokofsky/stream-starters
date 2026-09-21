@@ -19,7 +19,11 @@ try {
     return Array.from(table.querySelectorAll('tbody tr'))
       .map(row => Array.from(row.querySelectorAll('th,td')).map(cell => cell.textContent.trim()))
       .filter(cells => cells[positionIndex] === 'RB')
-      .map(cells => ({Name:cells[playerIndex],Team:cells[teamIndex],'YAC/Att':cells[yacIndex]}));
+      .map(cells => ({
+        Name:cells[playerIndex],
+        Team:({KAN:'KC',LVR:'LV',NWE:'NE',SFO:'SF',GNB:'GB',TAM:'TB',NOR:'NO'}[cells[teamIndex]] || cells[teamIndex]),
+        'YAC/Att':cells[yacIndex]
+      }));
   });
   let yacSnapshot=previousYac;
   try {
@@ -29,7 +33,9 @@ try {
     await page.waitForTimeout(1500);
     const yacSecond = await captureYac();
     if(JSON.stringify(yacFirst)!==JSON.stringify(yacSecond))throw Error('PFR table changed while reading; retry later');
-    if(yacSecond.length<60 || new Set(yacSecond.map(row=>row.Name+':'+row.Team)).size!==yacSecond.length)throw Error('Unexpected PFR population');
+    // PFR's qualifying carry threshold changes by week, so the early-season
+    // table can be much smaller than the full player pool.
+    if(yacSecond.length<35 || new Set(yacSecond.map(row=>row.Name+':'+row.Team)).size!==yacSecond.length)throw Error('Unexpected PFR population');
     if(yacSecond.some(row=>!row.Name || !row.Team || !/^\d+(\.\d+)?$/.test(row['YAC/Att'])))throw Error('Invalid PFR YAC data');
     const coverageText = await page.locator('#all_adv_rushing').locator('text=/updated through week/i').first().textContent().catch(()=>null);
     const coverageMatch = coverageText?.match(/updated through week\s+\d+[^.]*\./i);
