@@ -583,7 +583,7 @@ export default function RBMatchupPage() {
     ) ?? 0;
 
   const yacPerAttempt =
-    toNumber(getValue(selectedPlayer, ["YAC/Att"])) ?? 0;
+    toNumber(getValue(selectedPlayer, ["YAC/Att"]));
 
   const playerProfileScore = clampPercentile(
     rushingScore * 0.4 + receivingScore * 0.25 + opportunityScore * 0.35
@@ -1103,8 +1103,8 @@ export default function RBMatchupPage() {
                     <PlayerScoreCard title="Rush Gain Profile" score={rushGainProfile} />
                     <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                       <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">YAC / Attempt</div>
-                      <div className="mt-4 text-5xl font-black leading-none text-slate-950">{yacPerAttempt.toFixed(1)}</div>
-                      <div className="mt-2 text-xs font-black text-slate-500">PFR rushing efficiency</div>
+                      <div className="mt-4 text-5xl font-black leading-none text-slate-950">{yacPerAttempt === null ? "—" : yacPerAttempt.toFixed(1)}</div>
+                      <div className="mt-2 text-xs font-black text-slate-500">{yacPerAttempt === null ? "Not available · excluded from Rush Score" : "PFR rushing efficiency"}</div>
                     </div>
                   </div>
                 </div>

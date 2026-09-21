@@ -51,7 +51,11 @@ export function calculateRbScores(input: { season: 2025 | 2026; ageColumn: strin
     const yac = rank(row, "YAC/Att", false);
     const rush = rushGain === null || yards === null || efficiency === null ? null
       : input.season === 2026
-        ? yac === null ? null : Math.round(yards * .28 + efficiency * .20 + rushGain * .32 + yac * .20)
+        ? yac === null
+          // Reallocate the missing 20% proportionally across the original
+          // production, efficiency, and gain-profile components.
+          ? Math.round(yards * .35 + efficiency * .25 + rushGain * .40)
+          : Math.round(yards * .28 + efficiency * .20 + rushGain * .32 + yac * .20)
         : Math.round(yards * .35 + efficiency * .25 + rushGain * .4);
     return {
       season: input.season,

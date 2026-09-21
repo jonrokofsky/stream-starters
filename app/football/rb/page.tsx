@@ -767,7 +767,7 @@ export default function RBPage() {
           setYacNote(`YAC/Att: Pro Football Reference · Captured ${new Date(yacSnapshot.capturedAt).toLocaleDateString("en-US", { timeZone: "America/New_York" })}. ${yacSnapshot.coverageNote}`);
         } catch {
           merged = snapshot.rows.map((row: DataRow) => ({ ...row, "YAC/Att": "" }));
-          setYacNote("PFR YAC/Att is unavailable. Rushing Scores require this data.");
+          setYacNote("PFR YAC/Att is unavailable. Rushing Scores use the reweighted production, efficiency, and gain-profile formula.");
         }
         const scores = calculateRbScores({ season: 2026, ageColumn: "unused", rows: merged });
         merged = merged.map((row, i) => ({ ...row, "Rush Score": scores[i].rush === null ? "" : String(scores[i].rush) }));
@@ -1247,7 +1247,9 @@ export default function RBPage() {
                       score={
                         rawRushScore
                       }
-                      subtitle="28% rush yards/game · 20% yards/rush · 32% gain profile · 20% YAC/Att"
+                      subtitle={toNumber(getValue(selectedPlayer, ["YAC/Att"])) === null
+                        ? "35% rush yards/game · 25% yards/rush · 40% gain profile · YAC/Att unavailable"
+                        : "28% rush yards/game · 20% yards/rush · 32% gain profile · 20% YAC/Att"}
                     />
 
                     <ScoreCard
