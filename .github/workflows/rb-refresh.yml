@@ -2,7 +2,8 @@ name: Refresh RB data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 12,13 * * 1,2,5'
+    - cron: '0 8 * * 1,2,5'
+      timezone: 'America/New_York'
 permissions:
   contents: write
 concurrency:
@@ -24,13 +25,12 @@ jobs:
           node - <<'JS'
           const fs = require('fs');
           const now = new Date();
-          const parts = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',hourCycle:'h23'}).formatToParts(now).map(p=>[p.type,p.value]));
+          const parts = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now).map(p=>[p.type,p.value]));
           const date = `${parts.year}-${parts.month}-${parts.day}`;
           const inSeason = date >= '2026-09-01' && date <= '2027-01-12';
-          // GitHub scheduled jobs can start late. Accept both scheduled UTC slots
-          // so the Monday/Tuesday/Friday refresh cannot miss its gate during delay
-          // or an Eastern daylight-saving transition.
-          const run = process.env.EVENT_NAME === 'workflow_dispatch' || (inSeason && ['08', '09'].includes(parts.hour));
+          // GitHub can start scheduled jobs hours late. The schedule already fixes
+          // the intended Eastern time, so only the season gate belongs here.
+          const run = process.env.EVENT_NAME === 'workflow_dispatch' || inSeason;
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `run=${run}\n`);
           JS
       - uses: actions/setup-node@v4
