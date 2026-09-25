@@ -1,5 +1,9 @@
 # Session checkpoint
 
+## 2026-09-24 RB refresh resilience
+
+GitHub scheduled runs were starting hours late and then skipping every data step because the workflow checked the runner's eventual Eastern hour. Fixed the schedule to use GitHub's `America/New_York` timezone and removed the delayed-start hour rejection. Fantasy Points Basic Rushing now captures and writes before optional PFR YAC enrichment. Live local run: PFR timed out, prior YAC preserved, Fantasy Points updated to 86 RBs and 160 player-games; six focused tests, importer lint, and production build passed. See `SS-20260924-rb-refresh-resilience` artifacts. Release and hosted verification pending.
+
 ## 2026-09-14 RB profile continuation
 
 - Current task: SS-20260914-rb-seasons. Local season-toggle implementation complete; 2026 data integration blocked pending source/custom score formulas requested from user.
