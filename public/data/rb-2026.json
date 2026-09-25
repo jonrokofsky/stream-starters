@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "source": "https://data.fantasypoints.com/nfl/tools/player/rushing-basic",
-  "copiedAt": "2026-09-25T12:14:12.101Z",
+  "copiedAt": "2026-09-25T16:56:42.044Z",
   "updateMode": "browser import",
   "seasonType": "Regular",
   "scoring": "PPR",
@@ -55,8 +55,8 @@
       "YAC/Att": "1.5",
       "Rush Gain Profile": "59",
       "Rush Score": "62",
-      "Rec Score": "13",
-      "Opportunity Score": "51"
+      "Rec Score": "14",
+      "Opportunity Score": "52"
     },
     {
       "Rank": "62",
@@ -463,8 +463,8 @@
       "YAC/Att": "1.7",
       "Rush Gain Profile": "78",
       "Rush Score": "78",
-      "Rec Score": "45",
-      "Opportunity Score": "18"
+      "Rec Score": "46",
+      "Opportunity Score": "19"
     },
     {
       "Rank": "45",
@@ -977,7 +977,7 @@
       "Opportunity Score": "78"
     },
     {
-      "Rank": "80",
+      "Rank": "81",
       "Name": "CJ Donaldson",
       "Team": "NO",
       "POS": "RB",
@@ -1789,7 +1789,7 @@
       "YAC/Att": "1.7",
       "Rush Gain Profile": "61",
       "Rush Score": "65",
-      "Rec Score": "55",
+      "Rec Score": "54",
       "Opportunity Score": "49"
     },
     {
@@ -1844,7 +1844,7 @@
       "Opportunity Score": "86"
     },
     {
-      "Rank": "84",
+      "Rank": "83",
       "Name": "Jaleel McLaughlin",
       "Team": "CLE",
       "POS": "RB",
@@ -2197,7 +2197,7 @@
       "YAC/Att": "1",
       "Rush Gain Profile": "43",
       "Rush Score": "37",
-      "Rec Score": "55",
+      "Rec Score": "56",
       "Opportunity Score": "45"
     },
     {
@@ -2452,7 +2452,7 @@
       "YAC/Att": "0.5",
       "Rush Gain Profile": "24",
       "Rush Score": "17",
-      "Rec Score": "58",
+      "Rec Score": "59",
       "Opportunity Score": "21"
     },
     {
@@ -2533,29 +2533,29 @@
       "Ins. 10 Carries": "0",
       "Inside 10 Carry%": "0.0%",
       "Inside 20 Carry%": "0.0%",
-      "Targets": "3",
-      "Target Share": "2.4%",
+      "Targets": "2",
+      "Target Share": "1.6%",
       "Rec": "1",
       "Rec Yards": "10",
       "Team Rec Yards %": "1.2%",
       "RecYds/Rec": "10.00",
-      "RecYds/Tgt": "3.33",
+      "RecYds/Tgt": "5.00",
       "RecYds/G": "3.3",
-      "Catch%": "33.3%",
+      "Catch%": "50.0%",
       "Rec. TD": "0",
       "Tm TD%": "0.0%",
       "Ins. 10 Rec.": "0",
       "Rec FUM": "0",
-      "Weighted Opp.": "10.3",
-      "Weighted Opp./G": "3.4",
+      "Weighted Opp.": "8.8",
+      "Weighted Opp./G": "2.9",
       "FP/G": "1.9",
       "FP": "5.8",
       "Total TD": "0",
       "YAC/Att": "1.6",
       "Rush Gain Profile": "42",
       "Rush Score": "36",
-      "Rec Score": "38",
-      "Opportunity Score": "14"
+      "Rec Score": "37",
+      "Opportunity Score": "11"
     },
     {
       "Rank": "49",
@@ -3014,10 +3014,10 @@
       "Rush Gain Profile": "53",
       "Rush Score": "52",
       "Rec Score": "12",
-      "Opportunity Score": "22"
+      "Opportunity Score": "23"
     },
     {
-      "Rank": "81",
+      "Rank": "80",
       "Name": "Najee Harris",
       "Team": "NYG",
       "POS": "RB",
@@ -3374,7 +3374,7 @@
       "Opportunity Score": "23"
     },
     {
-      "Rank": "83",
+      "Rank": "84",
       "Name": "Ray Davis",
       "Team": "BUF",
       "POS": "RB",
@@ -3931,7 +3931,7 @@
       "YAC/Att": "2",
       "Rush Gain Profile": "62",
       "Rush Score": "69",
-      "Rec Score": "24",
+      "Rec Score": "25",
       "Opportunity Score": "48"
     },
     {
@@ -4186,7 +4186,7 @@
       "YAC/Att": "1",
       "Rush Gain Profile": "34",
       "Rush Score": "35",
-      "Rec Score": "56",
+      "Rec Score": "55",
       "Opportunity Score": "47"
     },
     {
