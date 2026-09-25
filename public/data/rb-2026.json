@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "source": "https://data.fantasypoints.com/nfl/tools/player/rushing-basic",
-  "copiedAt": "2026-09-25T02:26:29.257Z",
+  "copiedAt": "2026-09-25T12:14:12.101Z",
   "updateMode": "browser import",
   "seasonType": "Regular",
   "scoring": "PPR",
@@ -53,10 +53,10 @@
       "FP": "20.5",
       "Total TD": "1",
       "YAC/Att": "1.5",
-      "Rush Gain Profile": "60",
-      "Rush Score": "63",
-      "Rec Score": "14",
-      "Opportunity Score": "52"
+      "Rush Gain Profile": "59",
+      "Rush Score": "62",
+      "Rec Score": "13",
+      "Opportunity Score": "51"
     },
     {
       "Rank": "62",
@@ -110,7 +110,7 @@
       "Opportunity Score": "4"
     },
     {
-      "Rank": "69",
+      "Rank": "71",
       "Name": "Alvin Kamara",
       "Team": "NO",
       "POS": "RB",
@@ -157,7 +157,7 @@
       "YAC/Att": "1.3",
       "Rush Gain Profile": "7",
       "Rush Score": "15",
-      "Rec Score": "61",
+      "Rec Score": "62",
       "Opportunity Score": "48"
     },
     {
@@ -208,7 +208,7 @@
       "YAC/Att": "3.4",
       "Rush Gain Profile": "64",
       "Rush Score": "71",
-      "Rec Score": "36",
+      "Rec Score": "35",
       "Opportunity Score": "16"
     },
     {
@@ -314,7 +314,7 @@
       "Opportunity Score": "1"
     },
     {
-      "Rank": "15",
+      "Rank": "17",
       "Name": "Bhayshul Tuten",
       "Team": "JAX",
       "POS": "RB",
@@ -362,58 +362,58 @@
       "Rush Gain Profile": "68",
       "Rush Score": "79",
       "Rec Score": "56",
-      "Opportunity Score": "65"
+      "Opportunity Score": "64"
     },
     {
-      "Rank": "7",
+      "Rank": "1",
       "Name": "Bijan Robinson",
       "Team": "ATL",
       "POS": "RB",
-      "G": "2",
-      "ATT": "37",
-      "RuYds": "155",
-      "RuYds/G": "77.5",
-      "RuYds/Rush": "4.19",
-      "RuTD": "0",
+      "G": "3",
+      "ATT": "66",
+      "RuYds": "349",
+      "RuYds/G": "116.3",
+      "RuYds/Rush": "5.29",
+      "RuTD": "2",
       "Rush FUM": "1",
       "Scrimmage": "0",
       "Scrimmage Yards": "0",
       "Scrimmage TD": "0",
-      "1+ RuYd%": "89.2%",
-      "3+ RuYd%": "59.5%",
-      "5+ RuYd%": "40.5%",
-      "10+ RuYd%": "10.8%",
-      "15+ RuYd%": "5.4%",
-      "20+ RuYd%": "2.7%",
-      "30+ RuYd%": "-",
-      "Ins. 5 Carries": "0",
-      "Inside 5 Carry%": "0.0%",
-      "Ins. 10 Carries": "0",
-      "Inside 10 Carry%": "0.0%",
-      "Inside 20 Carry%": "0.0%",
-      "Targets": "13",
-      "Target Share": "24.1%",
-      "Rec": "11",
-      "Rec Yards": "99",
-      "Team Rec Yards %": "34.4%",
-      "RecYds/Rec": "9.00",
-      "RecYds/Tgt": "7.62",
-      "RecYds/G": "49.5",
-      "Catch%": "84.6%",
+      "1+ RuYd%": "87.9%",
+      "3+ RuYd%": "65.2%",
+      "5+ RuYd%": "40.9%",
+      "10+ RuYd%": "12.1%",
+      "15+ RuYd%": "6.1%",
+      "20+ RuYd%": "4.5%",
+      "30+ RuYd%": "3.0%",
+      "Ins. 5 Carries": "5",
+      "Inside 5 Carry%": "100.0%",
+      "Ins. 10 Carries": "7",
+      "Inside 10 Carry%": "87.5%",
+      "Inside 20 Carry%": "91.7%",
+      "Targets": "15",
+      "Target Share": "19.0%",
+      "Rec": "13",
+      "Rec Yards": "118",
+      "Team Rec Yards %": "21.7%",
+      "RecYds/Rec": "9.08",
+      "RecYds/Tgt": "7.87",
+      "RecYds/G": "39.3",
+      "Catch%": "86.7%",
       "Rec. TD": "1",
-      "Tm TD%": "100.0%",
+      "Tm TD%": "50.0%",
       "Ins. 10 Rec.": "0",
       "Rec FUM": "1",
-      "Weighted Opp.": "37.4",
-      "Weighted Opp./G": "18.7",
-      "FP/G": "21.2",
-      "FP": "42.4",
-      "Total TD": "1",
+      "Weighted Opp.": "64.0",
+      "Weighted Opp./G": "21.3",
+      "FP/G": "25.9",
+      "FP": "77.7",
+      "Total TD": "3",
       "YAC/Att": "1.2",
-      "Rush Gain Profile": "72",
-      "Rush Score": "65",
-      "Rec Score": "96",
-      "Opportunity Score": "60"
+      "Rush Gain Profile": "77",
+      "Rush Score": "72",
+      "Rec Score": "94",
+      "Opportunity Score": "86"
     },
     {
       "Rank": "14",
@@ -514,7 +514,7 @@
       "YAC/Att": "1.8",
       "Rush Gain Profile": "18",
       "Rush Score": "36",
-      "Rec Score": "39",
+      "Rec Score": "38",
       "Opportunity Score": "44"
     },
     {
@@ -563,61 +563,61 @@
       "FP": "34.0",
       "Total TD": "1",
       "YAC/Att": "1.5",
-      "Rush Gain Profile": "45",
+      "Rush Gain Profile": "46",
       "Rush Score": "51",
       "Rec Score": "88",
       "Opportunity Score": "71"
     },
     {
-      "Rank": "30",
+      "Rank": "15",
       "Name": "Brian Robinson",
       "Team": "ATL",
       "POS": "RB",
-      "G": "2",
-      "ATT": "20",
-      "RuYds": "82",
-      "RuYds/G": "41.0",
-      "RuYds/Rush": "4.10",
-      "RuTD": "0",
+      "G": "3",
+      "ATT": "30",
+      "RuYds": "132",
+      "RuYds/G": "44.0",
+      "RuYds/Rush": "4.40",
+      "RuTD": "1",
       "Rush FUM": "0",
       "Scrimmage": "0",
       "Scrimmage Yards": "0",
       "Scrimmage TD": "0",
-      "1+ RuYd%": "85.0%",
-      "3+ RuYd%": "80.0%",
-      "5+ RuYd%": "35.0%",
-      "10+ RuYd%": "5.0%",
-      "15+ RuYd%": "-",
+      "1+ RuYd%": "80.0%",
+      "3+ RuYd%": "73.3%",
+      "5+ RuYd%": "43.3%",
+      "10+ RuYd%": "6.7%",
+      "15+ RuYd%": "3.3%",
       "20+ RuYd%": "-",
       "30+ RuYd%": "-",
       "Ins. 5 Carries": "0",
       "Inside 5 Carry%": "0.0%",
-      "Ins. 10 Carries": "0",
-      "Inside 10 Carry%": "0.0%",
-      "Inside 20 Carry%": "0.0%",
+      "Ins. 10 Carries": "1",
+      "Inside 10 Carry%": "12.5%",
+      "Inside 20 Carry%": "8.3%",
       "Targets": "2",
-      "Target Share": "3.7%",
+      "Target Share": "2.5%",
       "Rec": "2",
       "Rec Yards": "16",
-      "Team Rec Yards %": "5.6%",
+      "Team Rec Yards %": "2.9%",
       "RecYds/Rec": "8.00",
       "RecYds/Tgt": "8.00",
-      "RecYds/G": "8.0",
+      "RecYds/G": "5.3",
       "Catch%": "100.0%",
       "Rec. TD": "0",
       "Tm TD%": "0.0%",
       "Ins. 10 Rec.": "0",
       "Rec FUM": "0",
-      "Weighted Opp.": "12.8",
-      "Weighted Opp./G": "6.4",
-      "FP/G": "5.9",
-      "FP": "11.8",
-      "Total TD": "0",
+      "Weighted Opp.": "18.5",
+      "Weighted Opp./G": "6.2",
+      "FP/G": "7.6",
+      "FP": "22.8",
+      "Total TD": "1",
       "YAC/Att": "1.3",
-      "Rush Gain Profile": "53",
-      "Rush Score": "51",
-      "Rec Score": "53",
-      "Opportunity Score": "24"
+      "Rush Gain Profile": "60",
+      "Rush Score": "55",
+      "Rec Score": "47",
+      "Opportunity Score": "35"
     },
     {
       "Rank": "13",
@@ -671,7 +671,7 @@
       "Opportunity Score": "66"
     },
     {
-      "Rank": "18",
+      "Rank": "19",
       "Name": "Cam Skattebo",
       "Team": "NYG",
       "POS": "RB",
@@ -716,9 +716,9 @@
       "FP": "23.6",
       "Total TD": "1",
       "YAC/Att": "2.6",
-      "Rush Gain Profile": "56",
+      "Rush Gain Profile": "55",
       "Rush Score": "67",
-      "Rec Score": "59",
+      "Rec Score": "58",
       "Opportunity Score": "66"
     },
     {
@@ -770,17 +770,17 @@
       "Rush Gain Profile": "61",
       "Rush Score": "59",
       "Rec Score": "70",
-      "Opportunity Score": "80"
+      "Opportunity Score": "79"
     },
     {
-      "Rank": "49",
+      "Rank": "48",
       "Name": "Chris Brooks",
       "Team": "GB",
       "POS": "RB",
-      "G": "2",
+      "G": "3",
       "ATT": "11",
       "RuYds": "40",
-      "RuYds/G": "20.0",
+      "RuYds/G": "13.3",
       "RuYds/Rush": "3.64",
       "RuTD": "0",
       "Rush FUM": "0",
@@ -797,34 +797,34 @@
       "Ins. 5 Carries": "0",
       "Inside 5 Carry%": "0.0%",
       "Ins. 10 Carries": "2",
-      "Inside 10 Carry%": "50.0%",
-      "Inside 20 Carry%": "50.0%",
-      "Targets": "3",
-      "Target Share": "4.2%",
-      "Rec": "1",
-      "Rec Yards": "15",
-      "Team Rec Yards %": "2.8%",
-      "RecYds/Rec": "15.00",
-      "RecYds/Tgt": "5.00",
-      "RecYds/G": "7.5",
-      "Catch%": "33.3%",
+      "Inside 10 Carry%": "40.0%",
+      "Inside 20 Carry%": "36.4%",
+      "Targets": "4",
+      "Target Share": "3.2%",
+      "Rec": "2",
+      "Rec Yards": "19",
+      "Team Rec Yards %": "2.3%",
+      "RecYds/Rec": "9.50",
+      "RecYds/Tgt": "4.75",
+      "RecYds/G": "6.3",
+      "Catch%": "50.0%",
       "Rec. TD": "0",
       "Tm TD%": "0.0%",
       "Ins. 10 Rec.": "0",
       "Rec FUM": "0",
-      "Weighted Opp.": "13.3",
-      "Weighted Opp./G": "6.6",
-      "FP/G": "3.3",
-      "FP": "6.5",
+      "Weighted Opp.": "14.8",
+      "Weighted Opp./G": "4.9",
+      "FP/G": "2.6",
+      "FP": "7.9",
       "Total TD": "0",
       "YAC/Att": "1.4",
       "Rush Gain Profile": "46",
-      "Rush Score": "40",
-      "Rec Score": "49",
-      "Opportunity Score": "36"
+      "Rush Score": "36",
+      "Rec Score": "47",
+      "Opportunity Score": "28"
     },
     {
-      "Rank": "53",
+      "Rank": "54",
       "Name": "Chris Rodriguez",
       "Team": "JAX",
       "POS": "RB",
@@ -872,10 +872,10 @@
       "Rush Gain Profile": "20",
       "Rush Score": "34",
       "Rec Score": "1",
-      "Opportunity Score": "28"
+      "Opportunity Score": "27"
     },
     {
-      "Rank": "27",
+      "Rank": "28",
       "Name": "Christian McCaffrey",
       "Team": "SF",
       "POS": "RB",
@@ -923,10 +923,10 @@
       "Rush Gain Profile": "57",
       "Rush Score": "62",
       "Rec Score": "88",
-      "Opportunity Score": "83"
+      "Opportunity Score": "82"
     },
     {
-      "Rank": "22",
+      "Rank": "23",
       "Name": "Chuba Hubbard",
       "Team": "CAR",
       "POS": "RB",
@@ -971,7 +971,7 @@
       "FP": "38.1",
       "Total TD": "3",
       "YAC/Att": "1.2",
-      "Rush Gain Profile": "68",
+      "Rush Gain Profile": "67",
       "Rush Score": "60",
       "Rec Score": "76",
       "Opportunity Score": "78"
@@ -1024,7 +1024,7 @@
       "YAC/Att": "",
       "Rush Gain Profile": "11",
       "Rush Score": "8",
-      "Rec Score": "15",
+      "Rec Score": "14",
       "Opportunity Score": "12"
     },
     {
@@ -1079,7 +1079,7 @@
       "Opportunity Score": "4"
     },
     {
-      "Rank": "6",
+      "Rank": "7",
       "Name": "D'Andre Swift",
       "Team": "CHI",
       "POS": "RB",
@@ -1124,10 +1124,10 @@
       "FP": "46.3",
       "Total TD": "3",
       "YAC/Att": "2.7",
-      "Rush Gain Profile": "65",
+      "Rush Gain Profile": "66",
       "Rush Score": "82",
-      "Rec Score": "85",
-      "Opportunity Score": "84"
+      "Rec Score": "84",
+      "Opportunity Score": "83"
     },
     {
       "Rank": "36",
@@ -1181,7 +1181,7 @@
       "Opportunity Score": "80"
     },
     {
-      "Rank": "19",
+      "Rank": "20",
       "Name": "De'Von Achane",
       "Team": "MIA",
       "POS": "RB",
@@ -1226,10 +1226,10 @@
       "FP": "22.9",
       "Total TD": "0",
       "YAC/Att": "1.5",
-      "Rush Gain Profile": "46",
+      "Rush Gain Profile": "45",
       "Rush Score": "50",
-      "Rec Score": "83",
-      "Opportunity Score": "71"
+      "Rec Score": "84",
+      "Opportunity Score": "70"
     },
     {
       "Rank": "77",
@@ -1283,7 +1283,7 @@
       "Opportunity Score": "13"
     },
     {
-      "Rank": "2",
+      "Rank": "3",
       "Name": "Derrick Henry",
       "Team": "BAL",
       "POS": "RB",
@@ -1331,10 +1331,10 @@
       "Rush Gain Profile": "79",
       "Rush Score": "89",
       "Rec Score": "70",
-      "Opportunity Score": "78"
+      "Opportunity Score": "77"
     },
     {
-      "Rank": "61",
+      "Rank": "63",
       "Name": "Devin Singletary",
       "Team": "NYG",
       "POS": "RB",
@@ -1379,13 +1379,13 @@
       "FP": "14.7",
       "Total TD": "1",
       "YAC/Att": "1.6",
-      "Rush Gain Profile": "21",
+      "Rush Gain Profile": "22",
       "Rush Score": "25",
-      "Rec Score": "64",
+      "Rec Score": "63",
       "Opportunity Score": "48"
     },
     {
-      "Rank": "24",
+      "Rank": "25",
       "Name": "Emanuel Wilson",
       "Team": "SEA",
       "POS": "RB",
@@ -1436,7 +1436,7 @@
       "Opportunity Score": "47"
     },
     {
-      "Rank": "71",
+      "Rank": "69",
       "Name": "Emari Demercado",
       "Team": "DAL",
       "POS": "RB",
@@ -1482,7 +1482,7 @@
       "Total TD": "0",
       "YAC/Att": "2",
       "Rush Gain Profile": "22",
-      "Rush Score": "28",
+      "Rush Score": "29",
       "Rec Score": "1",
       "Opportunity Score": "3"
     },
@@ -1533,7 +1533,7 @@
       "Total TD": "0",
       "YAC/Att": "2.8",
       "Rush Gain Profile": "37",
-      "Rush Score": "51",
+      "Rush Score": "52",
       "Rec Score": "76",
       "Opportunity Score": "23"
     },
@@ -1635,8 +1635,8 @@
       "Total TD": "0",
       "YAC/Att": "1.6",
       "Rush Gain Profile": "28",
-      "Rush Score": "38",
-      "Rec Score": "36",
+      "Rush Score": "39",
+      "Rec Score": "35",
       "Opportunity Score": "42"
     },
     {
@@ -1691,7 +1691,7 @@
       "Opportunity Score": "32"
     },
     {
-      "Rank": "20",
+      "Rank": "21",
       "Name": "Jacory Croskey-Merritt",
       "Team": "WAS",
       "POS": "RB",
@@ -1742,7 +1742,7 @@
       "Opportunity Score": "47"
     },
     {
-      "Rank": "21",
+      "Rank": "22",
       "Name": "Jadarian Price",
       "Team": "SEA",
       "POS": "RB",
@@ -1789,11 +1789,11 @@
       "YAC/Att": "1.7",
       "Rush Gain Profile": "61",
       "Rush Score": "65",
-      "Rec Score": "54",
-      "Opportunity Score": "50"
+      "Rec Score": "55",
+      "Opportunity Score": "49"
     },
     {
-      "Rank": "3",
+      "Rank": "4",
       "Name": "Jahmyr Gibbs",
       "Team": "DET",
       "POS": "RB",
@@ -1839,8 +1839,8 @@
       "Total TD": "3",
       "YAC/Att": "1.5",
       "Rush Gain Profile": "64",
-      "Rush Score": "69",
-      "Rec Score": "92",
+      "Rush Score": "68",
+      "Rec Score": "93",
       "Opportunity Score": "86"
     },
     {
@@ -1891,11 +1891,11 @@
       "YAC/Att": "",
       "Rush Gain Profile": "29",
       "Rush Score": "18",
-      "Rec Score": "15",
-      "Opportunity Score": "11"
+      "Rec Score": "16",
+      "Opportunity Score": "12"
     },
     {
-      "Rank": "4",
+      "Rank": "5",
       "Name": "James Cook",
       "Team": "BUF",
       "POS": "RB",
@@ -1941,7 +1941,7 @@
       "Total TD": "1",
       "YAC/Att": "1.3",
       "Rush Gain Profile": "63",
-      "Rush Score": "70",
+      "Rush Score": "69",
       "Rec Score": "62",
       "Opportunity Score": "82"
     },
@@ -1997,7 +1997,7 @@
       "Opportunity Score": "78"
     },
     {
-      "Rank": "29",
+      "Rank": "30",
       "Name": "Jaylen Warren",
       "Team": "PIT",
       "POS": "RB",
@@ -2042,8 +2042,8 @@
       "FP": "21.0",
       "Total TD": "0",
       "YAC/Att": "2.6",
-      "Rush Gain Profile": "53",
-      "Rush Score": "66",
+      "Rush Gain Profile": "52",
+      "Rush Score": "65",
       "Rec Score": "85",
       "Opportunity Score": "53"
     },
@@ -2096,7 +2096,7 @@
       "Rush Gain Profile": "29",
       "Rush Score": "23",
       "Rec Score": "1",
-      "Opportunity Score": "12"
+      "Opportunity Score": "11"
     },
     {
       "Rank": "37",
@@ -2145,9 +2145,9 @@
       "Total TD": "1",
       "YAC/Att": "1.9",
       "Rush Gain Profile": "38",
-      "Rush Score": "47",
+      "Rush Score": "48",
       "Rec Score": "66",
-      "Opportunity Score": "64"
+      "Opportunity Score": "63"
     },
     {
       "Rank": "51",
@@ -2195,13 +2195,13 @@
       "FP": "14.8",
       "Total TD": "1",
       "YAC/Att": "1",
-      "Rush Gain Profile": "42",
-      "Rush Score": "36",
+      "Rush Gain Profile": "43",
+      "Rush Score": "37",
       "Rec Score": "55",
       "Opportunity Score": "45"
     },
     {
-      "Rank": "5",
+      "Rank": "6",
       "Name": "Jonathan Taylor",
       "Team": "IND",
       "POS": "RB",
@@ -2246,10 +2246,10 @@
       "FP": "55.3",
       "Total TD": "4",
       "YAC/Att": "2.2",
-      "Rush Gain Profile": "65",
+      "Rush Gain Profile": "66",
       "Rush Score": "76",
       "Rec Score": "87",
-      "Opportunity Score": "85"
+      "Opportunity Score": "84"
     },
     {
       "Rank": "58",
@@ -2300,7 +2300,7 @@
       "Rush Gain Profile": "36",
       "Rush Score": "26",
       "Rec Score": "66",
-      "Opportunity Score": "29"
+      "Opportunity Score": "30"
     },
     {
       "Rank": "70",
@@ -2349,12 +2349,12 @@
       "Total TD": "0",
       "YAC/Att": "2.8",
       "Rush Gain Profile": "21",
-      "Rush Score": "41",
+      "Rush Score": "42",
       "Rec Score": "1",
       "Opportunity Score": "4"
     },
     {
-      "Rank": "39",
+      "Rank": "40",
       "Name": "Jordan Mason",
       "Team": "MIN",
       "POS": "RB",
@@ -2400,7 +2400,7 @@
       "Total TD": "1",
       "YAC/Att": "2.3",
       "Rush Gain Profile": "42",
-      "Rush Score": "62",
+      "Rush Score": "63",
       "Rec Score": "1",
       "Opportunity Score": "48"
     },
@@ -2452,11 +2452,11 @@
       "YAC/Att": "0.5",
       "Rush Gain Profile": "24",
       "Rush Score": "17",
-      "Rec Score": "59",
+      "Rec Score": "58",
       "Opportunity Score": "21"
     },
     {
-      "Rank": "28",
+      "Rank": "29",
       "Name": "Kaelon Black",
       "Team": "SF",
       "POS": "RB",
@@ -2502,29 +2502,29 @@
       "Total TD": "0",
       "YAC/Att": "1.5",
       "Rush Gain Profile": "57",
-      "Rush Score": "57",
-      "Rec Score": "36",
+      "Rush Score": "56",
+      "Rec Score": "35",
       "Opportunity Score": "22"
     },
     {
-      "Rank": "56",
+      "Rank": "52",
       "Name": "Kaleb Johnson",
       "Team": "GB",
       "POS": "RB",
-      "G": "2",
-      "ATT": "8",
-      "RuYds": "32",
-      "RuYds/G": "16.0",
-      "RuYds/Rush": "4.00",
+      "G": "3",
+      "ATT": "12",
+      "RuYds": "38",
+      "RuYds/G": "12.7",
+      "RuYds/Rush": "3.17",
       "RuTD": "0",
       "Rush FUM": "1",
       "Scrimmage": "0",
       "Scrimmage Yards": "0",
       "Scrimmage TD": "0",
       "1+ RuYd%": "75.0%",
-      "3+ RuYd%": "62.5%",
-      "5+ RuYd%": "37.5%",
-      "10+ RuYd%": "25.0%",
+      "3+ RuYd%": "50.0%",
+      "5+ RuYd%": "33.3%",
+      "10+ RuYd%": "16.7%",
       "15+ RuYd%": "-",
       "20+ RuYd%": "-",
       "30+ RuYd%": "-",
@@ -2533,32 +2533,32 @@
       "Ins. 10 Carries": "0",
       "Inside 10 Carry%": "0.0%",
       "Inside 20 Carry%": "0.0%",
-      "Targets": "0",
-      "Target Share": "0.0%",
-      "Rec": "0",
-      "Rec Yards": "0",
-      "Team Rec Yards %": "0.0%",
-      "RecYds/Rec": "-",
-      "RecYds/Tgt": "0.00",
-      "RecYds/G": "0.0",
-      "Catch%": "-",
+      "Targets": "3",
+      "Target Share": "2.4%",
+      "Rec": "1",
+      "Rec Yards": "10",
+      "Team Rec Yards %": "1.2%",
+      "RecYds/Rec": "10.00",
+      "RecYds/Tgt": "3.33",
+      "RecYds/G": "3.3",
+      "Catch%": "33.3%",
       "Rec. TD": "0",
       "Tm TD%": "0.0%",
       "Ins. 10 Rec.": "0",
       "Rec FUM": "0",
-      "Weighted Opp.": "3.9",
-      "Weighted Opp./G": "2.0",
-      "FP/G": "1.6",
-      "FP": "3.2",
+      "Weighted Opp.": "10.3",
+      "Weighted Opp./G": "3.4",
+      "FP/G": "1.9",
+      "FP": "5.8",
       "Total TD": "0",
       "YAC/Att": "1.6",
-      "Rush Gain Profile": "61",
-      "Rush Score": "49",
-      "Rec Score": "1",
-      "Opportunity Score": "4"
+      "Rush Gain Profile": "42",
+      "Rush Score": "36",
+      "Rec Score": "38",
+      "Opportunity Score": "14"
     },
     {
-      "Rank": "48",
+      "Rank": "49",
       "Name": "Kaytron Allen",
       "Team": "WAS",
       "POS": "RB",
@@ -2609,7 +2609,7 @@
       "Opportunity Score": "21"
     },
     {
-      "Rank": "55",
+      "Rank": "56",
       "Name": "Keaton Mitchell",
       "Team": "LAC",
       "POS": "RB",
@@ -2657,7 +2657,7 @@
       "Rush Gain Profile": "49",
       "Rush Score": "37",
       "Rec Score": "49",
-      "Opportunity Score": "23"
+      "Opportunity Score": "22"
     },
     {
       "Rank": "57",
@@ -2705,13 +2705,13 @@
       "FP": "9.0",
       "Total TD": "1",
       "YAC/Att": "1.2",
-      "Rush Gain Profile": "15",
-      "Rush Score": "29",
+      "Rush Gain Profile": "16",
+      "Rush Score": "30",
       "Rec Score": "1",
       "Opportunity Score": "34"
     },
     {
-      "Rank": "1",
+      "Rank": "2",
       "Name": "Kenneth Walker",
       "Team": "KC",
       "POS": "RB",
@@ -2762,7 +2762,7 @@
       "Opportunity Score": "94"
     },
     {
-      "Rank": "63",
+      "Rank": "61",
       "Name": "Kenny Gainwell",
       "Team": "TB",
       "POS": "RB",
@@ -2809,7 +2809,7 @@
       "YAC/Att": "2.3",
       "Rush Gain Profile": "25",
       "Rush Score": "38",
-      "Rec Score": "53",
+      "Rec Score": "52",
       "Opportunity Score": "30"
     },
     {
@@ -2858,13 +2858,13 @@
       "FP": "28.2",
       "Total TD": "1",
       "YAC/Att": "4.5",
-      "Rush Gain Profile": "68",
-      "Rush Score": "86",
-      "Rec Score": "69",
+      "Rush Gain Profile": "69",
+      "Rush Score": "87",
+      "Rec Score": "68",
       "Opportunity Score": "49"
     },
     {
-      "Rank": "17",
+      "Rank": "18",
       "Name": "Kyren Williams",
       "Team": "LAR",
       "POS": "RB",
@@ -2915,55 +2915,55 @@
       "Opportunity Score": "80"
     },
     {
-      "Rank": "40",
+      "Rank": "38",
       "Name": "MarShawn Lloyd",
       "Team": "GB",
       "POS": "RB",
-      "G": "2",
-      "ATT": "19",
-      "RuYds": "57",
-      "RuYds/G": "28.5",
-      "RuYds/Rush": "3.00",
+      "G": "3",
+      "ATT": "23",
+      "RuYds": "68",
+      "RuYds/G": "22.7",
+      "RuYds/Rush": "2.96",
       "RuTD": "0",
       "Rush FUM": "1",
       "Scrimmage": "0",
       "Scrimmage Yards": "0",
       "Scrimmage TD": "0",
-      "1+ RuYd%": "84.2%",
-      "3+ RuYd%": "47.4%",
-      "5+ RuYd%": "31.6%",
-      "10+ RuYd%": "5.3%",
+      "1+ RuYd%": "87.0%",
+      "3+ RuYd%": "43.5%",
+      "5+ RuYd%": "30.4%",
+      "10+ RuYd%": "4.3%",
       "15+ RuYd%": "-",
       "20+ RuYd%": "-",
       "30+ RuYd%": "-",
-      "Ins. 5 Carries": "0",
-      "Inside 5 Carry%": "0.0%",
-      "Ins. 10 Carries": "2",
-      "Inside 10 Carry%": "50.0%",
-      "Inside 20 Carry%": "37.5%",
-      "Targets": "3",
-      "Target Share": "4.2%",
-      "Rec": "2",
-      "Rec Yards": "6",
-      "Team Rec Yards %": "1.1%",
-      "RecYds/Rec": "3.00",
-      "RecYds/Tgt": "2.00",
-      "RecYds/G": "3.0",
+      "Ins. 5 Carries": "1",
+      "Inside 5 Carry%": "100.0%",
+      "Ins. 10 Carries": "3",
+      "Inside 10 Carry%": "60.0%",
+      "Inside 20 Carry%": "54.5%",
+      "Targets": "6",
+      "Target Share": "4.8%",
+      "Rec": "4",
+      "Rec Yards": "13",
+      "Team Rec Yards %": "1.5%",
+      "RecYds/Rec": "3.25",
+      "RecYds/Tgt": "2.17",
+      "RecYds/G": "4.3",
       "Catch%": "66.7%",
       "Rec. TD": "1",
-      "Tm TD%": "25.0%",
+      "Tm TD%": "16.7%",
       "Ins. 10 Rec.": "1",
       "Rec FUM": "0",
-      "Weighted Opp.": "18.0",
+      "Weighted Opp.": "26.9",
       "Weighted Opp./G": "9.0",
-      "FP/G": "6.7",
-      "FP": "13.3",
+      "FP/G": "5.7",
+      "FP": "17.1",
       "Total TD": "1",
       "YAC/Att": "0.9",
-      "Rush Gain Profile": "34",
-      "Rush Score": "30",
-      "Rec Score": "41",
-      "Opportunity Score": "55"
+      "Rush Gain Profile": "33",
+      "Rush Score": "28",
+      "Rec Score": "48",
+      "Opportunity Score": "62"
     },
     {
       "Rank": "44",
@@ -3014,7 +3014,7 @@
       "Rush Gain Profile": "53",
       "Rush Score": "52",
       "Rec Score": "12",
-      "Opportunity Score": "23"
+      "Opportunity Score": "22"
     },
     {
       "Rank": "81",
@@ -3065,7 +3065,7 @@
       "Rush Gain Profile": "6",
       "Rush Score": "12",
       "Rec Score": "1",
-      "Opportunity Score": "27"
+      "Opportunity Score": "26"
     },
     {
       "Rank": "76",
@@ -3217,7 +3217,7 @@
       "YAC/Att": "2",
       "Rush Gain Profile": "49",
       "Rush Score": "64",
-      "Rec Score": "55",
+      "Rec Score": "56",
       "Opportunity Score": "57"
     },
     {
@@ -3266,13 +3266,13 @@
       "FP": "16.8",
       "Total TD": "0",
       "YAC/Att": "1.1",
-      "Rush Gain Profile": "10",
-      "Rush Score": "22",
+      "Rush Gain Profile": "11",
+      "Rush Score": "23",
       "Rec Score": "79",
       "Opportunity Score": "64"
     },
     {
-      "Rank": "38",
+      "Rank": "39",
       "Name": "Rachaad White",
       "Team": "WAS",
       "POS": "RB",
@@ -3370,7 +3370,7 @@
       "YAC/Att": "",
       "Rush Gain Profile": "11",
       "Rush Score": "7",
-      "Rec Score": "70",
+      "Rec Score": "69",
       "Opportunity Score": "23"
     },
     {
@@ -3425,7 +3425,7 @@
       "Opportunity Score": "0"
     },
     {
-      "Rank": "25",
+      "Rank": "26",
       "Name": "Rhamondre Stevenson",
       "Team": "NE",
       "POS": "RB",
@@ -3476,7 +3476,7 @@
       "Opportunity Score": "44"
     },
     {
-      "Rank": "52",
+      "Rank": "53",
       "Name": "Rico Dowdle",
       "Team": "PIT",
       "POS": "RB",
@@ -3523,7 +3523,7 @@
       "YAC/Att": "0.7",
       "Rush Gain Profile": "12",
       "Rush Score": "17",
-      "Rec Score": "67",
+      "Rec Score": "66",
       "Opportunity Score": "33"
     },
     {
@@ -3573,8 +3573,8 @@
       "Total TD": "0",
       "YAC/Att": "",
       "Rush Gain Profile": "56",
-      "Rush Score": "57",
-      "Rec Score": "77",
+      "Rush Score": "58",
+      "Rec Score": "76",
       "Opportunity Score": "36"
     },
     {
@@ -3626,7 +3626,7 @@
       "Rush Gain Profile": "43",
       "Rush Score": "50",
       "Rec Score": "42",
-      "Opportunity Score": "19"
+      "Opportunity Score": "20"
     },
     {
       "Rank": "60",
@@ -3675,12 +3675,12 @@
       "Total TD": "0",
       "YAC/Att": "1.6",
       "Rush Gain Profile": "31",
-      "Rush Score": "35",
+      "Rush Score": "36",
       "Rec Score": "72",
       "Opportunity Score": "23"
     },
     {
-      "Rank": "26",
+      "Rank": "27",
       "Name": "Saquon Barkley",
       "Team": "PHI",
       "POS": "RB",
@@ -3725,9 +3725,9 @@
       "FP": "12.0",
       "Total TD": "0",
       "YAC/Att": "3.5",
-      "Rush Gain Profile": "54",
-      "Rush Score": "72",
-      "Rec Score": "48",
+      "Rush Gain Profile": "55",
+      "Rush Score": "73",
+      "Rec Score": "47",
       "Opportunity Score": "32"
     },
     {
@@ -3778,11 +3778,11 @@
       "YAC/Att": "",
       "Rush Gain Profile": "0",
       "Rush Score": "",
-      "Rec Score": "12",
+      "Rec Score": "11",
       "Opportunity Score": "7"
     },
     {
-      "Rank": "72",
+      "Rank": "73",
       "Name": "Sione Vaki",
       "Team": "DET",
       "POS": "RB",
@@ -3833,7 +3833,7 @@
       "Opportunity Score": "13"
     },
     {
-      "Rank": "54",
+      "Rank": "55",
       "Name": "Tank Bigsby",
       "Team": "PHI",
       "POS": "RB",
@@ -3880,11 +3880,11 @@
       "YAC/Att": "1.5",
       "Rush Gain Profile": "11",
       "Rush Score": "22",
-      "Rec Score": "37",
+      "Rec Score": "36",
       "Opportunity Score": "45"
     },
     {
-      "Rank": "23",
+      "Rank": "24",
       "Name": "Tony Pollard",
       "Team": "TEN",
       "POS": "RB",
@@ -3931,11 +3931,11 @@
       "YAC/Att": "2",
       "Rush Gain Profile": "62",
       "Rush Score": "69",
-      "Rec Score": "25",
+      "Rec Score": "24",
       "Opportunity Score": "48"
     },
     {
-      "Rank": "34",
+      "Rank": "33",
       "Name": "Travis Etienne",
       "Team": "NO",
       "POS": "RB",
@@ -3981,7 +3981,7 @@
       "Total TD": "0",
       "YAC/Att": "1.5",
       "Rush Gain Profile": "47",
-      "Rush Score": "51",
+      "Rush Score": "50",
       "Rec Score": "72",
       "Opportunity Score": "44"
     },
@@ -4032,7 +4032,7 @@
       "Total TD": "0",
       "YAC/Att": "",
       "Rush Gain Profile": "66",
-      "Rush Score": "62",
+      "Rush Score": "63",
       "Rec Score": "1",
       "Opportunity Score": "2"
     },
@@ -4133,13 +4133,13 @@
       "FP": "13.4",
       "Total TD": "0",
       "YAC/Att": "2.1",
-      "Rush Gain Profile": "58",
-      "Rush Score": "64",
+      "Rush Gain Profile": "59",
+      "Rush Score": "65",
       "Rec Score": "78",
       "Opportunity Score": "34"
     },
     {
-      "Rank": "33",
+      "Rank": "34",
       "Name": "Tyler Allgeier",
       "Team": "ARI",
       "POS": "RB",
@@ -4184,10 +4184,10 @@
       "FP": "12.9",
       "Total TD": "0",
       "YAC/Att": "1",
-      "Rush Gain Profile": "33",
-      "Rush Score": "34",
+      "Rush Gain Profile": "34",
+      "Rush Score": "35",
       "Rec Score": "56",
-      "Opportunity Score": "48"
+      "Opportunity Score": "47"
     },
     {
       "Rank": "87",
@@ -4241,7 +4241,7 @@
       "Opportunity Score": "20"
     },
     {
-      "Rank": "73",
+      "Rank": "72",
       "Name": "Tyrone Tracy",
       "Team": "NYG",
       "POS": "RB",
