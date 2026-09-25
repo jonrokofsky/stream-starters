@@ -1074,7 +1074,11 @@ export default function RBMatchupPage() {
                         </div>
                       </div>
                     </div>
-                    <div className="rounded-2xl border border-sky-500 bg-sky-500 p-4 text-slate-950">
+                    <div
+                      className={`rounded-2xl border p-4 ${percentileStyle(
+                        combinedMatchupScore
+                      )}`}
+                    >
                       <div className="text-[10px] font-black uppercase tracking-[0.16em] opacity-70">
                         Combined Start Score
                       </div>
