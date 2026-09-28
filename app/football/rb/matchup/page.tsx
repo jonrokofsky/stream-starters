@@ -619,6 +619,19 @@ export default function PositionMatchupPage() {
   const yacPerAttempt =
     toNumber(getValue(selectedPlayer, ["YAC/Att"]));
 
+  function playerMetricPercentile(keys: string[]) {
+    const value = toNumber(getValue(selectedPlayer, keys));
+    if (value === null) return null;
+
+    const population = availablePlayers
+      .map((row) => toNumber(getValue(row, keys)))
+      .filter((entry): entry is number => entry !== null);
+
+    return percentile(value, population, "higher");
+  }
+
+  const yacPerAttemptPercentile = playerMetricPercentile(["YAC/Att"]);
+
   const efficiencyScore =
     toNumber(getValue(selectedPlayer, ["Efficiency Grade"])) ?? 0;
 
@@ -1190,10 +1203,21 @@ export default function PositionMatchupPage() {
                       <PlayerScoreCard title="Receiving Score" score={receivingScore} />
                       <PlayerScoreCard title="Opportunity Score" score={opportunityScore} />
                       <PlayerScoreCard title="Rush Gain Profile" score={rushGainProfile} />
-                      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                        <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">YAC / Attempt</div>
-                        <div className="mt-4 text-5xl font-black leading-none text-slate-950">{yacPerAttempt === null ? "—" : yacPerAttempt.toFixed(1)}</div>
-                        <div className="mt-2 text-xs font-black text-slate-500">{yacPerAttempt === null ? "Not available · excluded from Rush Score" : "Rushing efficiency"}</div>
+                      <div className={`rounded-2xl border p-5 shadow-sm ${
+                        yacPerAttemptPercentile === null
+                          ? "border-slate-200 bg-white text-slate-950"
+                          : percentileStyle(yacPerAttemptPercentile)
+                      }`}>
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="text-[11px] font-black uppercase tracking-[0.14em] opacity-70">YAC / Attempt</div>
+                          {yacPerAttemptPercentile !== null && (
+                            <div className="rounded-full bg-black/10 px-2 py-1 text-[10px] font-black">
+                              P{Math.round(yacPerAttemptPercentile)}
+                            </div>
+                          )}
+                        </div>
+                        <div className="mt-4 text-5xl font-black leading-none">{yacPerAttempt === null ? "—" : yacPerAttempt.toFixed(1)}</div>
+                        <div className="mt-2 text-xs font-black opacity-70">{yacPerAttempt === null ? "Not available · excluded from Rush Score" : playerScoreLabel(yacPerAttemptPercentile ?? 50)}</div>
                       </div>
                     </div>
                   ) : (
@@ -1206,13 +1230,30 @@ export default function PositionMatchupPage() {
                         ["Routes / Game", "Routes/G"],
                       ].map(([label, key]) => {
                         const value = toNumber(getValue(selectedPlayer, [key]));
+                        const metricPercentile = playerMetricPercentile([key]);
                         return (
-                          <div key={key} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                            <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">{label}</div>
-                            <div className="mt-4 text-5xl font-black leading-none text-slate-950">
+                          <div
+                            key={key}
+                            className={`rounded-2xl border p-5 shadow-sm ${
+                              metricPercentile === null
+                                ? "border-slate-200 bg-white text-slate-950"
+                                : percentileStyle(metricPercentile)
+                            }`}
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div className="text-[11px] font-black uppercase tracking-[0.14em] opacity-70">{label}</div>
+                              {metricPercentile !== null && (
+                                <div className="rounded-full bg-black/10 px-2 py-1 text-[10px] font-black">
+                                  P{Math.round(metricPercentile)}
+                                </div>
+                              )}
+                            </div>
+                            <div className="mt-4 text-5xl font-black leading-none">
                               {value === null ? "—" : value.toFixed(2)}
                             </div>
-                            <div className="mt-2 text-xs font-black text-slate-500">Receiver profile data</div>
+                            <div className="mt-2 text-xs font-black opacity-70">
+                              {metricPercentile === null ? "Not available" : playerScoreLabel(metricPercentile)}
+                            </div>
                           </div>
                         );
                       })}
