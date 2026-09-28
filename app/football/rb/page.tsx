@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { toPng } from "html-to-image";
 import { calculateRbScores } from "../../../lib/data/rbScores";
 import { mergeRbYac, type YacSnapshot } from "../../../lib/data/rbYac";
-import { type CSSProperties, useEffect, useMemo, useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 
 
 type DataRow = Record<string, string>;
@@ -13,6 +14,39 @@ type StatConfig = {
   keys: string[];
   format?: "number" | "decimal" | "decimal2" | "percent";
 };
+
+type WeeklySnapshot = {
+  week: number;
+  copiedAt: string;
+  rows: DataRow[];
+};
+
+type SortDirection = "asc" | "desc";
+
+type PlayerTableColumn = {
+  key: string;
+  label: string;
+  format?: "number" | "decimal" | "decimal2";
+};
+
+const PLAYER_TABLE_COLUMNS: PlayerTableColumn[] = [
+  { key: "Name", label: "Player" },
+  { key: "Team", label: "Team" },
+  { key: "G", label: "G", format: "number" },
+  { key: "ATT", label: "Att", format: "number" },
+  { key: "RuYds", label: "Rush Yds", format: "number" },
+  { key: "RuYds/Rush", label: "YPC", format: "decimal2" },
+  { key: "RuTD", label: "Rush TD", format: "number" },
+  { key: "Targets", label: "Tgt", format: "number" },
+  { key: "Rec", label: "Rec", format: "number" },
+  { key: "Rec Yards", label: "Rec Yds", format: "number" },
+  { key: "Rec. TD", label: "Rec TD", format: "number" },
+  { key: "FP/G", label: "FP/G", format: "decimal2" },
+  { key: "YAC/Att", label: "YAC/Att", format: "decimal" },
+  { key: "Rush Score", label: "Rush", format: "number" },
+  { key: "Rec Score", label: "Receiving", format: "number" },
+  { key: "Opportunity Score", label: "Opportunity", format: "number" },
+];
 
 const TEAM_CODES: Record<string, string> = {
   "Arizona Cardinals": "ARI",
@@ -550,6 +584,19 @@ function formatStatValue(
   return Math.round(number).toString();
 }
 
+function formatTableValue(raw: string, format: PlayerTableColumn["format"]) {
+  if (!raw || raw === "-") return "—";
+  const value = toNumber(raw);
+  if (value === null || !format) return raw;
+  if (format === "decimal2") return value.toFixed(2);
+  if (format === "decimal") return value.toFixed(1);
+  return Math.round(value).toString();
+}
+
+function inferSnapshotWeek(rows: DataRow[]) {
+  return Math.max(1, ...rows.map((row) => toNumber(row["G"]) ?? 0));
+}
+
 function ScoreCard({
   title,
   score,
@@ -702,10 +749,18 @@ function ComponentSection({
 }
 
 export default function RBPage() {
+  const graphicRef = useRef<HTMLDivElement>(null);
   const [updatedAt, setUpdatedAt] = useState("");
   const [yacNote, setYacNote] = useState("");
   const [players, setPlayers] =
     useState<DataRow[]>([]);
+  const [weeklySnapshots, setWeeklySnapshots] = useState<WeeklySnapshot[]>([]);
+  const [selectedWeek, setSelectedWeek] = useState(0);
+  const [tableSearch, setTableSearch] = useState("");
+  const [sortKey, setSortKey] = useState("Opportunity Score");
+  const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
+  const [exporting, setExporting] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
 
   const [
     selectedName,
@@ -787,6 +842,35 @@ export default function RBPage() {
         setPlayers(rows);
         setUpdatedAt(snapshot.copiedAt);
 
+        const currentWeek = inferSnapshotWeek(rows);
+        let archivedWeeks: WeeklySnapshot[] = [];
+        try {
+          const weeklyResponse = await fetch("/data/rb-weekly-2026.json", {
+            cache: "no-store",
+            signal: controller.signal,
+          });
+          if (!weeklyResponse.ok) throw new Error("Weekly RB snapshots are unavailable.");
+          const weeklyData = await weeklyResponse.json();
+          if (weeklyData.season !== 2026 || !Array.isArray(weeklyData.weeks)) {
+            throw new Error("Invalid weekly RB snapshots.");
+          }
+          archivedWeeks = weeklyData.weeks.filter((item: unknown): item is WeeklySnapshot => {
+            if (!item || typeof item !== "object") return false;
+            const candidate = item as WeeklySnapshot;
+            return Number.isInteger(candidate.week) && candidate.week > 0 &&
+              typeof candidate.copiedAt === "string" && Array.isArray(candidate.rows) &&
+              candidate.rows.length > 0 && candidate.rows.every((row) => row && typeof row === "object" && "Name" in row);
+          });
+        } catch (weeklyError) {
+          if (controller.signal.aborted) return;
+          console.warn(weeklyError);
+        }
+        const byWeek = new Map(archivedWeeks.map((item) => [item.week, item]));
+        byWeek.set(currentWeek, { week: currentWeek, copiedAt: snapshot.copiedAt, rows });
+        const availableWeeks = [...byWeek.values()].sort((a, b) => a.week - b.week);
+        setWeeklySnapshots(availableWeeks);
+        setSelectedWeek(availableWeeks.at(-1)?.week ?? currentWeek);
+
         if (rows.length) {
           setSelectedName(
             rows[0]["Name"]
@@ -860,6 +944,42 @@ export default function RBPage() {
       });
     }, [players, minRushAttempts]);
 
+  const selectedWeekSnapshot = useMemo(
+    () => weeklySnapshots.find((item) => item.week === selectedWeek) ?? weeklySnapshots.at(-1),
+    [selectedWeek, weeklySnapshots]
+  );
+
+  const sortedTablePlayers = useMemo(() => {
+    const query = tableSearch.trim().toLowerCase();
+    const rows = (selectedWeekSnapshot?.rows ?? []).filter((player) =>
+      !query || `${player["Name"] ?? ""} ${player["Team"] ?? ""}`.toLowerCase().includes(query)
+    );
+    return [...rows].sort((a, b) => {
+      const left = a[sortKey] ?? "";
+      const right = b[sortKey] ?? "";
+      const leftNumber = toNumber(left);
+      const rightNumber = toNumber(right);
+      let comparison: number;
+      if (leftNumber !== null || rightNumber !== null) {
+        if (leftNumber === null) return 1;
+        if (rightNumber === null) return -1;
+        comparison = leftNumber - rightNumber;
+      } else {
+        comparison = left.localeCompare(right);
+      }
+      return sortDirection === "asc" ? comparison : -comparison;
+    });
+  }, [selectedWeekSnapshot, sortDirection, sortKey, tableSearch]);
+
+  function toggleSort(key: string) {
+    if (sortKey === key) {
+      setSortDirection((current) => current === "asc" ? "desc" : "asc");
+      return;
+    }
+    setSortKey(key);
+    setSortDirection(key === "Name" || key === "Team" ? "asc" : "desc");
+  }
+
   function selectPlayer(
     name: string
   ) {
@@ -920,6 +1040,57 @@ export default function RBPage() {
       "#0F172A",
       "#2563EB",
     ];
+
+  async function copyGraphicToClipboard() {
+    const node = graphicRef.current;
+    if (!node) return;
+    if (!navigator.clipboard || typeof ClipboardItem === "undefined") {
+      alert("Image clipboard copying is not supported in this browser. Try Chrome or Edge on desktop.");
+      return;
+    }
+
+    const previousStyle = {
+      width: node.style.width,
+      maxWidth: node.style.maxWidth,
+      minWidth: node.style.minWidth,
+      borderRadius: node.style.borderRadius,
+    };
+
+    try {
+      setExporting(true);
+      setCopyStatus("idle");
+      node.style.width = "1200px";
+      node.style.maxWidth = "1200px";
+      node.style.minWidth = "1200px";
+      node.style.borderRadius = "0";
+      await waitForImages(node);
+      if (document.fonts) await document.fonts.ready;
+      const dataUrl = await toPng(node, {
+        pixelRatio: 1.5,
+        backgroundColor: "#ffffff",
+        width: 1200,
+        height: node.scrollHeight,
+      });
+      const blob = await (await fetch(dataUrl)).blob();
+      const pngBlob = blob.type === "image/png"
+        ? blob
+        : new Blob([await blob.arrayBuffer()], { type: "image/png" });
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": pngBlob })]);
+      setCopyStatus("copied");
+      window.setTimeout(() => setCopyStatus("idle"), 1800);
+    } catch (copyError) {
+      console.error("RB profile clipboard copy failed:", copyError);
+      setCopyStatus("error");
+      alert("The graphic could not be copied. Try Chrome or Edge and allow clipboard access.");
+      window.setTimeout(() => setCopyStatus("idle"), 2200);
+    } finally {
+      node.style.width = previousStyle.width;
+      node.style.maxWidth = previousStyle.maxWidth;
+      node.style.minWidth = previousStyle.minWidth;
+      node.style.borderRadius = previousStyle.borderRadius;
+      setExporting(false);
+    }
+  }
 
   return (
     <main
@@ -1182,7 +1353,24 @@ export default function RBPage() {
                 </div>
               </section>
 
-              <section className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-xl">
+              <div className="mb-4 flex justify-end">
+                <button
+                  type="button"
+                  onClick={copyGraphicToClipboard}
+                  disabled={exporting}
+                  className="rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-5 py-3 text-sm font-black text-white shadow-md transition hover:from-sky-600 hover:to-cyan-600 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {exporting
+                    ? "Copying Graphic..."
+                    : copyStatus === "copied"
+                      ? "Copied!"
+                      : copyStatus === "error"
+                        ? "Copy Failed"
+                        : "Copy Graphic"}
+                </button>
+              </div>
+
+              <section ref={graphicRef} className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-xl">
                 <div
                   className="relative overflow-hidden border-b-8 px-6 py-7 sm:px-8 sm:py-9"
                   style={{
@@ -1341,9 +1529,150 @@ export default function RBPage() {
                   </div>
                 </div>
               </section>
+
+              <section className="mt-8 overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-xl">
+                <div className="bg-slate-950 px-5 py-5 text-white sm:px-7">
+                  <div className="flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                      <div className="text-xs font-black uppercase tracking-[0.18em] text-sky-300">
+                        Weekly snapshot sheet
+                      </div>
+                      <h2 className="mt-1 text-2xl font-black">All Running Backs</h2>
+                      <p className="mt-1 text-xs font-bold text-slate-300">
+                        Cumulative stats through the selected week. Click any column to sort.
+                      </p>
+                    </div>
+                    <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-black">
+                      {sortedTablePlayers.length} players
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-b border-slate-200 bg-slate-50 p-5 sm:p-6">
+                  <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+                    <div>
+                      <div className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">
+                        Snapshot week
+                      </div>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {weeklySnapshots.map((snapshot) => (
+                          <button
+                            key={snapshot.week}
+                            type="button"
+                            onClick={() => setSelectedWeek(snapshot.week)}
+                            className={`rounded-full px-4 py-2 text-sm font-black transition ${
+                              selectedWeek === snapshot.week
+                                ? "bg-sky-600 text-white shadow-sm"
+                                : "border border-slate-200 bg-white text-slate-700 hover:border-sky-300 hover:text-sky-700"
+                            }`}
+                          >
+                            Through Week {snapshot.week}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="w-full lg:max-w-sm">
+                      <label className="mb-2 block text-xs font-black uppercase tracking-[0.16em] text-slate-500">
+                        Find player or team
+                      </label>
+                      <input
+                        type="search"
+                        value={tableSearch}
+                        onChange={(event) => setTableSearch(event.target.value)}
+                        placeholder="Search all RBs..."
+                        className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold outline-none transition focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+                      />
+                    </div>
+                  </div>
+
+                  {selectedWeekSnapshot && (
+                    <div className="mt-4 text-xs font-bold text-slate-500">
+                      Snapshot captured {new Date(selectedWeekSnapshot.copiedAt).toLocaleString("en-US", { timeZone: "America/New_York" })} Eastern.
+                    </div>
+                  )}
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[1580px]">
+                    <thead className="bg-slate-100 text-[11px] uppercase tracking-wide text-slate-500">
+                      <tr>
+                        {PLAYER_TABLE_COLUMNS.map((column) => (
+                          <th
+                            key={column.key}
+                            className={`${column.key === "Name" ? "sticky left-0 z-10 bg-slate-100" : ""} px-3 py-3 text-left`}
+                            aria-sort={sortKey === column.key ? (sortDirection === "asc" ? "ascending" : "descending") : "none"}
+                          >
+                            <button
+                              type="button"
+                              onClick={() => toggleSort(column.key)}
+                              className="inline-flex items-center gap-1 whitespace-nowrap font-black hover:text-sky-700"
+                            >
+                              {column.label}
+                              <span className={sortKey === column.key ? "text-sky-600" : "text-slate-300"}>
+                                {sortKey === column.key ? (sortDirection === "asc" ? "▲" : "▼") : "↕"}
+                              </span>
+                            </button>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sortedTablePlayers.map((player, index) => (
+                        <tr key={`${selectedWeekSnapshot?.week}-${player["Name"]}-${player["Team"]}`} className={index % 2 ? "bg-slate-50/70" : "bg-white"}>
+                          {PLAYER_TABLE_COLUMNS.map((column) => {
+                            const raw = player[column.key] ?? "";
+                            const scoreColumn = ["Rush Score", "Rec Score", "Opportunity Score"].includes(column.key);
+                            const score = scoreColumn ? toNumber(raw) : null;
+                            if (column.key === "Name") {
+                              return (
+                                <td key={column.key} className={`sticky left-0 z-[5] whitespace-nowrap px-3 py-3 ${index % 2 ? "bg-slate-50" : "bg-white"}`}>
+                                  <button
+                                    type="button"
+                                    onClick={() => players.some((item) => item["Name"] === player["Name"]) && selectPlayer(player["Name"])}
+                                    className="font-black text-slate-900 hover:text-sky-700"
+                                  >
+                                    {player["Name"]}
+                                  </button>
+                                </td>
+                              );
+                            }
+                            return (
+                              <td key={column.key} className="whitespace-nowrap px-3 py-3 text-sm font-bold text-slate-700">
+                                {score !== null ? (
+                                  <span className={`inline-flex min-w-10 justify-center rounded-lg border px-2 py-1 text-xs font-black ${scoreStyle(score)}`}>
+                                    {Math.round(score)}
+                                  </span>
+                                ) : formatTableValue(raw, column.format)}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {!sortedTablePlayers.length && (
+                  <div className="p-8 text-center font-bold text-slate-500">
+                    No running backs match this search.
+                  </div>
+                )}
+              </section>
             </>
           )}
       </section>
     </main>
   );
+}
+
+async function waitForImages(node: HTMLElement) {
+  const images = Array.from(node.querySelectorAll("img"));
+  await Promise.all(images.map((image) => {
+    if (image.complete) return Promise.resolve();
+    return new Promise<void>((resolve) => {
+      image.addEventListener("load", () => resolve(), { once: true });
+      image.addEventListener("error", () => resolve(), { once: true });
+    });
+  }));
 }
