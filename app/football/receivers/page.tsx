@@ -25,11 +25,11 @@ const opportunity = [
   ["Rec TD", "Receiving Touchdowns", "15%"],
 ] as const;
 const tableColumns = [
-  ["Name", "Player"], ["POS", "Pos"], ["Team", "Team"], ["G", "G"], ["Targets", "Tgt"],
+  ["Name", "Player"], ["POS", "Pos"], ["Team", "Team"], ["G", "G"], ["Efficiency Grade", "Efficiency"], ["Opportunity Grade", "Opportunity"], ["Targets", "Tgt"],
   ["Target Share", "Tgt Share"], ["Rec", "Rec"], ["Rec Yards", "Rec Yds"], ["RecYds/G", "Yds/G"],
   ["YPR", "Yds/Catch"], ["YPT", "Yds/Tgt"], ["YPRR", "YPRR"], ["YAC/Rec", "YAC/Rec"],
   ["Routes/G", "Routes/G"], ["Targets/Route Run", "Tgt/Route"], ["i20/G", "i20/G"], ["i10/G", "i10/G"],
-  ["Team Rec Yards %", "Tm Yds %"], ["Rec TD", "TD"], ["Efficiency Grade", "Efficiency"], ["Opportunity Grade", "Opportunity"],
+  ["Team Rec Yards %", "Tm Yds %"], ["Rec TD", "TD"],
 ] as const;
 
 const colors: Record<string, [string, string]> = {
