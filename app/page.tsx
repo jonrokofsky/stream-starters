@@ -445,7 +445,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            {/* POSITION MATCHUP */}
+            {/* DEFENSE VS POSITION */}
             <Link
               href="/football"
               className="group overflow-hidden rounded-[28px] border border-emerald-400/20 bg-slate-950 transition hover:-translate-y-1 hover:border-emerald-400/40"
@@ -470,7 +470,7 @@ export default function Home() {
                 </div>
 
                 <h3 className="mt-2 text-2xl font-black text-white">
-                  Position Matchup Tool
+                  Defense vs Position
                 </h3>
 
                 <p className="mt-3 text-sm leading-6 text-slate-400">
@@ -544,15 +544,15 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* RB MATCHUP */}
+            {/* POSITION MATCHUP */}
             <Link
-              href="/football/rb/matchup"
+              href="/football/matchup"
               className="group overflow-hidden rounded-[28px] border border-violet-400/20 bg-slate-950 transition hover:-translate-y-1 hover:border-violet-400/40"
             >
               <div className="relative h-52 overflow-hidden">
                 <img
                   src="/banner-football.png"
-                  alt="Running back matchup tool"
+                  alt="RB, wide receiver, and tight end matchup tool"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
@@ -565,16 +565,16 @@ export default function Home() {
 
               <div className="p-6">
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-violet-400">
-                  RB Matchups
+                  Player Matchups
                 </div>
 
                 <h3 className="mt-2 text-2xl font-black text-white">
-                  RB Matchup Tool
+                  Position Matchup Tool
                 </h3>
 
                 <p className="mt-3 text-sm leading-6 text-slate-400">
-                  View an RB&apos;s profile alongside the opposing defense&apos;s
-                  matchup grade.
+                  View an RB, WR, or TE profile alongside the opposing
+                  defense&apos;s matchup grade.
                 </p>
 
                 <div className="mt-5 text-sm font-black text-violet-300">

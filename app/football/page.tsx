@@ -724,7 +724,7 @@ export default function FootballPage() {
           </div>
 
           <h1 className="text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">
-            Position Matchup Tool
+            Defense vs Position
           </h1>
 
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">

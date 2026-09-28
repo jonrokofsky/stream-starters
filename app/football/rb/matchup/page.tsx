@@ -8,9 +8,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const RB_DATA_URL = "/data/rb-2026.json";
 const RB_YAC_DATA_URL = "/data/rb-yac-2026.json";
+const RECEIVER_DATA_URL = "/data/receivers-2026.json";
 const FOOTBALL_DATA_URL = "/data/nfl-defense-vs-position-2026.json";
 
 type DataRow = Record<string, string>;
+type Position = "RB" | "WR" | "TE";
 type Direction = "higher" | "lower" | "neutral";
 
 type StatConfig = {
@@ -64,6 +66,29 @@ const RB_DEFENSE_STATS: StatConfig[] = [
     decimals: 1,
   },
 ];
+
+const RECEIVER_DEFENSE_STATS: Record<"WR" | "TE", StatConfig[]> = {
+  WR: [
+    { label: "Targets", keys: ["WR Tgt", "WR Targets"], direction: "higher", decimals: 1 },
+    { label: "Receptions", keys: ["WR Rec", "WR Receptions"], direction: "higher", decimals: 1 },
+    { label: "Receiving Yards", keys: ["WR Yds", "WR Rec Yds", "WR Rec.Yds"], direction: "higher", decimals: 1 },
+    { label: "TD", keys: ["WR TD"], direction: "higher", decimals: 2 },
+    { label: "Fantasy PPG", keys: ["WR Fantasy PPG", "WR FPTS/G", "WR Fantasy Points"], direction: "higher", decimals: 1 },
+  ],
+  TE: [
+    { label: "Targets", keys: ["TE Tgt", "TE Targets"], direction: "higher", decimals: 1 },
+    { label: "Receptions", keys: ["TE Rec", "TE Receptions"], direction: "higher", decimals: 1 },
+    { label: "Receiving Yards", keys: ["TE Rec.Yds", "TE Rec Yds", "TE Yds"], direction: "higher", decimals: 1 },
+    { label: "TD", keys: ["TE TD"], direction: "higher", decimals: 2 },
+    { label: "Fantasy PPG", keys: ["TE Fantasy PPG", "TE FPTS/G", "TE Fantasy Points"], direction: "higher", decimals: 1 },
+  ],
+};
+
+const POSITION_LABELS: Record<Position, string> = {
+  RB: "Running Back",
+  WR: "Wide Receiver",
+  TE: "Tight End",
+};
 
 const TEAM_NAMES: Record<string, string> = {
   ARI: "Arizona Cardinals",
@@ -374,10 +399,12 @@ function PlayerScoreCard({
   );
 }
 
-export default function RBMatchupPage() {
+export default function PositionMatchupPage() {
   const graphicRef = useRef<HTMLDivElement>(null);
   const [rbRows, setRbRows] = useState<DataRow[]>([]);
+  const [receiverRows, setReceiverRows] = useState<DataRow[]>([]);
   const [defenseRows, setDefenseRows] = useState<DataRow[]>([]);
+  const [selectedPosition, setSelectedPosition] = useState<Position>("RB");
 
   const [selectedName, setSelectedName] = useState("");
   const [search, setSearch] = useState("");
@@ -396,19 +423,21 @@ export default function RBMatchupPage() {
         setLoading(true);
         setError("");
 
-        const [rbResponse, yacResponse, defenseResponse] = await Promise.all([
+        const [rbResponse, yacResponse, receiverResponse, defenseResponse] = await Promise.all([
           fetch(RB_DATA_URL, { cache: "no-store" }),
           fetch(RB_YAC_DATA_URL, { cache: "no-store" }),
+          fetch(RECEIVER_DATA_URL, { cache: "no-store" }),
           fetch(FOOTBALL_DATA_URL, { cache: "no-store" }),
         ]);
 
-        if (!rbResponse.ok || !yacResponse.ok || !defenseResponse.ok) {
+        if (!rbResponse.ok || !yacResponse.ok || !receiverResponse.ok || !defenseResponse.ok) {
           throw new Error("Could not load matchup data.");
         }
 
-        const [rbPayload, yacPayload, defensePayload] = await Promise.all([
+        const [rbPayload, yacPayload, receiverPayload, defensePayload] = await Promise.all([
           rbResponse.json(),
           yacResponse.json() as Promise<YacSnapshot>,
+          receiverResponse.json(),
           defenseResponse.json(),
         ]);
 
@@ -437,7 +466,14 @@ export default function RBMatchupPage() {
           return Boolean(team?.trim());
         });
 
+        const parsedReceivers: DataRow[] = (receiverPayload.rows || [])
+          .filter((row: DataRow) => row["Name"] && (row["POS"] === "WR" || row["POS"] === "TE"))
+          .sort((a: DataRow, b: DataRow) =>
+            (a["Name"] || "").localeCompare(b["Name"] || "")
+          );
+
         setRbRows(parsedRB);
+        setReceiverRows(parsedReceivers);
         setDefenseRows(parsedDefense);
 
         if (parsedRB.length) {
@@ -456,7 +492,7 @@ export default function RBMatchupPage() {
         }
       } catch (err) {
         console.error(err);
-        setError("Could not load RB matchup data.");
+        setError("Could not load position matchup data.");
       } finally {
         setLoading(false);
       }
@@ -465,27 +501,31 @@ export default function RBMatchupPage() {
     loadData();
   }, []);
 
+  const availablePlayers = useMemo(
+    () => selectedPosition === "RB"
+      ? rbRows
+      : receiverRows.filter((row) => row["POS"] === selectedPosition),
+    [rbRows, receiverRows, selectedPosition]
+  );
+
   const selectedPlayer = useMemo(
-    () =>
-      rbRows.find(
-        (row) => row["Name"] === selectedName
-      ),
-    [rbRows, selectedName]
+    () => availablePlayers.find((row) => row["Name"] === selectedName),
+    [availablePlayers, selectedName]
   );
 
   const filteredPlayers = useMemo(() => {
     const query = search.trim().toLowerCase();
 
     if (!query) {
-      return rbRows.slice(0, 10);
+      return availablePlayers.slice(0, 10);
     }
 
-    return rbRows
+    return availablePlayers
       .filter((row) =>
         (row["Name"] || "").toLowerCase().includes(query)
       )
       .slice(0, 10);
-  }, [rbRows, search]);
+  }, [availablePlayers, search]);
 
   const playerTeamName = getValue(
     selectedPlayer,
@@ -530,17 +570,11 @@ export default function RBMatchupPage() {
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [defenseRows, playerTeamCode]);
 
-  useEffect(() => {
-    if (!teamOptions.length) return;
-
-    const currentIsValid = teamOptions.some(
-      (team) => team.acronym === selectedTeam
-    );
-
-    if (!currentIsValid) {
-      setSelectedTeam(teamOptions[0].acronym);
-    }
-  }, [teamOptions, selectedTeam]);
+  const activeSelectedTeam = teamOptions.some(
+    (team) => team.acronym === selectedTeam
+  )
+    ? selectedTeam
+    : teamOptions[0]?.acronym || "";
 
   const selectedDefenseRow = useMemo(() => {
     return defenseRows.find((row) => {
@@ -550,9 +584,9 @@ export default function RBMatchupPage() {
         row["Abbreviation"] ||
         row["Team"];
 
-      return normalizeTeam(raw) === selectedTeam;
+      return normalizeTeam(raw) === activeSelectedTeam;
     });
-  }, [defenseRows, selectedTeam]);
+  }, [activeSelectedTeam, defenseRows]);
 
   function selectPlayer(name: string) {
     setSelectedName(name);
@@ -585,14 +619,26 @@ export default function RBMatchupPage() {
   const yacPerAttempt =
     toNumber(getValue(selectedPlayer, ["YAC/Att"]));
 
+  const efficiencyScore =
+    toNumber(getValue(selectedPlayer, ["Efficiency Grade"])) ?? 0;
+
+  const receiverOpportunityScore =
+    toNumber(getValue(selectedPlayer, ["Opportunity Grade"])) ?? 0;
+
   const playerProfileScore = clampPercentile(
-    rushingScore * 0.4 + receivingScore * 0.25 + opportunityScore * 0.35
+    selectedPosition === "RB"
+      ? rushingScore * 0.4 + receivingScore * 0.25 + opportunityScore * 0.35
+      : efficiencyScore * 0.6 + receiverOpportunityScore * 0.4
   );
+
+  const defenseStats = selectedPosition === "RB"
+    ? RB_DEFENSE_STATS
+    : RECEIVER_DEFENSE_STATS[selectedPosition];
 
   const defenseStatResults = useMemo(() => {
     if (!selectedDefenseRow) return [];
 
-    return RB_DEFENSE_STATS.map((stat) => {
+    return defenseStats.map((stat) => {
       const rawValue = getValue(
         selectedDefenseRow,
         stat.keys
@@ -627,7 +673,7 @@ export default function RBMatchupPage() {
         percentile: pct,
       };
     });
-  }, [defenseRows, selectedDefenseRow]);
+  }, [defenseRows, defenseStats, selectedDefenseRow]);
 
   const rawOverallPercentile = useMemo(() => {
     const usable = defenseStatResults.filter(
@@ -680,7 +726,7 @@ export default function RBMatchupPage() {
     selectedDefenseRow?.["Team"] &&
     selectedDefenseRow["Team"].trim().length > 3
       ? selectedDefenseRow["Team"]
-      : TEAM_NAMES[selectedTeam] || selectedTeam;
+      : TEAM_NAMES[activeSelectedTeam] || activeSelectedTeam;
 
   const playerColors =
     TEAM_COLORS[playerTeamCode] || [
@@ -689,7 +735,7 @@ export default function RBMatchupPage() {
     ];
 
   const defenseColors =
-    TEAM_COLORS[selectedTeam] || [
+    TEAM_COLORS[activeSelectedTeam] || [
       "#0F172A",
       "#2563EB",
     ];
@@ -738,7 +784,7 @@ export default function RBMatchupPage() {
       setCopyStatus("copied");
       window.setTimeout(() => setCopyStatus("idle"), 1800);
     } catch (err) {
-      console.error("RB matchup clipboard copy failed:", err);
+      console.error("Position matchup clipboard copy failed:", err);
       setCopyStatus("error");
       alert("The graphic could not be copied. Try Chrome or Edge and allow clipboard access.");
       window.setTimeout(() => setCopyStatus("idle"), 2200);
@@ -761,7 +807,7 @@ export default function RBMatchupPage() {
             </div>
 
             <div className="mt-1 text-xl font-black">
-              RB Matchup Tool
+              Position Matchup Tool
             </div>
           </div>
 
@@ -770,14 +816,21 @@ export default function RBMatchupPage() {
               href="/football/rb"
               className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-black text-slate-700"
             >
-              ← RB Profile
+              RB Profile
+            </Link>
+
+            <Link
+              href="/football/receivers"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-black text-slate-700"
+            >
+              Receiver Profile
             </Link>
 
             <Link
               href="/football"
               className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-black text-slate-700"
             >
-              Position Tool
+              Defense vs Position
             </Link>
 
             <Link
@@ -797,19 +850,19 @@ export default function RBMatchupPage() {
           </div>
 
           <h1 className="text-3xl font-black tracking-tight sm:text-5xl">
-            RB Matchup Tool
+            Position Matchup Tool
           </h1>
 
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
-            Combine an RB&apos;s current profile with 2026 opponent results
-            from Pro Football Reference.
+            Combine current RB, WR, and TE profile grades with the same 2026
+            defense data used by Defense vs Position.
           </p>
         </div>
 
         {loading && (
           <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm">
             <div className="font-black">
-              Loading RB matchup data...
+              Loading position matchup data...
             </div>
           </div>
         )}
@@ -825,10 +878,37 @@ export default function RBMatchupPage() {
           selectedPlayer && (
             <>
               <div className="mb-6 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+                <div className="mb-5 flex flex-wrap gap-2">
+                  {(["RB", "WR", "TE"] as Position[]).map((position) => (
+                    <button
+                      key={position}
+                      type="button"
+                      onClick={() => {
+                        setSelectedPosition(position);
+                        setShowSuggestions(false);
+                        const players = position === "RB"
+                          ? rbRows
+                          : receiverRows.filter((row) => row["POS"] === position);
+                        if (players.length) {
+                          setSelectedName(players[0]["Name"]);
+                          setSearch(players[0]["Name"]);
+                        }
+                      }}
+                      className={`rounded-xl px-5 py-2.5 text-sm font-black transition ${
+                        selectedPosition === position
+                          ? "bg-slate-950 text-white shadow-md"
+                          : "border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100"
+                      }`}
+                    >
+                      {position}
+                    </button>
+                  ))}
+                </div>
+
                 <div className="grid gap-5 lg:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-xs font-black uppercase tracking-[0.16em] text-slate-500">
-                      Running Back
+                      {POSITION_LABELS[selectedPosition]}
                     </label>
 
                     <div className="relative">
@@ -929,7 +1009,7 @@ export default function RBMatchupPage() {
                     </label>
 
                     <select
-                      value={selectedTeam}
+                      value={activeSelectedTeam}
                       onChange={(e) =>
                         setSelectedTeam(
                           e.target.value
@@ -990,7 +1070,7 @@ export default function RBMatchupPage() {
 
                       <div>
                         <div className="text-xs font-black uppercase tracking-[0.2em] text-white/70">
-                          Running Back
+                          {POSITION_LABELS[selectedPosition]}
                         </div>
 
                         <h2 className="mt-1 text-2xl font-black sm:text-3xl">
@@ -1011,11 +1091,11 @@ export default function RBMatchupPage() {
                     }}
                   >
                     <div className="relative flex items-center gap-5 md:flex-row-reverse md:text-right">
-                      {selectedTeam && (
+                      {activeSelectedTeam && (
                         <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-white/95 p-2 shadow-xl sm:h-24 sm:w-24">
                           <img
                             src={espnLogo(
-                              selectedTeam
+                              activeSelectedTeam
                             )}
                             alt={`${defenseTeamName} logo`}
                             className="h-full w-full object-contain"
@@ -1025,7 +1105,7 @@ export default function RBMatchupPage() {
 
                       <div className="flex-1">
                         <div className="text-xs font-black uppercase tracking-[0.2em] text-white/70">
-                          RB Matchup vs.
+                          {selectedPosition} Matchup vs.
                         </div>
 
                         <h2 className="mt-1 text-2xl font-black sm:text-3xl">
@@ -1034,11 +1114,11 @@ export default function RBMatchupPage() {
 
                         <div className="mt-3 flex flex-wrap gap-2 md:justify-end">
                           <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-black">
-                            {selectedTeam}
+                            {activeSelectedTeam}
                           </span>
 
                           <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-black">
-                            RB Defense
+                            {selectedPosition} Defense
                           </span>
 
                           <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-black">
@@ -1098,19 +1178,46 @@ export default function RBMatchupPage() {
                 <div className="border-b border-slate-200 p-5 sm:p-8">
                   <div className="mb-4">
                     <div className="text-lg font-black">Player Stats</div>
-                    <div className="text-xs text-slate-500">Current RB profile grades and rushing efficiency</div>
-                  </div>
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                    <PlayerScoreCard title="Rushing Score" score={rushingScore} />
-                    <PlayerScoreCard title="Receiving Score" score={receivingScore} />
-                    <PlayerScoreCard title="Opportunity Score" score={opportunityScore} />
-                    <PlayerScoreCard title="Rush Gain Profile" score={rushGainProfile} />
-                    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                      <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">YAC / Attempt</div>
-                      <div className="mt-4 text-5xl font-black leading-none text-slate-950">{yacPerAttempt === null ? "—" : yacPerAttempt.toFixed(1)}</div>
-                      <div className="mt-2 text-xs font-black text-slate-500">{yacPerAttempt === null ? "Not available · excluded from Rush Score" : "PFR rushing efficiency"}</div>
+                    <div className="text-xs text-slate-500">
+                      {selectedPosition === "RB"
+                        ? "Current RB profile grades and rushing efficiency"
+                        : `Current ${selectedPosition} efficiency and opportunity profile`}
                     </div>
                   </div>
+                  {selectedPosition === "RB" ? (
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                      <PlayerScoreCard title="Rushing Score" score={rushingScore} />
+                      <PlayerScoreCard title="Receiving Score" score={receivingScore} />
+                      <PlayerScoreCard title="Opportunity Score" score={opportunityScore} />
+                      <PlayerScoreCard title="Rush Gain Profile" score={rushGainProfile} />
+                      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                        <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">YAC / Attempt</div>
+                        <div className="mt-4 text-5xl font-black leading-none text-slate-950">{yacPerAttempt === null ? "—" : yacPerAttempt.toFixed(1)}</div>
+                        <div className="mt-2 text-xs font-black text-slate-500">{yacPerAttempt === null ? "Not available · excluded from Rush Score" : "Rushing efficiency"}</div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                      <PlayerScoreCard title="Efficiency Grade" score={efficiencyScore} />
+                      <PlayerScoreCard title="Opportunity Grade" score={receiverOpportunityScore} />
+                      {[
+                        ["Yards / Route Run", "YPRR"],
+                        ["YAC / Reception", "YAC/Rec"],
+                        ["Routes / Game", "Routes/G"],
+                      ].map(([label, key]) => {
+                        const value = toNumber(getValue(selectedPlayer, [key]));
+                        return (
+                          <div key={key} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                            <div className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">{label}</div>
+                            <div className="mt-4 text-5xl font-black leading-none text-slate-950">
+                              {value === null ? "—" : value.toFixed(2)}
+                            </div>
+                            <div className="mt-2 text-xs font-black text-slate-500">Receiver profile data</div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-5 sm:p-8">

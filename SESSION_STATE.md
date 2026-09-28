@@ -1,5 +1,9 @@
 # Session checkpoint
 
+## 2026-09-28 combined Position Matchup Tool
+
+Task `SS-20260928-position-matchup` expands the RB matchup page to RB/WR/TE using the existing RB, receiver, and defense snapshots. The canonical route is `/football/matchup`; `/football/rb/matchup` remains compatible. The defense-only `/football` page is renamed Defense vs Position and navigation is updated. Focused lint has zero errors, production build passes, and local browser checks pass for all three position toggles. Sequential role artifacts are in `specs/` and `reviews/`; push and hosted verification are next.
+
 ## 2026-09-24 RB refresh resilience
 
 GitHub scheduled runs were starting hours late and then skipping every data step because the workflow checked the runner's eventual Eastern hour. Fixed the schedule to use GitHub's `America/New_York` timezone and removed the delayed-start hour rejection. Fantasy Points Basic Rushing now captures and writes before optional PFR YAC enrichment. Live local run: PFR timed out, prior YAC preserved, Fantasy Points updated to 86 RBs and 160 player-games; six focused tests, importer lint, and production build passed. See `SS-20260924-rb-refresh-resilience` artifacts. Release and hosted verification pending.

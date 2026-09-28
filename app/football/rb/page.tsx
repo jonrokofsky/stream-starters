@@ -1116,10 +1116,10 @@ export default function RBPage() {
 
           <div className="flex gap-2">
             <Link
-              href="/football"
+              href="/football/matchup"
               className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-black text-slate-700 transition hover:border-sky-300 hover:text-sky-700"
             >
-              ← Matchup Tool
+              ← Position Matchup
             </Link>
 
             <Link
