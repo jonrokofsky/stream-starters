@@ -522,6 +522,28 @@ export default function Home() {
               </div>
             </Link>
 
+            {/* RECEIVER PROFILE */}
+            <Link
+              href="/football/receivers"
+              className="group overflow-hidden rounded-[28px] border border-cyan-400/20 bg-slate-950 transition hover:-translate-y-1 hover:border-cyan-400/40"
+            >
+              <div className="relative h-52 overflow-hidden">
+                <img
+                  src="/football-player.png"
+                  alt="Wide receiver and tight end profile tool"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                <div className="absolute left-4 top-4 rounded-full border border-cyan-400/30 bg-slate-950/70 px-3 py-1 text-xs font-black uppercase tracking-wider text-cyan-300">Live</div>
+              </div>
+              <div className="p-6">
+                <div className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400">WR + TE Analysis</div>
+                <h3 className="mt-2 text-2xl font-black text-white">Receiver Profile Tool</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-400">Position-specific efficiency and opportunity grades with a sortable WR/TE data sheet.</p>
+                <div className="mt-5 text-sm font-black text-cyan-300">Open Tool →</div>
+              </div>
+            </Link>
+
             {/* RB MATCHUP */}
             <Link
               href="/football/rb/matchup"

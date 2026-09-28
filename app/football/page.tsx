@@ -710,12 +710,10 @@ export default function FootballPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
           <StreamStartersLogo />
 
-          <Link
-            href="/"
-            className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700"
-          >
-            ← Home
-          </Link>
+          <div className="flex gap-2">
+            <Link href="/football/receivers" className="rounded-xl bg-sky-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-sky-700">Receiver Profiles</Link>
+            <Link href="/" className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm transition hover:border-sky-300 hover:text-sky-700">← Home</Link>
+          </div>
         </div>
       </header>
 
