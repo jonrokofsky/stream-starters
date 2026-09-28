@@ -2,7 +2,7 @@
 
 ## 2026-09-28 combined Position Matchup Tool
 
-Task `SS-20260928-position-matchup` expands the RB matchup page to RB/WR/TE using the existing RB, receiver, and defense snapshots. The canonical route is `/football/matchup`; `/football/rb/matchup` remains compatible. The defense-only `/football` page is renamed Defense vs Position and navigation is updated. Focused lint has zero errors, production build passes, and local browser checks pass for all three position toggles. Sequential role artifacts are in `specs/` and `reviews/`; push and hosted verification are next.
+Task `SS-20260928-position-matchup` expands the RB matchup page to RB/WR/TE using the existing RB, receiver, and defense snapshots. The canonical route is `/football/matchup`; `/football/rb/matchup` remains compatible. The defense-only `/football` page is renamed Defense vs Position and navigation is updated. Every populated matchup metric card now uses the red-to-blue percentile scale; raw cards show their `P##` value. Focused lint has zero errors, all 26 data tests and the production build pass, and local browser checks pass for all three position toggles and percentile colors. Application revisions are `a04f85f` and `12e8a33`.
 
 ## 2026-09-24 RB refresh resilience
 

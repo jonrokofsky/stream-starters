@@ -22,6 +22,7 @@ Provide one player matchup page for RB, WR, and TE. RB selections use the RB pro
 - AC-6: The combined tool is available at `/football/matchup`; the existing `/football/rb/matchup` remains compatible.
 - AC-7: The defense-only `/football` heading and homepage card read “Defense vs Position”; profile and homepage navigation point to the combined tool.
 - AC-8: Production build and an RB/WR/TE browser interaction smoke test pass.
+- AC-9: Every populated player and defense metric card uses the shared red-to-blue percentile scale and displays its percentile where the card represents a raw metric.
 
 ## Boundaries
 
