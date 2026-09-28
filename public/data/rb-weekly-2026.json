@@ -4345,7 +4345,7 @@
     },
     {
       "week": 3,
-      "copiedAt": "2026-09-28T14:36:54.175Z",
+      "copiedAt": "2026-09-28T19:29:28.889Z",
       "rows": [
         {
           "Rank": "11",
@@ -4547,7 +4547,7 @@
           "Total TD": "0",
           "YAC/Att": "2.4",
           "Rush Gain Profile": "51",
-          "Rush Score": "57",
+          "Rush Score": "58",
           "Rec Score": "31",
           "Opportunity Score": "17"
         },
@@ -5113,7 +5113,7 @@
           "Opportunity Score": "75"
         },
         {
-          "Rank": "58",
+          "Rank": "59",
           "Name": "Chris Brooks",
           "Team": "GB",
           "POS": "RB",
@@ -5159,7 +5159,7 @@
           "Total TD": "0",
           "YAC/Att": "1.4",
           "Rush Gain Profile": "45",
-          "Rush Score": "42",
+          "Rush Score": "43",
           "Rec Score": "46",
           "Opportunity Score": "27"
         },
@@ -5365,7 +5365,7 @@
           "Rush Gain Profile": "19",
           "Rush Score": "15",
           "Rec Score": "12",
-          "Opportunity Score": "15"
+          "Opportunity Score": "16"
         },
         {
           "Rank": "66",
@@ -5414,7 +5414,7 @@
           "Total TD": "0",
           "YAC/Att": "0.6",
           "Rush Gain Profile": "7",
-          "Rush Score": "10",
+          "Rush Score": "11",
           "Rec Score": "38",
           "Opportunity Score": "10"
         },
@@ -5572,7 +5572,7 @@
           "Opportunity Score": "63"
         },
         {
-          "Rank": "82",
+          "Rank": "81",
           "Name": "DeeJay Dallas",
           "Team": "MIN",
           "POS": "RB",
@@ -5620,7 +5620,7 @@
           "Rush Gain Profile": "26",
           "Rush Score": "23",
           "Rec Score": "42",
-          "Opportunity Score": "8"
+          "Opportunity Score": "9"
         },
         {
           "Rank": "91",
@@ -5671,7 +5671,7 @@
           "Rush Gain Profile": "1",
           "Rush Score": "1",
           "Rec Score": "24",
-          "Opportunity Score": "7"
+          "Opportunity Score": "8"
         },
         {
           "Rank": "5",
@@ -5827,7 +5827,7 @@
           "Opportunity Score": "45"
         },
         {
-          "Rank": "77",
+          "Rank": "78",
           "Name": "Emari Demercado",
           "Team": "DAL",
           "POS": "RB",
@@ -6235,14 +6235,14 @@
           "Opportunity Score": "89"
         },
         {
-          "Rank": "88",
+          "Rank": "86",
           "Name": "Jaleel McLaughlin",
           "Team": "CLE",
           "POS": "RB",
-          "G": "1",
+          "G": "2",
           "ATT": "1",
           "RuYds": "3",
-          "RuYds/G": "3.0",
+          "RuYds/G": "1.5",
           "RuYds/Rush": "3.00",
           "RuTD": "0",
           "Rush FUM": "0",
@@ -6262,7 +6262,7 @@
           "Inside 10 Carry%": "0.0%",
           "Inside 20 Carry%": "0.0%",
           "Targets": "1",
-          "Target Share": "3.3%",
+          "Target Share": "1.6%",
           "Rec": "0",
           "Rec Yards": "0",
           "Team Rec Yards %": "0.0%",
@@ -6275,15 +6275,15 @@
           "Ins. 10 Rec.": "0",
           "Rec FUM": "0",
           "Weighted Opp.": "2.0",
-          "Weighted Opp./G": "2.0",
-          "FP/G": "0.3",
+          "Weighted Opp./G": "1.0",
+          "FP/G": "0.2",
           "FP": "0.3",
           "Total TD": "0",
           "YAC/Att": "2",
           "Rush Gain Profile": "30",
-          "Rush Score": "32",
-          "Rec Score": "14",
-          "Opportunity Score": "13"
+          "Rush Score": "31",
+          "Rec Score": "11",
+          "Opportunity Score": "6"
         },
         {
           "Rank": "3",
@@ -6439,7 +6439,7 @@
           "Opportunity Score": "55"
         },
         {
-          "Rank": "81",
+          "Rank": "82",
           "Name": "Jaylen Wright",
           "Team": "MIA",
           "POS": "RB",
@@ -6487,7 +6487,7 @@
           "Rush Gain Profile": "28",
           "Rush Score": "34",
           "Rec Score": "2",
-          "Opportunity Score": "11"
+          "Opportunity Score": "12"
         },
         {
           "Rank": "22",
@@ -6689,19 +6689,19 @@
           "Total TD": "0",
           "YAC/Att": "0.7",
           "Rush Gain Profile": "36",
-          "Rush Score": "29",
+          "Rush Score": "30",
           "Rec Score": "66",
           "Opportunity Score": "30"
         },
         {
-          "Rank": "78",
+          "Rank": "77",
           "Name": "Jordan James",
           "Team": "SF",
           "POS": "RB",
-          "G": "1",
+          "G": "2",
           "ATT": "4",
           "RuYds": "15",
-          "RuYds/G": "15.0",
+          "RuYds/G": "7.5",
           "RuYds/Rush": "3.75",
           "RuTD": "0",
           "Rush FUM": "0",
@@ -6734,15 +6734,15 @@
           "Ins. 10 Rec.": "0",
           "Rec FUM": "0",
           "Weighted Opp.": "2.0",
-          "Weighted Opp./G": "2.0",
-          "FP/G": "1.5",
+          "Weighted Opp./G": "1.0",
+          "FP/G": "0.8",
           "FP": "1.5",
           "Total TD": "0",
           "YAC/Att": "2.8",
           "Rush Gain Profile": "19",
-          "Rush Score": "43",
+          "Rush Score": "39",
           "Rec Score": "2",
-          "Opportunity Score": "5"
+          "Opportunity Score": "2"
         },
         {
           "Rank": "46",
@@ -6949,7 +6949,7 @@
           "Opportunity Score": "12"
         },
         {
-          "Rank": "59",
+          "Rank": "58",
           "Name": "Kaytron Allen",
           "Team": "WAS",
           "POS": "RB",
@@ -7098,8 +7098,8 @@
           "YAC/Att": "0.8",
           "Rush Gain Profile": "29",
           "Rush Score": "34",
-          "Rec Score": "30",
-          "Opportunity Score": "38"
+          "Rec Score": "31",
+          "Opportunity Score": "39"
         },
         {
           "Rank": "1",
@@ -7252,7 +7252,7 @@
           "Rush Gain Profile": "57",
           "Rush Score": "39",
           "Rec Score": "42",
-          "Opportunity Score": "12"
+          "Opportunity Score": "13"
         },
         {
           "Rank": "24",
@@ -7405,7 +7405,7 @@
           "Rush Gain Profile": "0",
           "Rush Score": "",
           "Rec Score": "2",
-          "Opportunity Score": "17"
+          "Opportunity Score": "18"
         },
         {
           "Rank": "43",
@@ -7510,7 +7510,7 @@
           "Opportunity Score": "24"
         },
         {
-          "Rank": "48",
+          "Rank": "47",
           "Name": "Najee Harris",
           "Team": "NYG",
           "POS": "RB",
@@ -7871,10 +7871,10 @@
           "Name": "Ray Davis",
           "Team": "BUF",
           "POS": "RB",
-          "G": "2",
+          "G": "3",
           "ATT": "1",
           "RuYds": "3",
-          "RuYds/G": "1.5",
+          "RuYds/G": "1.0",
           "RuYds/Rush": "3.00",
           "RuTD": "0",
           "Rush FUM": "0",
@@ -7908,7 +7908,7 @@
           "Rec FUM": "0",
           "Weighted Opp.": "0.5",
           "Weighted Opp./G": "0.2",
-          "FP/G": "0.2",
+          "FP/G": "0.1",
           "FP": "0.3",
           "Total TD": "0",
           "YAC/Att": "1",
@@ -8066,7 +8066,7 @@
           "Total TD": "0",
           "YAC/Att": "1.4",
           "Rush Gain Profile": "56",
-          "Rush Score": "52",
+          "Rush Score": "53",
           "Rec Score": "86",
           "Opportunity Score": "51"
         },
@@ -8272,7 +8272,7 @@
           "Rush Gain Profile": "14",
           "Rush Score": "8",
           "Rec Score": "9",
-          "Opportunity Score": "14"
+          "Opportunity Score": "15"
         },
         {
           "Rank": "57",
@@ -8321,7 +8321,7 @@
           "Total TD": "0",
           "YAC/Att": "0.3",
           "Rush Gain Profile": "53",
-          "Rush Score": "39",
+          "Rush Score": "40",
           "Rec Score": "56",
           "Opportunity Score": "14"
         },
@@ -8578,10 +8578,10 @@
           "Rush Gain Profile": "52",
           "Rush Score": "63",
           "Rec Score": "34",
-          "Opportunity Score": "27"
+          "Opportunity Score": "28"
         },
         {
-          "Rank": "47",
+          "Rank": "48",
           "Name": "Tyjae Spears",
           "Team": "TEN",
           "POS": "RB",
@@ -8683,7 +8683,7 @@
           "Opportunity Score": "47"
         },
         {
-          "Rank": "86",
+          "Rank": "88",
           "Name": "Tyler Badie",
           "Team": "DEN",
           "POS": "RB",
@@ -8782,7 +8782,7 @@
           "Rush Gain Profile": "39",
           "Rush Score": "35",
           "Rec Score": "10",
-          "Opportunity Score": "17"
+          "Opportunity Score": "18"
         },
         {
           "Rank": "75",
