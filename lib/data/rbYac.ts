@@ -2,7 +2,11 @@ type Row = Record<string, string>;
 export type YacSnapshot = { season: number; source: string; capturedAt: string; coverageNote: string; rows: Row[] };
 function identity(name: string, team: string) {
   const normalized = name.toLowerCase().replace(/\b(jr|sr|iii|ii|iv)\b/g, "").replace(/[^a-z]/g, "");
-  return (normalized === "kennygainwell" ? "kennethgainwell" : normalized) + ":" + team;
+  const aliases: Record<string, string> = {
+    kennygainwell: "kennethgainwell",
+    zonovanknight: "bamknight",
+  };
+  return (aliases[normalized] ?? normalized) + ":" + team;
 }
 export function mergeRbYac(rows: Row[], snapshot: unknown): Row[] {
   const s = snapshot as YacSnapshot | null;

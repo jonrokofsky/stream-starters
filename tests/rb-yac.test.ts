@@ -17,3 +17,8 @@ test("YAC joins aliases and team, preserves zero, rejects duplicates", () => {
  assert.equal(result[0]["YAC/Att"],"0.0");assert.equal(result[1]["YAC/Att"],"");
  assert.throws(()=>mergeRbYac([], {...snapshot,rows:[...snapshot.rows,...snapshot.rows]}),/Ambiguous/);
 });
+test("YAC joins Zonovan Knight to the Bam Knight profile", () => {
+ const snapshot={season:2026,source:"https://www.pro-football-reference.com/years/2026/rushing_advanced.htm",capturedAt:"2026-09-28T14:00:00Z",coverageNote:"Week 3",rows:[{Name:"Zonovan Knight",Team:"ARI","YAC/Att":"4.5"}]};
+ const [result]=mergeRbYac([{Name:"Bam Knight",Team:"ARI"}],snapshot);
+ assert.equal(result["YAC/Att"],"4.5");
+});
