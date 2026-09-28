@@ -61,19 +61,45 @@ async function captureSumer(page, position, source) {
   await page.goto(source, { waitUntil: "domcontentloaded", timeout: 60000 });
   await page.locator("table tbody tr").first().waitFor({ timeout: 60000 });
   const showMore = page.getByRole("button", { name: /Show More/i });
-  for (let clicks = 0; clicks < 20 && await showMore.count() && await showMore.isVisible() && !(await showMore.isDisabled()); clicks += 1) {
-    const before = await page.locator("table tbody tr").count();
+  const tableRows = page.locator("table").first().locator("tbody tr");
+  for (let clicks = 0; clicks < 20 && await showMore.count() && await showMore.isVisible(); clicks += 1) {
+    await showMore.waitFor({ state: "visible" });
+    try {
+      await page.waitForFunction(() => {
+        const button = [...document.querySelectorAll("button")].find((element) => element.textContent?.includes("Show More"));
+        return !button || !button.disabled;
+      }, undefined, { timeout: 15000 });
+    } catch {
+      break;
+    }
+    if (!(await showMore.count())) break;
+    const before = await tableRows.count();
     await showMore.click();
-    await page.waitForTimeout(350);
-    const after = await page.locator("table tbody tr").count();
-    if (after <= before) break;
+    try {
+      await page.waitForFunction((previousCount) => (
+        (document.querySelector("table")?.querySelectorAll("tbody tr").length ?? 0) > previousCount
+      ), before, { timeout: 15000 });
+    } catch {
+      if (await tableRows.count() <= before) break;
+    }
+    await page.waitForTimeout(500);
+    console.log(`Loaded ${await tableRows.count()} SumerSports ${position} rows...`);
   }
   const rows = await page.locator("table").first().evaluate((table, pos) => {
     const clean = (value) => String(value ?? "").trim();
+    const compact = (value) => clean(value).toLowerCase().replace(/[^a-z0-9]/g, "");
+    const playerName = (link) => {
+      const text = clean(link?.innerText).split(/\r?\n/).at(-1).replace(/^\d+\.\s*/, "");
+      for (const match of text.matchAll(/[A-Z]\.\s*/g)) {
+        const full = text.slice(0, match.index).trim();
+        const abbreviatedSurname = text.slice(match.index + match[0].length).trim();
+        if (full && abbreviatedSurname && compact(full).endsWith(compact(abbreviatedSurname))) return full;
+      }
+      return text;
+    };
     return Array.from(table.querySelectorAll("tbody tr")).map((row) => {
       const cells = Array.from(row.querySelectorAll("th,td"));
-      const linkText = clean(cells[0]?.querySelector("a")?.innerText);
-      const name = linkText.split(/\r?\n/).at(-1).replace(/^\d+\.\s*/, "");
+      const name = playerName(cells[0]?.querySelector("a"));
       const values = cells.map((cell) => clean(cell.textContent));
       const base = values.length === 14 ? 1 : 3;
       return {
@@ -95,6 +121,8 @@ async function captureSumer(page, position, source) {
       };
     }).filter((row) => row.Name);
   }, position);
+  const minimumRows = position === "WR" ? 100 : 40;
+  if (rows.length < minimumRows) throw Error(`SumerSports ${position} returned only ${rows.length} rows`);
   console.log(`Captured ${rows.length} SumerSports ${position} rows.`);
   return rows;
 }

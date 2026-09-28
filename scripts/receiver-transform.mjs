@@ -39,6 +39,8 @@ export function transformReceiverReport(raw, sumerRows) {
     });
   for (const position of ["WR", "TE"]) {
     const group = rows.filter((row) => row.POS === position);
+    const routeCoverage = group.filter((row) => row["Routes/G"] !== "").length / group.length;
+    if (routeCoverage < 0.7) throw Error(`${position} route coverage is only ${(routeCoverage * 100).toFixed(1)}%`);
     const scores = calculateReceiverScores(group);
     group.forEach((row, index) => {
       row["Efficiency Grade"] = scores[index].efficiency === null ? "" : String(scores[index].efficiency);

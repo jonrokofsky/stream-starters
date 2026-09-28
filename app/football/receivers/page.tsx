@@ -9,20 +9,20 @@ type Snapshot = { copiedAt: string; population: { WR: number; TE: number }; rows
 type PositionFilter = "ALL" | "WR" | "TE";
 
 const efficiency = [
-  ["YPRR", "Yards / Route Run", "30%"],
-  ["YAC/Rec", "YAC / Reception", "15%"],
-  ["RecYds/G", "Receiving Yards / Game", "18.333%"],
-  ["YPR", "Yards / Catch", "18.333%"],
-  ["YPT", "Yards / Target", "18.333%"],
+  ["YPRR", "Yards / Route Run"],
+  ["YAC/Rec", "YAC / Reception"],
+  ["RecYds/G", "Receiving Yards / Game"],
+  ["YPR", "Yards / Catch"],
+  ["YPT", "Yards / Target"],
 ] as const;
 const opportunity = [
-  ["Routes/G", "Routes Run / Game", "15%"],
-  ["Target Share", "Target Share", "20%"],
-  ["Targets/Route Run", "Targets / Route Run", "15%"],
-  ["i20/G", "Inside-20 Targets / Game", "10%"],
-  ["i10/G", "Inside-10 Targets / Game", "10%"],
-  ["Team Rec Yards %", "Team Receiving Yards", "15%"],
-  ["Rec TD", "Receiving Touchdowns", "15%"],
+  ["Routes/G", "Routes Run / Game"],
+  ["Target Share", "Target Share"],
+  ["Targets/Route Run", "Targets / Route Run"],
+  ["i20/G", "Inside-20 Targets / Game"],
+  ["i10/G", "Inside-10 Targets / Game"],
+  ["Team Rec Yards %", "Team Receiving Yards"],
+  ["Rec TD", "Receiving Touchdowns"],
 ] as const;
 const tableColumns = [
   ["Name", "Player"], ["POS", "Pos"], ["Team", "Team"], ["G", "G"], ["Efficiency Grade", "Efficiency"], ["Opportunity Grade", "Opportunity"], ["Targets", "Tgt"],
@@ -104,6 +104,6 @@ export default function ReceiverProfilePage() {
   </main>;
 }
 
-function MetricSection({title,subtitle,items,row,componentGrade}:{title:string;subtitle:string;items:readonly (readonly [string,string,string])[];row:Row;componentGrade:(key:string)=>number}) {
-  return <section><h3 className="text-xl font-black">{title}</h3><p className="mb-4 text-sm text-slate-500">{subtitle}</p><div className="grid gap-3 sm:grid-cols-2">{items.map(([key,label,weight]) => { const grade = componentGrade(key); return <div key={key} className={`rounded-2xl border p-4 ${gradeStyle(grade)}`}><div className="flex justify-between gap-3"><div className="text-xs font-black uppercase tracking-wide opacity-70">{label}</div><div className="rounded-full bg-black/10 px-2 py-0.5 text-[10px] font-black">P{grade}</div></div><div className="mt-3 text-3xl font-black">{display(key,row[key])}</div><div className="mt-1 text-xs font-bold opacity-70">{weight} of {title.toLowerCase()} grade</div></div>;})}</div></section>;
+function MetricSection({title,subtitle,items,row,componentGrade}:{title:string;subtitle:string;items:readonly (readonly [string,string])[];row:Row;componentGrade:(key:string)=>number}) {
+  return <section><h3 className="text-xl font-black">{title}</h3><p className="mb-4 text-sm text-slate-500">{subtitle}</p><div className="grid gap-3 sm:grid-cols-2">{items.map(([key,label]) => { const grade = componentGrade(key); return <div key={key} className={`rounded-2xl border p-4 ${gradeStyle(grade)}`}><div className="flex justify-between gap-3"><div className="text-xs font-black uppercase tracking-wide opacity-70">{label}</div><div className="rounded-full bg-black/10 px-2 py-0.5 text-[10px] font-black">P{grade}</div></div><div className="mt-3 text-3xl font-black">{display(key,row[key])}</div></div>;})}</div></section>;
 }
