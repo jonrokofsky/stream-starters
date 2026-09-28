@@ -1,8 +1,10 @@
 import { chromium } from 'playwright';
 import { readFile, writeFile, rename } from 'node:fs/promises';
 import { transformReport } from './rb-transform.mjs';
+import { upsertWeeklySnapshot } from './rb-weekly.mjs';
 const target = new URL('../public/data/rb-2026.json', import.meta.url);
 const yacTarget = new URL('../public/data/rb-yac-2026.json', import.meta.url);
+const weeklyTarget = new URL('../public/data/rb-weekly-2026.json', import.meta.url);
 const source = 'https://data.fantasypoints.com/nfl/tools/player/rushing-basic';
 const yacSource = 'https://www.pro-football-reference.com/years/2026/rushing_advanced.htm';
 const browser = await chromium.launch({ headless: true, ...(process.env.RB_BROWSER_CHANNEL ? {channel: process.env.RB_BROWSER_CHANNEL} : {}) });
@@ -18,6 +20,14 @@ try {
     const changed=JSON.stringify(previous.rows)!==JSON.stringify(result.rows);
     if(changed){const temp=new URL('../public/data/rb-2026.json.tmp',import.meta.url);await writeFile(temp,JSON.stringify(result,null,2)+'\n');await rename(temp,target);}
     return changed;
+  };
+  const archiveWeeklyResult = async result => {
+    let archive={season:2026,source,weeks:[]};
+    try{archive=JSON.parse(await readFile(weeklyTarget,'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
+    const update=upsertWeeklySnapshot(archive,result,source);
+    if(!update.changed)return false;
+    const temp=new URL('../public/data/rb-weekly-2026.json.tmp',import.meta.url);await writeFile(temp,JSON.stringify(update.archive,null,2)+'\n');await rename(temp,weeklyTarget);
+    return true;
   };
 
   // Capture and validate Fantasy Points first. PFR is optional enrichment and
@@ -90,5 +100,6 @@ try {
     result=transformReport(rawReport,yacSnapshot);validateResult(result);rbChanged=(await writeRbIfChanged(result))||rbChanged;
     const temp=new URL('../public/data/rb-yac-2026.json.tmp',import.meta.url);await writeFile(temp,JSON.stringify(yacSnapshot,null,2)+'\n');await rename(temp,yacTarget);
   }
-  console.log(`Fantasy Points RB data ${rbChanged?'updated':'unchanged'}; PFR YAC ${yacChanged?'updated':'unchanged'}; ${result.rows.length} RBs; ${games(result.rows)} player games.`);
+  const weeklyChanged=await archiveWeeklyResult(result);
+  console.log(`Fantasy Points RB data ${rbChanged?'updated':'unchanged'}; PFR YAC ${yacChanged?'updated':'unchanged'}; weekly archive ${weeklyChanged?'updated':'unchanged'}; ${result.rows.length} RBs; ${games(result.rows)} player games.`);
 } finally {await browser.close();}
