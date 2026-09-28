@@ -529,7 +529,7 @@ export default function Home() {
             >
               <div className="relative h-52 overflow-hidden">
                 <img
-                  src="/football-player.png"
+                  src="/receiver-profile.png"
                   alt="Wide receiver and tight end profile tool"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
