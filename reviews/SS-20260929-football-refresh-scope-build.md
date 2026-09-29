@@ -4,7 +4,7 @@
 - Date: 2026-09-29
 - Status: READY FOR QA
 - Spec: `specs/SS-20260929-football-refresh-scope.md`
-- Revision under review: working tree based on `7d3ce83`
+- Revision under review: `57beec5`
 - Next owner: Tester
 
 ## Implementation

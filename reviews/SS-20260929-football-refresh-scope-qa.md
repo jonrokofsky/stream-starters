@@ -2,8 +2,8 @@
 
 - Author/role: Tester (sequential, not independent)
 - Date: 2026-09-29
-- Status: PASS LOCALLY
-- Revision: working tree based on `7d3ce83`
+- Status: PASS
+- Revision: `57beec5`
 - Next owner: Manager
 
 ## Evidence
@@ -15,4 +15,10 @@
 - AC-5 PASS: automation `verify-8-am-football-refresh` is active with the two-workflow/manual-PFR instructions.
 - AC-6 PASS: 37 focused tests passed; script syntax and focused ESLint passed with no errors; production build passed and generated all routes.
 
-No open product issue. GitHub workflow reruns and hosted deployment remain release checks after push.
+## Hosted release checks
+
+- GitHub FPDS RB workflow run #11: PASS in 52 seconds.
+- GitHub receiver workflow run #2: PASS in 1 minute 9 seconds.
+- Production JSON: 90 RBs/241 player-games, 90 YAC rows, Derrick Henry YAC/Att 2.7, 162 WR, and 93 TE with September 29 timestamps.
+
+No open product issue.

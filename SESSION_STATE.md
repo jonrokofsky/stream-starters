@@ -2,7 +2,7 @@
 
 ## 2026-09-29 football refresh source scope
 
-Task `SS-20260929-football-refresh-scope` responds to failed GitHub run #10. The failure was an FPDS grid timeout before the defense step. User clarified that only FPDS and SumerSports should refresh automatically; PFR defense and YAC/Att are manual uploads. Local implementation narrows and retries the RB job, retries receiver sources, adds a reusable YAC TSV importer, and updates the 8:15 fallback heartbeat to monitor both jobs. Today’s local data: 90 RBs/241 player-games, 90 YAC rows through Week 3, 162 WR and 93 TE. Uploaded defense screenshots match the active Week 3 defense snapshot. Thirty-seven focused tests and production build pass. Push, GitHub reruns, and live verification are next.
+Task `SS-20260929-football-refresh-scope` responds to failed GitHub run #10. The failure was an FPDS grid timeout before the defense step. User clarified that only FPDS and SumerSports should refresh automatically; PFR defense and YAC/Att are manual uploads. Commit `57beec5` narrows and retries the RB job, retries receiver sources, adds a reusable YAC TSV importer, and updates the 8:15 fallback heartbeat to monitor both jobs. GitHub FPDS RB run #11 and receiver run #2 passed. Production now serves 90 RBs/241 player-games, 90 YAC rows through Week 3, 162 WR and 93 TE; Derrick Henry YAC/Att is 2.7. Uploaded defense screenshots match the active Week 3 defense snapshot. Thirty-seven focused tests, production build, workflow reruns, and live data checks pass.
 
 ## 2026-09-28 combined Position Matchup Tool
 
