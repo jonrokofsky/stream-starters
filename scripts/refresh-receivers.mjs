@@ -9,6 +9,20 @@ const sumerSources = {
   TE: "https://sumersports.com/players/tight-end/",
 };
 
+async function retryCapture(label, operation) {
+  let lastError;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      console.log(`${label} capture attempt ${attempt}/3...`);
+      return await operation();
+    } catch (error) {
+      lastError = error;
+      console.warn(`${label} attempt ${attempt} failed: ${error.message}`);
+    }
+  }
+  throw lastError;
+}
+
 async function captureFantasy(page) {
   console.log("Loading Fantasy Points receiving data...");
   await page.goto(fantasySource, { waitUntil: "domcontentloaded", timeout: 60000 });
@@ -130,10 +144,10 @@ async function captureSumer(page, position, source) {
 const browser = await chromium.launch({ headless: true });
 try {
   const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
-  const fantasy = await captureFantasy(page);
+  const fantasy = await retryCapture("Fantasy Points receiving", () => captureFantasy(page));
   const sumerRows = [];
   for (const [position, source] of Object.entries(sumerSources)) {
-    sumerRows.push(...await captureSumer(page, position, source));
+    sumerRows.push(...await retryCapture(`SumerSports ${position}`, () => captureSumer(page, position, source)));
   }
   await page.close();
 

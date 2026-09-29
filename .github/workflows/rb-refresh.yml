@@ -1,4 +1,4 @@
-name: Refresh RB data
+name: Refresh FPDS RB data
 on:
   workflow_dispatch:
   schedule:
@@ -42,16 +42,15 @@ jobs:
         if: steps.gate.outputs.run == 'true'
       - run: npx playwright install --with-deps chromium
         if: steps.gate.outputs.run == 'true'
-      - run: node --experimental-transform-types scripts/refresh-rb.mjs
-        if: steps.gate.outputs.run == 'true'
-      - run: node --experimental-transform-types scripts/refresh-nfl-defense.mjs
+      - name: Refresh Fantasy Points RB data
+        run: node --experimental-transform-types scripts/refresh-rb.mjs
         if: steps.gate.outputs.run == 'true'
       - name: Commit validated snapshot
         if: steps.gate.outputs.run == 'true'
         run: |
-          if git diff --quiet -- public/data/rb-2026.json public/data/rb-yac-2026.json public/data/rb-weekly-2026.json public/data/nfl-defense-vs-position-2026.json; then exit 0; fi
+          if git diff --quiet -- public/data/rb-2026.json public/data/rb-weekly-2026.json; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data/rb-2026.json public/data/rb-yac-2026.json public/data/rb-weekly-2026.json public/data/nfl-defense-vs-position-2026.json
+          git add public/data/rb-2026.json public/data/rb-weekly-2026.json
           git commit -m 'Refresh 2026 RB snapshot'
           git push origin HEAD:main
