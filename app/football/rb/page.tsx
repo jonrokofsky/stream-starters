@@ -36,6 +36,7 @@ const PLAYER_TABLE_COLUMNS: PlayerTableColumn[] = [
   { key: "Rush Score", label: "Rush", format: "number" },
   { key: "Rec Score", label: "Receiving", format: "number" },
   { key: "Opportunity Score", label: "Opportunity", format: "number" },
+  { key: "FP/G", label: "PPR FP/G", format: "decimal2" },
   { key: "ATT", label: "Att", format: "number" },
   { key: "RuYds", label: "Rush Yds", format: "number" },
   { key: "RuYds/Rush", label: "YPC", format: "decimal2" },
@@ -44,7 +45,6 @@ const PLAYER_TABLE_COLUMNS: PlayerTableColumn[] = [
   { key: "Rec", label: "Rec", format: "number" },
   { key: "Rec Yards", label: "Rec Yds", format: "number" },
   { key: "Rec. TD", label: "Rec TD", format: "number" },
-  { key: "FP/G", label: "PPR FP/G", format: "decimal2" },
   { key: "YAC/Att", label: "YAC/Att", format: "decimal" },
 ];
 
