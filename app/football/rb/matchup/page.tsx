@@ -619,11 +619,18 @@ export default function PositionMatchupPage() {
   const yacPerAttempt =
     toNumber(getValue(selectedPlayer, ["YAC/Att"]));
 
+  const playerQualifies = (row: DataRow) => selectedPosition === "RB"
+    ? (toNumber(getValue(row, ["ATT", "Rush Att"])) ?? 0) >= 5
+    : (toNumber(getValue(row, ["Routes Run"])) ?? 0) >= 10;
+
   function playerMetricPercentile(keys: string[]) {
     const value = toNumber(getValue(selectedPlayer, keys));
     if (value === null) return null;
 
+    if (!selectedPlayer || !playerQualifies(selectedPlayer)) return null;
+
     const population = availablePlayers
+      .filter(playerQualifies)
       .map((row) => toNumber(getValue(row, keys)))
       .filter((entry): entry is number => entry !== null);
 
@@ -1106,7 +1113,7 @@ export default function PositionMatchupPage() {
                           <div className="text-3xl font-black leading-none">{fantasyPpg === null ? "—" : fantasyPpg.toFixed(1)}</div>
                           <div className="text-xs font-black">{fantasyPpgPercentile === null ? "" : `P${Math.round(fantasyPpgPercentile)}`}</div>
                         </div>
-                        <div className="mt-2 text-[11px] font-black opacity-75">{fantasyPpgPercentile === null ? "Unavailable" : `${playerScoreLabel(fantasyPpgPercentile)} among ${selectedPosition}s`}</div>
+                        <div className="mt-2 text-[11px] font-black opacity-75">{fantasyPpg === null ? "Unavailable" : fantasyPpgPercentile === null ? `Below ${selectedPosition === "RB" ? "5 ATT" : "10 routes"} minimum` : `${playerScoreLabel(fantasyPpgPercentile)} among qualified ${selectedPosition}s`}</div>
                       </div>
                     </div>
                   </div>

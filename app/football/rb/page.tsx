@@ -984,9 +984,10 @@ export default function RBPage() {
 
   const tableFantasyPpgPopulation = useMemo(
     () => (selectedWeekSnapshot?.rows ?? [])
+      .filter((player) => (toNumber(getValue(player, ["ATT", "Rush Att"])) ?? 0) >= minRushAttempts)
       .map((player) => toNumber(player["FP/G"]))
       .filter((value): value is number => value !== null),
-    [selectedWeekSnapshot]
+    [minRushAttempts, selectedWeekSnapshot]
   );
 
   function toggleSort(key: string) {
@@ -1048,13 +1049,13 @@ export default function RBPage() {
     toNumber(getValue(selectedPlayer, ["FP/G", "Fantasy PPG"]));
 
   const fantasyPpgPopulation = useMemo(
-    () => players
+    () => percentilePool
       .map((player) => toNumber(getValue(player, ["FP/G", "Fantasy PPG"])))
       .filter((value): value is number => value !== null),
-    [players]
+    [percentilePool]
   );
 
-  const fantasyPpgPercentile = fantasyPpg === null
+  const fantasyPpgPercentile = fantasyPpg === null || !qualified
     ? null
     : percentile(fantasyPpg, fantasyPpgPopulation);
 
@@ -1463,7 +1464,7 @@ export default function RBPage() {
                         </div>
                       </div>
                       <div className="mt-2 text-xs font-black opacity-75">
-                        {fantasyPpgPercentile === null ? "No fantasy data" : `${scoreLabel(fantasyPpgPercentile)} among RBs`}
+                        {fantasyPpg === null ? "No fantasy data" : !qualified ? `Below ${minRushAttempts} ATT minimum` : `${scoreLabel(fantasyPpgPercentile ?? 0)} among qualified RBs`}
                       </div>
                     </div>
                   </div>
@@ -1677,7 +1678,8 @@ export default function RBPage() {
                             const scoreColumn = ["Rush Score", "Rec Score", "Opportunity Score"].includes(column.key);
                             const score = scoreColumn ? toNumber(raw) : null;
                             const fantasyPpgValue = column.key === "FP/G" ? toNumber(raw) : null;
-                            const fantasyPpgGrade = fantasyPpgValue === null ? null : percentile(fantasyPpgValue, tableFantasyPpgPopulation);
+                            const fantasyPpgQualified = (toNumber(getValue(player, ["ATT", "Rush Att"])) ?? 0) >= minRushAttempts;
+                            const fantasyPpgGrade = fantasyPpgValue === null || !fantasyPpgQualified ? null : percentile(fantasyPpgValue, tableFantasyPpgPopulation);
                             if (column.key === "Name") {
                               return (
                                 <td key={column.key} className={`sticky left-0 z-[5] whitespace-nowrap px-3 py-3 ${index % 2 ? "bg-slate-50" : "bg-white"}`}>
