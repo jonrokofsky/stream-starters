@@ -1712,9 +1712,8 @@ export default function RBPage() {
                             return (
                               <td key={column.key} className="whitespace-nowrap px-3 py-3 text-sm font-bold text-slate-700">
                                 {fantasyPpgValue !== null && fantasyPpgGrade !== null ? (
-                                  <span className={`inline-flex min-w-20 items-center justify-between gap-2 rounded-lg border px-2 py-1 text-xs font-black ${scoreStyle(fantasyPpgGrade)}`}>
+                                  <span className={`inline-flex min-w-16 items-center justify-center rounded-lg border px-2 py-1 text-xs font-black ${scoreStyle(fantasyPpgGrade)}`}>
                                     {fantasyPpgValue.toFixed(2)}
-                                    <span className="text-[10px] opacity-70">P{Math.round(fantasyPpgGrade)}</span>
                                   </span>
                                 ) : score !== null ? (
                                   <span className={`inline-flex min-w-10 justify-center rounded-lg border px-2 py-1 text-xs font-black ${scoreStyle(score)}`}>
