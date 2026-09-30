@@ -27,8 +27,8 @@ const opportunity = [
   ["Rec TD", "Receiving Touchdowns"],
 ] as const;
 const tableColumns = [
-  ["Name", "Player"], ["POS", "Pos"], ["Team", "Team"], ["G", "G"], ["Efficiency Grade", "Efficiency"], ["Opportunity Grade", "Opportunity"], ["Targets", "Tgt"],
-  ["FP/G", "PPR FP/G"],
+  ["Name", "Player"], ["POS", "Pos"], ["Team", "Team"], ["G", "G"], ["Efficiency Grade", "Efficiency"], ["Opportunity Grade", "Opportunity"],
+  ["FP/G", "PPR FP/G"], ["Targets", "Tgt"],
   ["Target Share", "Tgt Share"], ["Rec", "Rec"], ["Rec Yards", "Rec Yds"], ["RecYds/G", "Yds/G"],
   ["YPR", "Yds/Catch"], ["YPT", "Yds/Tgt"], ["YPRR", "YPRR"], ["YAC/Rec", "YAC/Rec"],
   ["Routes/G", "Routes/G"], ["Targets/Route Run", "Tgt/Route"], ["i20/G", "i20/G"], ["i10/G", "i10/G"],
