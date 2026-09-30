@@ -632,6 +632,11 @@ export default function PositionMatchupPage() {
 
   const yacPerAttemptPercentile = playerMetricPercentile(["YAC/Att"]);
 
+  const fantasyPpg =
+    toNumber(getValue(selectedPlayer, ["FP/G", "Fantasy PPG"]));
+
+  const fantasyPpgPercentile = playerMetricPercentile(["FP/G", "Fantasy PPG"]);
+
   const efficiencyScore =
     toNumber(getValue(selectedPlayer, ["Efficiency Grade"])) ?? 0;
 
@@ -1068,7 +1073,7 @@ export default function PositionMatchupPage() {
                       background: `linear-gradient(135deg, ${playerColors[0]} 0%, ${playerColors[0]} 60%, ${playerColors[1]} 140%)`,
                     }}
                   >
-                    <div className="relative flex items-center gap-5">
+                    <div className="relative flex flex-wrap items-center gap-5">
                       {playerTeamCode && (
                         <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-white/95 p-2 shadow-xl sm:h-24 sm:w-24">
                           <img
@@ -1093,6 +1098,15 @@ export default function PositionMatchupPage() {
                         <div className="mt-2 text-xs font-bold text-white/80 sm:text-sm">
                           {playerTeamDisplayName} • 2026 season
                         </div>
+                      </div>
+
+                      <div className={`ml-auto w-full rounded-2xl border p-4 shadow-xl sm:w-44 ${fantasyPpgPercentile === null ? "border-slate-200 bg-white text-slate-900" : percentileStyle(fantasyPpgPercentile)}`}>
+                        <div className="text-[10px] font-black uppercase tracking-[0.14em] opacity-70">PPR Fantasy PPG</div>
+                        <div className="mt-2 flex items-end justify-between gap-2">
+                          <div className="text-3xl font-black leading-none">{fantasyPpg === null ? "—" : fantasyPpg.toFixed(1)}</div>
+                          <div className="text-xs font-black">{fantasyPpgPercentile === null ? "" : `P${Math.round(fantasyPpgPercentile)}`}</div>
+                        </div>
+                        <div className="mt-2 text-[11px] font-black opacity-75">{fantasyPpgPercentile === null ? "Unavailable" : `${playerScoreLabel(fantasyPpgPercentile)} among ${selectedPosition}s`}</div>
                       </div>
                     </div>
                   </div>
@@ -1166,6 +1180,7 @@ export default function PositionMatchupPage() {
                           Opponent
                         </div>
                       </div>
+
                     </div>
                     <div
                       className={`rounded-2xl border p-4 ${percentileStyle(

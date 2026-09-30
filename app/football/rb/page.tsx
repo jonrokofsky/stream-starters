@@ -44,7 +44,7 @@ const PLAYER_TABLE_COLUMNS: PlayerTableColumn[] = [
   { key: "Rec", label: "Rec", format: "number" },
   { key: "Rec Yards", label: "Rec Yds", format: "number" },
   { key: "Rec. TD", label: "Rec TD", format: "number" },
-  { key: "FP/G", label: "FP/G", format: "decimal2" },
+  { key: "FP/G", label: "PPR FP/G", format: "decimal2" },
   { key: "YAC/Att", label: "YAC/Att", format: "decimal" },
 ];
 
@@ -195,6 +195,11 @@ const RECEIVING_STATS: StatConfig[] = [
 ];
 
 const OPPORTUNITY_STATS: StatConfig[] = [
+  {
+    label: "PPR Fantasy PPG",
+    keys: ["FP/G", "Fantasy PPG"],
+    format: "decimal",
+  },
   {
     label: "Weighted Opp/G",
     keys: [
@@ -645,6 +650,7 @@ function ComponentSection({
   stats,
   selectedPlayer,
   percentilePool,
+  positionPool,
   qualified,
 }: {
   title: string;
@@ -652,6 +658,7 @@ function ComponentSection({
   stats: StatConfig[];
   selectedPlayer: DataRow;
   percentilePool: DataRow[];
+  positionPool?: DataRow[];
   qualified: boolean;
 }) {
   return (
@@ -674,6 +681,7 @@ function ComponentSection({
 
       <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-5 lg:grid-cols-3 xl:grid-cols-5">
         {stats.map((stat) => {
+          const usesPositionPool = stat.label === "PPR Fantasy PPG";
           const rawValue =
             getValue(
               selectedPlayer,
@@ -685,7 +693,7 @@ function ComponentSection({
           const missingYac = stat.keys.includes("YAC/Att") && toNumber(rawValue) === null;
 
           const population =
-            percentilePool
+            (usesPositionPool ? positionPool ?? percentilePool : percentilePool)
               .map((player) =>
                 toNumber(
                   getValue(
@@ -707,11 +715,13 @@ function ComponentSection({
               population
             );
 
+          const showPercentile = usesPositionPool || qualified;
+
           return (
             <div
               key={stat.label}
               className={`rounded-2xl border p-4 shadow-sm ${
-                qualified && !missingYac
+                showPercentile && !missingYac
                   ? percentileStyle(pct)
                   : "border-slate-200 bg-white text-slate-900"
               }`}
@@ -721,7 +731,7 @@ function ComponentSection({
                   {stat.label}
                 </div>
 
-                {qualified && !missingYac && (
+                {showPercentile && !missingYac && (
                   <div className="shrink-0 rounded-full bg-black/10 px-2 py-1 text-[10px] font-black">
                     P{Math.round(pct)}
                   </div>
@@ -736,7 +746,7 @@ function ComponentSection({
               </div>
 
               <div className="mt-2 text-xs font-bold opacity-70">
-                {missingYac ? "Not available from PFR" : qualified
+                {missingYac ? "Not available from PFR" : showPercentile
                   ? scoreLabel(pct)
                   : "Below qualification"}
               </div>
@@ -785,6 +795,7 @@ export default function RBPage() {
 
   const [error, setError] =
     useState("");
+
 
   useEffect(() => {
     const controller = new AbortController();
@@ -971,6 +982,13 @@ export default function RBPage() {
     });
   }, [selectedWeekSnapshot, sortDirection, sortKey, tableSearch]);
 
+  const tableFantasyPpgPopulation = useMemo(
+    () => (selectedWeekSnapshot?.rows ?? [])
+      .map((player) => toNumber(player["FP/G"]))
+      .filter((value): value is number => value !== null),
+    [selectedWeekSnapshot]
+  );
+
   function toggleSort(key: string) {
     if (sortKey === key) {
       setSortDirection((current) => current === "asc" ? "desc" : "asc");
@@ -1025,6 +1043,20 @@ export default function RBPage() {
         ["Opportunity Score"]
       )
     ) ?? null;
+
+  const fantasyPpg =
+    toNumber(getValue(selectedPlayer, ["FP/G", "Fantasy PPG"]));
+
+  const fantasyPpgPopulation = useMemo(
+    () => players
+      .map((player) => toNumber(getValue(player, ["FP/G", "Fantasy PPG"])))
+      .filter((value): value is number => value !== null),
+    [players]
+  );
+
+  const fantasyPpgPercentile = fantasyPpg === null
+    ? null
+    : percentile(fantasyPpg, fantasyPpgPopulation);
 
   const team =
     getValue(
@@ -1381,7 +1413,7 @@ export default function RBPage() {
                 >
                   <div className="absolute -right-10 -top-16 h-52 w-52 rounded-full bg-white/10 blur-2xl" />
 
-                  <div className="relative flex items-center gap-5">
+                  <div className="relative flex flex-wrap items-center gap-5">
                     {code && (
                       <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-2xl bg-white/95 p-2 shadow-xl sm:h-28 sm:w-28">
                         <img
@@ -1415,6 +1447,23 @@ export default function RBPage() {
                           )}{" "}
                           ATT
                         </span>
+                      </div>
+                    </div>
+
+                    <div className={`w-full rounded-2xl border p-4 shadow-xl sm:ml-auto sm:w-48 ${fantasyPpgPercentile === null ? "border-slate-200 bg-white text-slate-900" : percentileStyle(fantasyPpgPercentile)}`}>
+                      <div className="text-[11px] font-black uppercase tracking-[0.16em] opacity-70">
+                        PPR Fantasy PPG
+                      </div>
+                      <div className="mt-2 flex items-end justify-between gap-3">
+                        <div className="text-4xl font-black leading-none">
+                          {fantasyPpg === null ? "—" : fantasyPpg.toFixed(1)}
+                        </div>
+                        <div className="text-right text-xs font-black">
+                          {fantasyPpgPercentile === null ? "Unavailable" : `P${Math.round(fantasyPpgPercentile)}`}
+                        </div>
+                      </div>
+                      <div className="mt-2 text-xs font-black opacity-75">
+                        {fantasyPpgPercentile === null ? "No fantasy data" : `${scoreLabel(fantasyPpgPercentile)} among RBs`}
                       </div>
                     </div>
                   </div>
@@ -1467,6 +1516,7 @@ export default function RBPage() {
                     percentilePool={
                       percentilePool
                     }
+                    positionPool={players}
                     qualified={
                       qualified
                     }
@@ -1484,6 +1534,7 @@ export default function RBPage() {
                     percentilePool={
                       percentilePool
                     }
+                    positionPool={players}
                     qualified={
                       qualified
                     }
@@ -1501,6 +1552,7 @@ export default function RBPage() {
                     percentilePool={
                       percentilePool
                     }
+                    positionPool={players}
                     qualified={
                       qualified
                     }
@@ -1624,6 +1676,8 @@ export default function RBPage() {
                             const raw = player[column.key] ?? "";
                             const scoreColumn = ["Rush Score", "Rec Score", "Opportunity Score"].includes(column.key);
                             const score = scoreColumn ? toNumber(raw) : null;
+                            const fantasyPpgValue = column.key === "FP/G" ? toNumber(raw) : null;
+                            const fantasyPpgGrade = fantasyPpgValue === null ? null : percentile(fantasyPpgValue, tableFantasyPpgPopulation);
                             if (column.key === "Name") {
                               return (
                                 <td key={column.key} className={`sticky left-0 z-[5] whitespace-nowrap px-3 py-3 ${index % 2 ? "bg-slate-50" : "bg-white"}`}>
@@ -1639,7 +1693,12 @@ export default function RBPage() {
                             }
                             return (
                               <td key={column.key} className="whitespace-nowrap px-3 py-3 text-sm font-bold text-slate-700">
-                                {score !== null ? (
+                                {fantasyPpgValue !== null && fantasyPpgGrade !== null ? (
+                                  <span className={`inline-flex min-w-20 items-center justify-between gap-2 rounded-lg border px-2 py-1 text-xs font-black ${scoreStyle(fantasyPpgGrade)}`}>
+                                    {fantasyPpgValue.toFixed(2)}
+                                    <span className="text-[10px] opacity-70">P{Math.round(fantasyPpgGrade)}</span>
+                                  </span>
+                                ) : score !== null ? (
                                   <span className={`inline-flex min-w-10 justify-center rounded-lg border px-2 py-1 text-xs font-black ${scoreStyle(score)}`}>
                                     {Math.round(score)}
                                   </span>
