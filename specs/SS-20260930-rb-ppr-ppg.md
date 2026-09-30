@@ -8,7 +8,7 @@ Make the existing `FP/G` value prominent on RB, WR, and TE player profiles and i
 
 - Display PPR fantasy points per game in RB, WR, TE, and player matchup headers.
 - Calculate the color and percentile against the player's own position.
-- Require at least 5 rushing attempts for RB percentile grades and at least 10 routes run for WR/TE percentile grades. Below-threshold players retain their raw PPR FP/G without a percentile color or grade.
+- Require at least 5 rushing attempts per game for RB percentile grades and at least 10 routes run per game for WR/TE percentile grades. Below-threshold players retain their raw PPR FP/G without a percentile color or grade.
 - Add a sortable, percentile-colored PPR FP/G column to the existing RB and receiver sheets.
 - Continue using the existing `FP/G` field; do not create another sheet.
 
