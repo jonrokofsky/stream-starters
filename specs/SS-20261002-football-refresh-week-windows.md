@@ -28,6 +28,7 @@ Publish current 2026 Fantasy Points RB and receiver data, current SumerSports WR
 - **AC-5:** One compact Through/Since mode control and one week dropdown replace per-week buttons.
 - **AC-6:** Through mode selects a cumulative snapshot. Since mode shows the selected week through the latest snapshot and recalculates rates and scores from period deltas.
 - **AC-7:** Focused football tests, TypeScript production build, and a browser walkthrough pass before release.
+- **AC-8:** At phone width, RB and receiver profiles use compact score/metric grids, their player sheets use readable cards with sort controls, and the page has no horizontal overflow. Desktop tables remain available.
 
 ## Review note
 

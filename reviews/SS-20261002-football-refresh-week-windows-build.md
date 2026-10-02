@@ -35,3 +35,7 @@
 - `public/data/nfl-defense-vs-position-2026.json`
 
 Unrelated `public/1.png` was not touched.
+
+## Mobile revision
+
+User expanded scope before release. RB and receiver profile score/metric grids now use denser phone-width spacing. Both sortable player sheets render compact mobile cards with key scores and stats plus a sort selector/direction button; their full tables remain visible from desktop breakpoints upward. Files added to the implementation set: `app/football/receivers/page.tsx`.

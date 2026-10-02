@@ -704,18 +704,18 @@ function ScoreCard({
     <div
       className={`overflow-hidden rounded-3xl border shadow-lg ${score === null ? "border-slate-200 bg-slate-50 text-slate-600" : scoreStyle(score)}`}
     >
-      <div className="p-6">
-        <div className="text-xs font-black uppercase tracking-[0.18em] opacity-70">
+      <div className="p-3 sm:p-6">
+        <div className="text-[10px] font-black uppercase tracking-[0.14em] opacity-70 sm:text-xs sm:tracking-[0.18em]">
           {title}
         </div>
 
-        <div className="mt-4 flex items-end justify-between gap-4">
-          <div className="text-6xl font-black leading-none">
+        <div className="mt-2 flex items-end justify-between gap-3 sm:mt-4 sm:gap-4">
+          <div className="text-4xl font-black leading-none sm:text-6xl">
             {score === null ? "—" : Math.round(score)}
           </div>
 
           <div className="text-right">
-            <div className="text-sm font-black">
+            <div className="text-xs font-black sm:text-sm">
               {score === null ? "Unavailable" : scoreLabel(score)}
             </div>
 
@@ -725,7 +725,7 @@ function ScoreCard({
           </div>
         </div>
 
-        <div className="mt-5 border-t border-black/10 pt-4 text-sm font-bold opacity-75">
+        <div className="mt-2 border-t border-black/10 pt-2 text-xs font-bold opacity-75 sm:mt-5 sm:pt-4 sm:text-sm">
           {subtitle}
         </div>
       </div>
@@ -768,7 +768,7 @@ function ComponentSection({
         </div>
       )}
 
-      <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-5 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="grid grid-cols-2 gap-2 p-3 sm:gap-3 sm:p-5 lg:grid-cols-3 xl:grid-cols-5">
         {stats.map((stat) => {
           const usesPositionPool = stat.label === "PPR Fantasy PPG";
           const rawValue =
@@ -809,14 +809,14 @@ function ComponentSection({
           return (
             <div
               key={stat.label}
-              className={`rounded-2xl border p-4 shadow-sm ${
+              className={`rounded-2xl border p-3 shadow-sm sm:p-4 ${
                 showPercentile && !missingYac
                   ? percentileStyle(pct)
                   : "border-slate-200 bg-white text-slate-900"
               }`}
             >
               <div className="flex items-start justify-between gap-2">
-                <div className="text-[11px] font-black uppercase tracking-[0.1em] opacity-70">
+                <div className="text-[9px] font-black uppercase tracking-[0.08em] opacity-70 sm:text-[11px] sm:tracking-[0.1em]">
                   {stat.label}
                 </div>
 
@@ -827,14 +827,14 @@ function ComponentSection({
                 )}
               </div>
 
-              <div className="mt-3 text-3xl font-black">
+              <div className="mt-2 text-2xl font-black sm:mt-3 sm:text-3xl">
                 {missingYac ? "—" : formatStatValue(
                   rawValue,
                   stat.format
                 )}
               </div>
 
-              <div className="mt-2 text-xs font-bold opacity-70">
+              <div className="mt-1 text-[10px] font-bold opacity-70 sm:mt-2 sm:text-xs">
                 {missingYac ? "Not available from PFR" : showPercentile
                   ? scoreLabel(pct)
                   : "Below qualification"}
@@ -1593,8 +1593,8 @@ export default function RBPage() {
                   </div>
                 )}
 
-                <div className="p-5 sm:p-8">
-                  <div className="grid gap-5 lg:grid-cols-3">
+                <div className="p-3 sm:p-8">
+                  <div className="grid gap-3 sm:gap-5 lg:grid-cols-3">
                     <ScoreCard
                       title="Rushing Score"
                       score={
@@ -1771,7 +1771,77 @@ export default function RBPage() {
                   )}
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className="border-b border-slate-200 bg-white p-4 lg:hidden">
+                  <div className="flex items-end gap-2">
+                    <div className="min-w-0 flex-1">
+                      <label htmlFor="rb-mobile-sort" className="mb-1.5 block text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">Sort players</label>
+                      <select
+                        id="rb-mobile-sort"
+                        value={sortKey}
+                        onChange={(event) => {
+                          const key = event.target.value;
+                          setSortKey(key);
+                          setSortDirection(key === "Name" || key === "Team" ? "asc" : "desc");
+                        }}
+                        className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-black text-slate-800"
+                      >
+                        {PLAYER_TABLE_COLUMNS.map((column) => <option key={column.key} value={column.key}>{column.label}</option>)}
+                      </select>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setSortDirection((current) => current === "asc" ? "desc" : "asc")}
+                      className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-black text-slate-700"
+                      aria-label={`Sort ${sortDirection === "asc" ? "descending" : "ascending"}`}
+                    >
+                      {sortDirection === "asc" ? "▲" : "▼"}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="grid gap-3 p-4 lg:hidden">
+                  {sortedTablePlayers.map((player) => {
+                    const fantasyPpgValue = toNumber(player["FP/G"]);
+                    const games = toNumber(player.G) ?? 0;
+                    const attempts = toNumber(player.ATT) ?? 0;
+                    const fantasyPpgGrade = fantasyPpgValue === null || !games || attempts / games < 5
+                      ? null
+                      : percentile(fantasyPpgValue, tableFantasyPpgPopulation);
+                    return (
+                      <article key={`mobile-${weeklyTableMode}-${sinceWeek}-${selectedWeekSnapshot?.week}-${player.Name}-${player.Team}`} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                        <div className="flex items-start justify-between gap-3 border-b border-slate-100 p-4">
+                          <div className="min-w-0">
+                            <button
+                              type="button"
+                              onClick={() => players.some((item) => item.Name === player.Name) && selectPlayer(player.Name)}
+                              className="truncate text-left text-lg font-black text-slate-950 hover:text-sky-700"
+                            >
+                              {player.Name}
+                            </button>
+                            <div className="mt-1 text-xs font-bold text-slate-500">{player.Team} · {games} {games === 1 ? "game" : "games"}</div>
+                          </div>
+                          <div className={`shrink-0 rounded-xl border px-3 py-2 text-center ${fantasyPpgGrade === null ? "border-slate-200 bg-slate-50 text-slate-900" : scoreStyle(fantasyPpgGrade)}`}>
+                            <div className="text-[9px] font-black uppercase tracking-wider opacity-70">PPR FP/G</div>
+                            <div className="mt-0.5 text-xl font-black">{fantasyPpgValue === null ? "—" : fantasyPpgValue.toFixed(2)}</div>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-3 gap-2 bg-slate-50 p-3">
+                          {[["Rush", "Rush Score"], ["Receiving", "Rec Score"], ["Opportunity", "Opportunity Score"]].map(([label, key]) => {
+                            const score = toNumber(player[key]);
+                            return <div key={key} className={`rounded-xl border p-2 text-center ${score === null ? "border-slate-200 bg-white text-slate-600" : scoreStyle(score)}`}><div className="text-[9px] font-black uppercase tracking-wide opacity-70">{label}</div><div className="mt-1 text-xl font-black">{score === null ? "—" : Math.round(score)}</div></div>;
+                          })}
+                        </div>
+                        <dl className="grid grid-cols-4 gap-x-2 gap-y-4 p-4 text-center">
+                          {[["Att", "ATT", "number"], ["Rush Yds", "RuYds", "number"], ["YPC", "RuYds/Rush", "decimal2"], ["Rush TD", "RuTD", "number"], ["Targets", "Targets", "number"], ["Rec", "Rec", "number"], ["Rec Yds", "Rec Yards", "number"], ["YAC/Att", "YAC/Att", "decimal"]].map(([label, key, format]) => (
+                            <div key={key}><dt className="text-[9px] font-black uppercase tracking-wide text-slate-400">{label}</dt><dd className="mt-1 text-sm font-black text-slate-800">{formatTableValue(player[key] ?? "", format as PlayerTableColumn["format"])}</dd></div>
+                          ))}
+                        </dl>
+                      </article>
+                    );
+                  })}
+                </div>
+
+                <div className="hidden overflow-x-auto lg:block">
                   <table className="w-full min-w-[1580px]">
                     <thead className="bg-slate-100 text-[11px] uppercase tracking-wide text-slate-500">
                       <tr>
