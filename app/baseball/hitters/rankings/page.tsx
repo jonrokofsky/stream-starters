@@ -8,6 +8,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { buildRerankedRatings, moveRankingItem } from "@/lib/hitterRankings/reorder";
 
 const HITTER_DATA_URL =
   "/data/hitter-rankings-2026.json";
@@ -1166,6 +1167,14 @@ export default function HitterRankingsPage() {
   const [
     draggedPlayerName,
     setDraggedPlayerName,
+  ] =
+    useState<
+      string | null
+    >(null);
+
+  const [
+    dragOverPlayerName,
+    setDragOverPlayerName,
   ] =
     useState<
       string | null
@@ -2591,6 +2600,13 @@ export default function HitterRankingsPage() {
     [leaderboard, rankingDisplayLimit]
   );
 
+  const projectedReorderElos = useMemo(
+    () => new Map(
+      buildRerankedRatings(reorderItems).map((item) => [item.playerName, item.elo])
+    ),
+    [reorderItems]
+  );
+
   function startReorderMode() {
     const items =
       leaderboard.map(
@@ -2622,6 +2638,10 @@ export default function HitterRankingsPage() {
       null
     );
 
+    setDragOverPlayerName(
+      null
+    );
+
     setMessage(
       ""
     );
@@ -2639,6 +2659,10 @@ export default function HitterRankingsPage() {
     setDraggedPlayerName(
       null
     );
+
+    setDragOverPlayerName(
+      null
+    );
   }
 
   function handleDragStart(
@@ -2654,76 +2678,41 @@ export default function HitterRankingsPage() {
     targetPlayerName: string
   ) {
     event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
 
     if (
-      !draggedPlayerName ||
-      draggedPlayerName ===
-        targetPlayerName
+      draggedPlayerName &&
+      draggedPlayerName !== targetPlayerName
     ) {
-      return;
+      setDragOverPlayerName(targetPlayerName);
+    }
+  }
+
+  function handleDrop(
+    event: DragEvent<HTMLTableRowElement>,
+    targetPlayerName: string
+  ) {
+    event.preventDefault();
+
+    const sourcePlayerName =
+      event.dataTransfer.getData("text/plain") || draggedPlayerName;
+
+    if (
+      sourcePlayerName &&
+      sourcePlayerName !== targetPlayerName
+    ) {
+      setReorderItems((previous) =>
+        moveRankingItem(previous, sourcePlayerName, targetPlayerName)
+      );
     }
 
-    setReorderItems(
-      (
-        previous
-      ) => {
-        const sourceIndex =
-          previous.findIndex(
-            (
-              item
-            ) =>
-              item.playerName ===
-              draggedPlayerName
-          );
-
-        const targetIndex =
-          previous.findIndex(
-            (
-              item
-            ) =>
-              item.playerName ===
-              targetPlayerName
-          );
-
-        if (
-          sourceIndex ===
-            -1 ||
-          targetIndex ===
-            -1 ||
-          sourceIndex ===
-            targetIndex
-        ) {
-          return previous;
-        }
-
-        const next =
-          [
-            ...previous,
-          ];
-
-        const [
-          moved,
-        ] =
-          next.splice(
-            sourceIndex,
-            1
-          );
-
-        next.splice(
-          targetIndex,
-          0,
-          moved
-        );
-
-        return next;
-      }
-    );
+    setDraggedPlayerName(null);
+    setDragOverPlayerName(null);
   }
 
   function handleDragEnd() {
-    setDraggedPlayerName(
-      null
-    );
+    setDraggedPlayerName(null);
+    setDragOverPlayerName(null);
   }
 
   async function saveReorder() {
@@ -2743,62 +2732,9 @@ export default function HitterRankingsPage() {
         ""
       );
 
-      const currentElos =
-        reorderItems.map(
-          (
-            item
-          ) =>
-            item.currentElo
-        );
-
-      const maxElo =
-        Math.max(
-          ...currentElos
-        );
-
-      const minElo =
-        Math.min(
-          ...currentElos
-        );
-
-      const itemCount =
-        reorderItems.length;
-
-      const range =
-        Math.max(
-          itemCount -
-            1,
-          maxElo -
-            minElo,
-          10
-        );
-
-      const step =
-        itemCount >
-        1
-          ? range /
-            (
-              itemCount -
-              1
-            )
-          : 0;
-
       const rankings =
-        reorderItems.map(
-          (
-            item,
-            index
-          ) => ({
-            playerName:
-              item.playerName,
-
-            elo:
-              Math.round(
-                maxElo -
-                  step *
-                    index
-              ),
-          })
+        buildRerankedRatings(
+          reorderItems
         );
 
       const response =
@@ -4122,7 +4058,7 @@ export default function HitterRankingsPage() {
 
               {reorderMode && (
                 <div className="mt-3 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-xs font-bold text-blue-700">
-                  Drag rows into the order you want, then click Save New Order. Only Elo changes — records, comparison counts and matchup history stay unchanged.
+                  Drag a row onto its new position. The Elo column previews the new ratings before you save. Records, comparison counts and matchup history stay unchanged.
                 </div>
               )}
             </div>
@@ -4228,6 +4164,15 @@ export default function HitterRankingsPage() {
                               draggedPlayerName ===
                               item.playerName;
 
+                            const isDropTarget =
+                              dragOverPlayerName ===
+                              item.playerName;
+
+                            const projectedElo =
+                              projectedReorderElos.get(
+                                item.playerName
+                              ) ?? item.currentElo;
+
                             return (
                               <tr
                                 key={
@@ -4259,16 +4204,21 @@ export default function HitterRankingsPage() {
                                 }
                                 onDrop={(
                                   event
-                                ) => {
-                                  event.preventDefault();
-                                }}
+                                ) =>
+                                  handleDrop(
+                                    event,
+                                    item.playerName
+                                  )
+                                }
                                 onDragEnd={
                                   handleDragEnd
                                 }
                                 className={`border-t border-slate-100 transition ${
                                   isDragged
                                     ? "bg-blue-100 opacity-70"
-                                    : "bg-white"
+                                    : isDropTarget
+                                      ? "bg-emerald-50 outline outline-2 outline-inset outline-emerald-400"
+                                      : "bg-white"
                                 } cursor-grab active:cursor-grabbing`}
                               >
                                 <td className="px-3 py-3 text-center text-lg font-black text-slate-400">
@@ -4313,7 +4263,7 @@ export default function HitterRankingsPage() {
 
                                 <td className="px-4 py-3 text-right text-lg font-black">
                                   {
-                                    item.currentElo
+                                    projectedElo
                                   }
                                 </td>
 
