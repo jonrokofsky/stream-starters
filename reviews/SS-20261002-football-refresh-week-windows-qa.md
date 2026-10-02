@@ -53,3 +53,13 @@ No blocker or nonblocking defect opened.
 - Production build passes. Focused ESLint has zero errors and the same four responsive team-logo optimization warnings.
 
 PASS. No issue opened.
+
+## Round 5 — centered tiles and typography
+
+- Revision tested: working tree after `9cad346`.
+- At 390×844, the RB summary remains 358×604 px and the page remains exactly 390 px wide.
+- Browser-computed component tile styles confirm centered alignment and the Geist font stack.
+- Visual capture confirms all component labels, values, and percentiles are centered with a cleaner weight hierarchy.
+- Production build passes all 18 routes. Focused ESLint reports zero errors and the same four responsive team-logo optimization warnings.
+
+PASS. No issue opened.

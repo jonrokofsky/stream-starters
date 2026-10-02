@@ -11,3 +11,7 @@
 SHIP. The requested FPDS and SumerSports data are current, the supplied Week 4 PFR YAC data is integrated, the matching PFR defense upload is recorded, and the RB table now uses compact Through/Since controls. RB and receiver profiles fit all profile content within one phone viewport, while their separate player sheets use sortable mobile cards. Required focused tests, build, lint, desktop checks, and 390-pixel browser checks pass with no open blocker.
 
 The role passes were performed sequentially in one session, so the QA review was not independent-agent review; the evidence and limitation are recorded explicitly.
+
+## Sleek mobile profile follow-up
+
+SHIP. RB and WR/TE mobile component tiles are centered and use the Geist font with a lighter label hierarchy. The verified RB card remains 604 px tall at 390 px viewport width with no horizontal overflow; build and focused lint checks pass.

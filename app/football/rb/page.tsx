@@ -864,7 +864,7 @@ function MobileComponentGrid({
 }) {
   return (
     <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-      <div className="bg-slate-950 px-2.5 py-1.5 text-[9px] font-black uppercase tracking-[0.12em] text-white">{title}</div>
+      <div className="bg-slate-950 px-2.5 py-1.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-white">{title}</div>
       <div className="grid grid-cols-3 gap-px bg-slate-200">
         {stats.map((stat, index) => {
           const usesPositionPool = stat.label === "PPR Fantasy PPG";
@@ -877,11 +877,11 @@ function MobileComponentGrid({
           const pct = percentile(numericValue, population);
           const showColor = (usesPositionPool || qualified) && !missingYac;
           return (
-            <div key={stat.label} className={`min-h-12 p-1.5 ${(stats.length % 3 === 1 && index === stats.length - 1) ? "col-span-3" : (stats.length % 3 === 2 && index === stats.length - 1) ? "col-span-2" : ""} ${showColor ? percentileStyle(pct) : "bg-white text-slate-900"}`}>
-              <div className="truncate text-[7.5px] font-black uppercase leading-tight tracking-tight opacity-65">{stat.label}</div>
-              <div className="mt-1 flex items-end justify-between gap-1">
-                <span className="truncate text-sm font-black leading-none">{missingYac ? "—" : formatStatValue(rawValue, stat.format)}</span>
-                {showColor && <span className="text-[7px] font-black opacity-60">P{Math.round(pct)}</span>}
+            <div key={stat.label} className={`min-h-12 p-1.5 text-center ${(stats.length % 3 === 1 && index === stats.length - 1) ? "col-span-3" : (stats.length % 3 === 2 && index === stats.length - 1) ? "col-span-2" : ""} ${showColor ? percentileStyle(pct) : "bg-white text-slate-900"}`}>
+              <div className="truncate text-[7.5px] font-medium uppercase leading-tight tracking-normal opacity-70">{stat.label}</div>
+              <div className="mt-1 flex items-end justify-center gap-1.5">
+                <span className="truncate text-sm font-bold leading-none">{missingYac ? "—" : formatStatValue(rawValue, stat.format)}</span>
+                {showColor && <span className="text-[7px] font-semibold opacity-60">P{Math.round(pct)}</span>}
               </div>
             </div>
           );
@@ -1563,14 +1563,14 @@ export default function RBPage() {
               </div>
 
               <section ref={graphicRef} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg sm:rounded-[30px] sm:shadow-xl">
-                <div className="p-2 sm:hidden" style={{ background: `linear-gradient(145deg, ${colors[0]}12, white 34%)` }}>
+                <div className="p-2 font-sans sm:hidden" style={{ background: `linear-gradient(145deg, ${colors[0]}12, white 34%)` }}>
                   <div className="flex items-center gap-2.5 rounded-xl p-2.5 text-white" style={{ background: colors[0], color: themeText(colors[0]) }}>
                     {code && <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1"><img src={espnLogo(code)} alt={`${teamName(team)} logo`} className="h-full w-full object-contain" /></div>}
-                    <div className="min-w-0 flex-1"><div className="truncate text-lg font-black leading-tight">{selectedPlayer.Name}</div><div className="mt-0.5 truncate text-[9px] font-bold uppercase tracking-wide opacity-80">{teamName(team)} · {Math.round(rushAttempts)} ATT</div></div>
-                    <div className={`shrink-0 rounded-xl border px-2.5 py-1.5 text-center ${fantasyPpgPercentile === null ? "border-slate-200 bg-white text-slate-900" : percentileStyle(fantasyPpgPercentile)}`}><div className="text-[7px] font-black uppercase tracking-wide opacity-65">PPR FP/G</div><div className="text-2xl font-black leading-none">{fantasyPpg === null ? "—" : fantasyPpg.toFixed(1)}</div><div className="mt-0.5 text-[7px] font-black">{fantasyPpgPercentile === null ? "N/A" : `P${Math.round(fantasyPpgPercentile)}`}</div></div>
+                    <div className="min-w-0 flex-1"><div className="truncate text-lg font-bold leading-tight">{selectedPlayer.Name}</div><div className="mt-0.5 truncate text-[9px] font-medium uppercase tracking-[0.04em] opacity-80">{teamName(team)} · {Math.round(rushAttempts)} ATT</div></div>
+                    <div className={`shrink-0 rounded-xl border px-2.5 py-1.5 text-center ${fantasyPpgPercentile === null ? "border-slate-200 bg-white text-slate-900" : percentileStyle(fantasyPpgPercentile)}`}><div className="text-[7px] font-semibold uppercase tracking-[0.04em] opacity-65">PPR FP/G</div><div className="text-2xl font-bold leading-none">{fantasyPpg === null ? "—" : fantasyPpg.toFixed(1)}</div><div className="mt-0.5 text-[7px] font-semibold">{fantasyPpgPercentile === null ? "N/A" : `P${Math.round(fantasyPpgPercentile)}`}</div></div>
                   </div>
                   <div className="mt-2 grid grid-cols-3 gap-1.5">
-                    {[["Rush", rawRushScore], ["Receiving", recScore], ["Opportunity", opportunityScore]].map(([label, value]) => { const score=typeof value === "number" ? value : null; return <div key={String(label)} className={`rounded-xl border p-2 text-center ${score === null ? "border-slate-200 bg-white text-slate-600" : scoreStyle(score)}`}><div className="text-[7px] font-black uppercase tracking-wide opacity-65">{label} Score</div><div className="mt-0.5 text-2xl font-black leading-none">{score === null ? "—" : Math.round(score)}</div></div>;})}
+                    {[["Rush", rawRushScore], ["Receiving", recScore], ["Opportunity", opportunityScore]].map(([label, value]) => { const score=typeof value === "number" ? value : null; return <div key={String(label)} className={`rounded-xl border p-2 text-center ${score === null ? "border-slate-200 bg-white text-slate-600" : scoreStyle(score)}`}><div className="text-[7px] font-semibold uppercase tracking-[0.04em] opacity-65">{label} Score</div><div className="mt-0.5 text-2xl font-bold leading-none">{score === null ? "—" : Math.round(score)}</div></div>;})}
                   </div>
                   <div className="mt-2 grid gap-1.5">
                     <MobileComponentGrid title="Rushing Components" stats={RUSHING_STATS} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={players} qualified={qualified} />

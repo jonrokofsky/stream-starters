@@ -47,3 +47,7 @@ The phone breakpoint now renders purpose-built summary cards rather than the des
 ## Mobile visual cleanup
 
 Removed the duplicated PPR FP/G tile from RB opportunity components because it is already prominent in the header. Responsive component grids now expand their final tile to fill incomplete rows, eliminating blank gray cells. Outer framing, spacing, label line-height, and the phone Copy Graphic button were tightened for a cleaner scan while preserving all unique metrics and percentile colors.
+
+## Sleek mobile typography revision
+
+Centered every mobile component tile and changed both RB and WR/TE phone summaries to the site’s Geist sans-serif. Labels use lighter weight and tighter spacing while scores retain a clear bold hierarchy. The card dimensions and data density remain unchanged.
