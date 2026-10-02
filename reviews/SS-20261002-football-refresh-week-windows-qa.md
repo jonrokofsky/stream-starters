@@ -35,3 +35,12 @@ No blocking or nonblocking defects recorded.
 - Regression checks: production build passes; 11 focused RB/receiver scoring tests pass; focused ESLint has zero errors and the same two existing team-logo `<img>` warnings.
 
 No issues opened. Round 1 release recommendation remains valid for revision `2381359` plus the documentation-only follow-up.
+
+## Round 3 — one-screen profile retest
+
+- Revision: `95315bd`
+- **AC-9 PASS:** At 390×844, the complete RB mobile profile measures 358×657 px and the receiver profile measures 358×478 px. Visual captures confirm identity, PPR FP/G, every composite score, and all component groups are present and readable. Both pages retain `scrollWidth=390`.
+- Export behavior: the existing profile export container now contains the visible compact summary on phones and the detailed card at larger breakpoints.
+- Regression checks: production build passes; 9 focused scoring/YAC tests pass. Focused ESLint has zero errors and four `<img>` optimization warnings because both responsive profile variants render team-logo elements; no behavioral issue observed.
+
+No blocker or nonblocking defect opened.
