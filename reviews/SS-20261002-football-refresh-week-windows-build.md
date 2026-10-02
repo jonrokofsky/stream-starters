@@ -43,3 +43,7 @@ User expanded scope before release. RB and receiver profile score/metric grids n
 ## One-screen profile revision
 
 The phone breakpoint now renders purpose-built summary cards rather than the desktop detail stack. RB includes PPR FP/G, Rush/Receiving/Opportunity scores, all 9 rushing components, all 5 receiving components, and all 7 opportunity components. WR/TE includes PPR FP/G, Efficiency/Opportunity scores, and every metric in both component groups. The same export container selects the visible mobile summary on phones and the detailed profile on larger screens.
+
+## Mobile visual cleanup
+
+Removed the duplicated PPR FP/G tile from RB opportunity components because it is already prominent in the header. Responsive component grids now expand their final tile to fill incomplete rows, eliminating blank gray cells. Outer framing, spacing, label line-height, and the phone Copy Graphic button were tightened for a cleaner scan while preserving all unique metrics and percentile colors.

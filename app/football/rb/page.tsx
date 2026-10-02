@@ -866,7 +866,7 @@ function MobileComponentGrid({
     <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
       <div className="bg-slate-950 px-2.5 py-1.5 text-[9px] font-black uppercase tracking-[0.12em] text-white">{title}</div>
       <div className="grid grid-cols-3 gap-px bg-slate-200">
-        {stats.map((stat) => {
+        {stats.map((stat, index) => {
           const usesPositionPool = stat.label === "PPR Fantasy PPG";
           const rawValue = getValue(selectedPlayer, stat.keys);
           const numericValue = toNumber(rawValue) ?? 0;
@@ -877,10 +877,10 @@ function MobileComponentGrid({
           const pct = percentile(numericValue, population);
           const showColor = (usesPositionPool || qualified) && !missingYac;
           return (
-            <div key={stat.label} className={`min-h-12 p-1.5 ${showColor ? percentileStyle(pct) : "bg-white text-slate-900"}`}>
-              <div className="truncate text-[7px] font-black uppercase tracking-tight opacity-65">{stat.label}</div>
-              <div className="mt-0.5 flex items-end justify-between gap-1">
-                <span className="truncate text-[13px] font-black leading-none">{missingYac ? "—" : formatStatValue(rawValue, stat.format)}</span>
+            <div key={stat.label} className={`min-h-12 p-1.5 ${(stats.length % 3 === 1 && index === stats.length - 1) ? "col-span-3" : (stats.length % 3 === 2 && index === stats.length - 1) ? "col-span-2" : ""} ${showColor ? percentileStyle(pct) : "bg-white text-slate-900"}`}>
+              <div className="truncate text-[7.5px] font-black uppercase leading-tight tracking-tight opacity-65">{stat.label}</div>
+              <div className="mt-1 flex items-end justify-between gap-1">
+                <span className="truncate text-sm font-black leading-none">{missingYac ? "—" : formatStatValue(rawValue, stat.format)}</span>
                 {showColor && <span className="text-[7px] font-black opacity-60">P{Math.round(pct)}</span>}
               </div>
             </div>
@@ -1545,12 +1545,12 @@ export default function RBPage() {
                 </div>
               </section>
 
-              <div className="mb-4 flex justify-end">
+              <div className="mb-3 flex justify-end">
                 <button
                   type="button"
                   onClick={copyGraphicToClipboard}
                   disabled={exporting}
-                  className="rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-5 py-3 text-sm font-black text-white shadow-md transition hover:from-sky-600 hover:to-cyan-600 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-5 py-3 text-sm font-black text-white shadow-md transition hover:from-sky-600 hover:to-cyan-600 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
                   {exporting
                     ? "Copying Graphic..."
@@ -1562,9 +1562,9 @@ export default function RBPage() {
                 </button>
               </div>
 
-              <section ref={graphicRef} className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-xl">
-                <div className="p-2.5 sm:hidden" style={{ background: `linear-gradient(145deg, ${colors[0]}12, white 34%)` }}>
-                  <div className="flex items-center gap-2.5 rounded-2xl p-2.5 text-white" style={{ background: colors[0], color: themeText(colors[0]) }}>
+              <section ref={graphicRef} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg sm:rounded-[30px] sm:shadow-xl">
+                <div className="p-2 sm:hidden" style={{ background: `linear-gradient(145deg, ${colors[0]}12, white 34%)` }}>
+                  <div className="flex items-center gap-2.5 rounded-xl p-2.5 text-white" style={{ background: colors[0], color: themeText(colors[0]) }}>
                     {code && <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1"><img src={espnLogo(code)} alt={`${teamName(team)} logo`} className="h-full w-full object-contain" /></div>}
                     <div className="min-w-0 flex-1"><div className="truncate text-lg font-black leading-tight">{selectedPlayer.Name}</div><div className="mt-0.5 truncate text-[9px] font-bold uppercase tracking-wide opacity-80">{teamName(team)} · {Math.round(rushAttempts)} ATT</div></div>
                     <div className={`shrink-0 rounded-xl border px-2.5 py-1.5 text-center ${fantasyPpgPercentile === null ? "border-slate-200 bg-white text-slate-900" : percentileStyle(fantasyPpgPercentile)}`}><div className="text-[7px] font-black uppercase tracking-wide opacity-65">PPR FP/G</div><div className="text-2xl font-black leading-none">{fantasyPpg === null ? "—" : fantasyPpg.toFixed(1)}</div><div className="mt-0.5 text-[7px] font-black">{fantasyPpgPercentile === null ? "N/A" : `P${Math.round(fantasyPpgPercentile)}`}</div></div>
@@ -1575,7 +1575,7 @@ export default function RBPage() {
                   <div className="mt-2 grid gap-1.5">
                     <MobileComponentGrid title="Rushing Components" stats={RUSHING_STATS} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={players} qualified={qualified} />
                     <MobileComponentGrid title="Receiving Components" stats={RECEIVING_STATS} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={players} qualified={qualified} />
-                    <MobileComponentGrid title="Opportunity Components" stats={OPPORTUNITY_STATS} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={players} qualified={qualified} />
+                    <MobileComponentGrid title="Opportunity Components" stats={OPPORTUNITY_STATS.filter((stat) => stat.label !== "PPR Fantasy PPG")} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={players} qualified={qualified} />
                   </div>
                 </div>
 
