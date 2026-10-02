@@ -36,3 +36,7 @@ The existing linear Elo redistribution is the confirmed implementation baseline 
 ## Architect handoff
 
 Use a pure helper for item movement and Elo projection. Move the list only from `drop`, use `dragover` only to allow the drop and identify its target, and share the Elo projection helper between the preview and save request. READY FOR BUILD.
+
+## Spec revision v1.1 — duplicate-name identity
+
+Production data contains two eligible hitters named Max Muncy (LAD and ATH). Because the existing API keys ratings by player name, the full rerank payload could contain duplicate conflict keys and fail to save. Add AC-6: eligible duplicate-name hitters must receive unique ranking identities visible by team, and the API must reject any ambiguous duplicate rerank payload before persistence. This correction is required for AC-3’s save guarantee.

@@ -259,6 +259,17 @@ export async function POST(
             item.playerName.trim()
         );
 
+      if (new Set(playerNames).size !== playerNames.length) {
+        return NextResponse.json(
+          {
+            error: "Each ranking entry must identify a unique player.",
+          },
+          {
+            status: 400,
+          }
+        );
+      }
+
       const existingResult =
         await withSupabaseRetry(
           () =>

@@ -34,3 +34,7 @@ No live rankings were saved or reset during implementation.
 ## Issue responses (append each round)
 
 None.
+
+## Issue response — I-001
+
+**ACCEPT.** Browser console evidence showed duplicate React keys for two Max Muncy rows, and both rows shared the same name-only ranking identity. Added `makeRankingNamesUnique`, which labels only duplicate names with their team before any rankings logic runs; the live pool now contains `Max Muncy (LAD)` and `Max Muncy (ATH)`. The rerank API also returns HTTP 400 for duplicate identities instead of attempting a conflicting upsert. Added a fifth focused test. Requested Tester retest.

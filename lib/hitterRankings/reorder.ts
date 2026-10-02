@@ -42,3 +42,22 @@ export function buildRerankedRatings(
     elo: Math.round(maxElo - step * index),
   }));
 }
+
+export function makeRankingNamesUnique<T extends { Name: string; Team: string }>(
+  players: readonly T[]
+): T[] {
+  const nameCounts = new Map<string, number>();
+
+  players.forEach((player) => {
+    nameCounts.set(player.Name, (nameCounts.get(player.Name) ?? 0) + 1);
+  });
+
+  return players.map((player) => {
+    if ((nameCounts.get(player.Name) ?? 0) < 2) return { ...player };
+
+    return {
+      ...player,
+      Name: `${player.Name} (${player.Team})`,
+    };
+  });
+}

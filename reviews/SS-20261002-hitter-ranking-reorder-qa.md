@@ -25,3 +25,11 @@ No blocking or nonblocking findings for the requested change. Repository-wide fo
 
 PASS. The interaction is stable, the changed Elo is visible before save, and the save payload uses the same calculation. Review was sequential rather than independent.
 
+
+## Retest round 2 — duplicate-name identity
+
+- **I-001 / AC-3 and AC-6: PASS, CLOSED.** At the local rankings page, both `Max Muncy (LAD)` and `Max Muncy (ATH)` appear as separate draggable rows. The earlier duplicate-key browser warning is absent. Dragging rank 1 to rank 3 still moves once and previews Elo correctly; Cancel was used.
+- A deliberately duplicated API rerank payload returns HTTP 400 with `Each ranking entry must identify a unique player.` before persistence.
+- Focused suite: 5 passed, 0 failed. Production build: all 18 routes passed.
+
+No live ranking was saved during retest.

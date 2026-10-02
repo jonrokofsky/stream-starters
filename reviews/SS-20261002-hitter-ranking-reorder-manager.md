@@ -28,3 +28,7 @@ Pending hosted deployment verification.
 ## Hosted execution record
 
 Published in application revision `55a2439` with review records at `7853ed8`. Production Chromium verification repeated the rank 1 to rank 3 drag: the row order and Elo preview changed once, then Cancel exited without calling Save. The deployment passed on attempt 3 after Vercel completed the build. Latest automated football snapshot commits `86e9349` and `253b7c7` were retained during rebase.
+
+## Final review after I-001
+
+The earlier SHIP recommendation is superseded by this final review. I-001 exposed a save-blocking collision for the two current Max Muncy records. The fix gives duplicate-name hitters team-qualified ranking identities and adds API validation. QA round 2 closes I-001 with browser, API, focused-test, and build evidence. Recommendation remains **SHIP** with no open issue.

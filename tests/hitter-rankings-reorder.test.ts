@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { buildRerankedRatings, moveRankingItem } from "../lib/hitterRankings/reorder.ts";
+import { buildRerankedRatings, makeRankingNamesUnique, moveRankingItem } from "../lib/hitterRankings/reorder.ts";
 
 const items = [
   { playerName: "Alpha", currentElo: 1520 },
@@ -35,5 +35,20 @@ test("buildRerankedRatings creates visible spacing when all Elo values match", (
   ]), [
     { playerName: "Alpha", elo: 1500 },
     { playerName: "Bravo", elo: 1490 },
+  ]);
+});
+
+
+test("makeRankingNamesUnique disambiguates same-name hitters by team", () => {
+  const players = makeRankingNamesUnique([
+    { Name: "Max Muncy", Team: "LAD" },
+    { Name: "Max Muncy", Team: "ATH" },
+    { Name: "Mookie Betts", Team: "LAD" },
+  ]);
+
+  assert.deepEqual(players.map((player) => player.Name), [
+    "Max Muncy (LAD)",
+    "Max Muncy (ATH)",
+    "Mookie Betts",
   ]);
 });

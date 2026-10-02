@@ -8,7 +8,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { buildRerankedRatings, moveRankingItem } from "@/lib/hitterRankings/reorder";
+import { buildRerankedRatings, makeRankingNamesUnique, moveRankingItem } from "@/lib/hitterRankings/reorder";
 
 const HITTER_DATA_URL =
   "/data/hitter-rankings-2026.json";
@@ -1271,7 +1271,7 @@ export default function HitterRankingsPage() {
 
           const allPlayers: Player[] =
             Array.isArray(hitterData?.rows)
-              ? hitterData.rows
+              ? makeRankingNamesUnique(hitterData.rows as Player[])
               : [];
 
           if (allPlayers.length === 0) {
