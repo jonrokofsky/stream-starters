@@ -44,3 +44,12 @@ No issues opened. Round 1 release recommendation remains valid for revision `238
 - Regression checks: production build passes; 9 focused scoring/YAC tests pass. Focused ESLint has zero errors and four `<img>` optimization warnings because both responsive profile variants render team-logo elements; no behavioral issue observed.
 
 No blocker or nonblocking defect opened.
+
+## Round 4 — mobile visual cleanup
+
+- Revision: `31e8234`
+- RB visual capture confirms one PPR header value, no empty component cells, complete rushing/receiving/opportunity groups, and a reduced 358×604 px profile card.
+- Receiver profile remains complete at 356×472 px; final component tiles fill incomplete rows. Both routes remain exactly 390 px wide at the 390×844 viewport.
+- Production build passes. Focused ESLint has zero errors and the same four responsive team-logo optimization warnings.
+
+PASS. No issue opened.

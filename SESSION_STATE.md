@@ -2,7 +2,7 @@
 
 ## 2026-10-02 football refresh and weekly windows
 
-Task `SS-20261002-football-refresh-week-windows` refreshed FPDS RB data to 90 RBs/247 player-games, refreshed FPDS receiving plus SumerSports to 162 WR/93 TE, imported the user-provided 90-row PFR YAC/Att table through Week 4, and recorded the matching 32-team Week 4 defense upload. The RB sortable sheet now consolidates its week controls into Through/Since plus one dropdown; Since views derive period deltas and recalculate rates and scores. Mobile revisions `2381359` and `95315bd` replace wide phone tables with sortable player cards and render complete one-screen profile summaries: RB 657 px high, receiver 478 px at 390×844, with no horizontal overflow. Focused tests, production builds, focused lint, and Chromium visual walkthroughs pass. Push/deployment verification is next. Preserve unrelated `public/1.png`.
+Task `SS-20261002-football-refresh-week-windows` refreshed FPDS RB data to 90 RBs/247 player-games, refreshed FPDS receiving plus SumerSports to 162 WR/93 TE, imported the user-provided 90-row PFR YAC/Att table through Week 4, and recorded the matching 32-team Week 4 defense upload. The RB sortable sheet now consolidates its week controls into Through/Since plus one dropdown; Since views derive period deltas and recalculate rates and scores. Mobile revisions through `31e8234` replace wide phone tables with sortable player cards and render cleaned one-screen profile summaries: RB 604 px high, receiver 472 px at 390×844, with no horizontal overflow or blank metric cells. Focused tests, production builds, focused lint, and Chromium visual walkthroughs pass. Push/deployment verification is next. Preserve unrelated `public/1.png`.
 
 ## 2026-09-29 football refresh source scope
 

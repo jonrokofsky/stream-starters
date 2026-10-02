@@ -2,7 +2,7 @@
 
 - Author/role: Manager
 - Date/status: 2026-10-02 / SHIP
-- Revisions reviewed: refreshed-data implementation rebased as `76cb861`; mobile card follow-up `2381359`; one-screen profiles `95315bd`
+- Revisions reviewed: refreshed-data implementation rebased as `76cb861`; mobile card follow-up `2381359`; one-screen profiles `95315bd`; visual cleanup `31e8234`
 - Inputs: spec, build handoff, QA report, issue ledger
 - Next owner/action: Manager / push main and verify hosted deployment
 
