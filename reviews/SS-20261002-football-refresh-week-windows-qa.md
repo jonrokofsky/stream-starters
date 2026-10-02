@@ -27,3 +27,11 @@
 - Playwright local walkthrough — Through/Since controls render; Since Week 3 through Week 4 status and derived rows render.
 
 No blocking or nonblocking defects recorded.
+
+## Round 2 — mobile scope revision
+
+- Revision: `2381359`
+- **AC-8 PASS:** At a 390×844 viewport, RB and receiver pages each report `clientWidth=390` and `scrollWidth=390`; no horizontal page overflow exists. Desktop tables are hidden at this width, mobile player cards render for the full filtered populations, and each sheet exposes a mobile sort selector. Compact profile score and metric grids render in two columns where appropriate.
+- Regression checks: production build passes; 11 focused RB/receiver scoring tests pass; focused ESLint has zero errors and the same two existing team-logo `<img>` warnings.
+
+No issues opened. Round 1 release recommendation remains valid for revision `2381359` plus the documentation-only follow-up.
