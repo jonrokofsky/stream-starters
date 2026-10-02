@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "capturedAt": "2026-09-28T14:36:54.175Z",
+  "capturedAt": "2026-10-02T14:45:32.3910938Z",
   "source": {
     "QB": "https://www.pro-football-reference.com/years/2026/fantasy-points-against-QB.htm",
     "RB": "https://www.pro-football-reference.com/years/2026/fantasy-points-against-RB.htm",
@@ -1128,5 +1128,6 @@
       "TE TD": "1.7",
       "TE Fantasy PPG": "16.7"
     }
-  ]
+  ],
+  "coverageNote": "User-provided PFR defense-vs-position tables through Week 4; values matched the active 32-team snapshot."
 }

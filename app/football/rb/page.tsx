@@ -22,6 +22,7 @@ type WeeklySnapshot = {
 };
 
 type SortDirection = "asc" | "desc";
+type WeeklyTableMode = "through" | "since";
 
 type PlayerTableColumn = {
   key: string;
@@ -602,6 +603,94 @@ function inferSnapshotWeek(rows: DataRow[]) {
   return Math.max(1, ...rows.map((row) => toNumber(row["G"]) ?? 0));
 }
 
+const PERIOD_COUNT_FIELDS = [
+  "G", "ATT", "RuYds", "RuTD", "Rush FUM", "Targets", "Rec", "Rec Yards",
+  "Rec. TD", "Rec FUM", "Weighted Opp.", "FP", "Total TD", "Ins. 5 Carries",
+  "Ins. 10 Carries", "Ins. 10 Rec.",
+] as const;
+
+const GAIN_RATE_FIELDS = ["1+ RuYd%", "3+ RuYd%", "5+ RuYd%", "10+ RuYd%", "15+ RuYd%", "20+ RuYd%", "30+ RuYd%"] as const;
+
+function periodNumber(latest: DataRow, baseline: DataRow | undefined, key: string) {
+  return Math.max(0, (toNumber(latest[key]) ?? 0) - (toNumber(baseline?.[key]) ?? 0));
+}
+
+function periodRateFromCount(
+  latest: DataRow,
+  baseline: DataRow | undefined,
+  countKey: string,
+  rateKey: string,
+) {
+  const latestCount = toNumber(latest[countKey]) ?? 0;
+  const baselineCount = toNumber(baseline?.[countKey]) ?? 0;
+  const latestRate = toNumber(latest[rateKey]) ?? 0;
+  const baselineRate = toNumber(baseline?.[rateKey]) ?? 0;
+  const latestPool = latestRate > 0 ? latestCount / (latestRate / 100) : 0;
+  const baselinePool = baselineRate > 0 ? baselineCount / (baselineRate / 100) : 0;
+  const periodPool = latestPool - baselinePool;
+  const periodCount = latestCount - baselineCount;
+  return periodPool > 0 && periodCount >= 0 ? periodCount / periodPool * 100 : 0;
+}
+
+function buildSinceSnapshot(latest: WeeklySnapshot, baseline: WeeklySnapshot, startWeek: number): WeeklySnapshot {
+  const baselineByName = new Map(baseline.rows.map((row) => [row.Name, row]));
+  const rows = latest.rows.map((latestRow) => {
+    const baselineRow = baselineByName.get(latestRow.Name);
+    const row: DataRow = { ...latestRow };
+    for (const key of PERIOD_COUNT_FIELDS) row[key] = String(periodNumber(latestRow, baselineRow, key));
+
+    const games = toNumber(row.G) ?? 0;
+    const attempts = toNumber(row.ATT) ?? 0;
+    const rushYards = toNumber(row.RuYds) ?? 0;
+    const targets = toNumber(row.Targets) ?? 0;
+    const receptions = toNumber(row.Rec) ?? 0;
+    const receivingYards = toNumber(row["Rec Yards"]) ?? 0;
+    const fantasyPoints = toNumber(row.FP) ?? 0;
+    const weightedOpportunity = toNumber(row["Weighted Opp."]) ?? 0;
+
+    row["RuYds/G"] = games ? String(rushYards / games) : "-";
+    row["RuYds/Rush"] = attempts ? String(rushYards / attempts) : "-";
+    row["RecYds/G"] = games ? String(receivingYards / games) : "-";
+    row["RecYds/Rec"] = receptions ? String(receivingYards / receptions) : "-";
+    row["RecYds/Tgt"] = targets ? String(receivingYards / targets) : "-";
+    row["Catch%"] = targets ? `${receptions / targets * 100}%` : "-";
+    row["Weighted Opp./G"] = games ? String(weightedOpportunity / games) : "-";
+    row["FP/G"] = games ? String(fantasyPoints / games) : "-";
+
+    for (const key of GAIN_RATE_FIELDS) {
+      const latestEvents = (toNumber(latestRow[key]) ?? 0) / 100 * (toNumber(latestRow.ATT) ?? 0);
+      const baselineEvents = (toNumber(baselineRow?.[key]) ?? 0) / 100 * (toNumber(baselineRow?.ATT) ?? 0);
+      row[key] = attempts ? `${Math.max(0, latestEvents - baselineEvents) / attempts * 100}%` : "-";
+    }
+
+    row["Target Share"] = `${periodRateFromCount(latestRow, baselineRow, "Targets", "Target Share")}%`;
+    row["Team Rec Yards %"] = `${periodRateFromCount(latestRow, baselineRow, "Rec Yards", "Team Rec Yards %")}%`;
+    row["Inside 5 Carry%"] = `${periodRateFromCount(latestRow, baselineRow, "Ins. 5 Carries", "Inside 5 Carry%")}%`;
+    row["Inside 10 Carry%"] = `${periodRateFromCount(latestRow, baselineRow, "Ins. 10 Carries", "Inside 10 Carry%")}%`;
+
+    const latestYac = toNumber(latestRow["YAC/Att"]);
+    const baselineYac = toNumber(baselineRow?.["YAC/Att"]);
+    const latestAttempts = toNumber(latestRow.ATT) ?? 0;
+    const baselineAttempts = toNumber(baselineRow?.ATT) ?? 0;
+    const periodYac = latestYac === null
+      ? null
+      : (latestYac * latestAttempts - (baselineYac ?? 0) * baselineAttempts);
+    row["YAC/Att"] = attempts && periodYac !== null ? String(periodYac / attempts) : "";
+    return row;
+  }).filter((row) => (toNumber(row.G) ?? 0) > 0);
+
+  const scores = calculateRbScores({ season: 2026, ageColumn: "unused", rows });
+  const scoredRows = rows.map((row, index) => ({
+    ...row,
+    "Rush Gain Profile": scores[index].rushGain === null ? "" : String(scores[index].rushGain),
+    "Rush Score": scores[index].rush === null ? "" : String(scores[index].rush),
+    "Rec Score": scores[index].receiving === null ? "" : String(scores[index].receiving),
+    "Opportunity Score": scores[index].opportunity === null ? "" : String(scores[index].opportunity),
+  }));
+
+  return { week: latest.week, copiedAt: latest.copiedAt, rows: scoredRows.map((row) => ({ ...row, Period: `Since Week ${startWeek}` })) };
+}
+
 function ScoreCard({
   title,
   score,
@@ -766,6 +855,8 @@ export default function RBPage() {
     useState<DataRow[]>([]);
   const [weeklySnapshots, setWeeklySnapshots] = useState<WeeklySnapshot[]>([]);
   const [selectedWeek, setSelectedWeek] = useState(0);
+  const [weeklyTableMode, setWeeklyTableMode] = useState<WeeklyTableMode>("through");
+  const [sinceWeek, setSinceWeek] = useState(0);
   const [tableSearch, setTableSearch] = useState("");
   const [sortKey, setSortKey] = useState("Opportunity Score");
   const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
@@ -881,6 +972,7 @@ export default function RBPage() {
         const availableWeeks = [...byWeek.values()].sort((a, b) => a.week - b.week);
         setWeeklySnapshots(availableWeeks);
         setSelectedWeek(availableWeeks.at(-1)?.week ?? currentWeek);
+        setSinceWeek(availableWeeks.find((item) => byWeek.has(item.week - 1))?.week ?? currentWeek);
 
         if (rows.length) {
           setSelectedName(
@@ -955,10 +1047,19 @@ export default function RBPage() {
       });
     }, [players, minRushAttempts]);
 
-  const selectedWeekSnapshot = useMemo(
-    () => weeklySnapshots.find((item) => item.week === selectedWeek) ?? weeklySnapshots.at(-1),
-    [selectedWeek, weeklySnapshots]
+  const availableSinceWeeks = useMemo(
+    () => weeklySnapshots.filter((item) => weeklySnapshots.some((baseline) => baseline.week === item.week - 1)),
+    [weeklySnapshots]
   );
+
+  const selectedWeekSnapshot = useMemo(() => {
+    if (weeklyTableMode === "through") {
+      return weeklySnapshots.find((item) => item.week === selectedWeek) ?? weeklySnapshots.at(-1);
+    }
+    const latest = weeklySnapshots.at(-1);
+    const baseline = weeklySnapshots.find((item) => item.week === sinceWeek - 1);
+    return latest && baseline ? buildSinceSnapshot(latest, baseline, sinceWeek) : latest;
+  }, [selectedWeek, sinceWeek, weeklySnapshots, weeklyTableMode]);
 
   const sortedTablePlayers = useMemo(() => {
     const query = tableSearch.trim().toLowerCase();
@@ -1606,7 +1707,7 @@ export default function RBPage() {
                       </div>
                       <h2 className="mt-1 text-2xl font-black">All Running Backs</h2>
                       <p className="mt-1 text-xs font-bold text-slate-300">
-                        Cumulative stats through the selected week. Click any column to sort.
+                        {weeklyTableMode === "through" ? "Cumulative stats through the selected week." : "Stats from the selected week through the latest snapshot."} Click any column to sort.
                       </p>
                     </div>
                     <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-black">
@@ -1619,23 +1720,33 @@ export default function RBPage() {
                   <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
                     <div>
                       <div className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">
-                        Snapshot week
+                        Stat window
                       </div>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {weeklySnapshots.map((snapshot) => (
-                          <button
-                            key={snapshot.week}
-                            type="button"
-                            onClick={() => setSelectedWeek(snapshot.week)}
-                            className={`rounded-full px-4 py-2 text-sm font-black transition ${
-                              selectedWeek === snapshot.week
-                                ? "bg-sky-600 text-white shadow-sm"
-                                : "border border-slate-200 bg-white text-slate-700 hover:border-sky-300 hover:text-sky-700"
-                            }`}
-                          >
-                            Through Week {snapshot.week}
-                          </button>
-                        ))}
+                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                        <div className="flex rounded-xl bg-slate-200 p-1">
+                          {(["through", "since"] as WeeklyTableMode[]).map((mode) => (
+                            <button
+                              key={mode}
+                              type="button"
+                              onClick={() => setWeeklyTableMode(mode)}
+                              disabled={mode === "since" && !availableSinceWeeks.length}
+                              className={`rounded-lg px-4 py-2 text-sm font-black capitalize transition ${weeklyTableMode === mode ? "bg-slate-950 text-white shadow-sm" : "text-slate-600 hover:text-slate-950 disabled:opacity-40"}`}
+                            >
+                              {mode}
+                            </button>
+                          ))}
+                        </div>
+                        <label className="sr-only" htmlFor="rb-week-window">Week</label>
+                        <select
+                          id="rb-week-window"
+                          value={weeklyTableMode === "through" ? selectedWeek : sinceWeek}
+                          onChange={(event) => weeklyTableMode === "through" ? setSelectedWeek(Number(event.target.value)) : setSinceWeek(Number(event.target.value))}
+                          className="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-black text-slate-800 outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+                        >
+                          {(weeklyTableMode === "through" ? weeklySnapshots : availableSinceWeeks).map((snapshot) => (
+                            <option key={snapshot.week} value={snapshot.week}>Week {snapshot.week}</option>
+                          ))}
+                        </select>
                       </div>
                     </div>
 
@@ -1655,7 +1766,7 @@ export default function RBPage() {
 
                   {selectedWeekSnapshot && (
                     <div className="mt-4 text-xs font-bold text-slate-500">
-                      Snapshot captured {new Date(selectedWeekSnapshot.copiedAt).toLocaleString("en-US", { timeZone: "America/New_York" })} Eastern.
+                      {weeklyTableMode === "through" ? `Through Week ${selectedWeekSnapshot.week}` : `Since Week ${sinceWeek} through Week ${selectedWeekSnapshot.week}`} · Snapshot captured {new Date(selectedWeekSnapshot.copiedAt).toLocaleString("en-US", { timeZone: "America/New_York" })} Eastern.
                     </div>
                   )}
                 </div>
