@@ -1,5 +1,9 @@
 # Session checkpoint
 
+## 2026-10-02 football refresh and weekly windows
+
+Task `SS-20261002-football-refresh-week-windows` refreshed FPDS RB data to 90 RBs/247 player-games, refreshed FPDS receiving plus SumerSports to 162 WR/93 TE, imported the user-provided 90-row PFR YAC/Att table through Week 4, and recorded the matching 32-team Week 4 defense upload. The RB sortable sheet now consolidates its week controls into Through/Since plus one dropdown; Since views derive period deltas and recalculate rates and scores. Revision `eb5cf0b`; 37 focused tests, production build, focused lint, and local Chromium walkthrough pass. Push/deployment verification is next. Preserve unrelated `public/1.png`.
+
 ## 2026-09-29 football refresh source scope
 
 Task `SS-20260929-football-refresh-scope` responds to failed GitHub run #10. The failure was an FPDS grid timeout before the defense step. User clarified that only FPDS and SumerSports should refresh automatically; PFR defense and YAC/Att are manual uploads. Commit `57beec5` narrows and retries the RB job, retries receiver sources, adds a reusable YAC TSV importer, and updates the 8:15 fallback heartbeat to monitor both jobs. GitHub FPDS RB run #11 and receiver run #2 passed. Production now serves 90 RBs/241 player-games, 90 YAC rows through Week 3, 162 WR and 93 TE; Derrick Henry YAC/Att is 2.7. Uploaded defense screenshots match the active Week 3 defense snapshot. Thirty-seven focused tests, production build, workflow reruns, and live data checks pass.

@@ -8,6 +8,8 @@ Manager maintains this file. Link material updates to decisions or user instruct
 - Roles: Architect, Coder, Tester, Manager; agents should challenge one another and communicate through shared artifacts.
 - User retains final authority. Work is needed while the user is online; no 24/7 setup is required.
 - Initial deliverable: this framework, handoffs, authority and escalation rules.
+- Football data policy: Fantasy Points and SumerSports refresh automatically; PFR YAC/Att and defense-vs-position data are supplied manually by the user.
+- RB weekly sheet should use one compact selector for cumulative Through Week X and derived Since Week X views.
 
 Source: current setup request and referenced conversation Designing AI Agent Framework (ID 6aa0baa3-0aec-83e9-a61e-fb23ce565bc6). Earlier assistant examples are not confirmed requirements.
 
