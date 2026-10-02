@@ -39,3 +39,7 @@ Unrelated `public/1.png` was not touched.
 ## Mobile revision
 
 User expanded scope before release. RB and receiver profile score/metric grids now use denser phone-width spacing. Both sortable player sheets render compact mobile cards with key scores and stats plus a sort selector/direction button; their full tables remain visible from desktop breakpoints upward. Files added to the implementation set: `app/football/receivers/page.tsx`.
+
+## One-screen profile revision
+
+The phone breakpoint now renders purpose-built summary cards rather than the desktop detail stack. RB includes PPR FP/G, Rush/Receiving/Opportunity scores, all 9 rushing components, all 5 receiving components, and all 7 opportunity components. WR/TE includes PPR FP/G, Efficiency/Opportunity scores, and every metric in both component groups. The same export container selects the visible mobile summary on phones and the detailed profile on larger screens.
