@@ -5,17 +5,17 @@
     "https://sumersports.com/players/wide-receiver/",
     "https://sumersports.com/players/tight-end/"
   ],
-  "copiedAt": "2026-10-05T20:20:49.971Z",
+  "copiedAt": "2026-10-06T15:13:47.962Z",
   "updateMode": "browser import",
   "seasonType": "Regular",
   "scoring": "PPR",
   "population": {
     "WR": 172,
-    "TE": 96
+    "TE": 97
   },
   "rows": [
     {
-      "Rank": "222",
+      "Rank": "220",
       "Name": "Adam Trautman",
       "Team": "DEN",
       "POS": "TE",
@@ -52,8 +52,8 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "4.00",
-      "Efficiency Grade": "14",
-      "Opportunity Grade": "16"
+      "Efficiency Grade": "15",
+      "Opportunity Grade": "17"
     },
     {
       "Rank": "103",
@@ -97,7 +97,7 @@
       "Opportunity Grade": "63"
     },
     {
-      "Rank": "267",
+      "Rank": "262",
       "Name": "Andrew Ogletree",
       "Team": "IND",
       "POS": "TE",
@@ -138,48 +138,48 @@
       "Opportunity Grade": "9"
     },
     {
-      "Rank": "170",
+      "Rank": "164",
       "Name": "Austin Hooper",
       "Team": "ATL",
       "POS": "TE",
-      "G": "3",
-      "Targets": "6",
-      "Target Share": "8.22%",
-      "Rec": "4",
-      "Rec Yards": "31",
-      "Team Rec Yards %": "5.7%",
-      "YPR": "7.75",
-      "YPT": "5.17",
-      "RecYds/G": "10.3",
-      "Catch %": "66.67%",
+      "G": "4",
+      "Targets": "7",
+      "Target Share": "7.53%",
+      "Rec": "5",
+      "Rec Yards": "40",
+      "Team Rec Yards %": "5.2%",
+      "YPR": "8.00",
+      "YPT": "5.71",
+      "RecYds/G": "10.0",
+      "Catch %": "71.43%",
       "Rec TD": "1",
-      "Team TD %": "50.0%",
+      "Team TD %": "33.3%",
       "i10": "1",
       "i20 Targets": "1",
       "FUM": "0",
-      "FP/G": "4.4",
-      "FP": "13.1",
-      "Routes Run": "29",
-      "Receptions": "4",
-      "Rec. Yards": "31",
+      "FP/G": "3.8",
+      "FP": "15.0",
+      "Routes Run": "34",
+      "Receptions": "5",
+      "Rec. Yards": "40",
       "Touchdowns": "1",
-      "YAC": "16",
-      "ADoT": "3.83",
-      "Total EPA": "8.03",
+      "YAC": "27",
+      "ADoT": "3",
+      "Total EPA": "8.83",
       "Targets/Route Run": "0.21",
-      "YPRR": "1.07",
+      "YPRR": "1.18",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "2.00",
-      "Routes/G": "9.67",
-      "i10/G": "0.33",
-      "i20/G": "0.33",
-      "YAC/Rec": "4.00",
-      "Efficiency Grade": "39",
-      "Opportunity Grade": "59"
+      "Targets/G": "1.75",
+      "Routes/G": "8.50",
+      "i10/G": "0.25",
+      "i20/G": "0.25",
+      "YAC/Rec": "5.40",
+      "Efficiency Grade": "47",
+      "Opportunity Grade": "54"
     },
     {
-      "Rank": "235",
+      "Rank": "234",
       "Name": "Ben Sinnott",
       "Team": "WAS",
       "POS": "TE",
@@ -258,7 +258,7 @@
       "i20/G": "0.25",
       "YAC/Rec": "11.00",
       "Efficiency Grade": "65",
-      "Opportunity Grade": "31"
+      "Opportunity Grade": "32"
     },
     {
       "Rank": "63",
@@ -302,7 +302,7 @@
       "Opportunity Grade": "73"
     },
     {
-      "Rank": "215",
+      "Rank": "213",
       "Name": "Brevin Jordan",
       "Team": "HOU",
       "POS": "TE",
@@ -340,10 +340,10 @@
       "i20/G": "0.00",
       "YAC/Rec": "5.00",
       "Efficiency Grade": "79",
-      "Opportunity Grade": "29"
+      "Opportunity Grade": "30"
     },
     {
-      "Rank": "167",
+      "Rank": "170",
       "Name": "Brevyn Spann-Ford",
       "Team": "DAL",
       "POS": "TE",
@@ -381,10 +381,10 @@
       "i20/G": "0.00",
       "YAC/Rec": "8.33",
       "Efficiency Grade": "59",
-      "Opportunity Grade": "19"
+      "Opportunity Grade": "20"
     },
     {
-      "Rank": "42",
+      "Rank": "44",
       "Name": "Brock Bowers",
       "Team": "LV",
       "POS": "TE",
@@ -463,7 +463,7 @@
       "i20/G": "0.25",
       "YAC/Rec": "3.50",
       "Efficiency Grade": "21",
-      "Opportunity Grade": "28"
+      "Opportunity Grade": "29"
     },
     {
       "Rank": "67",
@@ -503,7 +503,7 @@
       "i10/G": "0.00",
       "i20/G": "0.50",
       "YAC/Rec": "8.07",
-      "Efficiency Grade": "67",
+      "Efficiency Grade": "66",
       "Opportunity Grade": "61"
     },
     {
@@ -548,7 +548,7 @@
       "Opportunity Grade": "15"
     },
     {
-      "Rank": "190",
+      "Rank": "192",
       "Name": "Charlie Kolar",
       "Team": "LAC",
       "POS": "TE",
@@ -589,13 +589,13 @@
       "Opportunity Grade": "30"
     },
     {
-      "Rank": "268",
+      "Rank": "261",
       "Name": "Charlie Woerner",
       "Team": "ATL",
       "POS": "TE",
-      "G": "3",
+      "G": "4",
       "Targets": "1",
-      "Target Share": "1.37%",
+      "Target Share": "2.15%",
       "Rec": "0",
       "Rec Yards": "0",
       "Team Rec Yards %": "0.0%",
@@ -610,27 +610,27 @@
       "FUM": "0",
       "FP/G": "-",
       "FP": "0.0",
-      "Routes Run": "31",
+      "Routes Run": "38",
       "Receptions": "0",
       "Rec. Yards": "0",
       "Touchdowns": "0",
       "YAC": "0",
-      "ADoT": "1",
+      "ADoT": "0",
       "Total EPA": "0",
-      "Targets/Route Run": "0.03",
+      "Targets/Route Run": "0.05",
       "YPRR": "0",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "0.33",
-      "Routes/G": "10.33",
+      "Targets/G": "0.25",
+      "Routes/G": "9.50",
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "",
       "Efficiency Grade": "1",
-      "Opportunity Grade": "9"
+      "Opportunity Grade": "11"
     },
     {
-      "Rank": "192",
+      "Rank": "191",
       "Name": "Chig Okonkwo",
       "Team": "WAS",
       "POS": "TE",
@@ -660,7 +660,7 @@
       "Opportunity Grade": "29"
     },
     {
-      "Rank": "188",
+      "Rank": "193",
       "Name": "Colby Parkinson",
       "Team": "LAR",
       "POS": "TE",
@@ -698,10 +698,10 @@
       "i20/G": "0.67",
       "YAC/Rec": "7.33",
       "Efficiency Grade": "33",
-      "Opportunity Grade": "43"
+      "Opportunity Grade": "44"
     },
     {
-      "Rank": "153",
+      "Rank": "157",
       "Name": "Cole Kmet",
       "Team": "CHI",
       "POS": "TE",
@@ -738,11 +738,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "3.00",
-      "Efficiency Grade": "47",
-      "Opportunity Grade": "38"
+      "Efficiency Grade": "46",
+      "Opportunity Grade": "39"
     },
     {
-      "Rank": "208",
+      "Rank": "209",
       "Name": "Colson Yankoff",
       "Team": "WAS",
       "POS": "TE",
@@ -783,7 +783,7 @@
       "Opportunity Grade": "18"
     },
     {
-      "Rank": "108",
+      "Rank": "109",
       "Name": "Colston Loveland",
       "Team": "CHI",
       "POS": "TE",
@@ -820,11 +820,11 @@
       "i10/G": "0.50",
       "i20/G": "1.50",
       "YAC/Rec": "4.45",
-      "Efficiency Grade": "43",
-      "Opportunity Grade": "63"
+      "Efficiency Grade": "42",
+      "Opportunity Grade": "64"
     },
     {
-      "Rank": "120",
+      "Rank": "121",
       "Name": "Dallas Goedert",
       "Team": "PHI",
       "POS": "TE",
@@ -903,10 +903,10 @@
       "i20/G": "0.25",
       "YAC/Rec": "6.53",
       "Efficiency Grade": "94",
-      "Opportunity Grade": "66"
+      "Opportunity Grade": "67"
     },
     {
-      "Rank": "33",
+      "Rank": "35",
       "Name": "Dalton Schultz",
       "Team": "HOU",
       "POS": "TE",
@@ -947,7 +947,7 @@
       "Opportunity Grade": "63"
     },
     {
-      "Rank": "180",
+      "Rank": "183",
       "Name": "Daniel Bellinger",
       "Team": "TEN",
       "POS": "TE",
@@ -984,8 +984,8 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "7.00",
-      "Efficiency Grade": "35",
-      "Opportunity Grade": "26"
+      "Efficiency Grade": "36",
+      "Opportunity Grade": "27"
     },
     {
       "Rank": "92",
@@ -1025,11 +1025,11 @@
       "i10/G": "0.00",
       "i20/G": "0.50",
       "YAC/Rec": "9.33",
-      "Efficiency Grade": "78",
+      "Efficiency Grade": "79",
       "Opportunity Grade": "57"
     },
     {
-      "Rank": "72",
+      "Rank": "73",
       "Name": "Darren Waller",
       "Team": "CAR",
       "POS": "TE",
@@ -1070,7 +1070,7 @@
       "Opportunity Grade": "74"
     },
     {
-      "Rank": "127",
+      "Rank": "129",
       "Name": "David Njoku",
       "Team": "LAC",
       "POS": "TE",
@@ -1111,7 +1111,7 @@
       "Opportunity Grade": "57"
     },
     {
-      "Rank": "164",
+      "Rank": "166",
       "Name": "Davis Allen",
       "Team": "LAR",
       "POS": "TE",
@@ -1152,7 +1152,7 @@
       "Opportunity Grade": "31"
     },
     {
-      "Rank": "173",
+      "Rank": "176",
       "Name": "Dawson Knox",
       "Team": "BUF",
       "POS": "TE",
@@ -1189,11 +1189,11 @@
       "i10/G": "0.25",
       "i20/G": "0.50",
       "YAC/Rec": "3.17",
-      "Efficiency Grade": "24",
-      "Opportunity Grade": "47"
+      "Efficiency Grade": "23",
+      "Opportunity Grade": "48"
     },
     {
-      "Rank": "197",
+      "Rank": "200",
       "Name": "Drew Sample",
       "Team": "CIN",
       "POS": "TE",
@@ -1231,10 +1231,10 @@
       "i20/G": "0.25",
       "YAC/Rec": "5.50",
       "Efficiency Grade": "23",
-      "Opportunity Grade": "23"
+      "Opportunity Grade": "24"
     },
     {
-      "Rank": "240",
+      "Rank": "241",
       "Name": "Durham Smythe",
       "Team": "BAL",
       "POS": "TE",
@@ -1271,11 +1271,11 @@
       "i10/G": "0.25",
       "i20/G": "0.25",
       "YAC/Rec": "0.00",
-      "Efficiency Grade": "5",
-      "Opportunity Grade": "20"
+      "Efficiency Grade": "6",
+      "Opportunity Grade": "21"
     },
     {
-      "Rank": "158",
+      "Rank": "159",
       "Name": "Eli Raridon",
       "Team": "NE",
       "POS": "TE",
@@ -1313,10 +1313,10 @@
       "i20/G": "0.33",
       "YAC/Rec": "1.67",
       "Efficiency Grade": "63",
-      "Opportunity Grade": "50"
+      "Opportunity Grade": "51"
     },
     {
-      "Rank": "204",
+      "Rank": "203",
       "Name": "Elijah Arroyo",
       "Team": "SEA",
       "POS": "TE",
@@ -1354,10 +1354,10 @@
       "i20/G": "0.00",
       "YAC/Rec": "3.00",
       "Efficiency Grade": "48",
-      "Opportunity Grade": "10"
+      "Opportunity Grade": "11"
     },
     {
-      "Rank": "163",
+      "Rank": "165",
       "Name": "Elijah Higgins",
       "Team": "ARI",
       "POS": "TE",
@@ -1398,7 +1398,7 @@
       "Opportunity Grade": "45"
     },
     {
-      "Rank": "243",
+      "Rank": "244",
       "Name": "Eric Saubert",
       "Team": "SEA",
       "POS": "TE",
@@ -1436,7 +1436,7 @@
       "i20/G": "0.50",
       "YAC/Rec": "4.50",
       "Efficiency Grade": "12",
-      "Opportunity Grade": "30"
+      "Opportunity Grade": "31"
     },
     {
       "Rank": "239",
@@ -1477,7 +1477,7 @@
       "i20/G": "0.00",
       "YAC/Rec": "2.50",
       "Efficiency Grade": "9",
-      "Opportunity Grade": "12"
+      "Opportunity Grade": "13"
     },
     {
       "Rank": "131",
@@ -1521,7 +1521,7 @@
       "Opportunity Grade": "53"
     },
     {
-      "Rank": "145",
+      "Rank": "147",
       "Name": "Foster Moreau",
       "Team": "HOU",
       "POS": "TE",
@@ -1562,7 +1562,7 @@
       "Opportunity Grade": "58"
     },
     {
-      "Rank": "241",
+      "Rank": "240",
       "Name": "Gavin Bartholomew",
       "Team": "MIN",
       "POS": "TE",
@@ -1600,7 +1600,7 @@
       "i20/G": "0.00",
       "YAC/Rec": "0.00",
       "Efficiency Grade": "19",
-      "Opportunity Grade": "16"
+      "Opportunity Grade": "17"
     },
     {
       "Rank": "18",
@@ -1644,7 +1644,7 @@
       "Opportunity Grade": "90"
     },
     {
-      "Rank": "109",
+      "Rank": "110",
       "Name": "Greg Dulcich",
       "Team": "MIA",
       "POS": "TE",
@@ -1685,7 +1685,7 @@
       "Opportunity Grade": "48"
     },
     {
-      "Rank": "141",
+      "Rank": "144",
       "Name": "Gunnar Helm",
       "Team": "TEN",
       "POS": "TE",
@@ -1767,7 +1767,7 @@
       "Opportunity Grade": "85"
     },
     {
-      "Rank": "80",
+      "Rank": "82",
       "Name": "Hunter Henry",
       "Team": "NE",
       "POS": "TE",
@@ -1845,11 +1845,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "0.50",
-      "Efficiency Grade": "30",
-      "Opportunity Grade": "10"
+      "Efficiency Grade": "31",
+      "Opportunity Grade": "11"
     },
     {
-      "Rank": "159",
+      "Rank": "161",
       "Name": "Ian Thomas",
       "Team": "LV",
       "POS": "TE",
@@ -1890,7 +1890,7 @@
       "Opportunity Grade": "32"
     },
     {
-      "Rank": "48",
+      "Rank": "49",
       "Name": "Isaiah Likely",
       "Team": "NYG",
       "POS": "TE",
@@ -1927,11 +1927,11 @@
       "i10/G": "0.25",
       "i20/G": "1.50",
       "YAC/Rec": "2.32",
-      "Efficiency Grade": "59",
+      "Efficiency Grade": "58",
       "Opportunity Grade": "90"
     },
     {
-      "Rank": "251",
+      "Rank": "267",
       "Name": "Jackson Hawes",
       "Team": "BUF",
       "POS": "TE",
@@ -1972,7 +1972,7 @@
       "Opportunity Grade": "4"
     },
     {
-      "Rank": "229",
+      "Rank": "228",
       "Name": "Jackson Meeks",
       "Team": "DET",
       "POS": "TE",
@@ -2043,7 +2043,7 @@
       "Opportunity Grade": "16"
     },
     {
-      "Rank": "117",
+      "Rank": "118",
       "Name": "Jake Ferguson",
       "Team": "DAL",
       "POS": "TE",
@@ -2084,7 +2084,7 @@
       "Opportunity Grade": "72"
     },
     {
-      "Rank": "171",
+      "Rank": "174",
       "Name": "Jelani Woods",
       "Team": "NYJ",
       "POS": "TE",
@@ -2125,7 +2125,7 @@
       "Opportunity Grade": "14"
     },
     {
-      "Rank": "155",
+      "Rank": "154",
       "Name": "Jeremy Ruckert",
       "Team": "NYJ",
       "POS": "TE",
@@ -2163,10 +2163,10 @@
       "i20/G": "0.50",
       "YAC/Rec": "5.25",
       "Efficiency Grade": "45",
-      "Opportunity Grade": "56"
+      "Opportunity Grade": "57"
     },
     {
-      "Rank": "186",
+      "Rank": "188",
       "Name": "John Bates",
       "Team": "WAS",
       "POS": "TE",
@@ -2207,7 +2207,7 @@
       "Opportunity Grade": "29"
     },
     {
-      "Rank": "216",
+      "Rank": "218",
       "Name": "Johnny Mundt",
       "Team": "PHI",
       "POS": "TE",
@@ -2244,11 +2244,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "4.33",
-      "Efficiency Grade": "14",
+      "Efficiency Grade": "15",
       "Opportunity Grade": "20"
     },
     {
-      "Rank": "114",
+      "Rank": "116",
       "Name": "Jonnu Smith",
       "Team": "GB",
       "POS": "TE",
@@ -2289,7 +2289,7 @@
       "Opportunity Grade": "43"
     },
     {
-      "Rank": "211",
+      "Rank": "212",
       "Name": "Josh Cuevas",
       "Team": "BAL",
       "POS": "TE",
@@ -2326,11 +2326,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "11.00",
-      "Efficiency Grade": "58",
+      "Efficiency Grade": "59",
       "Opportunity Grade": "7"
     },
     {
-      "Rank": "156",
+      "Rank": "158",
       "Name": "Josh Oliver",
       "Team": "MIN",
       "POS": "TE",
@@ -2371,44 +2371,44 @@
       "Opportunity Grade": "39"
     },
     {
-      "Rank": "58",
+      "Rank": "23",
       "Name": "Juwan Johnson",
       "Team": "NO",
       "POS": "TE",
-      "G": "3",
-      "Targets": "18",
-      "Target Share": "15.32%",
-      "Rec": "15",
-      "Rec Yards": "173",
-      "Team Rec Yards %": "18.9%",
-      "YPR": "11.53",
-      "YPT": "9.61",
-      "RecYds/G": "57.7",
-      "Catch %": "78.95%",
+      "G": "4",
+      "Targets": "26",
+      "Target Share": "15.79%",
+      "Rec": "21",
+      "Rec Yards": "232",
+      "Team Rec Yards %": "19.3%",
+      "YPR": "11.05",
+      "YPT": "8.92",
+      "RecYds/G": "58.0",
+      "Catch %": "77.78%",
       "Rec TD": "3",
-      "Team TD %": "37.5%",
+      "Team TD %": "33.3%",
       "i10": "5",
-      "i20 Targets": "6",
+      "i20 Targets": "7",
       "FUM": "1",
-      "FP/G": "16.4",
-      "FP": "49.3",
-      "Routes Run": "106",
-      "Receptions": "15",
-      "Rec. Yards": "173",
+      "FP/G": "15.3",
+      "FP": "61.2",
+      "Routes Run": "144",
+      "Receptions": "21",
+      "Rec. Yards": "232",
       "Touchdowns": "3",
-      "YAC": "97",
-      "ADoT": "5.42",
-      "Total EPA": "13.78",
-      "Targets/Route Run": "0.18",
-      "YPRR": "1.63",
+      "YAC": "116",
+      "ADoT": "6",
+      "Total EPA": "17.22",
+      "Targets/Route Run": "0.19",
+      "YPRR": "1.61",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "6.00",
-      "Routes/G": "35.33",
-      "i10/G": "1.67",
-      "i20/G": "2.00",
-      "YAC/Rec": "6.47",
-      "Efficiency Grade": "80",
+      "Targets/G": "6.50",
+      "Routes/G": "36.00",
+      "i10/G": "1.25",
+      "i20/G": "1.75",
+      "YAC/Rec": "5.52",
+      "Efficiency Grade": "76",
       "Opportunity Grade": "87"
     },
     {
@@ -2453,48 +2453,48 @@
       "Opportunity Grade": "60"
     },
     {
-      "Rank": "195",
+      "Rank": "128",
       "Name": "Kyle Pitts",
       "Team": "ATL",
       "POS": "TE",
-      "G": "3",
-      "Targets": "6",
-      "Target Share": "8.22%",
-      "Rec": "2",
-      "Rec Yards": "20",
-      "Team Rec Yards %": "3.7%",
-      "YPR": "10.00",
-      "YPT": "3.33",
-      "RecYds/G": "6.7",
-      "Catch %": "33.33%",
+      "G": "4",
+      "Targets": "9",
+      "Target Share": "9.68%",
+      "Rec": "5",
+      "Rec Yards": "67",
+      "Team Rec Yards %": "8.7%",
+      "YPR": "13.40",
+      "YPT": "7.44",
+      "RecYds/G": "16.8",
+      "Catch %": "55.56%",
       "Rec TD": "0",
       "Team TD %": "0.0%",
       "i10": "0",
       "i20 Targets": "0",
       "FUM": "0",
-      "FP/G": "1.3",
-      "FP": "4.0",
-      "Routes Run": "57",
-      "Receptions": "2",
-      "Rec. Yards": "20",
+      "FP/G": "2.9",
+      "FP": "11.7",
+      "Routes Run": "66",
+      "Receptions": "5",
+      "Rec. Yards": "67",
       "Touchdowns": "0",
-      "YAC": "4",
-      "ADoT": "10",
-      "Total EPA": "1",
-      "Targets/Route Run": "0.11",
-      "YPRR": "0.35",
+      "YAC": "43",
+      "ADoT": "7.56",
+      "Total EPA": "4.78",
+      "Targets/Route Run": "0.14",
+      "YPRR": "1.02",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "2.00",
-      "Routes/G": "19.00",
+      "Targets/G": "2.25",
+      "Routes/G": "16.50",
       "i10/G": "0.00",
       "i20/G": "0.00",
-      "YAC/Rec": "2.00",
-      "Efficiency Grade": "24",
-      "Opportunity Grade": "31"
+      "YAC/Rec": "8.60",
+      "Efficiency Grade": "63",
+      "Opportunity Grade": "38"
     },
     {
-      "Rank": "196",
+      "Rank": "199",
       "Name": "Luke Farrell",
       "Team": "SF",
       "POS": "TE",
@@ -2535,7 +2535,7 @@
       "Opportunity Grade": "17"
     },
     {
-      "Rank": "191",
+      "Rank": "190",
       "Name": "Luke Schoonmaker",
       "Team": "DAL",
       "POS": "TE",
@@ -2614,10 +2614,10 @@
       "i20/G": "0.75",
       "YAC/Rec": "1.83",
       "Efficiency Grade": "57",
-      "Opportunity Grade": "78"
+      "Opportunity Grade": "79"
     },
     {
-      "Rank": "177",
+      "Rank": "178",
       "Name": "Mark Redman",
       "Team": "GB",
       "POS": "TE",
@@ -2655,10 +2655,10 @@
       "i20/G": "0.00",
       "YAC/Rec": "3.50",
       "Efficiency Grade": "65",
-      "Opportunity Grade": "11"
+      "Opportunity Grade": "12"
     },
     {
-      "Rank": "207",
+      "Rank": "208",
       "Name": "Marlin Klein",
       "Team": "HOU",
       "POS": "TE",
@@ -2740,7 +2740,7 @@
       "Opportunity Grade": "22"
     },
     {
-      "Rank": "126",
+      "Rank": "127",
       "Name": "Matthew Hibner",
       "Team": "BAL",
       "POS": "TE",
@@ -2778,7 +2778,7 @@
       "i20/G": "0.25",
       "YAC/Rec": "9.00",
       "Efficiency Grade": "84",
-      "Opportunity Grade": "48"
+      "Opportunity Grade": "49"
     },
     {
       "Rank": "62",
@@ -2819,7 +2819,7 @@
       "i20/G": "0.50",
       "YAC/Rec": "4.70",
       "Efficiency Grade": "62",
-      "Opportunity Grade": "74"
+      "Opportunity Grade": "75"
     },
     {
       "Rank": "68",
@@ -2863,7 +2863,7 @@
       "Opportunity Grade": "74"
     },
     {
-      "Rank": "130",
+      "Rank": "132",
       "Name": "Mitchell Evans",
       "Team": "CAR",
       "POS": "TE",
@@ -2904,7 +2904,7 @@
       "Opportunity Grade": "42"
     },
     {
-      "Rank": "209",
+      "Rank": "207",
       "Name": "Mo Alie-Cox",
       "Team": "IND",
       "POS": "TE",
@@ -2941,11 +2941,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "16.00",
-      "Efficiency Grade": "69",
-      "Opportunity Grade": "7"
+      "Efficiency Grade": "70",
+      "Opportunity Grade": "8"
     },
     {
-      "Rank": "162",
+      "Rank": "163",
       "Name": "Nate Adkins",
       "Team": "DEN",
       "POS": "TE",
@@ -2986,7 +2986,7 @@
       "Opportunity Grade": "56"
     },
     {
-      "Rank": "183",
+      "Rank": "186",
       "Name": "Nate Boerkircher",
       "Team": "JAX",
       "POS": "TE",
@@ -3027,7 +3027,7 @@
       "Opportunity Grade": "33"
     },
     {
-      "Rank": "128",
+      "Rank": "133",
       "Name": "Noah Fant",
       "Team": "NO",
       "POS": "TE",
@@ -3064,11 +3064,11 @@
       "i10/G": "0.67",
       "i20/G": "1.00",
       "YAC/Rec": "4.38",
-      "Efficiency Grade": "52",
-      "Opportunity Grade": "77"
+      "Efficiency Grade": "51",
+      "Opportunity Grade": "76"
     },
     {
-      "Rank": "139",
+      "Rank": "141",
       "Name": "Noah Gray",
       "Team": "KC",
       "POS": "TE",
@@ -3106,10 +3106,10 @@
       "i20/G": "0.50",
       "YAC/Rec": "4.33",
       "Efficiency Grade": "53",
-      "Opportunity Grade": "46"
+      "Opportunity Grade": "47"
     },
     {
-      "Rank": "111",
+      "Rank": "114",
       "Name": "Oronde Gadsden",
       "Team": "LAC",
       "POS": "TE",
@@ -3150,45 +3150,45 @@
       "Opportunity Grade": "67"
     },
     {
-      "Rank": "228",
+      "Rank": "227",
       "Name": "Oscar Delp",
       "Team": "NO",
       "POS": "TE",
-      "G": "2",
+      "G": "3",
       "Targets": "1",
-      "Target Share": "1.39%",
+      "Target Share": "0.84%",
       "Rec": "1",
       "Rec Yards": "8",
-      "Team Rec Yards %": "1.6%",
+      "Team Rec Yards %": "1.0%",
       "YPR": "8.00",
       "YPT": "8.00",
-      "RecYds/G": "4.0",
+      "RecYds/G": "2.7",
       "Catch %": "100%",
       "Rec TD": "0",
       "Team TD %": "0.0%",
       "i10": "0",
       "i20 Targets": "0",
       "FUM": "0",
-      "FP/G": "0.9",
+      "FP/G": "0.6",
       "FP": "1.8",
-      "Routes Run": "7",
+      "Routes Run": "17",
       "Receptions": "1",
       "Rec. Yards": "8",
       "Touchdowns": "0",
       "YAC": "1",
       "ADoT": "7",
       "Total EPA": "0.62",
-      "Targets/Route Run": "0.14",
-      "YPRR": "1.14",
+      "Targets/Route Run": "0.06",
+      "YPRR": "0.47",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "0.50",
-      "Routes/G": "3.50",
+      "Targets/G": "0.33",
+      "Routes/G": "5.67",
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "1.00",
-      "Efficiency Grade": "37",
-      "Opportunity Grade": "11"
+      "Efficiency Grade": "26",
+      "Opportunity Grade": "7"
     },
     {
       "Rank": "87",
@@ -3229,10 +3229,10 @@
       "i20/G": "0.75",
       "YAC/Rec": "4.50",
       "Efficiency Grade": "51",
-      "Opportunity Grade": "77"
+      "Opportunity Grade": "78"
     },
     {
-      "Rank": "257",
+      "Rank": "254",
       "Name": "Payne Durham",
       "Team": "TB",
       "POS": "TE",
@@ -3273,7 +3273,7 @@
       "Opportunity Grade": "6"
     },
     {
-      "Rank": "231",
+      "Rank": "230",
       "Name": "Quintin Morris",
       "Team": "JAX",
       "POS": "TE",
@@ -3311,7 +3311,7 @@
       "i20/G": "0.00",
       "YAC/Rec": "4.00",
       "Efficiency Grade": "20",
-      "Opportunity Grade": "13"
+      "Opportunity Grade": "14"
     },
     {
       "Rank": "245",
@@ -3351,7 +3351,7 @@
       "i10/G": "0.00",
       "i20/G": "0.25",
       "YAC/Rec": "2.00",
-      "Efficiency Grade": "12",
+      "Efficiency Grade": "13",
       "Opportunity Grade": "19"
     },
     {
@@ -3396,7 +3396,7 @@
       "Opportunity Grade": "91"
     },
     {
-      "Rank": "168",
+      "Rank": "169",
       "Name": "Sam Roush",
       "Team": "CHI",
       "POS": "TE",
@@ -3434,10 +3434,10 @@
       "i20/G": "0.25",
       "YAC/Rec": "12.33",
       "Efficiency Grade": "67",
-      "Opportunity Grade": "33"
+      "Opportunity Grade": "34"
     },
     {
-      "Rank": "45",
+      "Rank": "47",
       "Name": "T.J. Hockenson",
       "Team": "MIN",
       "POS": "TE",
@@ -3478,7 +3478,7 @@
       "Opportunity Grade": "83"
     },
     {
-      "Rank": "199",
+      "Rank": "198",
       "Name": "Tanner Hudson",
       "Team": "CIN",
       "POS": "TE",
@@ -3516,10 +3516,10 @@
       "i20/G": "0.33",
       "YAC/Rec": "1.00",
       "Efficiency Grade": "19",
-      "Opportunity Grade": "26"
+      "Opportunity Grade": "27"
     },
     {
-      "Rank": "136",
+      "Rank": "139",
       "Name": "Terrance Ferguson",
       "Team": "LAR",
       "POS": "TE",
@@ -3560,7 +3560,7 @@
       "Opportunity Grade": "68"
     },
     {
-      "Rank": "193",
+      "Rank": "195",
       "Name": "Theo Johnson",
       "Team": "NYG",
       "POS": "TE",
@@ -3598,7 +3598,7 @@
       "i20/G": "0.25",
       "YAC/Rec": "3.50",
       "Efficiency Grade": "29",
-      "Opportunity Grade": "41"
+      "Opportunity Grade": "42"
     },
     {
       "Rank": "119",
@@ -3638,7 +3638,7 @@
       "i10/G": "0.00",
       "i20/G": "0.25",
       "YAC/Rec": "4.45",
-      "Efficiency Grade": "48",
+      "Efficiency Grade": "47",
       "Opportunity Grade": "46"
     },
     {
@@ -3679,7 +3679,7 @@
       "i10/G": "0.00",
       "i20/G": "0.50",
       "YAC/Rec": "10.50",
-      "Efficiency Grade": "91",
+      "Efficiency Grade": "92",
       "Opportunity Grade": "73"
     },
     {
@@ -3724,7 +3724,48 @@
       "Opportunity Grade": "96"
     },
     {
-      "Rank": "73",
+      "Rank": "260",
+      "Name": "Treyton Welch",
+      "Team": "NO",
+      "POS": "TE",
+      "G": "3",
+      "Targets": "1",
+      "Target Share": "0.76%",
+      "Rec": "0",
+      "Rec Yards": "0",
+      "Team Rec Yards %": "0.0%",
+      "YPR": "-",
+      "YPT": "0.00",
+      "RecYds/G": "0.0",
+      "Catch %": "0%",
+      "Rec TD": "0",
+      "Team TD %": "0.0%",
+      "i10": "0",
+      "i20 Targets": "0",
+      "FUM": "0",
+      "FP/G": "-",
+      "FP": "0.0",
+      "Routes Run": "8",
+      "Receptions": "0",
+      "Rec. Yards": "0",
+      "Touchdowns": "0",
+      "YAC": "0",
+      "ADoT": "17",
+      "Total EPA": "0",
+      "Targets/Route Run": "0.13",
+      "YPRR": "0",
+      "Impact Plays": "",
+      "Cont. Catch %": "",
+      "Targets/G": "0.33",
+      "Routes/G": "2.67",
+      "i10/G": "0.00",
+      "i20/G": "0.00",
+      "YAC/Rec": "",
+      "Efficiency Grade": "1",
+      "Opportunity Grade": "5"
+    },
+    {
+      "Rank": "72",
       "Name": "Tucker Kraft",
       "Team": "GB",
       "POS": "TE",
@@ -3762,10 +3803,10 @@
       "i20/G": "1.00",
       "YAC/Rec": "6.13",
       "Efficiency Grade": "61",
-      "Opportunity Grade": "78"
+      "Opportunity Grade": "79"
     },
     {
-      "Rank": "77",
+      "Rank": "78",
       "Name": "Tyler Higbee",
       "Team": "LAR",
       "POS": "TE",
@@ -3803,7 +3844,7 @@
       "i20/G": "0.50",
       "YAC/Rec": "2.27",
       "Efficiency Grade": "56",
-      "Opportunity Grade": "68"
+      "Opportunity Grade": "69"
     },
     {
       "Rank": "83",
@@ -3847,7 +3888,7 @@
       "Opportunity Grade": "86"
     },
     {
-      "Rank": "198",
+      "Rank": "196",
       "Name": "Will Kacmarek",
       "Team": "MIA",
       "POS": "TE",
@@ -3885,10 +3926,10 @@
       "i20/G": "0.00",
       "YAC/Rec": "5.00",
       "Efficiency Grade": "33",
-      "Opportunity Grade": "20"
+      "Opportunity Grade": "21"
     },
     {
-      "Rank": "185",
+      "Rank": "189",
       "Name": "Zach Ertz",
       "Team": "PHI",
       "POS": "TE",
@@ -3926,10 +3967,10 @@
       "i20/G": "0.50",
       "YAC/Rec": "2.67",
       "Efficiency Grade": "32",
-      "Opportunity Grade": "50"
+      "Opportunity Grade": "51"
     },
     {
-      "Rank": "179",
+      "Rank": "181",
       "Name": "A.J. Brown",
       "Team": "NE",
       "POS": "WR",
@@ -3970,7 +4011,7 @@
       "Opportunity Grade": "37"
     },
     {
-      "Rank": "89",
+      "Rank": "91",
       "Name": "Adonai Mitchell",
       "Team": "NYJ",
       "POS": "WR",
@@ -4011,7 +4052,7 @@
       "Opportunity Grade": "60"
     },
     {
-      "Rank": "125",
+      "Rank": "126",
       "Name": "Alec Pierce",
       "Team": "IND",
       "POS": "WR",
@@ -4052,7 +4093,7 @@
       "Opportunity Grade": "43"
     },
     {
-      "Rank": "9",
+      "Rank": "10",
       "Name": "Amon-Ra St. Brown",
       "Team": "DET",
       "POS": "WR",
@@ -4093,7 +4134,7 @@
       "Opportunity Grade": "94"
     },
     {
-      "Rank": "200",
+      "Rank": "197",
       "Name": "Andrei Iosivas",
       "Team": "CIN",
       "POS": "WR",
@@ -4171,11 +4212,11 @@
       "i10/G": "0.25",
       "i20/G": "0.50",
       "YAC/Rec": "1.92",
-      "Efficiency Grade": "47",
+      "Efficiency Grade": "46",
       "Opportunity Grade": "60"
     },
     {
-      "Rank": "263",
+      "Rank": "266",
       "Name": "Arian Smith",
       "Team": "NYJ",
       "POS": "WR",
@@ -4205,7 +4246,7 @@
       "Opportunity Grade": "2"
     },
     {
-      "Rank": "176",
+      "Rank": "177",
       "Name": "Ashton Dulin",
       "Team": "IND",
       "POS": "WR",
@@ -4242,11 +4283,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "4.00",
-      "Efficiency Grade": "33",
+      "Efficiency Grade": "32",
       "Opportunity Grade": "34"
     },
     {
-      "Rank": "169",
+      "Rank": "171",
       "Name": "Ben Skowronek",
       "Team": "PIT",
       "POS": "WR",
@@ -4287,7 +4328,7 @@
       "Opportunity Grade": "37"
     },
     {
-      "Rank": "220",
+      "Rank": "222",
       "Name": "Bo Melton",
       "Team": "GB",
       "POS": "WR",
@@ -4324,11 +4365,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "0.00",
-      "Efficiency Grade": "12",
+      "Efficiency Grade": "13",
       "Opportunity Grade": "10"
     },
     {
-      "Rank": "266",
+      "Rank": "263",
       "Name": "Brandin Cooks",
       "Team": "SF",
       "POS": "WR",
@@ -4358,7 +4399,7 @@
       "Opportunity Grade": "6"
     },
     {
-      "Rank": "255",
+      "Rank": "257",
       "Name": "Braxton Berrios",
       "Team": "NYG",
       "POS": "WR",
@@ -4388,7 +4429,7 @@
       "Opportunity Grade": "1"
     },
     {
-      "Rank": "213",
+      "Rank": "214",
       "Name": "Brenen Thompson",
       "Team": "LAC",
       "POS": "WR",
@@ -4470,48 +4511,48 @@
       "Opportunity Grade": "53"
     },
     {
-      "Rank": "149",
+      "Rank": "148",
       "Name": "Bryce Lance",
       "Team": "NO",
       "POS": "WR",
-      "G": "3",
-      "Targets": "8",
-      "Target Share": "6.45%",
-      "Rec": "4",
-      "Rec Yards": "50",
-      "Team Rec Yards %": "5.5%",
-      "YPR": "12.50",
-      "YPT": "6.25",
-      "RecYds/G": "16.7",
-      "Catch %": "50%",
+      "G": "4",
+      "Targets": "13",
+      "Target Share": "7.60%",
+      "Rec": "5",
+      "Rec Yards": "57",
+      "Team Rec Yards %": "4.7%",
+      "YPR": "11.40",
+      "YPT": "4.38",
+      "RecYds/G": "14.3",
+      "Catch %": "38.46%",
       "Rec TD": "0",
       "Team TD %": "0.0%",
-      "i10": "0",
-      "i20 Targets": "0",
+      "i10": "1",
+      "i20 Targets": "1",
       "FUM": "0",
-      "FP/G": "3.0",
-      "FP": "9.0",
-      "Routes Run": "112",
-      "Receptions": "4",
-      "Rec. Yards": "50",
+      "FP/G": "2.7",
+      "FP": "10.7",
+      "Routes Run": "159",
+      "Receptions": "5",
+      "Rec. Yards": "57",
       "Touchdowns": "0",
       "YAC": "7",
-      "ADoT": "13.25",
-      "Total EPA": "4.35",
-      "Targets/Route Run": "0.07",
-      "YPRR": "0.45",
+      "ADoT": "16.46",
+      "Total EPA": "4.84",
+      "Targets/Route Run": "0.08",
+      "YPRR": "0.36",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "2.67",
-      "Routes/G": "37.33",
-      "i10/G": "0.00",
-      "i20/G": "0.00",
-      "YAC/Rec": "1.75",
-      "Efficiency Grade": "28",
-      "Opportunity Grade": "27"
+      "Targets/G": "3.25",
+      "Routes/G": "39.75",
+      "i10/G": "0.25",
+      "i20/G": "0.25",
+      "YAC/Rec": "1.40",
+      "Efficiency Grade": "21",
+      "Opportunity Grade": "37"
     },
     {
-      "Rank": "94",
+      "Rank": "93",
       "Name": "Brycen Tremayne",
       "Team": "CAR",
       "POS": "WR",
@@ -4552,7 +4593,7 @@
       "Opportunity Grade": "21"
     },
     {
-      "Rank": "97",
+      "Rank": "96",
       "Name": "Caleb Douglas",
       "Team": "MIA",
       "POS": "WR",
@@ -4593,7 +4634,7 @@
       "Opportunity Grade": "52"
     },
     {
-      "Rank": "152",
+      "Rank": "156",
       "Name": "Calvin Ridley",
       "Team": "TEN",
       "POS": "WR",
@@ -4672,7 +4713,7 @@
       "i20/G": "0.25",
       "YAC/Rec": "2.86",
       "Efficiency Grade": "65",
-      "Opportunity Grade": "68"
+      "Opportunity Grade": "67"
     },
     {
       "Rank": "1",
@@ -4716,7 +4757,7 @@
       "Opportunity Grade": "96"
     },
     {
-      "Rank": "181",
+      "Rank": "184",
       "Name": "Chimere Dike",
       "Team": "TEN",
       "POS": "WR",
@@ -4794,49 +4835,49 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "7.40",
-      "Efficiency Grade": "59",
+      "Efficiency Grade": "58",
       "Opportunity Grade": "31"
     },
     {
-      "Rank": "237",
+      "Rank": "232",
       "Name": "Chris Blair",
       "Team": "ATL",
       "POS": "WR",
-      "G": "3",
+      "G": "4",
       "Targets": "3",
-      "Target Share": "4.11%",
+      "Target Share": "3.23%",
       "Rec": "1",
       "Rec Yards": "6",
-      "Team Rec Yards %": "1.1%",
+      "Team Rec Yards %": "0.8%",
       "YPR": "6.00",
       "YPT": "2.00",
-      "RecYds/G": "2.0",
+      "RecYds/G": "1.5",
       "Catch %": "33.33%",
       "Rec TD": "0",
       "Team TD %": "0.0%",
       "i10": "0",
       "i20 Targets": "0",
       "FUM": "0",
-      "FP/G": "1.2",
+      "FP/G": "0.9",
       "FP": "3.6",
-      "Routes Run": "29",
+      "Routes Run": "35",
       "Receptions": "1",
       "Rec. Yards": "6",
       "Touchdowns": "0",
       "YAC": "1",
       "ADoT": "8",
       "Total EPA": "-0.95",
-      "Targets/Route Run": "0.10",
-      "YPRR": "0.21",
+      "Targets/Route Run": "0.09",
+      "YPRR": "0.17",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "1.00",
-      "Routes/G": "9.67",
+      "Targets/G": "0.75",
+      "Routes/G": "8.75",
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "1.00",
       "Efficiency Grade": "8",
-      "Opportunity Grade": "12"
+      "Opportunity Grade": "10"
     },
     {
       "Rank": "76",
@@ -4876,11 +4917,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "6.06",
-      "Efficiency Grade": "49",
+      "Efficiency Grade": "48",
       "Opportunity Grade": "40"
     },
     {
-      "Rank": "137",
+      "Rank": "138",
       "Name": "Chris Moore",
       "Team": "BAL",
       "POS": "WR",
@@ -4921,48 +4962,48 @@
       "Opportunity Grade": "46"
     },
     {
-      "Rank": "6",
+      "Rank": "2",
       "Name": "Chris Olave",
       "Team": "NO",
       "POS": "WR",
-      "G": "3",
-      "Targets": "34",
-      "Target Share": "29.03%",
-      "Rec": "27",
-      "Rec Yards": "375",
-      "Team Rec Yards %": "40.9%",
-      "YPR": "13.89",
-      "YPT": "11.03",
-      "RecYds/G": "125.0",
-      "Catch %": "75%",
+      "G": "4",
+      "Targets": "46",
+      "Target Share": "28.07%",
+      "Rec": "35",
+      "Rec Yards": "491",
+      "Team Rec Yards %": "40.8%",
+      "YPR": "14.03",
+      "YPT": "10.67",
+      "RecYds/G": "122.8",
+      "Catch %": "72.92%",
       "Rec TD": "1",
-      "Team TD %": "12.5%",
+      "Team TD %": "11.1%",
       "i10": "1",
-      "i20 Targets": "3",
+      "i20 Targets": "4",
       "FUM": "0",
-      "FP/G": "23.5",
-      "FP": "70.5",
-      "Routes Run": "132",
-      "Receptions": "27",
-      "Rec. Yards": "375",
+      "FP/G": "22.5",
+      "FP": "90.1",
+      "Routes Run": "180",
+      "Receptions": "35",
+      "Rec. Yards": "491",
       "Touchdowns": "1",
-      "YAC": "81",
-      "ADoT": "13.11",
-      "Total EPA": "34.95",
+      "YAC": "106",
+      "ADoT": "13.50",
+      "Total EPA": "45.49",
       "Targets/Route Run": "0.27",
-      "YPRR": "2.84",
+      "YPRR": "2.73",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "11.33",
-      "Routes/G": "44.00",
-      "i10/G": "0.33",
+      "Targets/G": "11.50",
+      "Routes/G": "45.00",
+      "i10/G": "0.25",
       "i20/G": "1.00",
-      "YAC/Rec": "3.00",
-      "Efficiency Grade": "78",
-      "Opportunity Grade": "86"
+      "YAC/Rec": "3.03",
+      "Efficiency Grade": "77",
+      "Opportunity Grade": "84"
     },
     {
-      "Rank": "8",
+      "Rank": "9",
       "Name": "Christian Watson",
       "Team": "GB",
       "POS": "WR",
@@ -5003,7 +5044,7 @@
       "Opportunity Grade": "89"
     },
     {
-      "Rank": "134",
+      "Rank": "136",
       "Name": "Cody White",
       "Team": "LV",
       "POS": "WR",
@@ -5044,7 +5085,7 @@
       "Opportunity Grade": "53"
     },
     {
-      "Rank": "224",
+      "Rank": "226",
       "Name": "Colbie Young",
       "Team": "CIN",
       "POS": "WR",
@@ -5126,7 +5167,7 @@
       "Opportunity Grade": "47"
     },
     {
-      "Rank": "112",
+      "Rank": "113",
       "Name": "Courtland Sutton",
       "Team": "DEN",
       "POS": "WR",
@@ -5163,11 +5204,11 @@
       "i10/G": "0.75",
       "i20/G": "1.25",
       "YAC/Rec": "2.22",
-      "Efficiency Grade": "26",
+      "Efficiency Grade": "25",
       "Opportunity Grade": "59"
     },
     {
-      "Rank": "254",
+      "Rank": "252",
       "Name": "Cyrus Allen",
       "Team": "KC",
       "POS": "WR",
@@ -5197,7 +5238,7 @@
       "Opportunity Grade": "0"
     },
     {
-      "Rank": "165",
+      "Rank": "167",
       "Name": "Dareke Young",
       "Team": "LV",
       "POS": "WR",
@@ -5238,7 +5279,7 @@
       "Opportunity Grade": "17"
     },
     {
-      "Rank": "144",
+      "Rank": "146",
       "Name": "Darius Cooper",
       "Team": "PHI",
       "POS": "WR",
@@ -5279,7 +5320,7 @@
       "Opportunity Grade": "59"
     },
     {
-      "Rank": "105",
+      "Rank": "106",
       "Name": "Darnell Mooney",
       "Team": "NYG",
       "POS": "WR",
@@ -5316,11 +5357,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "3.33",
-      "Efficiency Grade": "51",
+      "Efficiency Grade": "50",
       "Opportunity Grade": "27"
     },
     {
-      "Rank": "4",
+      "Rank": "5",
       "Name": "Davante Adams",
       "Team": "LAR",
       "POS": "WR",
@@ -5358,10 +5399,10 @@
       "i20/G": "1.00",
       "YAC/Rec": "4.86",
       "Efficiency Grade": "83",
-      "Opportunity Grade": "78"
+      "Opportunity Grade": "77"
     },
     {
-      "Rank": "250",
+      "Rank": "269",
       "Name": "David Moore",
       "Team": "CAR",
       "POS": "WR",
@@ -5391,7 +5432,7 @@
       "Opportunity Grade": "1"
     },
     {
-      "Rank": "52",
+      "Rank": "55",
       "Name": "Deebo Samuel",
       "Team": "SF",
       "POS": "WR",
@@ -5432,7 +5473,7 @@
       "Opportunity Grade": "72"
     },
     {
-      "Rank": "234",
+      "Rank": "235",
       "Name": "Deion Burks",
       "Team": "IND",
       "POS": "WR",
@@ -5473,7 +5514,7 @@
       "Opportunity Grade": "11"
     },
     {
-      "Rank": "116",
+      "Rank": "117",
       "Name": "Demarcus Robinson",
       "Team": "SF",
       "POS": "WR",
@@ -5514,7 +5555,7 @@
       "Opportunity Grade": "59"
     },
     {
-      "Rank": "118",
+      "Rank": "120",
       "Name": "DeMario Douglas",
       "Team": "NE",
       "POS": "WR",
@@ -5551,11 +5592,11 @@
       "i10/G": "0.00",
       "i20/G": "0.25",
       "YAC/Rec": "3.44",
-      "Efficiency Grade": "32",
+      "Efficiency Grade": "31",
       "Opportunity Grade": "37"
     },
     {
-      "Rank": "10",
+      "Rank": "11",
       "Name": "Denzel Boston",
       "Team": "CLE",
       "POS": "WR",
@@ -5593,10 +5634,10 @@
       "i20/G": "0.75",
       "YAC/Rec": "8.38",
       "Efficiency Grade": "88",
-      "Opportunity Grade": "74"
+      "Opportunity Grade": "73"
     },
     {
-      "Rank": "232",
+      "Rank": "237",
       "Name": "Derius Davis",
       "Team": "LAC",
       "POS": "WR",
@@ -5637,45 +5678,45 @@
       "Opportunity Grade": "13"
     },
     {
-      "Rank": "59",
+      "Rank": "27",
       "Name": "Devaughn Vele",
       "Team": "NO",
       "POS": "WR",
-      "G": "3",
-      "Targets": "22",
-      "Target Share": "17.74%",
-      "Rec": "15",
-      "Rec Yards": "172",
+      "G": "4",
+      "Targets": "31",
+      "Target Share": "18.13%",
+      "Rec": "21",
+      "Rec Yards": "226",
       "Team Rec Yards %": "18.8%",
-      "YPR": "11.47",
-      "YPT": "7.82",
-      "RecYds/G": "57.3",
-      "Catch %": "68.18%",
-      "Rec TD": "1",
-      "Team TD %": "12.5%",
-      "i10": "2",
-      "i20 Targets": "3",
+      "YPR": "10.76",
+      "YPT": "7.29",
+      "RecYds/G": "56.5",
+      "Catch %": "67.74%",
+      "Rec TD": "2",
+      "Team TD %": "22.2%",
+      "i10": "4",
+      "i20 Targets": "6",
       "FUM": "0",
-      "FP/G": "12.7",
-      "FP": "38.2",
-      "Routes Run": "137",
-      "Receptions": "15",
-      "Rec. Yards": "172",
-      "Touchdowns": "1",
-      "YAC": "43",
-      "ADoT": "10.27",
-      "Total EPA": "16.06",
-      "Targets/Route Run": "0.16",
-      "YPRR": "1.26",
+      "FP/G": "13.9",
+      "FP": "55.6",
+      "Routes Run": "182",
+      "Receptions": "21",
+      "Rec. Yards": "226",
+      "Touchdowns": "2",
+      "YAC": "50",
+      "ADoT": "10.19",
+      "Total EPA": "24.12",
+      "Targets/Route Run": "0.17",
+      "YPRR": "1.24",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "7.33",
-      "Routes/G": "45.67",
-      "i10/G": "0.67",
-      "i20/G": "1.00",
-      "YAC/Rec": "2.87",
-      "Efficiency Grade": "51",
-      "Opportunity Grade": "71"
+      "Targets/G": "7.75",
+      "Routes/G": "45.50",
+      "i10/G": "1.00",
+      "i20/G": "1.50",
+      "YAC/Rec": "2.38",
+      "Efficiency Grade": "48",
+      "Opportunity Grade": "78"
     },
     {
       "Rank": "20",
@@ -5719,7 +5760,7 @@
       "Opportunity Grade": "85"
     },
     {
-      "Rank": "129",
+      "Rank": "130",
       "Name": "Devontez Walker",
       "Team": "BAL",
       "POS": "WR",
@@ -5760,7 +5801,7 @@
       "Opportunity Grade": "20"
     },
     {
-      "Rank": "56",
+      "Rank": "58",
       "Name": "DJ Moore",
       "Team": "BUF",
       "POS": "WR",
@@ -5798,10 +5839,10 @@
       "i20/G": "0.75",
       "YAC/Rec": "3.92",
       "Efficiency Grade": "71",
-      "Opportunity Grade": "66"
+      "Opportunity Grade": "65"
     },
     {
-      "Rank": "35",
+      "Rank": "36",
       "Name": "DK Metcalf",
       "Team": "PIT",
       "POS": "WR",
@@ -5839,7 +5880,7 @@
       "i20/G": "0.25",
       "YAC/Rec": "3.38",
       "Efficiency Grade": "52",
-      "Opportunity Grade": "71"
+      "Opportunity Grade": "70"
     },
     {
       "Rank": "84",
@@ -5883,7 +5924,7 @@
       "Opportunity Grade": "32"
     },
     {
-      "Rank": "44",
+      "Rank": "46",
       "Name": "Dontayvion Wicks",
       "Team": "PHI",
       "POS": "WR",
@@ -5921,51 +5962,51 @@
       "i20/G": "1.00",
       "YAC/Rec": "4.08",
       "Efficiency Grade": "70",
-      "Opportunity Grade": "72"
+      "Opportunity Grade": "71"
     },
     {
-      "Rank": "12",
+      "Rank": "7",
       "Name": "Drake London",
       "Team": "ATL",
       "POS": "WR",
-      "G": "3",
-      "Targets": "18",
-      "Target Share": "26.03%",
-      "Rec": "15",
-      "Rec Yards": "274",
-      "Team Rec Yards %": "50.4%",
-      "YPR": "18.27",
-      "YPT": "15.22",
-      "RecYds/G": "91.3",
-      "Catch %": "78.95%",
+      "G": "4",
+      "Targets": "24",
+      "Target Share": "26.88%",
+      "Rec": "20",
+      "Rec Yards": "370",
+      "Team Rec Yards %": "48.2%",
+      "YPR": "18.50",
+      "YPT": "15.42",
+      "RecYds/G": "92.5",
+      "Catch %": "80%",
       "Rec TD": "0",
       "Team TD %": "0.0%",
       "i10": "0",
       "i20 Targets": "0",
       "FUM": "0",
-      "FP/G": "14.3",
-      "FP": "42.8",
-      "Routes Run": "72",
-      "Receptions": "15",
-      "Rec. Yards": "274",
+      "FP/G": "14.4",
+      "FP": "57.4",
+      "Routes Run": "93",
+      "Receptions": "20",
+      "Rec. Yards": "370",
       "Touchdowns": "0",
-      "YAC": "152",
-      "ADoT": "7.47",
-      "Total EPA": "15.17",
-      "Targets/Route Run": "0.26",
-      "YPRR": "3.81",
+      "YAC": "199",
+      "ADoT": "8.32",
+      "Total EPA": "22.59",
+      "Targets/Route Run": "0.27",
+      "YPRR": "3.98",
       "Impact Plays": "",
       "Cont. Catch %": "",
       "Targets/G": "6.00",
-      "Routes/G": "24.00",
+      "Routes/G": "23.25",
       "i10/G": "0.00",
       "i20/G": "0.00",
-      "YAC/Rec": "10.13",
-      "Efficiency Grade": "94",
+      "YAC/Rec": "9.95",
+      "Efficiency Grade": "95",
       "Opportunity Grade": "54"
     },
     {
-      "Rank": "113",
+      "Rank": "112",
       "Name": "Dyami Brown",
       "Team": "WAS",
       "POS": "WR",
@@ -6006,7 +6047,7 @@
       "Opportunity Grade": "39"
     },
     {
-      "Rank": "160",
+      "Rank": "162",
       "Name": "Efton Chism",
       "Team": "NE",
       "POS": "WR",
@@ -6047,7 +6088,7 @@
       "Opportunity Grade": "50"
     },
     {
-      "Rank": "96",
+      "Rank": "97",
       "Name": "Elic Ayomanor",
       "Team": "TEN",
       "POS": "WR",
@@ -6088,7 +6129,7 @@
       "Opportunity Grade": "54"
     },
     {
-      "Rank": "214",
+      "Rank": "215",
       "Name": "Elijah Sarratt",
       "Team": "BAL",
       "POS": "WR",
@@ -6125,7 +6166,7 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "4.00",
-      "Efficiency Grade": "43",
+      "Efficiency Grade": "42",
       "Opportunity Grade": "22"
     },
     {
@@ -6166,7 +6207,7 @@
       "i10/G": "0.50",
       "i20/G": "0.75",
       "YAC/Rec": "4.13",
-      "Efficiency Grade": "46",
+      "Efficiency Grade": "45",
       "Opportunity Grade": "72"
     },
     {
@@ -6211,7 +6252,7 @@
       "Opportunity Grade": "78"
     },
     {
-      "Rank": "26",
+      "Rank": "28",
       "Name": "George Pickens",
       "Team": "DAL",
       "POS": "WR",
@@ -6252,7 +6293,7 @@
       "Opportunity Grade": "62"
     },
     {
-      "Rank": "140",
+      "Rank": "145",
       "Name": "Germie Bernard",
       "Team": "PIT",
       "POS": "WR",
@@ -6293,7 +6334,7 @@
       "Opportunity Grade": "28"
     },
     {
-      "Rank": "50",
+      "Rank": "52",
       "Name": "Isaac TeSlaa",
       "Team": "DET",
       "POS": "WR",
@@ -6334,7 +6375,7 @@
       "Opportunity Grade": "48"
     },
     {
-      "Rank": "218",
+      "Rank": "217",
       "Name": "Isaiah Bond",
       "Team": "CLE",
       "POS": "WR",
@@ -6487,7 +6528,7 @@
       "Opportunity Grade": "47"
     },
     {
-      "Rank": "36",
+      "Rank": "38",
       "Name": "Ja'Marr Chase",
       "Team": "CIN",
       "POS": "WR",
@@ -6528,7 +6569,7 @@
       "Opportunity Grade": "75"
     },
     {
-      "Rank": "259",
+      "Rank": "258",
       "Name": "Ja'Seem Reed",
       "Team": "CAR",
       "POS": "WR",
@@ -6558,7 +6599,7 @@
       "Opportunity Grade": "15"
     },
     {
-      "Rank": "151",
+      "Rank": "155",
       "Name": "Jack Bech",
       "Team": "LV",
       "POS": "WR",
@@ -6599,7 +6640,7 @@
       "Opportunity Grade": "37"
     },
     {
-      "Rank": "265",
+      "Rank": "264",
       "Name": "Jacob Cowing",
       "Team": "SF",
       "POS": "WR",
@@ -6629,48 +6670,48 @@
       "Opportunity Grade": "3"
     },
     {
-      "Rank": "161",
+      "Rank": "105",
       "Name": "Jahan Dotson",
       "Team": "ATL",
       "POS": "WR",
-      "G": "3",
-      "Targets": "10",
-      "Target Share": "13.70%",
-      "Rec": "4",
-      "Rec Yards": "41",
-      "Team Rec Yards %": "7.5%",
-      "YPR": "10.25",
-      "YPT": "4.10",
-      "RecYds/G": "13.7",
-      "Catch %": "40%",
-      "Rec TD": "0",
-      "Team TD %": "0.0%",
+      "G": "4",
+      "Targets": "13",
+      "Target Share": "13.98%",
+      "Rec": "6",
+      "Rec Yards": "95",
+      "Team Rec Yards %": "12.4%",
+      "YPR": "15.83",
+      "YPT": "7.31",
+      "RecYds/G": "23.8",
+      "Catch %": "46.15%",
+      "Rec TD": "1",
+      "Team TD %": "33.3%",
       "i10": "0",
       "i20 Targets": "0",
       "FUM": "0",
-      "FP/G": "2.7",
-      "FP": "8.1",
-      "Routes Run": "69",
-      "Receptions": "4",
-      "Rec. Yards": "41",
-      "Touchdowns": "0",
-      "YAC": "13",
-      "ADoT": "14.40",
-      "Total EPA": "2.74",
-      "Targets/Route Run": "0.14",
-      "YPRR": "0.59",
+      "FP/G": "5.4",
+      "FP": "21.5",
+      "Routes Run": "81",
+      "Receptions": "6",
+      "Rec. Yards": "95",
+      "Touchdowns": "1",
+      "YAC": "21",
+      "ADoT": "15.85",
+      "Total EPA": "7.71",
+      "Targets/Route Run": "0.16",
+      "YPRR": "1.17",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "3.33",
-      "Routes/G": "23.00",
+      "Targets/G": "3.25",
+      "Routes/G": "20.25",
       "i10/G": "0.00",
       "i20/G": "0.00",
-      "YAC/Rec": "3.25",
-      "Efficiency Grade": "26",
-      "Opportunity Grade": "30"
+      "YAC/Rec": "3.50",
+      "Efficiency Grade": "50",
+      "Opportunity Grade": "41"
     },
     {
-      "Rank": "247",
+      "Rank": "246",
       "Name": "Jahdae Walker",
       "Team": "CHI",
       "POS": "WR",
@@ -6708,7 +6749,7 @@
       "i20/G": "0.25",
       "YAC/Rec": "0.00",
       "Efficiency Grade": "4",
-      "Opportunity Grade": "22"
+      "Opportunity Grade": "21"
     },
     {
       "Rank": "65",
@@ -6752,7 +6793,7 @@
       "Opportunity Grade": "65"
     },
     {
-      "Rank": "252",
+      "Rank": "259",
       "Name": "Jalen Brooks",
       "Team": "ARI",
       "POS": "WR",
@@ -6782,7 +6823,7 @@
       "Opportunity Grade": "0"
     },
     {
-      "Rank": "27",
+      "Rank": "29",
       "Name": "Jalen Coker",
       "Team": "CAR",
       "POS": "WR",
@@ -6823,7 +6864,7 @@
       "Opportunity Grade": "83"
     },
     {
-      "Rank": "260",
+      "Rank": "250",
       "Name": "Jalen McMillan",
       "Team": "TB",
       "POS": "WR",
@@ -6853,7 +6894,7 @@
       "Opportunity Grade": "2"
     },
     {
-      "Rank": "148",
+      "Rank": "151",
       "Name": "Jalen Nailor",
       "Team": "LV",
       "POS": "WR",
@@ -6894,7 +6935,7 @@
       "Opportunity Grade": "27"
     },
     {
-      "Rank": "206",
+      "Rank": "204",
       "Name": "Jalen Royals",
       "Team": "KC",
       "POS": "WR",
@@ -6932,10 +6973,10 @@
       "i20/G": "0.25",
       "YAC/Rec": "4.67",
       "Efficiency Grade": "22",
-      "Opportunity Grade": "35"
+      "Opportunity Grade": "34"
     },
     {
-      "Rank": "264",
+      "Rank": "265",
       "Name": "Jalen Tolbert",
       "Team": "MIA",
       "POS": "WR",
@@ -6965,7 +7006,7 @@
       "Opportunity Grade": "3"
     },
     {
-      "Rank": "23",
+      "Rank": "24",
       "Name": "Jameson Williams",
       "Team": "DET",
       "POS": "WR",
@@ -7006,7 +7047,7 @@
       "Opportunity Grade": "49"
     },
     {
-      "Rank": "133",
+      "Rank": "134",
       "Name": "Jared Wayne",
       "Team": "HOU",
       "POS": "WR",
@@ -7047,7 +7088,7 @@
       "Opportunity Grade": "30"
     },
     {
-      "Rank": "226",
+      "Rank": "224",
       "Name": "Jauan Jennings",
       "Team": "MIN",
       "POS": "WR",
@@ -7088,7 +7129,7 @@
       "Opportunity Grade": "19"
     },
     {
-      "Rank": "2",
+      "Rank": "3",
       "Name": "Jaxon Smith-Njigba",
       "Team": "SEA",
       "POS": "WR",
@@ -7129,7 +7170,7 @@
       "Opportunity Grade": "95"
     },
     {
-      "Rank": "184",
+      "Rank": "185",
       "Name": "Jayden Reed",
       "Team": "GB",
       "POS": "WR",
@@ -7170,7 +7211,7 @@
       "Opportunity Grade": "46"
     },
     {
-      "Rank": "53",
+      "Rank": "54",
       "Name": "Jaylen Waddle",
       "Team": "DEN",
       "POS": "WR",
@@ -7208,7 +7249,7 @@
       "i20/G": "0.50",
       "YAC/Rec": "3.81",
       "Efficiency Grade": "54",
-      "Opportunity Grade": "64"
+      "Opportunity Grade": "63"
     },
     {
       "Rank": "182",
@@ -7252,7 +7293,7 @@
       "Opportunity Grade": "9"
     },
     {
-      "Rank": "51",
+      "Rank": "53",
       "Name": "Jaylin Noel",
       "Team": "HOU",
       "POS": "WR",
@@ -7293,7 +7334,7 @@
       "Opportunity Grade": "28"
     },
     {
-      "Rank": "138",
+      "Rank": "140",
       "Name": "Jerry Jeudy",
       "Team": "CLE",
       "POS": "WR",
@@ -7334,7 +7375,7 @@
       "Opportunity Grade": "22"
     },
     {
-      "Rank": "262",
+      "Rank": "251",
       "Name": "Jimmy Horn",
       "Team": "CAR",
       "POS": "WR",
@@ -7364,7 +7405,7 @@
       "Opportunity Grade": "5"
     },
     {
-      "Rank": "146",
+      "Rank": "149",
       "Name": "John Metchie",
       "Team": "CAR",
       "POS": "WR",
@@ -7401,11 +7442,11 @@
       "i10/G": "0.33",
       "i20/G": "0.33",
       "YAC/Rec": "3.00",
-      "Efficiency Grade": "36",
+      "Efficiency Grade": "35",
       "Opportunity Grade": "49"
     },
     {
-      "Rank": "223",
+      "Rank": "221",
       "Name": "Jonathan Mingo",
       "Team": "DAL",
       "POS": "WR",
@@ -7443,7 +7484,7 @@
       "i20/G": "0.00",
       "YAC/Rec": "-1.00",
       "Efficiency Grade": "14",
-      "Opportunity Grade": "9"
+      "Opportunity Grade": "10"
     },
     {
       "Rank": "66",
@@ -7484,10 +7525,10 @@
       "i20/G": "0.25",
       "YAC/Rec": "5.09",
       "Efficiency Grade": "60",
-      "Opportunity Grade": "61"
+      "Opportunity Grade": "60"
     },
     {
-      "Rank": "143",
+      "Rank": "142",
       "Name": "Jordan Watkins",
       "Team": "SF",
       "POS": "WR",
@@ -7528,7 +7569,7 @@
       "Opportunity Grade": "18"
     },
     {
-      "Rank": "217",
+      "Rank": "216",
       "Name": "Jordan Whittington",
       "Team": "LAR",
       "POS": "WR",
@@ -7569,7 +7610,7 @@
       "Opportunity Grade": "11"
     },
     {
-      "Rank": "122",
+      "Rank": "123",
       "Name": "Josh Cameron",
       "Team": "JAX",
       "POS": "WR",
@@ -7610,7 +7651,7 @@
       "Opportunity Grade": "48"
     },
     {
-      "Rank": "41",
+      "Rank": "43",
       "Name": "Josh Downs",
       "Team": "IND",
       "POS": "WR",
@@ -7651,7 +7692,7 @@
       "Opportunity Grade": "61"
     },
     {
-      "Rank": "121",
+      "Rank": "122",
       "Name": "Josh Palmer",
       "Team": "BUF",
       "POS": "WR",
@@ -7688,11 +7729,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "5.33",
-      "Efficiency Grade": "62",
+      "Efficiency Grade": "61",
       "Opportunity Grade": "35"
     },
     {
-      "Rank": "55",
+      "Rank": "57",
       "Name": "Justin Jefferson",
       "Team": "MIN",
       "POS": "WR",
@@ -7733,7 +7774,7 @@
       "Opportunity Grade": "81"
     },
     {
-      "Rank": "28",
+      "Rank": "30",
       "Name": "Kalif Raymond",
       "Team": "CHI",
       "POS": "WR",
@@ -7774,7 +7815,7 @@
       "Opportunity Grade": "69"
     },
     {
-      "Rank": "244",
+      "Rank": "242",
       "Name": "Kameron Johnson",
       "Team": "TB",
       "POS": "WR",
@@ -7856,7 +7897,7 @@
       "Opportunity Grade": "15"
     },
     {
-      "Rank": "93",
+      "Rank": "94",
       "Name": "Kayshon Boutte",
       "Team": "HOU",
       "POS": "WR",
@@ -7979,7 +8020,7 @@
       "Opportunity Grade": "74"
     },
     {
-      "Rank": "100",
+      "Rank": "99",
       "Name": "Kendrick Bourne",
       "Team": "ARI",
       "POS": "WR",
@@ -8020,7 +8061,7 @@
       "Opportunity Grade": "37"
     },
     {
-      "Rank": "32",
+      "Rank": "34",
       "Name": "Keon Coleman",
       "Team": "BUF",
       "POS": "WR",
@@ -8061,48 +8102,48 @@
       "Opportunity Grade": "57"
     },
     {
-      "Rank": "230",
+      "Rank": "231",
       "Name": "Kevin Austin",
       "Team": "NO",
       "POS": "WR",
-      "G": "3",
+      "G": "4",
       "Targets": "1",
-      "Target Share": "0.81%",
+      "Target Share": "0.58%",
       "Rec": "1",
       "Rec Yards": "7",
-      "Team Rec Yards %": "0.8%",
+      "Team Rec Yards %": "0.6%",
       "YPR": "7.00",
       "YPT": "7.00",
-      "RecYds/G": "2.3",
+      "RecYds/G": "1.8",
       "Catch %": "100%",
       "Rec TD": "0",
       "Team TD %": "0.0%",
       "i10": "0",
       "i20 Targets": "0",
       "FUM": "0",
-      "FP/G": "0.6",
+      "FP/G": "0.4",
       "FP": "1.7",
-      "Routes Run": "9",
+      "Routes Run": "10",
       "Receptions": "1",
       "Rec. Yards": "7",
       "Touchdowns": "0",
       "YAC": "1",
       "ADoT": "6",
       "Total EPA": "0.51",
-      "Targets/Route Run": "0.11",
-      "YPRR": "0.78",
+      "Targets/Route Run": "0.10",
+      "YPRR": "0.70",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "0.33",
-      "Routes/G": "3.00",
+      "Targets/G": "0.25",
+      "Routes/G": "2.50",
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "1.00",
-      "Efficiency Grade": "20",
-      "Opportunity Grade": "5"
+      "Efficiency Grade": "19",
+      "Opportunity Grade": "3"
     },
     {
-      "Rank": "236",
+      "Rank": "233",
       "Name": "Kevin Coleman",
       "Team": "MIA",
       "POS": "WR",
@@ -8184,7 +8225,7 @@
       "Opportunity Grade": "6"
     },
     {
-      "Rank": "57",
+      "Rank": "59",
       "Name": "Khalil Shakir",
       "Team": "BUF",
       "POS": "WR",
@@ -8266,7 +8307,7 @@
       "Opportunity Grade": "41"
     },
     {
-      "Rank": "157",
+      "Rank": "160",
       "Name": "Kyle Williams",
       "Team": "NE",
       "POS": "WR",
@@ -8307,7 +8348,7 @@
       "Opportunity Grade": "19"
     },
     {
-      "Rank": "54",
+      "Rank": "56",
       "Name": "Ladd McConkey",
       "Team": "LAC",
       "POS": "WR",
@@ -8348,7 +8389,7 @@
       "Opportunity Grade": "63"
     },
     {
-      "Rank": "175",
+      "Rank": "179",
       "Name": "LaJohntay Wester",
       "Team": "BAL",
       "POS": "WR",
@@ -8460,7 +8501,7 @@
       "Opportunity Grade": "1"
     },
     {
-      "Rank": "258",
+      "Rank": "256",
       "Name": "Lil'Jordan Humphrey",
       "Team": "DEN",
       "POS": "WR",
@@ -8531,7 +8572,7 @@
       "Opportunity Grade": "79"
     },
     {
-      "Rank": "37",
+      "Rank": "39",
       "Name": "Mack Hollins",
       "Team": "NE",
       "POS": "WR",
@@ -8572,7 +8613,7 @@
       "Opportunity Grade": "51"
     },
     {
-      "Rank": "132",
+      "Rank": "135",
       "Name": "Makai Lemon",
       "Team": "PHI",
       "POS": "WR",
@@ -8650,11 +8691,11 @@
       "i10/G": "0.00",
       "i20/G": "0.25",
       "YAC/Rec": "4.13",
-      "Efficiency Grade": "61",
+      "Efficiency Grade": "60",
       "Opportunity Grade": "48"
     },
     {
-      "Rank": "233",
+      "Rank": "238",
       "Name": "Malik Benson",
       "Team": "LV",
       "POS": "WR",
@@ -8695,7 +8736,7 @@
       "Opportunity Grade": "18"
     },
     {
-      "Rank": "39",
+      "Rank": "41",
       "Name": "Malik Nabers",
       "Team": "NYG",
       "POS": "WR",
@@ -8736,7 +8777,7 @@
       "Opportunity Grade": "73"
     },
     {
-      "Rank": "29",
+      "Rank": "33",
       "Name": "Malik Washington",
       "Team": "MIA",
       "POS": "WR",
@@ -8777,7 +8818,7 @@
       "Opportunity Grade": "58"
     },
     {
-      "Rank": "249",
+      "Rank": "268",
       "Name": "Marquez Valdes-Scantling",
       "Team": "LAC",
       "POS": "WR",
@@ -8848,7 +8889,7 @@
       "Opportunity Grade": "51"
     },
     {
-      "Rank": "221",
+      "Rank": "223",
       "Name": "Marvin Mims",
       "Team": "DEN",
       "POS": "WR",
@@ -8885,11 +8926,11 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "14.00",
-      "Efficiency Grade": "30",
+      "Efficiency Grade": "31",
       "Opportunity Grade": "18"
     },
     {
-      "Rank": "11",
+      "Rank": "12",
       "Name": "Matthew Golden",
       "Team": "GB",
       "POS": "WR",
@@ -8930,7 +8971,7 @@
       "Opportunity Grade": "86"
     },
     {
-      "Rank": "110",
+      "Rank": "111",
       "Name": "Michael Pittman",
       "Team": "PIT",
       "POS": "WR",
@@ -9008,11 +9049,11 @@
       "i10/G": "1.00",
       "i20/G": "2.00",
       "YAC/Rec": "2.72",
-      "Efficiency Grade": "52",
+      "Efficiency Grade": "51",
       "Opportunity Grade": "89"
     },
     {
-      "Rank": "34",
+      "Rank": "37",
       "Name": "Mike Evans",
       "Team": "SF",
       "POS": "WR",
@@ -9053,7 +9094,7 @@
       "Opportunity Grade": "77"
     },
     {
-      "Rank": "150",
+      "Rank": "152",
       "Name": "Mitchell Tinsley",
       "Team": "CIN",
       "POS": "WR",
@@ -9083,7 +9124,7 @@
       "Opportunity Grade": "56"
     },
     {
-      "Rank": "238",
+      "Rank": "236",
       "Name": "Myles Price",
       "Team": "MIN",
       "POS": "WR",
@@ -9124,7 +9165,7 @@
       "Opportunity Grade": "10"
     },
     {
-      "Rank": "46",
+      "Rank": "48",
       "Name": "Nico Collins",
       "Team": "HOU",
       "POS": "WR",
@@ -9161,11 +9202,11 @@
       "i10/G": "0.50",
       "i20/G": "1.50",
       "YAC/Rec": "3.29",
-      "Efficiency Grade": "78",
+      "Efficiency Grade": "77",
       "Opportunity Grade": "91"
     },
     {
-      "Rank": "261",
+      "Rank": "249",
       "Name": "Odell Beckham",
       "Team": "NYG",
       "POS": "WR",
@@ -9195,48 +9236,48 @@
       "Opportunity Grade": "1"
     },
     {
-      "Rank": "203",
+      "Rank": "206",
       "Name": "Olamide Zaccheaus",
       "Team": "ATL",
       "POS": "WR",
-      "G": "3",
-      "Targets": "6",
-      "Target Share": "8.22%",
+      "G": "4",
+      "Targets": "7",
+      "Target Share": "7.53%",
       "Rec": "4",
       "Rec Yards": "17",
-      "Team Rec Yards %": "3.1%",
+      "Team Rec Yards %": "2.2%",
       "YPR": "4.25",
-      "YPT": "2.83",
-      "RecYds/G": "5.7",
-      "Catch %": "66.67%",
+      "YPT": "2.43",
+      "RecYds/G": "4.3",
+      "Catch %": "57.14%",
       "Rec TD": "0",
       "Team TD %": "0.0%",
       "i10": "0",
-      "i20 Targets": "0",
+      "i20 Targets": "1",
       "FUM": "0",
-      "FP/G": "1.9",
+      "FP/G": "1.4",
       "FP": "5.7",
-      "Routes Run": "41",
+      "Routes Run": "48",
       "Receptions": "4",
       "Rec. Yards": "17",
       "Touchdowns": "0",
       "YAC": "10",
-      "ADoT": "2",
+      "ADoT": "2.14",
       "Total EPA": "-0.92",
       "Targets/Route Run": "0.15",
-      "YPRR": "0.41",
+      "YPRR": "0.35",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "2.00",
-      "Routes/G": "13.67",
+      "Targets/G": "1.75",
+      "Routes/G": "12.00",
       "i10/G": "0.00",
-      "i20/G": "0.00",
+      "i20/G": "0.25",
       "YAC/Rec": "2.50",
-      "Efficiency Grade": "14",
-      "Opportunity Grade": "20"
+      "Efficiency Grade": "13",
+      "Opportunity Grade": "22"
     },
     {
-      "Rank": "174",
+      "Rank": "175",
       "Name": "Omar Cooper",
       "Team": "NYJ",
       "POS": "WR",
@@ -9277,7 +9318,7 @@
       "Opportunity Grade": "29"
     },
     {
-      "Rank": "24",
+      "Rank": "26",
       "Name": "Parker Washington",
       "Team": "JAX",
       "POS": "WR",
@@ -9318,7 +9359,7 @@
       "Opportunity Grade": "80"
     },
     {
-      "Rank": "82",
+      "Rank": "80",
       "Name": "Pat Bryant",
       "Team": "DEN",
       "POS": "WR",
@@ -9359,7 +9400,7 @@
       "Opportunity Grade": "48"
     },
     {
-      "Rank": "43",
+      "Rank": "45",
       "Name": "Puka Nacua",
       "Team": "LAR",
       "POS": "WR",
@@ -9400,7 +9441,7 @@
       "Opportunity Grade": "74"
     },
     {
-      "Rank": "99",
+      "Rank": "100",
       "Name": "Quentin Johnston",
       "Team": "LAC",
       "POS": "WR",
@@ -9441,7 +9482,7 @@
       "Opportunity Grade": "38"
     },
     {
-      "Rank": "47",
+      "Rank": "50",
       "Name": "Rashee Rice",
       "Team": "KC",
       "POS": "WR",
@@ -9482,7 +9523,7 @@
       "Opportunity Grade": "55"
     },
     {
-      "Rank": "124",
+      "Rank": "125",
       "Name": "Rashid Shaheed",
       "Team": "SEA",
       "POS": "WR",
@@ -9560,11 +9601,11 @@
       "i10/G": "0.25",
       "i20/G": "0.50",
       "YAC/Rec": "3.09",
-      "Efficiency Grade": "68",
+      "Efficiency Grade": "67",
       "Opportunity Grade": "56"
     },
     {
-      "Rank": "49",
+      "Rank": "51",
       "Name": "Roman Wilson",
       "Team": "PIT",
       "POS": "WR",
@@ -9605,7 +9646,7 @@
       "Opportunity Grade": "63"
     },
     {
-      "Rank": "22",
+      "Rank": "21",
       "Name": "Rome Odunze",
       "Team": "CHI",
       "POS": "WR",
@@ -9646,7 +9687,7 @@
       "Opportunity Grade": "55"
     },
     {
-      "Rank": "40",
+      "Rank": "42",
       "Name": "Romeo Doubs",
       "Team": "NE",
       "POS": "WR",
@@ -9684,7 +9725,7 @@
       "i20/G": "1.00",
       "YAC/Rec": "3.17",
       "Efficiency Grade": "71",
-      "Opportunity Grade": "71"
+      "Opportunity Grade": "70"
     },
     {
       "Rank": "102",
@@ -9728,7 +9769,7 @@
       "Opportunity Grade": "53"
     },
     {
-      "Rank": "106",
+      "Rank": "108",
       "Name": "Ryan Miller",
       "Team": "MIA",
       "POS": "WR",
@@ -9769,7 +9810,7 @@
       "Opportunity Grade": "40"
     },
     {
-      "Rank": "166",
+      "Rank": "168",
       "Name": "Skyy Moore",
       "Team": "GB",
       "POS": "WR",
@@ -9851,7 +9892,7 @@
       "Opportunity Grade": "83"
     },
     {
-      "Rank": "242",
+      "Rank": "243",
       "Name": "Sterling Shepard",
       "Team": "NYJ",
       "POS": "WR",
@@ -9892,7 +9933,7 @@
       "Opportunity Grade": "26"
     },
     {
-      "Rank": "212",
+      "Rank": "211",
       "Name": "Tai Felton",
       "Team": "MIN",
       "POS": "WR",
@@ -9971,10 +10012,10 @@
       "i20/G": "0.50",
       "YAC/Rec": "3.13",
       "Efficiency Grade": "56",
-      "Opportunity Grade": "50"
+      "Opportunity Grade": "49"
     },
     {
-      "Rank": "3",
+      "Rank": "4",
       "Name": "Tee Higgins",
       "Team": "CIN",
       "POS": "WR",
@@ -10015,7 +10056,7 @@
       "Opportunity Grade": "74"
     },
     {
-      "Rank": "78",
+      "Rank": "77",
       "Name": "Terry McLaurin",
       "Team": "WAS",
       "POS": "WR",
@@ -10056,7 +10097,7 @@
       "Opportunity Grade": "78"
     },
     {
-      "Rank": "5",
+      "Rank": "6",
       "Name": "Tetairoa McMillan",
       "Team": "CAR",
       "POS": "WR",
@@ -10097,7 +10138,7 @@
       "Opportunity Grade": "89"
     },
     {
-      "Rank": "123",
+      "Rank": "124",
       "Name": "Tez Johnson",
       "Team": "TB",
       "POS": "WR",
@@ -10138,7 +10179,7 @@
       "Opportunity Grade": "36"
     },
     {
-      "Rank": "147",
+      "Rank": "150",
       "Name": "Tory Horton",
       "Team": "SEA",
       "POS": "WR",
@@ -10179,7 +10220,7 @@
       "Opportunity Grade": "43"
     },
     {
-      "Rank": "227",
+      "Rank": "229",
       "Name": "Travis Hunter",
       "Team": "JAX",
       "POS": "WR",
@@ -10220,7 +10261,7 @@
       "Opportunity Grade": "6"
     },
     {
-      "Rank": "38",
+      "Rank": "40",
       "Name": "Tre Harris",
       "Team": "LAC",
       "POS": "WR",
@@ -10261,7 +10302,7 @@
       "Opportunity Grade": "58"
     },
     {
-      "Rank": "21",
+      "Rank": "22",
       "Name": "Tre Tucker",
       "Team": "LV",
       "POS": "WR",
@@ -10298,11 +10339,11 @@
       "i10/G": "0.25",
       "i20/G": "0.25",
       "YAC/Rec": "1.40",
-      "Efficiency Grade": "67",
+      "Efficiency Grade": "66",
       "Opportunity Grade": "64"
     },
     {
-      "Rank": "142",
+      "Rank": "143",
       "Name": "Treylon Burks",
       "Team": "WAS",
       "POS": "WR",
@@ -10340,10 +10381,10 @@
       "i20/G": "0.33",
       "YAC/Rec": "3.00",
       "Efficiency Grade": "54",
-      "Opportunity Grade": "39"
+      "Opportunity Grade": "38"
     },
     {
-      "Rank": "154",
+      "Rank": "153",
       "Name": "Troy Franklin",
       "Team": "DEN",
       "POS": "WR",
@@ -10380,11 +10421,11 @@
       "i10/G": "0.25",
       "i20/G": "0.25",
       "YAC/Rec": "7.00",
-      "Efficiency Grade": "64",
+      "Efficiency Grade": "63",
       "Opportunity Grade": "23"
     },
     {
-      "Rank": "178",
+      "Rank": "180",
       "Name": "Tutu Atwell",
       "Team": "LAR",
       "POS": "WR",
@@ -10422,10 +10463,10 @@
       "i20/G": "0.00",
       "YAC/Rec": "2.50",
       "Efficiency Grade": "42",
-      "Opportunity Grade": "15"
+      "Opportunity Grade": "16"
     },
     {
-      "Rank": "30",
+      "Rank": "32",
       "Name": "Tyquan Thornton",
       "Team": "KC",
       "POS": "WR",
@@ -10466,7 +10507,7 @@
       "Opportunity Grade": "61"
     },
     {
-      "Rank": "91",
+      "Rank": "89",
       "Name": "Wan'Dale Robinson",
       "Team": "TEN",
       "POS": "WR",
@@ -10503,8 +10544,8 @@
       "i10/G": "0.75",
       "i20/G": "1.00",
       "YAC/Rec": "4.19",
-      "Efficiency Grade": "39",
-      "Opportunity Grade": "76"
+      "Efficiency Grade": "38",
+      "Opportunity Grade": "75"
     },
     {
       "Rank": "64",
@@ -10545,10 +10586,10 @@
       "i20/G": "0.25",
       "YAC/Rec": "5.33",
       "Efficiency Grade": "59",
-      "Opportunity Grade": "49"
+      "Opportunity Grade": "48"
     },
     {
-      "Rank": "135",
+      "Rank": "137",
       "Name": "Xavier Legette",
       "Team": "CAR",
       "POS": "WR",
@@ -10586,10 +10627,10 @@
       "i20/G": "0.50",
       "YAC/Rec": "5.00",
       "Efficiency Grade": "69",
-      "Opportunity Grade": "33"
+      "Opportunity Grade": "34"
     },
     {
-      "Rank": "256",
+      "Rank": "255",
       "Name": "Xavier Smith",
       "Team": "LAR",
       "POS": "WR",
@@ -10660,48 +10701,48 @@
       "Opportunity Grade": "66"
     },
     {
-      "Rank": "189",
+      "Rank": "173",
       "Name": "Zachariah Branch",
       "Team": "ATL",
       "POS": "WR",
-      "G": "3",
-      "Targets": "4",
-      "Target Share": "5.48%",
-      "Rec": "3",
-      "Rec Yards": "21",
-      "Team Rec Yards %": "3.9%",
-      "YPR": "7.00",
-      "YPT": "5.25",
-      "RecYds/G": "7.0",
-      "Catch %": "75%",
+      "G": "4",
+      "Targets": "6",
+      "Target Share": "6.45%",
+      "Rec": "5",
+      "Rec Yards": "31",
+      "Team Rec Yards %": "4.0%",
+      "YPR": "6.20",
+      "YPT": "5.17",
+      "RecYds/G": "7.8",
+      "Catch %": "83.33%",
       "Rec TD": "0",
       "Team TD %": "0.0%",
       "i10": "0",
       "i20 Targets": "0",
       "FUM": "0",
-      "FP/G": "1.7",
-      "FP": "5.1",
-      "Routes Run": "19",
-      "Receptions": "3",
-      "Rec. Yards": "21",
+      "FP/G": "2.0",
+      "FP": "8.1",
+      "Routes Run": "25",
+      "Receptions": "5",
+      "Rec. Yards": "31",
       "Touchdowns": "0",
-      "YAC": "32",
+      "YAC": "39",
       "ADoT": "1.50",
-      "Total EPA": "0.41",
-      "Targets/Route Run": "0.21",
-      "YPRR": "1.11",
+      "Total EPA": "0.71",
+      "Targets/Route Run": "0.24",
+      "YPRR": "1.24",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "1.33",
-      "Routes/G": "6.33",
+      "Targets/G": "1.50",
+      "Routes/G": "6.25",
       "i10/G": "0.00",
       "i20/G": "0.00",
-      "YAC/Rec": "10.67",
-      "Efficiency Grade": "37",
-      "Opportunity Grade": "22"
+      "YAC/Rec": "7.80",
+      "Efficiency Grade": "39",
+      "Opportunity Grade": "24"
     },
     {
-      "Rank": "246",
+      "Rank": "247",
       "Name": "Zavion Thomas",
       "Team": "CHI",
       "POS": "WR",
@@ -10742,7 +10783,7 @@
       "Opportunity Grade": "11"
     },
     {
-      "Rank": "7",
+      "Rank": "8",
       "Name": "Zay Flowers",
       "Team": "BAL",
       "POS": "WR",
