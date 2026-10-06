@@ -35,3 +35,7 @@ The slider shows cumulative snapshots (“Through Week”). Week 1 is omitted be
 ## Architect handoff
 
 Reuse the existing RB weekly archive, seed receiver Week 3 from the real repository snapshot, add an archive helper to the receiver refresher, and keep the latest snapshot as the default. READY FOR BUILD.
+
+## v2 timeline revision
+
+The user replaced the single-ended cumulative slider with one two-ended timeline. The left handle selects Season Start or a start week backed by the preceding cumulative snapshot; the right handle selects the ending week. Interval windows subtract cumulative counts, rebuild rates, and recalculate scores and position percentiles. No separate Through/Since buttons appear.

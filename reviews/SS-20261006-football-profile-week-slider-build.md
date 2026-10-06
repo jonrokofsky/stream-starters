@@ -24,3 +24,7 @@
 | Local browser | PASS: RB W4→W2 and receiver W4→W3 rerender. |
 | Mobile width | PASS: 390px viewport, 385px document width. |
 | Diff check | PASS. |
+
+## v2 build appendix
+
+The profile slider is now one two-ended timeline. Season Start preserves cumulative behavior, while moving the left handle produces a start-to-end interval. RBs reuse the existing period calculator; receivers now subtract cumulative counts, rebuild rate stats, and recalculate efficiency and opportunity grades by position.

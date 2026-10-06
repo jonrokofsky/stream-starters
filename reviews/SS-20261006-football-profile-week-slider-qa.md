@@ -24,3 +24,7 @@ No defects. Week 1 remains absent by design because no genuine Week 1 snapshot i
 ## Verdict
 
 PASS.
+
+## v2 verification
+
+PASS. The RB left handle produced a Week 4-only profile and the right handle changed the cumulative end to Week 3. The receiver left handle produced a Week 4-only profile with one game and recalculated values. Forty-five tests, the production build, focused lint with no errors, and the 390px overflow check pass.

@@ -899,7 +899,8 @@ export default function RBPage() {
   const [players, setPlayers] =
     useState<DataRow[]>([]);
   const [weeklySnapshots, setWeeklySnapshots] = useState<WeeklySnapshot[]>([]);
-  const [profileWeek, setProfileWeek] = useState(0);
+  const [profileStartWeek, setProfileStartWeek] = useState<number | null>(null);
+  const [profileEndWeek, setProfileEndWeek] = useState(0);
   const [selectedWeek, setSelectedWeek] = useState(0);
   const [weeklyTableMode, setWeeklyTableMode] = useState<WeeklyTableMode>("through");
   const [sinceWeek, setSinceWeek] = useState(0);
@@ -1017,7 +1018,8 @@ export default function RBPage() {
         byWeek.set(currentWeek, { week: currentWeek, copiedAt: snapshot.copiedAt, rows });
         const availableWeeks = [...byWeek.values()].sort((a, b) => a.week - b.week);
         setWeeklySnapshots(availableWeeks);
-        setProfileWeek(availableWeeks.at(-1)?.week ?? currentWeek);
+        setProfileStartWeek(null);
+        setProfileEndWeek(availableWeeks.at(-1)?.week ?? currentWeek);
         setSelectedWeek(availableWeeks.at(-1)?.week ?? currentWeek);
         setSinceWeek(availableWeeks.find((item) => byWeek.has(item.week - 1))?.week ?? currentWeek);
 
@@ -1051,10 +1053,18 @@ export default function RBPage() {
     [weeklySnapshots]
   );
 
-  const profileSnapshot = useMemo(
-    () => weeklySnapshots.find((snapshot) => snapshot.week === profileWeek) ?? weeklySnapshots.at(-1),
-    [profileWeek, weeklySnapshots]
-  );
+  const profileSnapshot = useMemo(() => {
+    const end = weeklySnapshots.find((snapshot) => snapshot.week === profileEndWeek) ?? weeklySnapshots.at(-1);
+    if (!end || profileStartWeek === null) return end;
+    const baseline = weeklySnapshots.find((snapshot) => snapshot.week === profileStartWeek - 1);
+    return baseline ? buildSinceSnapshot(end, baseline, profileStartWeek) : end;
+  }, [profileEndWeek, profileStartWeek, weeklySnapshots]);
+
+  const profileWindowLabel = profileStartWeek === null
+    ? `Through Week ${profileEndWeek}`
+    : profileStartWeek === profileEndWeek
+      ? `Week ${profileStartWeek}`
+      : `Weeks ${profileStartWeek}–${profileEndWeek}`;
 
   const profilePlayers = profileSnapshot?.rows ?? players;
 
@@ -1354,7 +1364,7 @@ export default function RBPage() {
           </p>
           <p className="mt-3 text-sm text-slate-600">2026 regular season · PPR · Fantasy Points · {updatedAt ? `Updated ${new Date(updatedAt).toLocaleString("en-US", { timeZone: "America/New_York" })} Eastern` : "Loading update time…"}.</p>
           <p className="mt-2 text-sm text-slate-600">{yacNote}</p>
-          <p className="mt-2 text-sm text-slate-600">Profile scores compare all {profilePlayers.length || "—"} RBs through Week {profileSnapshot?.week ?? "—"}, including rookies. The attempts filter below applies only to component percentile grades.</p>
+          <p className="mt-2 text-sm text-slate-600">Profile scores compare all {profilePlayers.length || "—"} RBs for {profileWindowLabel}, including rookies. The attempts filter below applies only to component percentile grades.</p>
         </div>
 
         {loading && (
@@ -1562,9 +1572,10 @@ export default function RBPage() {
                     <WeekSlider
                       id="rb-profile-week"
                       weeks={availableProfileWeeks}
-                      value={profileSnapshot?.week ?? profileWeek}
-                      onChange={setProfileWeek}
-                      label="RB profile snapshot"
+                      startWeek={profileStartWeek}
+                      endWeek={profileEndWeek}
+                      onChange={(start, end) => { setProfileStartWeek(start); setProfileEndWeek(end); }}
+                      label="RB profile timeline"
                     />
                   </div>
                 </div>
@@ -1591,7 +1602,7 @@ export default function RBPage() {
                 <div className="p-2 font-sans sm:hidden" style={{ background: `linear-gradient(145deg, ${colors[0]}12, white 34%)` }}>
                   <div className="flex items-center gap-2.5 rounded-xl p-2.5 text-white" style={{ background: colors[0], color: themeText(colors[0]) }}>
                     {code && <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1"><img src={espnLogo(code)} alt={`${teamName(team)} logo`} className="h-full w-full object-contain" /></div>}
-                    <div className="min-w-0 flex-1"><div className="truncate text-lg font-bold leading-tight">{selectedPlayer.Name}</div><div className="mt-0.5 truncate text-[9px] font-medium uppercase tracking-[0.04em] opacity-80">{teamName(team)} · W{profileSnapshot?.week} · {Math.round(rushAttempts)} ATT</div></div>
+                    <div className="min-w-0 flex-1"><div className="truncate text-lg font-bold leading-tight">{selectedPlayer.Name}</div><div className="mt-0.5 truncate text-[9px] font-medium uppercase tracking-[0.04em] opacity-80">{teamName(team)} · {profileWindowLabel} · {Math.round(rushAttempts)} ATT</div></div>
                     <div className={`shrink-0 rounded-xl border px-2.5 py-1.5 text-center ${fantasyPpgPercentile === null ? "border-slate-200 bg-white text-slate-900" : percentileStyle(fantasyPpgPercentile)}`}><div className="text-[7px] font-semibold uppercase tracking-[0.04em] opacity-65">PPR FP/G</div><div className="text-2xl font-bold leading-none">{fantasyPpg === null ? "—" : fantasyPpg.toFixed(1)}</div><div className="mt-0.5 text-[7px] font-semibold">{fantasyPpgPercentile === null ? "N/A" : `P${Math.round(fantasyPpgPercentile)}`}</div></div>
                   </div>
                   <div className="mt-2 grid grid-cols-3 gap-1.5">
@@ -1630,7 +1641,7 @@ export default function RBPage() {
 
                     <div className="min-w-0 flex-1">
                       <div className="text-xs font-black uppercase tracking-[0.18em] opacity-90">
-                        RB Profile · Through Week {profileSnapshot?.week}
+                        RB Profile · {profileWindowLabel}
                       </div>
 
                       <h2 className="mt-1 text-3xl font-black sm:text-4xl">
