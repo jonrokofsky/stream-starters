@@ -2,7 +2,7 @@
 
 - Author / date / status: Manager / 2026-10-06 / SHIP
 - Spec / build / QA / issue ledger: v1 / complete / PASS / no issues
-- Application location / reviewed revision: `C:/Users/jonro/stream-starters` / working tree based on `13374d1`
+- Application location / reviewed revision: `C:/Users/jonro/stream-starters` / `a36d7ca`
 - Output path / next owner: User / publish and verify
 - Open issue and decision IDs: None
 
@@ -12,4 +12,4 @@ The weekly profile sliders use only saved cumulative snapshots, update all profi
 
 ## Acceptance and execution record
 
-Pending commit, push, and hosted verification.
+Commit `a36d7ca` was pushed to `main`. The hosted RB page exposes Weeks 2–4, and the hosted receiver page exposes Weeks 3–4 and successfully changes to Week 3.

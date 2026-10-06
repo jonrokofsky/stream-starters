@@ -2,7 +2,7 @@
 
 ## 2026-10-06 football profile week sliders
 
-Task `SS-20261006-football-profile-week-slider` adds cumulative snapshot sliders to RB (Weeks 2–4) and WR/TE (Weeks 3–4) profiles. The selected snapshot drives player search, scores, percentile pools, components, sortable receiver data, and export labels. Receiver refreshes now maintain a weekly archive automatically. Week 1 is omitted because no real snapshot exists. Forty-four tests, the 18-route production build, local browser changes, and a 390px overflow check pass. Preserve unrelated `public/1.png`.
+Task `SS-20261006-football-profile-week-slider` adds cumulative snapshot sliders to RB (Weeks 2–4) and WR/TE (Weeks 3–4) profiles. The selected snapshot drives player search, scores, percentile pools, components, sortable receiver data, and export labels. Receiver refreshes now maintain a weekly archive automatically. Week 1 is omitted because no real snapshot exists. Forty-four tests, the 18-route production build, local browser changes, and a 390px overflow check pass. Commit `a36d7ca` is pushed and both live sliders are verified. Preserve unrelated `public/1.png`.
 
 ## 2026-10-06 football data refresh
 
