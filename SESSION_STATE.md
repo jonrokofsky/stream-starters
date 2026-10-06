@@ -1,5 +1,8 @@
 # Session checkpoint
 
+## 2026-10-06 football data refresh
+
+Task `SS-20261006-football-data-refresh` refreshes automatic Fantasy Points/SumerSports data plus the user-supplied Week 4 PFR YAC and defense tables. Revision `b4d3b0f` contains 95 RBs/325 player-games, 172 WRs, 97 TEs, 95 YAC rows, and 32 defense teams across QB/RB/WR/TE. Forty-two focused tests, the 18-route production build, and local browser checks pass. Sequential review recommends SHIP; push and hosted verification are next. Preserve unrelated `public/1.png`.
 ## 2026-10-02 hitter ranking reorder
 
 Task `SS-20261002-hitter-ranking-reorder` fixes the baseball rankings drag interaction at revision `55a2439`. Rows now move once on drop instead of repeatedly during hover, the destination is highlighted, and the Elo column previews the exact values sent by Save New Order. Duplicate-name hitters are team-qualified so the two Max Muncy rows no longer collide during save; ambiguous API payloads are rejected before persistence. Five focused tests and the 18-route production build pass; local Chromium moved rank 1 to rank 3 and Cancel preserved live data. Sequential role review recommends SHIP. Push and hosted verification are next. Preserve unrelated `public/1.png`.
@@ -58,6 +61,7 @@ Full team names and abbreviation-aware palettes implemented. Local browser verif
 
 ## 2026-09-19 YAC/Att
 User approved separate PFR metric and weights 28% yards/game,20% yards/rush,32% gain,20% YAC. Added separate rb-yac-2026.json capture (72RB), validated merge, updated score/client/importer. Six tests/build/browser pass; Gibbs1.5YAC and67Rush. Local preview3010 session44370. Uncommitted/not deployed. PFR browser now accessible via CUA; direct403 remains. PFR auto refresh NOT implemented; FantasyPoints importer merges saved PFR capture. Page exposes capture date and PFR Week1 coverage caveat. Next: user review, then PFR refresh integration and pending hosted verification.
+
 
 
 
