@@ -1,5 +1,9 @@
 # Session checkpoint
 
+## 2026-10-06 football profile week sliders
+
+Task `SS-20261006-football-profile-week-slider` adds cumulative snapshot sliders to RB (Weeks 2–4) and WR/TE (Weeks 3–4) profiles. The selected snapshot drives player search, scores, percentile pools, components, sortable receiver data, and export labels. Receiver refreshes now maintain a weekly archive automatically. Week 1 is omitted because no real snapshot exists. Forty-four tests, the 18-route production build, local browser changes, and a 390px overflow check pass. Preserve unrelated `public/1.png`.
+
 ## 2026-10-06 football data refresh
 
 Task `SS-20261006-football-data-refresh` refreshes automatic Fantasy Points/SumerSports data plus the user-supplied Week 4 PFR YAC and defense tables. Revision `b4d3b0f` contains 95 RBs/325 player-games, 172 WRs, 97 TEs, 95 YAC rows, and 32 defense teams across QB/RB/WR/TE. Forty-two focused tests, the 18-route production build, and local browser checks pass. Sequential review recommends SHIP; push and hosted verification are next. Preserve unrelated `public/1.png`.

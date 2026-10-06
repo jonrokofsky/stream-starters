@@ -1,8 +1,10 @@
 import { chromium } from "playwright";
 import { readFile, rename, writeFile } from "node:fs/promises";
 import { transformReceiverReport } from "./receiver-transform.mjs";
+import { upsertReceiverWeeklySnapshot } from "./receiver-weekly.mjs";
 
 const target = new URL("../public/data/receivers-2026.json", import.meta.url);
+const weeklyTarget = new URL("../public/data/receivers-weekly-2026.json", import.meta.url);
 const fantasySource = "https://fpds.fantasypoints.com/nfl/tools/player/receiving-basic";
 const sumerSources = {
   WR: "https://sumersports.com/players/wide-receiver/",
@@ -177,7 +179,15 @@ try {
     await writeFile(temporary, `${JSON.stringify(result, null, 2)}\n`);
     await rename(temporary, target);
   }
-  console.log(`Receiver data ${changed ? "updated" : "unchanged"}: ${result.population.WR} WR, ${result.population.TE} TE.`);
+  let archive = { season: 2026, source: fantasySource, weeks: [] };
+  try { archive = JSON.parse(await readFile(weeklyTarget, "utf8")); } catch (error) { if (error.code !== "ENOENT") throw error; }
+  const weekly = upsertReceiverWeeklySnapshot(archive, result, fantasySource);
+  if (weekly.changed) {
+    const temporary = new URL("../public/data/receivers-weekly-2026.json.tmp", import.meta.url);
+    await writeFile(temporary, `${JSON.stringify(weekly.archive, null, 2)}\n`);
+    await rename(temporary, weeklyTarget);
+  }
+  console.log(`Receiver data ${changed ? "updated" : "unchanged"}: ${result.population.WR} WR, ${result.population.TE} TE; weekly archive ${weekly.changed ? "updated" : "unchanged"} through Week ${weekly.week}.`);
 } finally {
   await browser.close();
 }

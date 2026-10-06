@@ -5,6 +5,7 @@ import { toPng } from "html-to-image";
 import { calculateRbScores } from "../../../lib/data/rbScores";
 import { mergeRbYac, type YacSnapshot } from "../../../lib/data/rbYac";
 import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
+import WeekSlider from "../components/WeekSlider";
 
 
 type DataRow = Record<string, string>;
@@ -898,6 +899,7 @@ export default function RBPage() {
   const [players, setPlayers] =
     useState<DataRow[]>([]);
   const [weeklySnapshots, setWeeklySnapshots] = useState<WeeklySnapshot[]>([]);
+  const [profileWeek, setProfileWeek] = useState(0);
   const [selectedWeek, setSelectedWeek] = useState(0);
   const [weeklyTableMode, setWeeklyTableMode] = useState<WeeklyTableMode>("through");
   const [sinceWeek, setSinceWeek] = useState(0);
@@ -1015,6 +1017,7 @@ export default function RBPage() {
         byWeek.set(currentWeek, { week: currentWeek, copiedAt: snapshot.copiedAt, rows });
         const availableWeeks = [...byWeek.values()].sort((a, b) => a.week - b.week);
         setWeeklySnapshots(availableWeeks);
+        setProfileWeek(availableWeeks.at(-1)?.week ?? currentWeek);
         setSelectedWeek(availableWeeks.at(-1)?.week ?? currentWeek);
         setSinceWeek(availableWeeks.find((item) => byWeek.has(item.week - 1))?.week ?? currentWeek);
 
@@ -1043,6 +1046,18 @@ export default function RBPage() {
     return () => controller.abort();
   }, []);
 
+  const availableProfileWeeks = useMemo(
+    () => weeklySnapshots.map((snapshot) => snapshot.week),
+    [weeklySnapshots]
+  );
+
+  const profileSnapshot = useMemo(
+    () => weeklySnapshots.find((snapshot) => snapshot.week === profileWeek) ?? weeklySnapshots.at(-1),
+    [profileWeek, weeklySnapshots]
+  );
+
+  const profilePlayers = profileSnapshot?.rows ?? players;
+
   const filteredPlayers =
     useMemo(() => {
       const query =
@@ -1051,10 +1066,10 @@ export default function RBPage() {
           .toLowerCase();
 
       if (!query) {
-        return players.slice(0, 10);
+        return profilePlayers.slice(0, 10);
       }
 
-      return players
+      return profilePlayers
         .filter((player) =>
           (
             player["Name"] || ""
@@ -1063,22 +1078,22 @@ export default function RBPage() {
             .includes(query)
         )
         .slice(0, 10);
-    }, [players, search]);
+    }, [profilePlayers, search]);
 
   const selectedPlayer =
     useMemo(
       () =>
-        players.find(
+        profilePlayers.find(
           (player) =>
             player["Name"] ===
             selectedName
-        ),
-      [players, selectedName]
+        ) ?? profilePlayers[0],
+      [profilePlayers, selectedName]
     );
 
   const percentilePool =
     useMemo(() => {
-      return players.filter((player) => {
+      return profilePlayers.filter((player) => {
         const attempts =
           toNumber(
             getValue(
@@ -1089,7 +1104,7 @@ export default function RBPage() {
 
         return attempts >= minRushAttempts;
       });
-    }, [players, minRushAttempts]);
+    }, [profilePlayers, minRushAttempts]);
 
   const availableSinceWeeks = useMemo(
     () => weeklySnapshots.filter((item) => weeklySnapshots.some((baseline) => baseline.week === item.week - 1)),
@@ -1198,7 +1213,7 @@ export default function RBPage() {
     toNumber(getValue(selectedPlayer, ["FP/G", "Fantasy PPG"]));
 
   const fantasyPpgPopulation = useMemo(
-    () => players
+    () => profilePlayers
       .filter((player) => {
         const attempts = toNumber(getValue(player, ["ATT", "Rush Att"])) ?? 0;
         const games = toNumber(getValue(player, ["G", "Games"])) ?? 0;
@@ -1206,7 +1221,7 @@ export default function RBPage() {
       })
       .map((player) => toNumber(getValue(player, ["FP/G", "Fantasy PPG"])))
       .filter((value): value is number => value !== null),
-    [players]
+    [profilePlayers]
   );
 
   const fantasyPpgQualified = (() => {
@@ -1339,7 +1354,7 @@ export default function RBPage() {
           </p>
           <p className="mt-3 text-sm text-slate-600">2026 regular season · PPR · Fantasy Points · {updatedAt ? `Updated ${new Date(updatedAt).toLocaleString("en-US", { timeZone: "America/New_York" })} Eastern` : "Loading update time…"}.</p>
           <p className="mt-2 text-sm text-slate-600">{yacNote}</p>
-          <p className="mt-2 text-sm text-slate-600">Profile scores compare all {players.length || "—"} RBs in this snapshot, including rookies. The attempts filter below applies only to component percentile grades.</p>
+          <p className="mt-2 text-sm text-slate-600">Profile scores compare all {profilePlayers.length || "—"} RBs through Week {profileSnapshot?.week ?? "—"}, including rookies. The attempts filter below applies only to component percentile grades.</p>
         </div>
 
         {loading && (
@@ -1356,7 +1371,7 @@ export default function RBPage() {
 
         {!loading &&
           !error &&
-          players.length > 0 &&
+          profilePlayers.length > 0 &&
           selectedPlayer && (
             <>
               <section className="mb-6 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
@@ -1542,6 +1557,16 @@ export default function RBPage() {
                       .
                     </div>
                   </div>
+
+                  <div className="lg:col-span-2">
+                    <WeekSlider
+                      id="rb-profile-week"
+                      weeks={availableProfileWeeks}
+                      value={profileSnapshot?.week ?? profileWeek}
+                      onChange={setProfileWeek}
+                      label="RB profile snapshot"
+                    />
+                  </div>
                 </div>
               </section>
 
@@ -1566,16 +1591,16 @@ export default function RBPage() {
                 <div className="p-2 font-sans sm:hidden" style={{ background: `linear-gradient(145deg, ${colors[0]}12, white 34%)` }}>
                   <div className="flex items-center gap-2.5 rounded-xl p-2.5 text-white" style={{ background: colors[0], color: themeText(colors[0]) }}>
                     {code && <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-1"><img src={espnLogo(code)} alt={`${teamName(team)} logo`} className="h-full w-full object-contain" /></div>}
-                    <div className="min-w-0 flex-1"><div className="truncate text-lg font-bold leading-tight">{selectedPlayer.Name}</div><div className="mt-0.5 truncate text-[9px] font-medium uppercase tracking-[0.04em] opacity-80">{teamName(team)} · {Math.round(rushAttempts)} ATT</div></div>
+                    <div className="min-w-0 flex-1"><div className="truncate text-lg font-bold leading-tight">{selectedPlayer.Name}</div><div className="mt-0.5 truncate text-[9px] font-medium uppercase tracking-[0.04em] opacity-80">{teamName(team)} · W{profileSnapshot?.week} · {Math.round(rushAttempts)} ATT</div></div>
                     <div className={`shrink-0 rounded-xl border px-2.5 py-1.5 text-center ${fantasyPpgPercentile === null ? "border-slate-200 bg-white text-slate-900" : percentileStyle(fantasyPpgPercentile)}`}><div className="text-[7px] font-semibold uppercase tracking-[0.04em] opacity-65">PPR FP/G</div><div className="text-2xl font-bold leading-none">{fantasyPpg === null ? "—" : fantasyPpg.toFixed(1)}</div><div className="mt-0.5 text-[7px] font-semibold">{fantasyPpgPercentile === null ? "N/A" : `P${Math.round(fantasyPpgPercentile)}`}</div></div>
                   </div>
                   <div className="mt-2 grid grid-cols-3 gap-1.5">
                     {[["Rush", rawRushScore], ["Receiving", recScore], ["Opportunity", opportunityScore]].map(([label, value]) => { const score=typeof value === "number" ? value : null; return <div key={String(label)} className={`rounded-xl border p-2 text-center ${score === null ? "border-slate-200 bg-white text-slate-600" : scoreStyle(score)}`}><div className="text-[7px] font-semibold uppercase tracking-[0.04em] opacity-65">{label} Score</div><div className="mt-0.5 text-2xl font-bold leading-none">{score === null ? "—" : Math.round(score)}</div></div>;})}
                   </div>
                   <div className="mt-2 grid gap-1.5">
-                    <MobileComponentGrid title="Rushing Components" stats={RUSHING_STATS} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={players} qualified={qualified} />
-                    <MobileComponentGrid title="Receiving Components" stats={RECEIVING_STATS} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={players} qualified={qualified} />
-                    <MobileComponentGrid title="Opportunity Components" stats={OPPORTUNITY_STATS.filter((stat) => stat.label !== "PPR Fantasy PPG")} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={players} qualified={qualified} />
+                    <MobileComponentGrid title="Rushing Components" stats={RUSHING_STATS} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={profilePlayers} qualified={qualified} />
+                    <MobileComponentGrid title="Receiving Components" stats={RECEIVING_STATS} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={profilePlayers} qualified={qualified} />
+                    <MobileComponentGrid title="Opportunity Components" stats={OPPORTUNITY_STATS.filter((stat) => stat.label !== "PPR Fantasy PPG")} selectedPlayer={selectedPlayer} percentilePool={percentilePool} positionPool={profilePlayers} qualified={qualified} />
                   </div>
                 </div>
 
@@ -1605,7 +1630,7 @@ export default function RBPage() {
 
                     <div className="min-w-0 flex-1">
                       <div className="text-xs font-black uppercase tracking-[0.18em] opacity-90">
-                        RB Profile · 2026 stats
+                        RB Profile · Through Week {profileSnapshot?.week}
                       </div>
 
                       <h2 className="mt-1 text-3xl font-black sm:text-4xl">
@@ -1693,7 +1718,7 @@ export default function RBPage() {
                     percentilePool={
                       percentilePool
                     }
-                    positionPool={players}
+                    positionPool={profilePlayers}
                     qualified={
                       qualified
                     }
@@ -1711,7 +1736,7 @@ export default function RBPage() {
                     percentilePool={
                       percentilePool
                     }
-                    positionPool={players}
+                    positionPool={profilePlayers}
                     qualified={
                       qualified
                     }
@@ -1729,7 +1754,7 @@ export default function RBPage() {
                     percentilePool={
                       percentilePool
                     }
-                    positionPool={players}
+                    positionPool={profilePlayers}
                     qualified={
                       qualified
                     }
@@ -1875,7 +1900,7 @@ export default function RBPage() {
                           <div className="min-w-0">
                             <button
                               type="button"
-                              onClick={() => players.some((item) => item.Name === player.Name) && selectPlayer(player.Name)}
+                              onClick={() => profilePlayers.some((item) => item.Name === player.Name) && selectPlayer(player.Name)}
                               className="truncate text-left text-lg font-black text-slate-950 hover:text-sky-700"
                             >
                               {player.Name}
@@ -1944,7 +1969,7 @@ export default function RBPage() {
                                 <td key={column.key} className={`sticky left-0 z-[5] whitespace-nowrap px-3 py-3 ${index % 2 ? "bg-slate-50" : "bg-white"}`}>
                                   <button
                                     type="button"
-                                    onClick={() => players.some((item) => item["Name"] === player["Name"]) && selectPlayer(player["Name"])}
+                                    onClick={() => profilePlayers.some((item) => item["Name"] === player["Name"]) && selectPlayer(player["Name"])}
                                     className="font-black text-slate-900 hover:text-sky-700"
                                   >
                                     {player["Name"]}
