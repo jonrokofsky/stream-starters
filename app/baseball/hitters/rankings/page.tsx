@@ -3,8 +3,10 @@
 import {
   useEffect,
   useMemo,
+  useRef,
   useState,
   type DragEvent,
+  type PointerEvent as ReactPointerEvent,
 } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -1179,6 +1181,9 @@ export default function HitterRankingsPage() {
     useState<
       string | null
     >(null);
+
+  const pointerDraggedPlayerName = useRef<string | null>(null);
+  const pointerDropTargetName = useRef<string | null>(null);
 
   useEffect(
     () => {
@@ -2711,8 +2716,65 @@ export default function HitterRankingsPage() {
   }
 
   function handleDragEnd() {
+    pointerDraggedPlayerName.current = null;
+    pointerDropTargetName.current = null;
     setDraggedPlayerName(null);
     setDragOverPlayerName(null);
+  }
+
+  function moveReorderItemBy(playerName: string, offset: number) {
+    setReorderItems((previous) => {
+      const currentIndex = previous.findIndex((item) => item.playerName === playerName);
+      const targetIndex = currentIndex + offset;
+      if (currentIndex < 0 || targetIndex < 0 || targetIndex >= previous.length) return previous;
+      return moveRankingItem(previous, playerName, previous[targetIndex].playerName);
+    });
+  }
+
+  function handlePointerDragStart(
+    event: ReactPointerEvent<HTMLButtonElement>,
+    playerName: string
+  ) {
+    if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) return;
+    event.preventDefault();
+    event.currentTarget.setPointerCapture(event.pointerId);
+    pointerDraggedPlayerName.current = playerName;
+    pointerDropTargetName.current = null;
+    setDraggedPlayerName(playerName);
+    setDragOverPlayerName(playerName);
+  }
+
+  function handlePointerDragMove(event: ReactPointerEvent<HTMLButtonElement>) {
+    const sourcePlayerName = pointerDraggedPlayerName.current;
+    if (!sourcePlayerName) return;
+
+    const target = document
+      .elementFromPoint(event.clientX, event.clientY)
+      ?.closest<HTMLTableRowElement>("[data-ranking-player]");
+    const targetPlayerName = target?.dataset.rankingPlayer;
+
+    if (!targetPlayerName || targetPlayerName === sourcePlayerName) {
+      return;
+    }
+
+    pointerDropTargetName.current = targetPlayerName;
+    setDragOverPlayerName(targetPlayerName);
+  }
+
+  function handlePointerDragEnd(event: ReactPointerEvent<HTMLButtonElement>) {
+    const sourcePlayerName = pointerDraggedPlayerName.current;
+    const targetPlayerName = pointerDropTargetName.current;
+
+    if (sourcePlayerName && targetPlayerName && sourcePlayerName !== targetPlayerName) {
+      setReorderItems((previous) =>
+        moveRankingItem(previous, sourcePlayerName, targetPlayerName)
+      );
+    }
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    handleDragEnd();
   }
 
   async function saveReorder() {
@@ -4058,7 +4120,7 @@ export default function HitterRankingsPage() {
 
               {reorderMode && (
                 <div className="mt-3 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-xs font-bold text-blue-700">
-                  Drag a row onto its new position. The Elo column previews the new ratings before you save. Records, comparison counts and matchup history stay unchanged.
+                  Drag the handle or use the arrow buttons to set the order. The Elo column previews the new ratings before you save. Records, comparison counts and matchup history stay unchanged.
                 </div>
               )}
             </div>
@@ -4178,6 +4240,7 @@ export default function HitterRankingsPage() {
                                 key={
                                   item.playerName
                                 }
+                                data-ranking-player={item.playerName}
                                 draggable
                                 onDragStart={(
                                   event
@@ -4221,8 +4284,41 @@ export default function HitterRankingsPage() {
                                       : "bg-white"
                                 } cursor-grab active:cursor-grabbing`}
                               >
-                                <td className="px-3 py-3 text-center text-lg font-black text-slate-400">
-                                  ☰
+                                <td className="px-2 py-2 text-center">
+                                  <div className="flex items-center justify-center gap-1">
+                                    <button
+                                      type="button"
+                                      aria-label={`Drag ${item.playerName}`}
+                                      title="Drag to reorder"
+                                      onPointerDown={(event) => handlePointerDragStart(event, item.playerName)}
+                                      onPointerMove={handlePointerDragMove}
+                                      onPointerUp={handlePointerDragEnd}
+                                      onPointerCancel={handlePointerDragEnd}
+                                      className="touch-none select-none rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-lg font-black leading-none text-slate-500 shadow-sm cursor-grab active:cursor-grabbing"
+                                    >
+                                      ☰
+                                    </button>
+                                    <div className="flex flex-col gap-0.5">
+                                      <button
+                                        type="button"
+                                        aria-label={`Move ${item.playerName} up`}
+                                        disabled={index === 0}
+                                        onClick={() => moveReorderItemBy(item.playerName, -1)}
+                                        className="rounded border border-slate-200 bg-white px-1.5 text-xs font-black leading-4 text-slate-600 disabled:cursor-not-allowed disabled:opacity-25"
+                                      >
+                                        ↑
+                                      </button>
+                                      <button
+                                        type="button"
+                                        aria-label={`Move ${item.playerName} down`}
+                                        disabled={index === reorderItems.length - 1}
+                                        onClick={() => moveReorderItemBy(item.playerName, 1)}
+                                        className="rounded border border-slate-200 bg-white px-1.5 text-xs font-black leading-4 text-slate-600 disabled:cursor-not-allowed disabled:opacity-25"
+                                      >
+                                        ↓
+                                      </button>
+                                    </div>
+                                  </div>
                                 </td>
 
                                 <td className="px-4 py-3 font-black text-slate-500">
