@@ -11,13 +11,14 @@ type WeekSliderProps = {
 
 export default function WeekSlider({ id, weeks, startWeek, endWeek, onChange, label = "Profile timeline" }: WeekSliderProps) {
   if (!weeks.length) return null;
-  const points: Array<number | null> = [null, ...weeks];
-  const startIndex = startWeek === null ? 0 : Math.max(0, points.indexOf(startWeek));
-  const endIndex = Math.max(1, points.indexOf(endWeek));
-  const maximum = points.length - 1;
-  const validStartIndices = [0, ...weeks.flatMap((week, index) => weeks.includes(week - 1) ? [index + 1] : [])];
+  const maximumWeek = Math.max(...weeks);
+  const timelineWeeks = Array.from({ length: maximumWeek }, (_, index) => index + 1);
+  const startIndex = (startWeek ?? 1) - 1;
+  const endIndex = endWeek - 1;
+  const maximum = maximumWeek - 1;
+  const validStartWeeks = [1, ...weeks.filter((week) => weeks.includes(week - 1))];
   const rangeLabel = startWeek === null
-    ? `Season Start – Week ${endWeek}`
+    ? (endWeek === 1 ? "Week 1" : `Weeks 1–${endWeek}`)
     : startWeek === endWeek
       ? `Week ${startWeek}`
       : `Weeks ${startWeek}–${endWeek}`;
@@ -26,14 +27,18 @@ export default function WeekSlider({ id, weeks, startWeek, endWeek, onChange, la
   const thumbClass = "week-timeline-range absolute inset-0 h-6 w-full";
 
   function changeStart(requestedIndex: number) {
-    const candidates = validStartIndices.filter((index) => index <= endIndex);
-    const nextIndex = candidates.reduce((best, index) => Math.abs(index - requestedIndex) < Math.abs(best - requestedIndex) ? index : best, candidates[0]);
-    onChange(points[nextIndex] ?? null, endWeek);
+    const requestedWeek = requestedIndex + 1;
+    const candidates = validStartWeeks.filter((week) => week <= endWeek);
+    const nextWeek = candidates.reduce((best, week) => Math.abs(week - requestedWeek) < Math.abs(best - requestedWeek) ? week : best, candidates[0]);
+    onChange(nextWeek === 1 ? null : nextWeek, endWeek);
   }
 
   function changeEnd(requestedIndex: number) {
-    const nextIndex = Math.max(startIndex || 1, requestedIndex);
-    onChange(startWeek, weeks[nextIndex - 1] ?? endWeek);
+    const requestedWeek = requestedIndex + 1;
+    const minimumWeek = startWeek ?? 1;
+    const candidates = weeks.filter((week) => week >= minimumWeek);
+    const nextWeek = candidates.reduce((best, week) => Math.abs(week - requestedWeek) < Math.abs(best - requestedWeek) ? week : best, candidates[0]);
+    onChange(startWeek, nextWeek);
   }
 
   return (
@@ -45,14 +50,13 @@ export default function WeekSlider({ id, weeks, startWeek, endWeek, onChange, la
       <div className="relative mt-3 h-6">
         <div className="absolute left-0 right-0 top-2.5 h-1 rounded-full bg-slate-200" />
         <div className="absolute top-2.5 h-1 rounded-full bg-sky-500" style={{ left: `${startPercent}%`, right: `${100 - endPercent}%` }} />
-        <input id={`${id}-start`} aria-label={`${label} start`} type="range" min="0" max={String(maximum)} step="1" value={startIndex} onChange={(event) => changeStart(Number(event.target.value))} className={`${thumbClass} z-20`} aria-valuetext={startWeek === null ? "Season Start" : `Week ${startWeek}`} />
-        <input id={`${id}-end`} aria-label={`${label} end`} type="range" min="1" max={String(maximum)} step="1" value={endIndex} onChange={(event) => changeEnd(Number(event.target.value))} className={`${thumbClass} z-10`} aria-valuetext={`Week ${endWeek}`} />
+        <input id={`${id}-start`} aria-label={`${label} start`} type="range" min="0" max={String(maximum)} step="1" value={startIndex} onChange={(event) => changeStart(Number(event.target.value))} className={`${thumbClass} z-20`} aria-valuetext={`Week ${startWeek ?? 1}`} />
+        <input id={`${id}-end`} aria-label={`${label} end`} type="range" min="0" max={String(maximum)} step="1" value={endIndex} onChange={(event) => changeEnd(Number(event.target.value))} className={`${thumbClass} z-10`} aria-valuetext={`Week ${endWeek}`} />
       </div>
       <div className="mt-1 flex justify-between text-[10px] font-black text-slate-500">
-        <span>Start</span>
-        {weeks.map((week) => <span key={week}>W{week}</span>)}
+        {timelineWeeks.map((week) => <span key={week}>W{week}</span>)}
       </div>
-      <div className="mt-2 text-[11px] font-bold text-slate-500">Drag either end of the timeline to choose the exact window.</div>
+      <div className="mt-2 flex justify-between text-[11px] font-bold text-slate-500"><span>Start week</span><span>End week</span></div>
     </div>
   );
 }

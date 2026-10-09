@@ -121,7 +121,7 @@ export default function ReceiverProfilePage() {
   }, [latestData, profileEndWeek, profileStartWeek, weeklySnapshots]);
   const availableWeeks = useMemo(() => weeklySnapshots.map((snapshot) => snapshot.week), [weeklySnapshots]);
   const profileWindowLabel = profileStartWeek === null
-    ? `Through Week ${profileEndWeek}`
+    ? (profileEndWeek === 1 ? "Week 1" : `Weeks 1–${profileEndWeek}`)
     : profileStartWeek === profileEndWeek
       ? `Week ${profileStartWeek}`
       : `Weeks ${profileStartWeek}–${profileEndWeek}`;
