@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "source": "https://fpds.fantasypoints.com/nfl/tools/player/rushing-basic",
-  "copiedAt": "2026-10-13T14:38:11.117Z",
+  "copiedAt": "2026-10-13T19:07:05.359Z",
   "updateMode": "browser import",
   "seasonType": "Regular",
   "scoring": "PPR",
@@ -263,7 +263,7 @@
       "Opportunity Score": "84"
     },
     {
-      "Rank": "77",
+      "Rank": "78",
       "Name": "Austin Ekeler",
       "Team": "WAS",
       "POS": "RB",
@@ -569,7 +569,7 @@
       "Opportunity Score": "57"
     },
     {
-      "Rank": "33",
+      "Rank": "34",
       "Name": "Breece Hall",
       "Team": "NYJ",
       "POS": "RB",
@@ -1691,7 +1691,7 @@
       "Opportunity Score": "65"
     },
     {
-      "Rank": "85",
+      "Rank": "87",
       "Name": "Emari Demercado",
       "Team": "DAL",
       "POS": "RB",
@@ -1742,7 +1742,7 @@
       "Opportunity Score": "4"
     },
     {
-      "Rank": "63",
+      "Rank": "62",
       "Name": "Emmett Johnson",
       "Team": "KC",
       "POS": "RB",
@@ -1793,7 +1793,7 @@
       "Opportunity Score": "19"
     },
     {
-      "Rank": "100",
+      "Rank": "101",
       "Name": "Frank Gore",
       "Team": "BUF",
       "POS": "RB",
@@ -1895,7 +1895,7 @@
       "Opportunity Score": "47"
     },
     {
-      "Rank": "94",
+      "Rank": "95",
       "Name": "Isaiah Davis",
       "Team": "NYJ",
       "POS": "RB",
@@ -2354,7 +2354,7 @@
       "Opportunity Score": "62"
     },
     {
-      "Rank": "78",
+      "Rank": "77",
       "Name": "Jaylen Wright",
       "Team": "MIA",
       "POS": "RB",
@@ -2609,7 +2609,7 @@
       "Opportunity Score": "31"
     },
     {
-      "Rank": "87",
+      "Rank": "85",
       "Name": "Jordan James",
       "Team": "SF",
       "POS": "RB",
@@ -2864,7 +2864,7 @@
       "Opportunity Score": "26"
     },
     {
-      "Rank": "101",
+      "Rank": "99",
       "Name": "Kalel Mullings",
       "Team": "TEN",
       "POS": "RB",
@@ -3884,7 +3884,7 @@
       "Opportunity Score": "24"
     },
     {
-      "Rank": "95",
+      "Rank": "94",
       "Name": "Ray Davis",
       "Team": "BUF",
       "POS": "RB",
@@ -4037,7 +4037,7 @@
       "Opportunity Score": "33"
     },
     {
-      "Rank": "62",
+      "Rank": "63",
       "Name": "RJ Harvey",
       "Team": "DEN",
       "POS": "RB",
@@ -4649,7 +4649,7 @@
       "Opportunity Score": "15"
     },
     {
-      "Rank": "34",
+      "Rank": "33",
       "Name": "TreVeyon Henderson",
       "Team": "NE",
       "POS": "RB",
@@ -4700,7 +4700,7 @@
       "Opportunity Score": "33"
     },
     {
-      "Rank": "102",
+      "Rank": "100",
       "Name": "Ty Johnson",
       "Team": "BUF",
       "POS": "RB",
