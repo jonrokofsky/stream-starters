@@ -1,7 +1,15 @@
 import { calculateReceiverScores } from "../lib/data/receiverScores.ts";
 
 const aliases = { ARZ: "ARI", BLT: "BAL", CLV: "CLE", HST: "HOU", LA: "LAR" };
-const normalizeName = (value) => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const receiverNameAliases = {
+  chigokonkwo: "chigoziemokonkwo",
+  mitchelltinsley: "mitchtinsley",
+  jsturdivant: "jmichaelsturdivant",
+};
+const normalizeName = (value) => {
+  const normalized = String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  return receiverNameAliases[normalized] ?? normalized;
+};
 const numeric = (value) => {
   const parsed = Number(String(value ?? "").replace(/[%,$]/g, ""));
   return Number.isFinite(parsed) ? parsed : 0;

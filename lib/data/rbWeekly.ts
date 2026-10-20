@@ -16,11 +16,7 @@ const value = (row: RbWeeklyRow | undefined, key: string) => {
   return Number.isFinite(parsed) ? parsed : null;
 };
 
-const difference = (latest: RbWeeklyRow, baseline: RbWeeklyRow, key: string) => {
-  const current = value(latest, key);
-  const prior = value(baseline, key);
-  return current === null || prior === null ? null : Math.max(0, current - prior);
-};
+const formatCount = (count: number) => Number.isInteger(count) ? String(count) : count.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
 
 function rateFromCount(latest: RbWeeklyRow, baseline: RbWeeklyRow, countKey: string, rateKey: string) {
   const latestCount = value(latest, countKey);
@@ -37,16 +33,32 @@ function rateFromCount(latest: RbWeeklyRow, baseline: RbWeeklyRow, countKey: str
 
 export function buildRbPeriodSnapshot(latest: RbWeeklySnapshot, baseline: RbWeeklySnapshot, startWeek: number): RbWeeklySnapshot {
   const baselineByName = new Map(baseline.rows.map((row) => [row.Name, row]));
+  const windowGames = Math.max(1, latest.week - startWeek + 1);
   const rows = latest.rows.map((latestRow) => {
-    const baselineRow = baselineByName.get(latestRow.Name);
-    if (!baselineRow) return null;
+    const existingBaseline = baselineByName.get(latestRow.Name);
+    const latestGames = value(latestRow, "G") ?? 0;
+    if (!existingBaseline && latestGames > windowGames) return null;
+    const baselineRow = existingBaseline ?? ({} as RbWeeklyRow);
+    const baselineGames = value(baselineRow, "G") ?? 0;
+    const rawGames = Math.max(0, latestGames - baselineGames);
+    if (!rawGames) return null;
+    const games = Math.min(rawGames, windowGames);
+    const correctionScale = games / rawGames;
     const row: RbWeeklyRow = { ...latestRow };
     for (const key of countFields) {
-      const periodValue = difference(latestRow, baselineRow, key);
-      row[key] = periodValue === null ? "" : String(periodValue);
+      if (key === "G") {
+        row[key] = String(games);
+        continue;
+      }
+      const current = value(latestRow, key);
+      const previous = value(baselineRow, key);
+      let periodValue = current === null ? null : previous === null
+        ? (existingBaseline ? null : current)
+        : Math.max(0, current - previous);
+      if (periodValue !== null && correctionScale < 1) periodValue *= correctionScale;
+      row[key] = periodValue === null ? "" : formatCount(periodValue);
     }
 
-    const games = value(row, "G") ?? 0;
     const attempts = value(row, "ATT") ?? 0;
     const rushYards = value(row, "RuYds") ?? 0;
     const targets = value(row, "Targets") ?? 0;
@@ -69,15 +81,21 @@ export function buildRbPeriodSnapshot(latest: RbWeeklySnapshot, baseline: RbWeek
       const baselineRate = value(baselineRow, key);
       const latestAttempts = value(latestRow, "ATT");
       const baselineAttempts = value(baselineRow, "ATT");
-      if (!attempts || latestRate === null || baselineRate === null || latestAttempts === null || baselineAttempts === null) {
+      if (!attempts || latestRate === null || latestAttempts === null || (!existingBaseline && latestGames > windowGames)) {
         row[key] = "-";
         continue;
       }
-      row[key] = `${Math.max(0, latestRate / 100 * latestAttempts - baselineRate / 100 * baselineAttempts) / attempts * 100}%`;
+      if (!existingBaseline) {
+        row[key] = `${latestRate}%`;
+      } else if (baselineRate === null || baselineAttempts === null) {
+        row[key] = "-";
+      } else {
+        row[key] = `${Math.max(0, latestRate / 100 * latestAttempts - baselineRate / 100 * baselineAttempts) * correctionScale / attempts * 100}%`;
+      }
     }
 
     for (const [countKey, rateKey] of [["Targets", "Target Share"], ["Rec Yards", "Team Rec Yards %"], ["Ins. 5 Carries", "Inside 5 Carry%"], ["Ins. 10 Carries", "Inside 10 Carry%"]] as const) {
-      const rate = rateFromCount(latestRow, baselineRow, countKey, rateKey);
+      const rate = existingBaseline ? rateFromCount(latestRow, baselineRow, countKey, rateKey) : value(latestRow, rateKey);
       row[rateKey] = rate === null ? "" : `${rate}%`;
     }
 
@@ -85,8 +103,10 @@ export function buildRbPeriodSnapshot(latest: RbWeeklySnapshot, baseline: RbWeek
     const baselineYac = value(baselineRow, "YAC/Att");
     const latestAttempts = value(latestRow, "ATT");
     const baselineAttempts = value(baselineRow, "ATT");
-    row["YAC/Att"] = attempts && latestYac !== null && baselineYac !== null && latestAttempts !== null && baselineAttempts !== null
-      ? String((latestYac * latestAttempts - baselineYac * baselineAttempts) / attempts)
+    row["YAC/Att"] = attempts && latestYac !== null && latestAttempts !== null
+      ? existingBaseline && baselineYac !== null && baselineAttempts !== null
+        ? String((latestYac * latestAttempts - baselineYac * baselineAttempts) * correctionScale / attempts)
+        : !existingBaseline ? String(latestYac) : ""
       : "";
     return row;
   }).filter((row): row is RbWeeklyRow => row !== null && (value(row, "G") ?? 0) > 0);

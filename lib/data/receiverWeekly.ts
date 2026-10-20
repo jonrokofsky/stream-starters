@@ -20,11 +20,7 @@ const value = (row: ReceiverWeeklyRow | undefined, key: string) => {
   return Number.isFinite(parsed) ? parsed : null;
 };
 
-const difference = (latest: ReceiverWeeklyRow, baseline: ReceiverWeeklyRow | undefined, key: string) => {
-  const current = value(latest, key);
-  const prior = value(baseline, key);
-  return current === null || prior === null ? null : Math.max(0, current - prior);
-};
+const formatCount = (count: number) => Number.isInteger(count) ? String(count) : count.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
 
 function rateFromCount(latest: ReceiverWeeklyRow, baseline: ReceiverWeeklyRow | undefined, countKey: string, rateKey: string) {
   const latestCount = value(latest, countKey);
@@ -44,21 +40,73 @@ export function buildReceiverPeriodSnapshot(
   baseline: ReceiverWeeklySnapshot,
 ): ReceiverWeeklySnapshot {
   const baselineRows = new Map(baseline.rows.map((row) => [`${row.POS}:${row.Name}`, row]));
+  const windowGames = Math.max(1, end.week - baseline.week);
+  const routesPerTarget = new Map<string, number>();
+  for (const position of ["WR", "TE"]) {
+    const ratios = end.rows
+      .filter((row) => row.POS === position)
+      .map((row) => {
+        const routes = value(row, "Routes Run");
+        const targets = value(row, "Targets");
+        return routes !== null && targets && routes >= targets ? routes / targets : null;
+      })
+      .filter((ratio): ratio is number => ratio !== null)
+      .sort((a, b) => a - b);
+    if (ratios.length) routesPerTarget.set(position, ratios[Math.floor(ratios.length / 2)]);
+  }
   const rows = end.rows.map((latest) => {
-    const prior = baselineRows.get(`${latest.POS}:${latest.Name}`);
-    if (!prior) return null;
+    const existingPrior = baselineRows.get(`${latest.POS}:${latest.Name}`);
+    const latestGames = value(latest, "G") ?? 0;
+    if (!existingPrior && latestGames > windowGames) return null;
+    const prior = existingPrior ?? ({} as ReceiverWeeklyRow);
+    const priorGames = value(prior, "G") ?? 0;
+    const rawGames = Math.max(0, latestGames - priorGames);
+    if (!rawGames) return null;
+    const games = Math.min(rawGames, windowGames);
+    const correctionScale = games / rawGames;
     const row: ReceiverWeeklyRow = { ...latest };
     for (const key of countFields) {
-      const periodValue = difference(latest, prior, key);
-      row[key] = periodValue === null ? "" : String(periodValue);
+      if (key === "G") {
+        row[key] = String(games);
+        continue;
+      }
+      const current = value(latest, key);
+      const previous = value(prior, key);
+      let periodValue = current === null ? null : previous === null
+        ? (existingPrior ? null : current)
+        : Math.max(0, current - previous);
+      if (periodValue !== null && correctionScale < 1) periodValue *= correctionScale;
+      row[key] = periodValue === null ? "" : formatCount(periodValue);
     }
 
-    const games = value(row, "G") ?? 0;
     const targets = value(row, "Targets") ?? 0;
     const receptions = value(row, "Rec") ?? 0;
     const yards = value(row, "Rec Yards") ?? 0;
-    const routes = value(row, "Routes Run");
-    const yac = value(row, "YAC");
+    let routes = value(row, "Routes Run");
+    if (routes === null) {
+      const cumulativeRoutes = value(latest, "Routes Run");
+      if (cumulativeRoutes !== null && latestGames > 0) {
+        routes = cumulativeRoutes / latestGames * games;
+        row["Routes Run"] = formatCount(routes);
+        row["Routes Estimated"] = "season pace";
+      } else if (targets > 0) {
+        const positionRatio = routesPerTarget.get(latest.POS);
+        if (positionRatio) {
+          routes = targets * positionRatio;
+          row["Routes Run"] = formatCount(routes);
+          row["Routes Estimated"] = "position target pace";
+        }
+      }
+    }
+    let yac = value(row, "YAC");
+    if (yac === null) {
+      const cumulativeYac = value(latest, "YAC");
+      const cumulativeReceptions = value(latest, "Rec") ?? value(latest, "Receptions");
+      if (cumulativeYac !== null && cumulativeReceptions && receptions) {
+        yac = cumulativeYac / cumulativeReceptions * receptions;
+        row.YAC = formatCount(yac);
+      }
+    }
     const fantasyPoints = value(row, "FP") ?? 0;
 
     row["Targets/G"] = games ? (targets / games).toFixed(2) : "";
@@ -74,7 +122,7 @@ export function buildReceiverPeriodSnapshot(
     row.YPRR = routes ? (yards / routes).toFixed(2) : "";
     row["YAC/Rec"] = receptions && yac !== null ? (yac / receptions).toFixed(2) : "";
     for (const [countKey, rateKey] of [["Targets", "Target Share"], ["Rec Yards", "Team Rec Yards %"], ["Rec TD", "Team TD %"]] as const) {
-      const rate = rateFromCount(latest, prior, countKey, rateKey);
+      const rate = existingPrior ? rateFromCount(latest, prior, countKey, rateKey) : value(latest, rateKey);
       row[rateKey] = rate === null ? "" : `${rate.toFixed(2)}%`;
     }
     return row;
