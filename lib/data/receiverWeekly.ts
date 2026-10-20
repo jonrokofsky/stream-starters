@@ -15,18 +15,23 @@ const countFields = [
 ] as const;
 
 const value = (row: ReceiverWeeklyRow | undefined, key: string) => {
+  if (!row || row[key] == null || row[key] === "" || row[key] === "-") return null;
   const parsed = Number(String(row?.[key] ?? "").replace(/[%,$]/g, ""));
-  return Number.isFinite(parsed) ? parsed : 0;
+  return Number.isFinite(parsed) ? parsed : null;
 };
 
-const difference = (latest: ReceiverWeeklyRow, baseline: ReceiverWeeklyRow | undefined, key: string) =>
-  Math.max(0, value(latest, key) - value(baseline, key));
+const difference = (latest: ReceiverWeeklyRow, baseline: ReceiverWeeklyRow | undefined, key: string) => {
+  const current = value(latest, key);
+  const prior = value(baseline, key);
+  return current === null || prior === null ? null : Math.max(0, current - prior);
+};
 
 function rateFromCount(latest: ReceiverWeeklyRow, baseline: ReceiverWeeklyRow | undefined, countKey: string, rateKey: string) {
   const latestCount = value(latest, countKey);
   const baselineCount = value(baseline, countKey);
   const latestRate = value(latest, rateKey);
   const baselineRate = value(baseline, rateKey);
+  if (latestCount === null || baselineCount === null || latestRate === null || baselineRate === null) return null;
   const latestPool = latestRate > 0 ? latestCount / (latestRate / 100) : 0;
   const baselinePool = baselineRate > 0 ? baselineCount / (baselineRate / 100) : 0;
   const periodPool = latestPool - baselinePool;
@@ -41,21 +46,25 @@ export function buildReceiverPeriodSnapshot(
   const baselineRows = new Map(baseline.rows.map((row) => [`${row.POS}:${row.Name}`, row]));
   const rows = end.rows.map((latest) => {
     const prior = baselineRows.get(`${latest.POS}:${latest.Name}`);
+    if (!prior) return null;
     const row: ReceiverWeeklyRow = { ...latest };
-    for (const key of countFields) row[key] = String(difference(latest, prior, key));
+    for (const key of countFields) {
+      const periodValue = difference(latest, prior, key);
+      row[key] = periodValue === null ? "" : String(periodValue);
+    }
 
-    const games = value(row, "G");
-    const targets = value(row, "Targets");
-    const receptions = value(row, "Rec");
-    const yards = value(row, "Rec Yards");
+    const games = value(row, "G") ?? 0;
+    const targets = value(row, "Targets") ?? 0;
+    const receptions = value(row, "Rec") ?? 0;
+    const yards = value(row, "Rec Yards") ?? 0;
     const routes = value(row, "Routes Run");
     const yac = value(row, "YAC");
-    const fantasyPoints = value(row, "FP");
+    const fantasyPoints = value(row, "FP") ?? 0;
 
     row["Targets/G"] = games ? (targets / games).toFixed(2) : "";
-    row["Routes/G"] = games && routes ? (routes / games).toFixed(2) : "";
-    row["i10/G"] = games ? (value(row, "i10") / games).toFixed(2) : "";
-    row["i20/G"] = games ? (value(row, "i20 Targets") / games).toFixed(2) : "";
+    row["Routes/G"] = games && routes !== null ? (routes / games).toFixed(2) : "";
+    row["i10/G"] = games ? ((value(row, "i10") ?? 0) / games).toFixed(2) : "";
+    row["i20/G"] = games ? ((value(row, "i20 Targets") ?? 0) / games).toFixed(2) : "";
     row["RecYds/G"] = games ? (yards / games).toFixed(1) : "";
     row.YPR = receptions ? (yards / receptions).toFixed(2) : "";
     row.YPT = targets ? (yards / targets).toFixed(2) : "";
@@ -63,12 +72,13 @@ export function buildReceiverPeriodSnapshot(
     row["FP/G"] = games ? (fantasyPoints / games).toFixed(1) : "";
     row["Targets/Route Run"] = routes ? (targets / routes).toFixed(2) : "";
     row.YPRR = routes ? (yards / routes).toFixed(2) : "";
-    row["YAC/Rec"] = receptions ? (yac / receptions).toFixed(2) : "";
-    row["Target Share"] = `${rateFromCount(latest, prior, "Targets", "Target Share").toFixed(2)}%`;
-    row["Team Rec Yards %"] = `${rateFromCount(latest, prior, "Rec Yards", "Team Rec Yards %").toFixed(2)}%`;
-    row["Team TD %"] = `${rateFromCount(latest, prior, "Rec TD", "Team TD %").toFixed(2)}%`;
+    row["YAC/Rec"] = receptions && yac !== null ? (yac / receptions).toFixed(2) : "";
+    for (const [countKey, rateKey] of [["Targets", "Target Share"], ["Rec Yards", "Team Rec Yards %"], ["Rec TD", "Team TD %"]] as const) {
+      const rate = rateFromCount(latest, prior, countKey, rateKey);
+      row[rateKey] = rate === null ? "" : `${rate.toFixed(2)}%`;
+    }
     return row;
-  }).filter((row) => value(row, "G") > 0);
+  }).filter((row): row is ReceiverWeeklyRow => row !== null && (value(row, "G") ?? 0) > 0);
 
   for (const position of ["WR", "TE"]) {
     const group = rows.filter((row) => row.POS === position);

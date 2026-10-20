@@ -4,6 +4,7 @@ import Link from "next/link";
 import { toPng } from "html-to-image";
 import { calculateRbScores } from "../../../lib/data/rbScores";
 import { mergeRbYac, type YacSnapshot } from "../../../lib/data/rbYac";
+import { buildRbPeriodSnapshot } from "../../../lib/data/rbWeekly";
 import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import WeekSlider from "../components/WeekSlider";
 
@@ -604,94 +605,6 @@ function inferSnapshotWeek(rows: DataRow[]) {
   return Math.max(1, ...rows.map((row) => toNumber(row["G"]) ?? 0));
 }
 
-const PERIOD_COUNT_FIELDS = [
-  "G", "ATT", "RuYds", "RuTD", "Rush FUM", "Targets", "Rec", "Rec Yards",
-  "Rec. TD", "Rec FUM", "Weighted Opp.", "FP", "Total TD", "Ins. 5 Carries",
-  "Ins. 10 Carries", "Ins. 10 Rec.",
-] as const;
-
-const GAIN_RATE_FIELDS = ["1+ RuYd%", "3+ RuYd%", "5+ RuYd%", "10+ RuYd%", "15+ RuYd%", "20+ RuYd%", "30+ RuYd%"] as const;
-
-function periodNumber(latest: DataRow, baseline: DataRow | undefined, key: string) {
-  return Math.max(0, (toNumber(latest[key]) ?? 0) - (toNumber(baseline?.[key]) ?? 0));
-}
-
-function periodRateFromCount(
-  latest: DataRow,
-  baseline: DataRow | undefined,
-  countKey: string,
-  rateKey: string,
-) {
-  const latestCount = toNumber(latest[countKey]) ?? 0;
-  const baselineCount = toNumber(baseline?.[countKey]) ?? 0;
-  const latestRate = toNumber(latest[rateKey]) ?? 0;
-  const baselineRate = toNumber(baseline?.[rateKey]) ?? 0;
-  const latestPool = latestRate > 0 ? latestCount / (latestRate / 100) : 0;
-  const baselinePool = baselineRate > 0 ? baselineCount / (baselineRate / 100) : 0;
-  const periodPool = latestPool - baselinePool;
-  const periodCount = latestCount - baselineCount;
-  return periodPool > 0 && periodCount >= 0 ? periodCount / periodPool * 100 : 0;
-}
-
-function buildSinceSnapshot(latest: WeeklySnapshot, baseline: WeeklySnapshot, startWeek: number): WeeklySnapshot {
-  const baselineByName = new Map(baseline.rows.map((row) => [row.Name, row]));
-  const rows = latest.rows.map((latestRow) => {
-    const baselineRow = baselineByName.get(latestRow.Name);
-    const row: DataRow = { ...latestRow };
-    for (const key of PERIOD_COUNT_FIELDS) row[key] = String(periodNumber(latestRow, baselineRow, key));
-
-    const games = toNumber(row.G) ?? 0;
-    const attempts = toNumber(row.ATT) ?? 0;
-    const rushYards = toNumber(row.RuYds) ?? 0;
-    const targets = toNumber(row.Targets) ?? 0;
-    const receptions = toNumber(row.Rec) ?? 0;
-    const receivingYards = toNumber(row["Rec Yards"]) ?? 0;
-    const fantasyPoints = toNumber(row.FP) ?? 0;
-    const weightedOpportunity = toNumber(row["Weighted Opp."]) ?? 0;
-
-    row["RuYds/G"] = games ? String(rushYards / games) : "-";
-    row["RuYds/Rush"] = attempts ? String(rushYards / attempts) : "-";
-    row["RecYds/G"] = games ? String(receivingYards / games) : "-";
-    row["RecYds/Rec"] = receptions ? String(receivingYards / receptions) : "-";
-    row["RecYds/Tgt"] = targets ? String(receivingYards / targets) : "-";
-    row["Catch%"] = targets ? `${receptions / targets * 100}%` : "-";
-    row["Weighted Opp./G"] = games ? String(weightedOpportunity / games) : "-";
-    row["FP/G"] = games ? String(fantasyPoints / games) : "-";
-
-    for (const key of GAIN_RATE_FIELDS) {
-      const latestEvents = (toNumber(latestRow[key]) ?? 0) / 100 * (toNumber(latestRow.ATT) ?? 0);
-      const baselineEvents = (toNumber(baselineRow?.[key]) ?? 0) / 100 * (toNumber(baselineRow?.ATT) ?? 0);
-      row[key] = attempts ? `${Math.max(0, latestEvents - baselineEvents) / attempts * 100}%` : "-";
-    }
-
-    row["Target Share"] = `${periodRateFromCount(latestRow, baselineRow, "Targets", "Target Share")}%`;
-    row["Team Rec Yards %"] = `${periodRateFromCount(latestRow, baselineRow, "Rec Yards", "Team Rec Yards %")}%`;
-    row["Inside 5 Carry%"] = `${periodRateFromCount(latestRow, baselineRow, "Ins. 5 Carries", "Inside 5 Carry%")}%`;
-    row["Inside 10 Carry%"] = `${periodRateFromCount(latestRow, baselineRow, "Ins. 10 Carries", "Inside 10 Carry%")}%`;
-
-    const latestYac = toNumber(latestRow["YAC/Att"]);
-    const baselineYac = toNumber(baselineRow?.["YAC/Att"]);
-    const latestAttempts = toNumber(latestRow.ATT) ?? 0;
-    const baselineAttempts = toNumber(baselineRow?.ATT) ?? 0;
-    const periodYac = latestYac === null
-      ? null
-      : (latestYac * latestAttempts - (baselineYac ?? 0) * baselineAttempts);
-    row["YAC/Att"] = attempts && periodYac !== null ? String(periodYac / attempts) : "";
-    return row;
-  }).filter((row) => (toNumber(row.G) ?? 0) > 0);
-
-  const scores = calculateRbScores({ season: 2026, ageColumn: "unused", rows });
-  const scoredRows = rows.map((row, index) => ({
-    ...row,
-    "Rush Gain Profile": scores[index].rushGain === null ? "" : String(scores[index].rushGain),
-    "Rush Score": scores[index].rush === null ? "" : String(scores[index].rush),
-    "Rec Score": scores[index].receiving === null ? "" : String(scores[index].receiving),
-    "Opportunity Score": scores[index].opportunity === null ? "" : String(scores[index].opportunity),
-  }));
-
-  return { week: latest.week, copiedAt: latest.copiedAt, rows: scoredRows.map((row) => ({ ...row, Period: `Since Week ${startWeek}` })) };
-}
-
 function ScoreCard({
   title,
   score,
@@ -1057,7 +970,7 @@ export default function RBPage() {
     const end = weeklySnapshots.find((snapshot) => snapshot.week === profileEndWeek) ?? weeklySnapshots.at(-1);
     if (!end || profileStartWeek === null) return end;
     const baseline = weeklySnapshots.find((snapshot) => snapshot.week === profileStartWeek - 1);
-    return baseline ? buildSinceSnapshot(end, baseline, profileStartWeek) : end;
+    return baseline ? buildRbPeriodSnapshot(end, baseline, profileStartWeek) : end;
   }, [profileEndWeek, profileStartWeek, weeklySnapshots]);
 
   const profileWindowLabel = profileStartWeek === null
@@ -1127,7 +1040,7 @@ export default function RBPage() {
     }
     const latest = weeklySnapshots.at(-1);
     const baseline = weeklySnapshots.find((item) => item.week === sinceWeek - 1);
-    return latest && baseline ? buildSinceSnapshot(latest, baseline, sinceWeek) : latest;
+    return latest && baseline ? buildRbPeriodSnapshot(latest, baseline, sinceWeek) : latest;
   }, [selectedWeek, sinceWeek, weeklySnapshots, weeklyTableMode]);
 
   const sortedTablePlayers = useMemo(() => {

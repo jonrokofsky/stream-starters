@@ -46,3 +46,21 @@ test("receiver period snapshots subtract cumulative counts and rebuild rates", (
     { G: "1", Targets: "4", Rec: "4", "Rec Yards": "60", "Targets/G": "4.00", "Routes/G": "20.00", YPR: "15.00", YPT: "15.00", "FP/G": "18.0", "Targets/Route Run": "0.20", YPRR: "3.00", "YAC/Rec": "7.00" },
   );
 });
+
+test("receiver period snapshots do not treat missing historical routes as current-period routes", () => {
+  const player = (name, games, routes) => ({
+    Name: name, POS: "WR", Team: "BUF", G: String(games), Targets: "10", Rec: "8", "Rec Yards": "100",
+    "Rec TD": "1", i10: "1", "i20 Targets": "1", FUM: "0", FP: "30", "Routes Run": routes,
+    Receptions: "8", "Rec. Yards": "100", Touchdowns: "1", YAC: routes ? "40" : "", "Total EPA": "0",
+    "Impact Plays": "0", "Target Share": "20%", "Team Rec Yards %": "20%", "Team TD %": "20%",
+  });
+  const period = buildReceiverPeriodSnapshot(
+    { week: 6, copiedAt: "week-6", population: { WR: 2, TE: 0 }, rows: [player("Existing", 6, "180"), player("New", 6, "150")] },
+    { week: 3, copiedAt: "week-3", population: { WR: 1, TE: 0 }, rows: [player("Existing", 3, "")] },
+  );
+  assert.equal(period.rows.length, 1);
+  assert.equal(period.rows[0].Name, "Existing");
+  assert.equal(period.rows[0]["Routes Run"], "");
+  assert.equal(period.rows[0]["Routes/G"], "");
+  assert.equal(period.rows[0].YPRR, "");
+});
