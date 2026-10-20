@@ -5,7 +5,7 @@
     "https://sumersports.com/players/wide-receiver/",
     "https://sumersports.com/players/tight-end/"
   ],
-  "copiedAt": "2026-10-20T12:25:22.779Z",
+  "copiedAt": "2026-10-20T16:24:25.326Z",
   "updateMode": "browser import",
   "seasonType": "Regular",
   "scoring": "PPR",
@@ -224,15 +224,15 @@
       "Name": "Ben Sinnott",
       "Team": "WAS",
       "POS": "TE",
-      "G": "5",
+      "G": "6",
       "Targets": "2",
       "Target Share": "1.07%",
       "Rec": "1",
       "Rec Yards": "6",
-      "Team Rec Yards %": "0.6%",
+      "Team Rec Yards %": "0.5%",
       "YPR": "6.00",
       "YPT": "3.00",
-      "RecYds/G": "1.2",
+      "RecYds/G": "1.0",
       "Catch %": "50.00%",
       "Rec TD": "0",
       "Team TD %": "0.0%",
@@ -252,13 +252,13 @@
       "YPRR": "0.10",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "0.40",
-      "Routes/G": "12.20",
+      "Targets/G": "0.33",
+      "Routes/G": "10.17",
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "2.00",
       "Efficiency Grade": "8",
-      "Opportunity Grade": "11"
+      "Opportunity Grade": "10"
     },
     {
       "Rank": "253",
@@ -1029,7 +1029,7 @@
       "Opportunity Grade": "69"
     },
     {
-      "Rank": "209",
+      "Rank": "210",
       "Name": "Daniel Bellinger",
       "Team": "TEN",
       "POS": "TE",
@@ -1521,7 +1521,7 @@
       "Opportunity Grade": "24"
     },
     {
-      "Rank": "210",
+      "Rank": "211",
       "Name": "Erick All",
       "Team": "CIN",
       "POS": "TE",
@@ -2699,7 +2699,7 @@
       "Opportunity Grade": "19"
     },
     {
-      "Rank": "207",
+      "Rank": "208",
       "Name": "Luke Schoonmaker",
       "Team": "DAL",
       "POS": "TE",
@@ -4458,7 +4458,7 @@
       "i10/G": "0.50",
       "i20/G": "0.50",
       "YAC/Rec": "0.67",
-      "Efficiency Grade": "16",
+      "Efficiency Grade": "15",
       "Opportunity Grade": "33"
     },
     {
@@ -4708,7 +4708,7 @@
       "Opportunity Grade": "32"
     },
     {
-      "Rank": "211",
+      "Rank": "207",
       "Name": "Bo Melton",
       "Team": "GB",
       "POS": "WR",
@@ -4754,19 +4754,19 @@
       "Team": "SF",
       "POS": "WR",
       "G": "3",
-      "Targets": "5",
+      "Targets": "4",
       "Target Share": "5.88%",
       "Rec": "2",
       "Rec Yards": "20",
       "Team Rec Yards %": "3.0%",
       "YPR": "10.00",
-      "YPT": "4.00",
+      "YPT": "5.00",
       "RecYds/G": "6.7",
       "Catch %": "40.00%",
       "Rec TD": "1",
       "Team TD %": "20.0%",
       "i10": "1",
-      "i20 Targets": "2",
+      "i20 Targets": "1",
       "FUM": "0",
       "FP/G": "3.3",
       "FP": "10.0",
@@ -4781,13 +4781,13 @@
       "YPRR": "0.57",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "1.67",
+      "Targets/G": "1.33",
       "Routes/G": "11.67",
       "i10/G": "0.33",
-      "i20/G": "0.67",
+      "i20/G": "0.33",
       "YAC/Rec": "3.50",
-      "Efficiency Grade": "23",
-      "Opportunity Grade": "39"
+      "Efficiency Grade": "25",
+      "Opportunity Grade": "36"
     },
     {
       "Rank": "284",
@@ -4868,7 +4868,7 @@
       "i10/G": "0.00",
       "i20/G": "0.00",
       "YAC/Rec": "0.00",
-      "Efficiency Grade": "24",
+      "Efficiency Grade": "23",
       "Opportunity Grade": "20"
     },
     {
@@ -7116,7 +7116,7 @@
       "Opportunity Grade": "85"
     },
     {
-      "Rank": "290",
+      "Rank": "291",
       "Name": "Ja'Seem Reed",
       "Team": "CAR",
       "POS": "WR",
@@ -7444,7 +7444,7 @@
       "Opportunity Grade": "88"
     },
     {
-      "Rank": "291",
+      "Rank": "290",
       "Name": "Jalen McMillan",
       "Team": "TB",
       "POS": "WR",
@@ -7522,7 +7522,7 @@
       "i10/G": "0.00",
       "i20/G": "0.20",
       "YAC/Rec": "2.33",
-      "Efficiency Grade": "23",
+      "Efficiency Grade": "22",
       "Opportunity Grade": "28"
     },
     {
@@ -7810,7 +7810,7 @@
       "i20/G": "0.50",
       "YAC/Rec": "3.00",
       "Efficiency Grade": "22",
-      "Opportunity Grade": "46"
+      "Opportunity Grade": "47"
     },
     {
       "Rank": "61",
@@ -8100,7 +8100,7 @@
       "Opportunity Grade": "47"
     },
     {
-      "Rank": "208",
+      "Rank": "209",
       "Name": "Jonathan Mingo",
       "Team": "DAL",
       "POS": "WR",
@@ -9491,7 +9491,7 @@
       "i20/G": "0.50",
       "YAC/Rec": "3.50",
       "Efficiency Grade": "14",
-      "Opportunity Grade": "23"
+      "Opportunity Grade": "24"
     },
     {
       "Rank": "7",
@@ -9619,7 +9619,7 @@
     {
       "Rank": "122",
       "Name": "Marvin Harrison",
-      "Team": "ARZ, HST",
+      "Team": "HST, ARZ",
       "POS": "WR",
       "G": "5",
       "Targets": "15",
@@ -11374,13 +11374,13 @@
       "Team": "WAS",
       "POS": "WR",
       "G": "5",
-      "Targets": "16",
+      "Targets": "15",
       "Target Share": "10.76%",
       "Rec": "9",
       "Rec Yards": "152",
       "Team Rec Yards %": "13.6%",
       "YPR": "16.89",
-      "YPT": "9.50",
+      "YPT": "10.13",
       "RecYds/G": "30.4",
       "Catch %": "52.94%",
       "Rec TD": "2",
@@ -11401,12 +11401,12 @@
       "YPRR": "1.41",
       "Impact Plays": "",
       "Cont. Catch %": "",
-      "Targets/G": "3.20",
+      "Targets/G": "3.00",
       "Routes/G": "21.60",
       "i10/G": "0.20",
       "i20/G": "0.60",
       "YAC/Rec": "3.22",
-      "Efficiency Grade": "61",
+      "Efficiency Grade": "62",
       "Opportunity Grade": "57"
     },
     {
