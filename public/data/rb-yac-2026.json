@@ -1,38 +1,38 @@
 {
   "season": 2026,
   "source": "https://www.pro-football-reference.com/years/2026/rushing_advanced.htm",
-  "capturedAt": "2026-10-13T14:33:53.176Z",
-  "coverageNote": "User-provided PFR advanced rushing data through Week 5; 100 running backs shown.",
+  "capturedAt": "2026-10-20T12:15:26.955Z",
+  "coverageNote": "User-provided PFR advanced rushing data through Week 6; 106 running backs shown.",
   "rows": [
     {
       "Name": "Derrick Henry",
       "Team": "BAL",
-      "YAC/Att": "2.3"
-    },
-    {
-      "Name": "Jahmyr Gibbs",
-      "Team": "DET",
-      "YAC/Att": "1"
-    },
-    {
-      "Name": "Bijan Robinson",
-      "Team": "ATL",
-      "YAC/Att": "2.7"
+      "YAC/Att": "2.1"
     },
     {
       "Name": "Jonathan Taylor",
       "Team": "IND",
-      "YAC/Att": "1.9"
-    },
-    {
-      "Name": "Aaron Jones",
-      "Team": "MIN",
-      "YAC/Att": "1.1"
+      "YAC/Att": "1.8"
     },
     {
       "Name": "James Cook",
       "Team": "BUF",
-      "YAC/Att": "1.3"
+      "YAC/Att": "1.8"
+    },
+    {
+      "Name": "Bijan Robinson",
+      "Team": "ATL",
+      "YAC/Att": "2.9"
+    },
+    {
+      "Name": "Kenneth Walker III",
+      "Team": "KC",
+      "YAC/Att": "3.1"
+    },
+    {
+      "Name": "Jahmyr Gibbs",
+      "Team": "DET",
+      "YAC/Att": "1.4"
     },
     {
       "Name": "Ashton Jeanty",
@@ -40,29 +40,39 @@
       "YAC/Att": "1.7"
     },
     {
-      "Name": "Kenneth Walker III",
-      "Team": "KC",
-      "YAC/Att": "3.2"
-    },
-    {
-      "Name": "Bhayshul Tuten",
-      "Team": "JAX",
-      "YAC/Att": "2"
-    },
-    {
-      "Name": "Cam Skattebo",
-      "Team": "NYG",
-      "YAC/Att": "1.8"
-    },
-    {
-      "Name": "D'Andre Swift",
-      "Team": "CHI",
-      "YAC/Att": "1.8"
+      "Name": "Aaron Jones",
+      "Team": "MIN",
+      "YAC/Att": "1.6"
     },
     {
       "Name": "Bucky Irving",
       "Team": "TB",
-      "YAC/Att": "2.8"
+      "YAC/Att": "2.6"
+    },
+    {
+      "Name": "D'Andre Swift",
+      "Team": "CHI",
+      "YAC/Att": "1.9"
+    },
+    {
+      "Name": "Bhayshul Tuten",
+      "Team": "JAX",
+      "YAC/Att": "2.5"
+    },
+    {
+      "Name": "Chuba Hubbard",
+      "Team": "CAR",
+      "YAC/Att": "2.1"
+    },
+    {
+      "Name": "Tony Pollard",
+      "Team": "TEN",
+      "YAC/Att": "1.5"
+    },
+    {
+      "Name": "Emanuel Wilson",
+      "Team": "SEA",
+      "YAC/Att": "1.5"
     },
     {
       "Name": "Javonte Williams",
@@ -70,9 +80,39 @@
       "YAC/Att": "1.5"
     },
     {
+      "Name": "Jaylen Warren",
+      "Team": "PIT",
+      "YAC/Att": "2.8"
+    },
+    {
+      "Name": "J.K. Dobbins",
+      "Team": "DEN",
+      "YAC/Att": "1.6"
+    },
+    {
+      "Name": "Cam Skattebo",
+      "Team": "NYG",
+      "YAC/Att": "2"
+    },
+    {
       "Name": "Omarion Hampton",
       "Team": "LAC",
+      "YAC/Att": "1.7"
+    },
+    {
+      "Name": "Kyren Williams",
+      "Team": "LAR",
+      "YAC/Att": "2.2"
+    },
+    {
+      "Name": "Christian McCaffrey",
+      "Team": "SF",
       "YAC/Att": "1.5"
+    },
+    {
+      "Name": "Braelon Allen",
+      "Team": "NYJ",
+      "YAC/Att": "2.1"
     },
     {
       "Name": "Quinshon Judkins",
@@ -80,54 +120,24 @@
       "YAC/Att": "1.5"
     },
     {
-      "Name": "Emanuel Wilson",
-      "Team": "SEA",
-      "YAC/Att": "1.4"
-    },
-    {
       "Name": "Chase Brown",
       "Team": "CIN",
       "YAC/Att": "1.3"
     },
     {
-      "Name": "Jaylen Warren",
-      "Team": "PIT",
-      "YAC/Att": "3.2"
-    },
-    {
-      "Name": "Kyren Williams",
-      "Team": "LAR",
-      "YAC/Att": "1.9"
-    },
-    {
-      "Name": "Tony Pollard",
-      "Team": "TEN",
-      "YAC/Att": "1.6"
+      "Name": "Rhamondre Stevenson",
+      "Team": "NE",
+      "YAC/Att": "1.7"
     },
     {
       "Name": "Jacory Croskey-Merritt",
       "Team": "WAS",
-      "YAC/Att": "1"
+      "YAC/Att": "1.4"
     },
     {
       "Name": "Jeremiyah Love",
       "Team": "ARI",
-      "YAC/Att": "1.6"
-    },
-    {
-      "Name": "J.K. Dobbins",
-      "Team": "DEN",
-      "YAC/Att": "1.3"
-    },
-    {
-      "Name": "Chuba Hubbard",
-      "Team": "CAR",
       "YAC/Att": "1.8"
-    },
-    {
-      "Name": "Christian McCaffrey",
-      "Team": "SF",
-      "YAC/Att": "1.9"
     },
     {
       "Name": "Kyle Monangai",
@@ -135,14 +145,19 @@
       "YAC/Att": "2.6"
     },
     {
-      "Name": "Braelon Allen",
-      "Team": "NYJ",
-      "YAC/Att": "1.9"
+      "Name": "Woody Marks",
+      "Team": "HOU",
+      "YAC/Att": "1.5"
     },
     {
-      "Name": "Rhamondre Stevenson",
-      "Team": "NE",
-      "YAC/Att": "1.7"
+      "Name": "Tyler Allgeier",
+      "Team": "ARI",
+      "YAC/Att": "1.4"
+    },
+    {
+      "Name": "Brian Robinson Jr.",
+      "Team": "ATL",
+      "YAC/Att": "2.4"
     },
     {
       "Name": "David Montgomery",
@@ -155,9 +170,24 @@
       "YAC/Att": "1.4"
     },
     {
-      "Name": "Brian Robinson Jr.",
-      "Team": "ATL",
-      "YAC/Att": "2.5"
+      "Name": "TreVeyon Henderson",
+      "Team": "NE",
+      "YAC/Att": "1.7"
+    },
+    {
+      "Name": "Kendre Miller",
+      "Team": "NO",
+      "YAC/Att": "1.3"
+    },
+    {
+      "Name": "MarShawn Lloyd",
+      "Team": "GB",
+      "YAC/Att": "1"
+    },
+    {
+      "Name": "Blake Corum",
+      "Team": "LAR",
+      "YAC/Att": "1.6"
     },
     {
       "Name": "Ollie Gordon",
@@ -165,29 +195,14 @@
       "YAC/Att": "2"
     },
     {
-      "Name": "Woody Marks",
-      "Team": "HOU",
-      "YAC/Att": "1.3"
-    },
-    {
-      "Name": "TreVeyon Henderson",
-      "Team": "NE",
-      "YAC/Att": "1.6"
-    },
-    {
-      "Name": "MarShawn Lloyd",
-      "Team": "GB",
-      "YAC/Att": "0.9"
-    },
-    {
-      "Name": "Blake Corum",
-      "Team": "LAR",
+      "Name": "Kaelon Black",
+      "Team": "SF",
       "YAC/Att": "1.2"
     },
     {
-      "Name": "Kaelon Black",
-      "Team": "SF",
-      "YAC/Att": "1.5"
+      "Name": "Chris Rodriguez",
+      "Team": "JAX",
+      "YAC/Att": "2.2"
     },
     {
       "Name": "Saquon Barkley",
@@ -195,14 +210,14 @@
       "YAC/Att": "2.6"
     },
     {
-      "Name": "Tyler Allgeier",
-      "Team": "ARI",
-      "YAC/Att": "1.4"
+      "Name": "Rachaad White",
+      "Team": "WAS",
+      "YAC/Att": "1.3"
     },
     {
-      "Name": "De'Von Achane",
-      "Team": "MIA",
-      "YAC/Att": "1.4"
+      "Name": "Alvin Kamara",
+      "Team": "NO",
+      "YAC/Att": "1.7"
     },
     {
       "Name": "Keaton Mitchell",
@@ -210,19 +225,34 @@
       "YAC/Att": "1.7"
     },
     {
+      "Name": "De'Von Achane",
+      "Team": "MIA",
+      "YAC/Att": "1.4"
+    },
+    {
+      "Name": "Mike Washington Jr.",
+      "Team": "LV",
+      "YAC/Att": "2.6"
+    },
+    {
+      "Name": "Najee Harris",
+      "Team": "NYG",
+      "YAC/Att": "1.9"
+    },
+    {
+      "Name": "George Holani",
+      "Team": "SEA",
+      "YAC/Att": "1.6"
+    },
+    {
+      "Name": "Corey Kiner",
+      "Team": "NE",
+      "YAC/Att": "1.5"
+    },
+    {
       "Name": "Travis Etienne",
       "Team": "NO",
       "YAC/Att": "1.8"
-    },
-    {
-      "Name": "Kendre Miller",
-      "Team": "NO",
-      "YAC/Att": "0.7"
-    },
-    {
-      "Name": "Rachaad White",
-      "Team": "WAS",
-      "YAC/Att": "1.3"
     },
     {
       "Name": "Tank Bigsby",
@@ -230,9 +260,9 @@
       "YAC/Att": "1.7"
     },
     {
-      "Name": "Alvin Kamara",
-      "Team": "NO",
-      "YAC/Att": "1.3"
+      "Name": "Kaleb Johnson",
+      "Team": "GB",
+      "YAC/Att": "2.2"
     },
     {
       "Name": "Jadarian Price",
@@ -240,44 +270,54 @@
       "YAC/Att": "1.7"
     },
     {
-      "Name": "Chris Rodriguez",
-      "Team": "JAX",
-      "YAC/Att": "1.5"
-    },
-    {
-      "Name": "Najee Harris",
-      "Team": "NYG",
-      "YAC/Att": "1.8"
-    },
-    {
-      "Name": "Kaleb Johnson",
-      "Team": "GB",
-      "YAC/Att": "1.9"
-    },
-    {
       "Name": "Samaje Perine",
       "Team": "CIN",
       "YAC/Att": "1.5"
     },
     {
-      "Name": "George Holani",
-      "Team": "SEA",
+      "Name": "Dameon Pierce",
+      "Team": "PHI",
+      "YAC/Att": "1.6"
+    },
+    {
+      "Name": "Rico Dowdle",
+      "Team": "PIT",
       "YAC/Att": "1.2"
     },
     {
-      "Name": "Mike Washington Jr.",
-      "Team": "LV",
-      "YAC/Att": "2.7"
+      "Name": "Roschon Johnson",
+      "Team": "CHI",
+      "YAC/Att": "1.1"
     },
     {
-      "Name": "Corey Kiner",
-      "Team": "NE",
+      "Name": "RJ Harvey",
+      "Team": "DEN",
       "YAC/Att": "1.3"
+    },
+    {
+      "Name": "Seth McGowan",
+      "Team": "IND",
+      "YAC/Att": "1.9"
+    },
+    {
+      "Name": "Kimani Vidal",
+      "Team": "LAC",
+      "YAC/Att": "2.7"
     },
     {
       "Name": "Will Shipley",
       "Team": "PHI",
-      "YAC/Att": "0.9"
+      "YAC/Att": "1.1"
+    },
+    {
+      "Name": "Kenneth Gainwell",
+      "Team": "TB",
+      "YAC/Att": "1.5"
+    },
+    {
+      "Name": "Emmett Johnson",
+      "Team": "KC",
+      "YAC/Att": "1.7"
     },
     {
       "Name": "Justice Hill",
@@ -285,43 +325,33 @@
       "YAC/Att": "3.8"
     },
     {
+      "Name": "Zonovan Knight",
+      "Team": "ARI",
+      "YAC/Att": "1.9"
+    },
+    {
+      "Name": "Tyjae Spears",
+      "Team": "TEN",
+      "YAC/Att": "1.7"
+    },
+    {
       "Name": "AJ Dillon",
       "Team": "CAR",
       "YAC/Att": "1.4"
     },
     {
-      "Name": "Kenneth Gainwell",
-      "Team": "TB",
-      "YAC/Att": "1.7"
+      "Name": "CJ Donaldson",
+      "Team": "NO",
+      "YAC/Att": "1.9"
     },
     {
-      "Name": "Seth McGowan",
-      "Team": "IND",
-      "YAC/Att": "2.1"
-    },
-    {
-      "Name": "Tyjae Spears",
-      "Team": "TEN",
-      "YAC/Att": "1.8"
-    },
-    {
-      "Name": "Emmett Johnson",
-      "Team": "KC",
-      "YAC/Att": "2"
+      "Name": "Pierre Strong",
+      "Team": "GB",
+      "YAC/Att": "1"
     },
     {
       "Name": "Chris Brooks",
       "Team": "GB",
-      "YAC/Att": "1.1"
-    },
-    {
-      "Name": "Rico Dowdle",
-      "Team": "PIT",
-      "YAC/Att": "0.7"
-    },
-    {
-      "Name": "RJ Harvey",
-      "Team": "DEN",
       "YAC/Att": "1.1"
     },
     {
@@ -332,12 +362,7 @@
     {
       "Name": "Sione Vaki",
       "Team": "DET",
-      "YAC/Att": "0.9"
-    },
-    {
-      "Name": "Kimani Vidal",
-      "Team": "LAC",
-      "YAC/Att": "1"
+      "YAC/Att": "1.3"
     },
     {
       "Name": "Jaylen Wright",
@@ -345,19 +370,29 @@
       "YAC/Att": "1.1"
     },
     {
+      "Name": "Devin Singletary",
+      "Team": "NYG",
+      "YAC/Att": "1.5"
+    },
+    {
+      "Name": "Tyrone Tracy Jr.",
+      "Team": "NYG",
+      "YAC/Att": "1.4"
+    },
+    {
       "Name": "Kaytron Allen",
       "Team": "WAS",
       "YAC/Att": "1.3"
     },
     {
-      "Name": "CJ Donaldson",
-      "Team": "NO",
-      "YAC/Att": "1.2"
+      "Name": "Tyler Goodson",
+      "Team": "DAL",
+      "YAC/Att": "1"
     },
     {
-      "Name": "Dameon Pierce",
-      "Team": "PHI",
-      "YAC/Att": "0"
+      "Name": "Jaleel McLaughlin",
+      "Team": "CLE",
+      "YAC/Att": "3.6"
     },
     {
       "Name": "Ameer Abdullah",
@@ -375,13 +410,13 @@
       "YAC/Att": "0.7"
     },
     {
-      "Name": "Tyler Goodson",
-      "Team": "DAL",
-      "YAC/Att": "1.1"
+      "Name": "Isaiah Davis",
+      "Team": "NYJ",
+      "YAC/Att": "1"
     },
     {
-      "Name": "Roschon Johnson",
-      "Team": "CHI",
+      "Name": "Audric Estime",
+      "Team": "CLE",
       "YAC/Att": "0.6"
     },
     {
@@ -390,9 +425,9 @@
       "YAC/Att": "1.9"
     },
     {
-      "Name": "Devin Singletary",
-      "Team": "NYG",
-      "YAC/Att": "1.6"
+      "Name": "Austin Ekeler",
+      "Team": "WAS",
+      "YAC/Att": "1.3"
     },
     {
       "Name": "Sean Tucker",
@@ -400,19 +435,14 @@
       "YAC/Att": "2.3"
     },
     {
-      "Name": "Austin Ekeler",
-      "Team": "WAS",
-      "YAC/Att": "1.4"
-    },
-    {
       "Name": "Nicholas Singleton",
       "Team": "TEN",
       "YAC/Att": "0.6"
     },
     {
-      "Name": "Tyrone Tracy Jr.",
-      "Team": "NYG",
-      "YAC/Att": "1.4"
+      "Name": "Tyler Badie",
+      "Team": "DEN",
+      "YAC/Att": "1.5"
     },
     {
       "Name": "Demond Claiborne",
@@ -420,9 +450,14 @@
       "YAC/Att": "0.5"
     },
     {
-      "Name": "Tyler Badie",
-      "Team": "DEN",
-      "YAC/Att": "1"
+      "Name": "Jawhar Jordan",
+      "Team": "HOU",
+      "YAC/Att": "4.8"
+    },
+    {
+      "Name": "Ray Davis",
+      "Team": "BUF",
+      "YAC/Att": "0.8"
     },
     {
       "Name": "Emari Demercado",
@@ -435,19 +470,19 @@
       "YAC/Att": "1.6"
     },
     {
-      "Name": "Ronnie Rivers",
-      "Team": "LAR",
-      "YAC/Att": "2.2"
-    },
-    {
-      "Name": "Pierre Strong",
-      "Team": "GB",
+      "Name": "Dylan Laube",
+      "Team": "LV",
       "YAC/Att": "0"
     },
     {
-      "Name": "Ray Davis",
-      "Team": "BUF",
-      "YAC/Att": "0.8"
+      "Name": "Jeremy McNichols",
+      "Team": "WAS",
+      "YAC/Att": "0"
+    },
+    {
+      "Name": "Ronnie Rivers",
+      "Team": "LAR",
+      "YAC/Att": "2.2"
     },
     {
       "Name": "Jordan James",
@@ -455,9 +490,9 @@
       "YAC/Att": "2.8"
     },
     {
-      "Name": "Dylan Laube",
-      "Team": "LV",
-      "YAC/Att": "0"
+      "Name": "Velus Jones Jr.",
+      "Team": "SEA",
+      "YAC/Att": "2.3"
     },
     {
       "Name": "DeeJay Dallas",
@@ -465,19 +500,9 @@
       "YAC/Att": "1.3"
     },
     {
-      "Name": "Zonovan Knight",
-      "Team": "ARI",
-      "YAC/Att": "3"
-    },
-    {
-      "Name": "Isaiah Davis",
-      "Team": "NYJ",
-      "YAC/Att": "2.5"
-    },
-    {
-      "Name": "Jaleel McLaughlin",
-      "Team": "CLE",
-      "YAC/Att": "12.5"
+      "Name": "Ty Johnson",
+      "Team": "BUF",
+      "YAC/Att": "0.5"
     },
     {
       "Name": "Lew Nichols",
@@ -490,14 +515,19 @@
       "YAC/Att": "0"
     },
     {
-      "Name": "Frank Gore Jr.",
-      "Team": "BUF",
+      "Name": "LeQuint Allen",
+      "Team": "JAX",
+      "YAC/Att": "1"
+    },
+    {
+      "Name": "Trevor Etienne",
+      "Team": "CAR",
       "YAC/Att": "0"
     },
     {
-      "Name": "Ty Johnson",
+      "Name": "Frank Gore Jr.",
       "Team": "BUF",
-      "YAC/Att": "1"
+      "YAC/Att": "0"
     },
     {
       "Name": "Kalel Mullings",

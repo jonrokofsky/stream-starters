@@ -75,6 +75,48 @@ async function captureFantasy(page) {
 async function captureSumer(page, position, source) {
   console.log(`Loading SumerSports ${position} data...`);
   await page.goto(source, { waitUntil: "domcontentloaded", timeout: 60000 });
+  try {
+    const rows = await page.evaluate(async (pos) => {
+      let requireModule;
+      self.webpackChunk_N_E.push([[Date.now()], {}, (loader) => { requireModule = loader; }]);
+      const adapter = requireModule(78469).M;
+      const view = pos === "WR" ? "wide-receiver" : "tight-end";
+      const integer = (value) => value == null ? "" : String(Math.round(Number(value)));
+      const decimal = (value) => value == null ? "" : Number(value).toFixed(2);
+      const percent = (value) => value == null ? "" : `${Number(value).toFixed(2)}%`;
+      const values = await adapter.fetchRows({
+        view,
+        season: 2026,
+        maxRows: 500,
+        orderBy: adapter.getOrderBy(view),
+        refinementArgs: {},
+        minimumPlays: 1,
+      });
+      return values.map((row) => ({
+        Name: `${row.sumerPlayer?.footballName ?? ""} ${row.sumerPlayer?.lastName ?? ""}`.trim(),
+        POS: pos,
+        "Routes Run": integer(row.routesRun),
+        Receptions: integer(row.receptions),
+        "Rec. Yards": integer(row.receivingYards),
+        "Target Share": percent(row.targetShare),
+        Touchdowns: integer(row.receivingTouchdowns),
+        YAC: integer(row.yac),
+        ADoT: decimal(row.adot),
+        "Catch %": percent(row.receptionPct),
+        "Total EPA": decimal(row.totalEpa),
+        "Targets/Route Run": decimal(row.targetsPerRouteRun),
+        YPRR: decimal(row.yardsPerRouteRun),
+        "Impact Plays": "",
+        "Cont. Catch %": "",
+      })).filter((row) => row.Name);
+    }, position);
+    const minimumRows = position === "WR" ? 100 : 40;
+    if (rows.length < minimumRows) throw Error(`SumerSports ${position} action returned only ${rows.length} rows`);
+    console.log(`Captured ${rows.length} SumerSports ${position} rows through the page data action.`);
+    return rows;
+  } catch (error) {
+    console.warn(`SumerSports ${position} page data action failed; trying the rendered table: ${error.message}`);
+  }
   await page.locator("table tbody tr").first().waitFor({ timeout: 60000 });
   const showMore = page.getByRole("button", { name: /Show More/i });
   const tableRows = page.locator("table").first().locator("tbody tr");
