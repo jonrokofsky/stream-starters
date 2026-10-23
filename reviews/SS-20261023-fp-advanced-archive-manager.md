@@ -1,9 +1,9 @@
 # SS-20261023-fp-advanced-archive: Manager review
 
-- Author / date / status: Manager / 2026-10-23 / READY, RELEASE PENDING
+- Author / date / status: Manager / 2026-10-23 / SHIP
 - Spec / build / QA: v1 / complete / PASS
 - Application location: `C:/Users/jonro/stream-starters`
-- Next owner / action: User / decide when to publish the derived football update
+- Next owner / action: User / use the published structured football update
 
 ## Recommendation
 
@@ -13,4 +13,4 @@ All acceptance criteria pass. No raw licensed export is staged for Git, and the 
 
 ## Release record
 
-No push or deployment was performed for this request. The derived application update is ready for a separate release decision.
+Commit `9b9de43` was pushed to `origin/main`. Hosted deployment remains automatic through the existing project connection.
