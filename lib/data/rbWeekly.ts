@@ -7,6 +7,7 @@ const countFields = [
   "G", "ATT", "RuYds", "RuTD", "Rush FUM", "Targets", "Rec", "Rec Yards",
   "Rec. TD", "Rec FUM", "Weighted Opp.", "FP", "Total TD", "Ins. 5 Carries",
   "Ins. 10 Carries", "Ins. 10 Rec.",
+  "_Team Targets", "_Team Rec Yards", "_Team I5 Carries", "_Team I10 Carries", "_YAC Carries", "_YAC Total",
 ] as const;
 const gainRateFields = ["1+ RuYd%", "3+ RuYd%", "5+ RuYd%", "10+ RuYd%", "15+ RuYd%", "20+ RuYd%", "30+ RuYd%"] as const;
 
@@ -94,8 +95,12 @@ export function buildRbPeriodSnapshot(latest: RbWeeklySnapshot, baseline: RbWeek
       }
     }
 
-    for (const [countKey, rateKey] of [["Targets", "Target Share"], ["Rec Yards", "Team Rec Yards %"], ["Ins. 5 Carries", "Inside 5 Carry%"], ["Ins. 10 Carries", "Inside 10 Carry%"]] as const) {
-      const rate = existingBaseline ? rateFromCount(latestRow, baselineRow, countKey, rateKey) : value(latestRow, rateKey);
+    for (const [countKey, rateKey, denominatorKey] of [["Targets", "Target Share", "_Team Targets"], ["Rec Yards", "Team Rec Yards %", "_Team Rec Yards"], ["Ins. 5 Carries", "Inside 5 Carry%", "_Team I5 Carries"], ["Ins. 10 Carries", "Inside 10 Carry%", "_Team I10 Carries"]] as const) {
+      const denominator = value(row, denominatorKey);
+      const numerator = value(row, countKey);
+      const rate = denominator !== null && numerator !== null
+        ? (denominator > 0 ? numerator / denominator * 100 : 0)
+        : existingBaseline ? rateFromCount(latestRow, baselineRow, countKey, rateKey) : value(latestRow, rateKey);
       row[rateKey] = rate === null ? "" : `${rate}%`;
     }
 
@@ -103,7 +108,11 @@ export function buildRbPeriodSnapshot(latest: RbWeeklySnapshot, baseline: RbWeek
     const baselineYac = value(baselineRow, "YAC/Att");
     const latestAttempts = value(latestRow, "ATT");
     const baselineAttempts = value(baselineRow, "ATT");
-    row["YAC/Att"] = attempts && latestYac !== null && latestAttempts !== null
+    const exactYacCarries = value(row, "_YAC Carries");
+    const exactYacTotal = value(row, "_YAC Total");
+    row["YAC/Att"] = attempts && exactYacCarries === attempts && exactYacTotal !== null
+      ? String(exactYacTotal / exactYacCarries)
+      : attempts && latestYac !== null && latestAttempts !== null
       ? existingBaseline && baselineYac !== null && baselineAttempts !== null
         ? String((latestYac * latestAttempts - baselineYac * baselineAttempts) * correctionScale / attempts)
         : !existingBaseline ? String(latestYac) : ""

@@ -42,3 +42,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# Licensed source exports stay local; derived application data is committed.
+/data-source-archive/fantasypoints/

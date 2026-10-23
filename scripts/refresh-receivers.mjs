@@ -1,10 +1,9 @@
 import { chromium } from "playwright";
 import { readFile, rename, writeFile } from "node:fs/promises";
 import { transformReceiverReport } from "./receiver-transform.mjs";
-import { upsertReceiverWeeklySnapshot } from "./receiver-weekly.mjs";
 
 const target = new URL("../public/data/receivers-2026.json", import.meta.url);
-const weeklyTarget = new URL("../public/data/receivers-weekly-2026.json", import.meta.url);
+const routeWeeklyTarget = new URL("../public/data/receiver-routes-weekly-2026.json", import.meta.url);
 const fantasySource = "https://fpds.fantasypoints.com/nfl/tools/player/receiving-basic";
 const sumerSources = {
   WR: "https://sumersports.com/players/wide-receiver/",
@@ -79,7 +78,11 @@ async function captureSumer(page, position, source) {
     const rows = await page.evaluate(async (pos) => {
       let requireModule;
       self.webpackChunk_N_E.push([[Date.now()], {}, (loader) => { requireModule = loader; }]);
-      const adapter = requireModule(78469).M;
+      const adapterModuleId = Object.keys(requireModule.m).find((id) =>
+        String(requireModule.m[id]).includes("loadMorePlayerStats") && String(requireModule.m[id]).includes("fetchRows")
+      );
+      if (!adapterModuleId) throw Error("SumerSports player adapter was not found");
+      const adapter = requireModule(adapterModuleId).M;
       const view = pos === "WR" ? "wide-receiver" : "tight-end";
       const integer = (value) => value == null ? "" : String(Math.round(Number(value)));
       const decimal = (value) => value == null ? "" : Number(value).toFixed(2);
@@ -221,15 +224,26 @@ try {
     await writeFile(temporary, `${JSON.stringify(result, null, 2)}\n`);
     await rename(temporary, target);
   }
-  let archive = { season: 2026, source: fantasySource, weeks: [] };
-  try { archive = JSON.parse(await readFile(weeklyTarget, "utf8")); } catch (error) { if (error.code !== "ENOENT") throw error; }
-  const weekly = upsertReceiverWeeklySnapshot(archive, result, fantasySource);
-  if (weekly.changed) {
-    const temporary = new URL("../public/data/receivers-weekly-2026.json.tmp", import.meta.url);
-    await writeFile(temporary, `${JSON.stringify(weekly.archive, null, 2)}\n`);
-    await rename(temporary, weeklyTarget);
+  const easternWeekday = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", weekday: "short" }).format(new Date());
+  let routesArchived = false;
+  if (easternWeekday === "Tue" || process.env.ARCHIVE_COMPLETED_ROUTES === "1") {
+    let routeArchive = { season: 2026, source: "https://sumersports.com/players/", method: "cumulative routes captured after each completed week", weeks: [] };
+    try { routeArchive = JSON.parse(await readFile(routeWeeklyTarget, "utf8")); } catch (error) { if (error.code !== "ENOENT") throw error; }
+    const week = Math.max(...result.rows.map((row) => Number(row.G || 0)));
+    const routeRows = result.rows.filter((row) => row["Routes Run"] !== "").map((row) => ({ Name: row.Name, POS: row.POS, Team: row.Team, G: row.G, "Routes Run": row["Routes Run"] }));
+    if (week > 0 && routeRows.length >= 120) {
+      const prior = routeArchive.weeks.find((entry) => entry.week === week);
+      const next = { week, copiedAt: result.copiedAt, rows: routeRows };
+      if (!prior || JSON.stringify(prior.rows) !== JSON.stringify(next.rows)) {
+        routeArchive.weeks = [...routeArchive.weeks.filter((entry) => entry.week !== week), next].sort((a, b) => a.week - b.week);
+        const temporary = new URL("../public/data/receiver-routes-weekly-2026.json.tmp", import.meta.url);
+        await writeFile(temporary, `${JSON.stringify(routeArchive, null, 2)}\n`);
+        await rename(temporary, routeWeeklyTarget);
+        routesArchived = true;
+      }
+    }
   }
-  console.log(`Receiver data ${changed ? "updated" : "unchanged"}: ${result.population.WR} WR, ${result.population.TE} TE; weekly archive ${weekly.changed ? "updated" : "unchanged"} through Week ${weekly.week}.`);
+  console.log(`Receiver data ${changed ? "updated" : "unchanged"}: ${result.population.WR} WR, ${result.population.TE} TE; completed-week routes ${routesArchived ? "archived" : "unchanged"}; nflverse owns the statistical weekly archive.`);
 } finally {
   await browser.close();
 }

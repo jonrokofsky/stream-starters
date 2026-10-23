@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "refresh:football-weekly": "node --experimental-transform-types scripts/refresh-nflverse-football.mjs",
+    "import:fantasypoints-advanced": "node scripts/import-fantasypoints-advanced.mjs",
     "test:data": "node --test --experimental-transform-types tests/data-foundation.test.ts"
   },
   "dependencies": {

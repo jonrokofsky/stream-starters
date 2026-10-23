@@ -928,7 +928,7 @@ export default function RBPage() {
           console.warn(weeklyError);
         }
         const byWeek = new Map(archivedWeeks.map((item) => [item.week, item]));
-        byWeek.set(currentWeek, { week: currentWeek, copiedAt: snapshot.copiedAt, rows });
+        if (byWeek.size === 0) byWeek.set(currentWeek, { week: currentWeek, copiedAt: snapshot.copiedAt, rows });
         const availableWeeks = [...byWeek.values()].sort((a, b) => a.week - b.week);
         setWeeklySnapshots(availableWeeks);
         setProfileStartWeek(null);

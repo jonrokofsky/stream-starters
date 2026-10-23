@@ -97,7 +97,7 @@ export default function ReceiverProfilePage() {
           .filter((item) => Number.isInteger(item.week) && item.week > 0 && Array.isArray(item.rows) && item.rows.length > 0)
           .map((item) => [item.week, item])
       );
-      byWeek.set(currentWeek, { ...snapshot, week: currentWeek });
+      if (byWeek.size === 0) byWeek.set(currentWeek, { ...snapshot, week: currentWeek });
       const weeks = [...byWeek.values()].sort((a, b) => a.week - b.week);
       const latest = weeks.at(-1);
       setLatestData(snapshot);

@@ -1,10 +1,8 @@
 import { chromium } from 'playwright';
 import { readFile, writeFile, rename } from 'node:fs/promises';
 import { transformReport } from './rb-transform.mjs';
-import { upsertWeeklySnapshot } from './rb-weekly.mjs';
 const target = new URL('../public/data/rb-2026.json', import.meta.url);
 const yacTarget = new URL('../public/data/rb-yac-2026.json', import.meta.url);
-const weeklyTarget = new URL('../public/data/rb-weekly-2026.json', import.meta.url);
 const source = 'https://fpds.fantasypoints.com/nfl/tools/player/rushing-basic';
 const browser = await chromium.launch({ headless: true, ...(process.env.RB_BROWSER_CHANNEL ? {channel: process.env.RB_BROWSER_CHANNEL} : {}) });
 try {
@@ -19,14 +17,6 @@ try {
     const changed=JSON.stringify(previous.rows)!==JSON.stringify(result.rows);
     if(changed){const temp=new URL('../public/data/rb-2026.json.tmp',import.meta.url);await writeFile(temp,JSON.stringify(result,null,2)+'\n');await rename(temp,target);}
     return changed;
-  };
-  const archiveWeeklyResult = async result => {
-    let archive={season:2026,source,weeks:[]};
-    try{archive=JSON.parse(await readFile(weeklyTarget,'utf8'));}catch(error){if(error.code!=='ENOENT')throw error;}
-    const update=upsertWeeklySnapshot(archive,result,source);
-    if(!update.changed)return false;
-    const temp=new URL('../public/data/rb-weekly-2026.json.tmp',import.meta.url);await writeFile(temp,JSON.stringify(update.archive,null,2)+'\n');await rename(temp,weeklyTarget);
-    return true;
   };
 
   // Fantasy Points occasionally serves the grid slowly to GitHub runners.
@@ -90,6 +80,5 @@ try {
   validateResult(basicResult);
   let rbChanged=await writeRbIfChanged(basicResult);
 
-  const weeklyChanged=await archiveWeeklyResult(basicResult);
-  console.log(`Fantasy Points RB data ${rbChanged?'updated':'unchanged'}; manual YAC snapshot preserved from ${previousYac.capturedAt}; weekly archive ${weeklyChanged?'updated':'unchanged'}; ${basicResult.rows.length} RBs; ${games(basicResult.rows)} player games.`);
+  console.log(`Fantasy Points RB data ${rbChanged?'updated':'unchanged'}; nflverse owns the weekly archive; ${basicResult.rows.length} RBs; ${games(basicResult.rows)} player games.`);
 } finally {await browser.close();}

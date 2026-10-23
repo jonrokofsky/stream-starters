@@ -1,0 +1,46 @@
+name: Refresh nflverse football data
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1,2,5'
+      timezone: 'America/New_York'
+permissions:
+  contents: write
+concurrency:
+  group: football-data-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Check 2026 NFL season
+        id: gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          node - <<'JS'
+          const fs = require('fs');
+          const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+          const run = process.env.EVENT_NAME === 'workflow_dispatch' || (today >= '2026-09-01' && today <= '2027-01-12');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `run=${run}\n`);
+          JS
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.run == 'true'
+        with:
+          node-version: '24'
+      - name: Refresh exact weekly profiles and matchups
+        if: steps.gate.outputs.run == 'true'
+        run: node --experimental-transform-types scripts/refresh-nflverse-football.mjs
+      - name: Commit validated football data
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          if git diff --quiet -- public/data/rb-weekly-2026.json public/data/receivers-weekly-2026.json public/data/rb-yac-2026.json public/data/nfl-defense-vs-position-2026.json; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/data/rb-weekly-2026.json public/data/receivers-weekly-2026.json public/data/rb-yac-2026.json public/data/nfl-defense-vs-position-2026.json
+          git commit -m 'Refresh exact 2026 weekly football data'
+          git push origin HEAD:main

@@ -12,6 +12,7 @@ export type ReceiverWeeklySnapshot = {
 const countFields = [
   "G", "Targets", "Rec", "Rec Yards", "Rec TD", "i10", "i20 Targets", "FUM", "FP",
   "Routes Run", "Receptions", "Rec. Yards", "Touchdowns", "YAC", "Total EPA", "Impact Plays",
+  "_Team Targets", "_Team Rec Yards", "_Team Rec TD",
 ] as const;
 
 const value = (row: ReceiverWeeklyRow | undefined, key: string) => {
@@ -41,19 +42,6 @@ export function buildReceiverPeriodSnapshot(
 ): ReceiverWeeklySnapshot {
   const baselineRows = new Map(baseline.rows.map((row) => [`${row.POS}:${row.Name}`, row]));
   const windowGames = Math.max(1, end.week - baseline.week);
-  const routesPerTarget = new Map<string, number>();
-  for (const position of ["WR", "TE"]) {
-    const ratios = end.rows
-      .filter((row) => row.POS === position)
-      .map((row) => {
-        const routes = value(row, "Routes Run");
-        const targets = value(row, "Targets");
-        return routes !== null && targets && routes >= targets ? routes / targets : null;
-      })
-      .filter((ratio): ratio is number => ratio !== null)
-      .sort((a, b) => a - b);
-    if (ratios.length) routesPerTarget.set(position, ratios[Math.floor(ratios.length / 2)]);
-  }
   const rows = end.rows.map((latest) => {
     const existingPrior = baselineRows.get(`${latest.POS}:${latest.Name}`);
     const latestGames = value(latest, "G") ?? 0;
@@ -82,22 +70,9 @@ export function buildReceiverPeriodSnapshot(
     const targets = value(row, "Targets") ?? 0;
     const receptions = value(row, "Rec") ?? 0;
     const yards = value(row, "Rec Yards") ?? 0;
-    let routes = value(row, "Routes Run");
-    if (routes === null) {
-      const cumulativeRoutes = value(latest, "Routes Run");
-      if (cumulativeRoutes !== null && latestGames > 0) {
-        routes = cumulativeRoutes / latestGames * games;
-        row["Routes Run"] = formatCount(routes);
-        row["Routes Estimated"] = "season pace";
-      } else if (targets > 0) {
-        const positionRatio = routesPerTarget.get(latest.POS);
-        if (positionRatio) {
-          routes = targets * positionRatio;
-          row["Routes Run"] = formatCount(routes);
-          row["Routes Estimated"] = "position target pace";
-        }
-      }
-    }
+    const routes = value(row, "Routes Run");
+    // Public weekly data does not identify every route. Leave route metrics
+    // unavailable for a range unless both cumulative endpoints contain them.
     let yac = value(row, "YAC");
     if (yac === null) {
       const cumulativeYac = value(latest, "YAC");
@@ -121,8 +96,12 @@ export function buildReceiverPeriodSnapshot(
     row["Targets/Route Run"] = routes ? (targets / routes).toFixed(2) : "";
     row.YPRR = routes ? (yards / routes).toFixed(2) : "";
     row["YAC/Rec"] = receptions && yac !== null ? (yac / receptions).toFixed(2) : "";
-    for (const [countKey, rateKey] of [["Targets", "Target Share"], ["Rec Yards", "Team Rec Yards %"], ["Rec TD", "Team TD %"]] as const) {
-      const rate = existingPrior ? rateFromCount(latest, prior, countKey, rateKey) : value(latest, rateKey);
+    for (const [countKey, rateKey, denominatorKey] of [["Targets", "Target Share", "_Team Targets"], ["Rec Yards", "Team Rec Yards %", "_Team Rec Yards"], ["Rec TD", "Team TD %", "_Team Rec TD"]] as const) {
+      const denominator = value(row, denominatorKey);
+      const numerator = value(row, countKey);
+      const rate = denominator !== null && numerator !== null
+        ? (denominator > 0 ? numerator / denominator * 100 : 0)
+        : existingPrior ? rateFromCount(latest, prior, countKey, rateKey) : value(latest, rateKey);
       row[rateKey] = rate === null ? "" : `${rate.toFixed(2)}%`;
     }
     return row;

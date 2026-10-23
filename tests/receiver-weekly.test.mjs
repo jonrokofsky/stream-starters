@@ -47,7 +47,7 @@ test("receiver period snapshots subtract cumulative counts and rebuild rates", (
   );
 });
 
-test("receiver period snapshots estimate missing historical routes from the current per-game rate", () => {
+test("receiver period snapshots leave routes blank when a historical endpoint is missing", () => {
   const player = (name, games, routes) => ({
     Name: name, POS: "WR", Team: "BUF", G: String(games), Targets: "10", Rec: "8", "Rec Yards": "100",
     "Rec TD": "1", i10: "1", "i20 Targets": "1", FUM: "0", FP: "30", "Routes Run": routes,
@@ -60,9 +60,9 @@ test("receiver period snapshots estimate missing historical routes from the curr
   );
   assert.equal(period.rows.length, 1);
   assert.equal(period.rows[0].Name, "Existing");
-  assert.equal(period.rows[0]["Routes Run"], "90");
-  assert.equal(period.rows[0]["Routes/G"], "30.00");
-  assert.equal(period.rows[0].YPRR, "0.00");
+  assert.equal(period.rows[0]["Routes Run"], "");
+  assert.equal(period.rows[0]["Routes/G"], "");
+  assert.equal(period.rows[0].YPRR, "");
 });
 
 test("receiver period snapshots cap games to the selected window and keep corrected rates stable", () => {
@@ -82,7 +82,7 @@ test("receiver period snapshots cap games to the selected window and keep correc
   assert.equal(period.rows[0]["Routes/G"], "20.00");
 });
 
-test("receiver period snapshots estimate routes from position target pace when current Sumer data is absent", () => {
+test("receiver period snapshots do not invent routes from target pace", () => {
   const receiver = (name, games, targets, routes) => ({
     Name: name, POS: "TE", Team: "TEN", G: String(games), Targets: String(targets), Rec: String(targets),
     "Rec Yards": String(targets * 10), "Rec TD": "0", i10: "0", "i20 Targets": "0", FUM: "0",
@@ -98,7 +98,7 @@ test("receiver period snapshots estimate routes from position target pace when c
   ] };
   const period = buildReceiverPeriodSnapshot(end, baseline);
   const missing = period.rows.find((entry) => entry.Name === "Missing");
-  assert.equal(missing["Routes Run"], "10");
-  assert.equal(missing["Routes/G"], "10.00");
-  assert.equal(missing["Routes Estimated"], "position target pace");
+  assert.equal(missing["Routes Run"], "");
+  assert.equal(missing["Routes/G"], "");
+  assert.equal(missing["Routes Estimated"], undefined);
 });
