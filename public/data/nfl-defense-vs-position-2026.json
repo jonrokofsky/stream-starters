@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "capturedAt": "2026-10-30T16:12:50.834Z",
+  "capturedAt": "2026-10-30T16:39:57.127Z",
   "coverageNote": "nflverse weekly player results through games played in live Week 8.",
   "source": {
     "weekly": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv"

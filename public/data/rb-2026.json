@@ -5,7 +5,7 @@
     "rushing": "https://github.com/nflverse/nflverse-data/releases/download/pfr_advstats/advstats_week_rush_2026.csv",
     "pbp": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2026.csv.gz"
   },
-  "copiedAt": "2026-10-30T16:12:50.834Z",
+  "copiedAt": "2026-10-30T16:39:57.127Z",
   "updateMode": "automatic nflverse weekly refresh",
   "seasonType": "Regular",
   "scoring": "PPR",

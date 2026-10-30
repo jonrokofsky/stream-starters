@@ -32,6 +32,7 @@ export function transformReceiverReport(raw, sumerRows) {
       const games = Math.max(1, numeric(row.G));
       const routes = numeric(extra["Routes Run"]);
       const receptions = numeric(row.Rec);
+      const routeRateQualified = routes / games >= 10;
       return {
         ...row,
         ...extra,
@@ -42,6 +43,8 @@ export function transformReceiverReport(raw, sumerRows) {
         "Routes/G": routes ? (routes / games).toFixed(2) : "",
         "i10/G": (numeric(row.i10) / games).toFixed(2),
         "i20/G": (numeric(row["i20 Targets"]) / games).toFixed(2),
+        "Targets/Route Run": routeRateQualified ? extra["Targets/Route Run"] ?? "" : "",
+        YPRR: routeRateQualified ? extra.YPRR ?? "" : "",
         "YAC/Rec": receptions && extra.YAC != null && extra.YAC !== "" ? (numeric(extra.YAC) / receptions).toFixed(2) : "",
       };
     });

@@ -12130,7 +12130,7 @@
     },
     {
       "week": 7,
-      "copiedAt": "2026-10-30T16:12:42.632Z",
+      "copiedAt": "2026-10-30T16:39:54.875Z",
       "source": "https://heatradar.app/nfl/routes",
       "rows": [
         {
@@ -12512,18 +12512,11 @@
           "Routes Run": "138"
         },
         {
-          "Name": "Harold Fannin",
-          "POS": "TE",
-          "Team": "CLV",
-          "G": "6",
-          "Routes Run": "172"
-        },
-        {
           "Name": "Harold Fannin Jr.",
           "POS": "TE",
           "Team": "CLE",
-          "G": "",
-          "Routes Run": "29"
+          "G": "6",
+          "Routes Run": "201"
         },
         {
           "Name": "Hayden Rucci",
@@ -12939,18 +12932,11 @@
           "Routes Run": "62"
         },
         {
-          "Name": "Thomas Fidone",
-          "POS": "TE",
-          "Team": "NYG",
-          "G": "1",
-          "Routes Run": "15"
-        },
-        {
           "Name": "Thomas Fidone II",
           "POS": "TE",
           "Team": "NYG",
-          "G": "",
-          "Routes Run": "5"
+          "G": "1",
+          "Routes Run": "20"
         },
         {
           "Name": "Tommy Tremble",
@@ -13464,18 +13450,11 @@
           "Routes Run": "108"
         },
         {
-          "Name": "Efton Chism",
-          "POS": "WR",
-          "Team": "NE",
-          "G": "5",
-          "Routes Run": "56"
-        },
-        {
           "Name": "Efton Chism III",
           "POS": "WR",
           "Team": "NE",
-          "G": "",
-          "Routes Run": "18"
+          "G": "5",
+          "Routes Run": "74"
         },
         {
           "Name": "Elic Ayomanor",
@@ -13737,18 +13716,11 @@
           "Routes Run": "7"
         },
         {
-          "Name": "John Metchie",
-          "POS": "WR",
-          "Team": "CAR",
-          "G": "4",
-          "Routes Run": "65"
-        },
-        {
           "Name": "John Metchie III",
           "POS": "WR",
           "Team": "CAR",
-          "G": "",
-          "Routes Run": "20"
+          "G": "4",
+          "Routes Run": "85"
         },
         {
           "Name": "Jonathan Mingo",
@@ -13891,18 +13863,11 @@
           "Routes Run": "10"
         },
         {
-          "Name": "Kevin Coleman",
-          "POS": "WR",
-          "Team": "MIA",
-          "G": "5",
-          "Routes Run": "83"
-        },
-        {
           "Name": "Kevin Coleman Jr.",
           "POS": "WR",
           "Team": "MIA",
-          "G": "",
-          "Routes Run": "2"
+          "G": "5",
+          "Routes Run": "85"
         },
         {
           "Name": "KhaDarel Hodge",
@@ -13975,18 +13940,11 @@
           "Routes Run": "5"
         },
         {
-          "Name": "Luther Burden",
-          "POS": "WR",
-          "Team": "CHI",
-          "G": "6",
-          "Routes Run": "156"
-        },
-        {
           "Name": "Luther Burden III",
           "POS": "WR",
           "Team": "CHI",
-          "G": "",
-          "Routes Run": "27"
+          "G": "6",
+          "Routes Run": "183"
         },
         {
           "Name": "Makai Lemon",
@@ -14052,32 +14010,18 @@
           "Routes Run": "30"
         },
         {
-          "Name": "Marvin Harrison",
-          "POS": "WR",
-          "Team": "HST",
-          "G": "5",
-          "Routes Run": "146"
-        },
-        {
           "Name": "Marvin Harrison Jr.",
           "POS": "WR",
           "Team": "HOU",
-          "G": "",
-          "Routes Run": "8"
-        },
-        {
-          "Name": "Marvin Mims",
-          "POS": "WR",
-          "Team": "DEN",
-          "G": "4",
-          "Routes Run": "31"
+          "G": "5",
+          "Routes Run": "154"
         },
         {
           "Name": "Marvin Mims Jr.",
           "POS": "WR",
           "Team": "DEN",
-          "G": "",
-          "Routes Run": "10"
+          "G": "4",
+          "Routes Run": "41"
         },
         {
           "Name": "Matthew Golden",
@@ -14150,18 +14094,11 @@
           "Routes Run": "78"
         },
         {
-          "Name": "Omar Cooper",
-          "POS": "WR",
-          "Team": "NYJ",
-          "G": "2",
-          "Routes Run": "28"
-        },
-        {
           "Name": "Omar Cooper Jr.",
           "POS": "WR",
           "Team": "NYJ",
-          "G": "",
-          "Routes Run": "23"
+          "G": "2",
+          "Routes Run": "51"
         },
         {
           "Name": "Parker Washington",

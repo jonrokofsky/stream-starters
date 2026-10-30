@@ -47,6 +47,7 @@ const maybe = (value) => { const parsed = Number(value); return value !== "" && 
 const format = (value, digits = 2) => Number.isInteger(value) ? String(value) : value.toFixed(digits).replace(/0+$/, "").replace(/\.$/, "");
 const percent = (part, total) => total > 0 ? `${format(part / total * 100, 2)}%` : "-";
 const normalize = (value) => String(value ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const normalizeRouteName = (value) => normalize(value).replace(/(?:jr|sr|iii|ii|iv)$/, "");
 const key = (...parts) => parts.join(":");
 
 async function download(url, binary = false) {
@@ -173,16 +174,17 @@ function buildRbRows(rows, endWeek) {
 
 function buildReceiverRows(rows, endWeek, routeSnapshot) {
   const result = [];
-  const current = new Map((routeSnapshot?.rows ?? []).map((row) => [key(row.POS,normalize(row.Name)),row]));
+  const current = new Map((routeSnapshot?.rows ?? []).map((row) => [key(row.POS,normalizeRouteName(row.Name)),row]));
   for (const group of cumulativeGroups(rows, endWeek, ["WR","TE"]).values()) {
     group.sort((a,b)=>a.week-b.week);
     const latest=group.at(-1), games=new Set(group.map((row)=>row.gameId)).size, targets=sum(group,"targets"), receptions=sum(group,"receptions"), yards=sum(group,"recYards"), fp=sum(group,"fantasyPointsPpr");
     const teamTargets=sum(group,"teamTargets"), teamYards=sum(group,"teamRecYards"), teamTds=sum(group,"teamRecTds"), recTds=sum(group,"recTds"), yac=sum(group,"recYac");
-    const prior=current.get(key(latest.position,normalize(latest.name))) ?? {};
+    const prior=current.get(key(latest.position,normalizeRouteName(latest.name))) ?? {};
     // The snapshot is keyed to this completed NFL week. Route totals remain
     // valid even when a provider counts games played differently for zero-use weeks.
     const routes = prior["Routes Run"] ?? "";
-    result.push({Name:latest.name,Team:latest.team,POS:latest.position,G:String(games),Targets:String(targets),"Targets/G":games?format(targets/games):"","Target Share":percent(targets,teamTargets),Rec:String(receptions),"Rec Yards":String(yards),"Team Rec Yards %":percent(yards,teamYards),YPR:receptions?format(yards/receptions):"",YPT:targets?format(yards/targets):"","RecYds/G":games?format(yards/games):"","Catch %":percent(receptions,targets),"Rec TD":String(recTds),"Team TD %":percent(recTds,teamTds),i10:String(sum(group,"i10Targets")),"i10/G":games?format(sum(group,"i10Targets")/games):"","i20 Targets":String(sum(group,"i20Targets")),"i20/G":games?format(sum(group,"i20Targets")/games):"",FUM:String(sum(group,"recFumbles")),"FP/G":games?format(fp/games):"",FP:format(fp),"Routes Run":routes,"Routes/G":routes&&games?format(num(routes)/games):"","Targets/Route Run":routes?format(targets/num(routes)):"",YAC:String(yac),"YAC/Rec":receptions?format(yac/receptions):"",YPRR:routes?format(yards/num(routes)):"",RACR:format(group.reduce((v,r)=>v+(r.racr??0),0)/Math.max(1,group.filter(r=>r.racr!==null).length)),WOPR:format(group.reduce((v,r)=>v+(r.wopr??0),0)/Math.max(1,group.filter(r=>r.wopr!==null).length)),"_Team Targets":String(teamTargets),"_Team Rec Yards":String(teamYards),"_Team Rec TD":String(teamTds)});
+    const routeRateQualified = routes !== "" && games > 0 && num(routes) / games >= 10;
+    result.push({Name:latest.name,Team:latest.team,POS:latest.position,G:String(games),Targets:String(targets),"Targets/G":games?format(targets/games):"","Target Share":percent(targets,teamTargets),Rec:String(receptions),"Rec Yards":String(yards),"Team Rec Yards %":percent(yards,teamYards),YPR:receptions?format(yards/receptions):"",YPT:targets?format(yards/targets):"","RecYds/G":games?format(yards/games):"","Catch %":percent(receptions,targets),"Rec TD":String(recTds),"Team TD %":percent(recTds,teamTds),i10:String(sum(group,"i10Targets")),"i10/G":games?format(sum(group,"i10Targets")/games):"","i20 Targets":String(sum(group,"i20Targets")),"i20/G":games?format(sum(group,"i20Targets")/games):"",FUM:String(sum(group,"recFumbles")),"FP/G":games?format(fp/games):"",FP:format(fp),"Routes Run":routes,"Routes/G":routes&&games?format(num(routes)/games):"","Targets/Route Run":routeRateQualified?format(targets/num(routes)):"",YAC:String(yac),"YAC/Rec":receptions?format(yac/receptions):"",YPRR:routeRateQualified?format(yards/num(routes)):"",RACR:format(group.reduce((v,r)=>v+(r.racr??0),0)/Math.max(1,group.filter(r=>r.racr!==null).length)),WOPR:format(group.reduce((v,r)=>v+(r.wopr??0),0)/Math.max(1,group.filter(r=>r.wopr!==null).length)),"_Team Targets":String(teamTargets),"_Team Rec Yards":String(teamYards),"_Team Rec TD":String(teamTds)});
   }
   for(const position of ["WR","TE"]){const group=result.filter(row=>row.POS===position);const scores=calculateReceiverScores(group);group.forEach((row,index)=>Object.assign(row,{"Efficiency Grade":scores[index].efficiency==null?"":String(scores[index].efficiency),"Opportunity Grade":scores[index].opportunity==null?"":String(scores[index].opportunity)}));}
   return result.sort((a,b)=>a.POS.localeCompare(b.POS)||a.Name.localeCompare(b.Name));

@@ -1,5 +1,7 @@
 # Session checkpoint
 
+## 2026-10-30 football schedules and YPRR correction
+Task SS-20261030-football-manual-refresh-yprr removes cron triggers from all three football workflows while retaining manual dispatch. Suffix-normalized route joins collapse Jr./II/III variants, and YPRR/targets-per-route require 10 routes per game. Week 7 routes now contain 327 cumulative identities. Focused tests pass 9/9, data tests 26/26, focused lint is clean, and the production build passes. Hitter-ranking scheduling is unchanged. Preserve unrelated public/1.png.
 ## 2026-10-30 football data refresh
 Task `SS-20261030-football-data-refresh` updates 7,513 nflverse player-week rows through completed Week 7 and live Week 8 defense results. The automatic refresh now writes both weekly archives and latest files used by profile/matchup pages; defense FantPt uses PFR-compatible standard scoring. User-supplied 100-row YAC/Att data is applied to 133 current RB rows. Receiver basic stats are current through Week 7. Exact Fantasy Points routes remain unchanged through Week 6; user-authorized HeatRadar Week 7 is appended to a 336-row cumulative route archive. Future HeatRadar weeks are manual imports. Data tests pass 26/26 and the 18-route production build passes. Sequential Manager review recommends SHIP. Changes are uncommitted and unpushed; preserve unrelated `public/1.png`.
 ## 2026-10-23 Fantasy Points advanced archive

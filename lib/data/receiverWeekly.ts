@@ -9,6 +9,8 @@ export type ReceiverWeeklySnapshot = {
   rows: ReceiverWeeklyRow[];
 };
 
+const MIN_ROUTE_RATE_ROUTES_PER_GAME = 10;
+
 const countFields = [
   "G", "Targets", "Rec", "Rec Yards", "Rec TD", "i10", "i20 Targets", "FUM", "FP",
   "Routes Run", "Receptions", "Rec. Yards", "Touchdowns", "YAC", "Total EPA", "Impact Plays",
@@ -71,6 +73,7 @@ export function buildReceiverPeriodSnapshot(
     const receptions = value(row, "Rec") ?? 0;
     const yards = value(row, "Rec Yards") ?? 0;
     const routes = value(row, "Routes Run");
+    const routeRateQualified = routes !== null && games > 0 && routes / games >= MIN_ROUTE_RATE_ROUTES_PER_GAME;
     // Public weekly data does not identify every route. Leave route metrics
     // unavailable for a range unless both cumulative endpoints contain them.
     let yac = value(row, "YAC");
@@ -93,8 +96,8 @@ export function buildReceiverPeriodSnapshot(
     row.YPT = targets ? (yards / targets).toFixed(2) : "";
     row["Catch %"] = targets ? `${(receptions / targets * 100).toFixed(2)}%` : "";
     row["FP/G"] = games ? (fantasyPoints / games).toFixed(1) : "";
-    row["Targets/Route Run"] = routes ? (targets / routes).toFixed(2) : "";
-    row.YPRR = routes ? (yards / routes).toFixed(2) : "";
+    row["Targets/Route Run"] = routeRateQualified ? (targets / routes).toFixed(2) : "";
+    row.YPRR = routeRateQualified ? (yards / routes).toFixed(2) : "";
     row["YAC/Rec"] = receptions && yac !== null ? (yac / receptions).toFixed(2) : "";
     for (const [countKey, rateKey, denominatorKey] of [["Targets", "Target Share", "_Team Targets"], ["Rec Yards", "Team Rec Yards %", "_Team Rec Yards"], ["Rec TD", "Team TD %", "_Team Rec TD"]] as const) {
       const denominator = value(row, denominatorKey);

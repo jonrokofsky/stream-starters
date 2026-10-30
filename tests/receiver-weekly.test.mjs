@@ -102,3 +102,21 @@ test("receiver period snapshots do not invent routes from target pace", () => {
   assert.equal(missing["Routes/G"], "");
   assert.equal(missing["Routes Estimated"], undefined);
 });
+
+
+test("receiver periods suppress route rates below 10 routes per game", () => {
+  const row = (games, routes, yards) => ({
+    Name: "Small Sample", POS: "WR", Team: "MIN", G: String(games), Targets: "1", Rec: "1",
+    "Rec Yards": String(yards), "Rec TD": "0", i10: "0", "i20 Targets": "0", FUM: "0",
+    FP: "1", "Routes Run": String(routes), Receptions: "1", "Rec. Yards": String(yards),
+    Touchdowns: "0", YAC: "0", "Total EPA": "0", "Impact Plays": "0", "Target Share": "5%",
+    "Team Rec Yards %": "5%", "Team TD %": "0%",
+  });
+  const period = buildReceiverPeriodSnapshot(
+    { week: 7, copiedAt: "week-7", population: { WR: 1, TE: 0 }, rows: [row(2, 6, 50)] },
+    { week: 6, copiedAt: "week-6", population: { WR: 1, TE: 0 }, rows: [row(1, 1, 0)] },
+  );
+  assert.equal(period.rows[0]["Routes/G"], "5.00");
+  assert.equal(period.rows[0]["Targets/Route Run"], "");
+  assert.equal(period.rows[0].YPRR, "");
+});

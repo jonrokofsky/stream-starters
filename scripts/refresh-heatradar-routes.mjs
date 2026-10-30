@@ -6,7 +6,10 @@ const START_WEEK = 7;
 const target = new URL(`../public/data/receiver-routes-weekly-${SEASON}.json`, import.meta.url);
 
 function normalizeName(value) {
-  return String(value ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  return String(value ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "")
+    .replace(/(?:jr|sr|iii|ii|iv)$/, "");
 }
 
 function identity(position, name) {

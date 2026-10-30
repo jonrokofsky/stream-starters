@@ -1,9 +1,6 @@
 name: Refresh nflverse football data
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 9 * * 1,2,5'
-      timezone: 'America/New_York'
 permissions:
   contents: write
 concurrency:

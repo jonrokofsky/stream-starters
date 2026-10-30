@@ -8,7 +8,7 @@
   "enrichmentSources": [
     "https://heatradar.app/nfl/routes"
   ],
-  "copiedAt": "2026-10-30T16:12:50.834Z",
+  "copiedAt": "2026-10-30T16:39:57.127Z",
   "updateMode": "automatic nflverse weekly refresh",
   "seasonType": "Regular",
   "scoring": "PPR",
@@ -52,8 +52,8 @@
       "_Team Targets": "90",
       "_Team Rec Yards": "567",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "16",
-      "Opportunity Grade": "31"
+      "Efficiency Grade": "13",
+      "Opportunity Grade": "30"
     },
     {
       "Name": "AJ Barner",
@@ -90,8 +90,8 @@
       "_Team Targets": "215",
       "_Team Rec Yards": "1726",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "59",
-      "Opportunity Grade": "63"
+      "Efficiency Grade": "55",
+      "Opportunity Grade": "61"
     },
     {
       "Name": "Andrew Ogletree",
@@ -119,17 +119,17 @@
       "FP": "4.6",
       "Routes Run": "28",
       "Routes/G": "5.6",
-      "Targets/Route Run": "0.18",
+      "Targets/Route Run": "",
       "YAC": "13",
       "YAC/Rec": "4.33",
-      "YPRR": "0.57",
+      "YPRR": "",
       "RACR": "0.6",
       "WOPR": "0.07",
       "_Team Targets": "152",
       "_Team Rec Yards": "894",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "23",
-      "Opportunity Grade": "25"
+      "Efficiency Grade": "22",
+      "Opportunity Grade": "20"
     },
     {
       "Name": "Austin Hooper",
@@ -157,17 +157,17 @@
       "FP": "20.7",
       "Routes Run": "48",
       "Routes/G": "9.6",
-      "Targets/Route Run": "0.21",
+      "Targets/Route Run": "",
       "YAC": "37",
       "YAC/Rec": "4.63",
-      "YPRR": "1.4",
+      "YPRR": "",
       "RACR": "1.12",
       "WOPR": "0.14",
       "_Team Targets": "139",
       "_Team Rec Yards": "1062",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "54",
-      "Opportunity Grade": "55"
+      "Efficiency Grade": "50",
+      "Opportunity Grade": "52"
     },
     {
       "Name": "Bauer Sharp",
@@ -195,17 +195,17 @@
       "FP": "3.1",
       "Routes Run": "9",
       "Routes/G": "1.5",
-      "Targets/Route Run": "0.11",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "0",
-      "YPRR": "2.33",
+      "YPRR": "",
       "RACR": "1",
       "WOPR": "0.02",
       "_Team Targets": "165",
       "_Team Rec Yards": "998",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "68",
-      "Opportunity Grade": "9"
+      "Efficiency Grade": "59",
+      "Opportunity Grade": "8"
     },
     {
       "Name": "Ben Sinnott",
@@ -242,8 +242,8 @@
       "_Team Targets": "87",
       "_Team Rec Yards": "589",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "12",
-      "Opportunity Grade": "18"
+      "Efficiency Grade": "9",
+      "Opportunity Grade": "17"
     },
     {
       "Name": "Ben Yurosek",
@@ -271,17 +271,17 @@
       "FP": "2",
       "Routes Run": "9",
       "Routes/G": "9",
-      "Targets/Route Run": "0.11",
+      "Targets/Route Run": "",
       "YAC": "5",
       "YAC/Rec": "5",
-      "YPRR": "1.11",
+      "YPRR": "",
       "RACR": "2",
       "WOPR": "0.07",
       "_Team Targets": "29",
       "_Team Rec Yards": "229",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "58",
-      "Opportunity Grade": "21"
+      "Efficiency Grade": "62",
+      "Opportunity Grade": "22"
     },
     {
       "Name": "Blake Whiteheart",
@@ -309,17 +309,17 @@
       "FP": "12.9",
       "Routes Run": "38",
       "Routes/G": "9.5",
-      "Targets/Route Run": "0.11",
+      "Targets/Route Run": "",
       "YAC": "23",
       "YAC/Rec": "7.67",
-      "YPRR": "1.03",
+      "YPRR": "",
       "RACR": "2.1",
       "WOPR": "0.08",
       "_Team Targets": "110",
       "_Team Rec Yards": "875",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "67",
-      "Opportunity Grade": "35"
+      "Efficiency Grade": "75",
+      "Opportunity Grade": "38"
     },
     {
       "Name": "Brayden Willis",
@@ -347,10 +347,10 @@
       "FP": "0",
       "Routes Run": "5",
       "Routes/G": "1.25",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "103",
@@ -423,17 +423,17 @@
       "FP": "3.2",
       "Routes Run": "9",
       "Routes/G": "2.25",
-      "Targets/Route Run": "0.22",
+      "Targets/Route Run": "",
       "YAC": "8",
       "YAC/Rec": "4",
-      "YPRR": "1.33",
+      "YPRR": "",
       "RACR": "0.81",
       "WOPR": "0.03",
       "_Team Targets": "119",
       "_Team Rec Yards": "1073",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "36",
-      "Opportunity Grade": "17"
+      "Efficiency Grade": "27",
+      "Opportunity Grade": "8"
     },
     {
       "Name": "Brevyn Spann-Ford",
@@ -461,17 +461,17 @@
       "FP": "16.9",
       "Routes Run": "55",
       "Routes/G": "7.86",
-      "Targets/Route Run": "0.24",
+      "Targets/Route Run": "",
       "YAC": "45",
       "YAC/Rec": "5",
-      "YPRR": "1.44",
+      "YPRR": "",
       "RACR": "2.62",
       "WOPR": "0.08",
       "_Team Targets": "266",
       "_Team Rec Yards": "1851",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "54",
-      "Opportunity Grade": "36"
+      "Efficiency Grade": "48",
+      "Opportunity Grade": "27"
     },
     {
       "Name": "Brock Bowers",
@@ -508,7 +508,7 @@
       "_Team Targets": "196",
       "_Team Rec Yards": "1525",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "83",
+      "Efficiency Grade": "84",
       "Opportunity Grade": "95"
     },
     {
@@ -546,8 +546,8 @@
       "_Team Targets": "188",
       "_Team Rec Yards": "1485",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "29",
-      "Opportunity Grade": "30"
+      "Efficiency Grade": "24",
+      "Opportunity Grade": "28"
     },
     {
       "Name": "Cade Otton",
@@ -584,8 +584,8 @@
       "_Team Targets": "198",
       "_Team Rec Yards": "1180",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "59",
-      "Opportunity Grade": "61"
+      "Efficiency Grade": "54",
+      "Opportunity Grade": "59"
     },
     {
       "Name": "Cade Stover",
@@ -613,10 +613,10 @@
       "FP": "7.2",
       "Routes Run": "26",
       "Routes/G": "5.2",
-      "Targets/Route Run": "0.12",
+      "Targets/Route Run": "",
       "YAC": "18",
       "YAC/Rec": "6",
-      "YPRR": "0.65",
+      "YPRR": "",
       "RACR": "6.67",
       "WOPR": "0.03",
       "_Team Targets": "156",
@@ -651,10 +651,10 @@
       "FP": "0",
       "Routes Run": "6",
       "Routes/G": "1.2",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "148",
@@ -689,10 +689,10 @@
       "FP": "0",
       "Routes Run": "1",
       "Routes/G": "0.5",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "52",
@@ -736,8 +736,8 @@
       "_Team Targets": "110",
       "_Team Rec Yards": "726",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "46",
-      "Opportunity Grade": "59"
+      "Efficiency Grade": "43",
+      "Opportunity Grade": "58"
     },
     {
       "Name": "Charlie Woerner",
@@ -774,8 +774,8 @@
       "_Team Targets": "117",
       "_Team Rec Yards": "855",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "32",
-      "Opportunity Grade": "27"
+      "Efficiency Grade": "29",
+      "Opportunity Grade": "26"
     },
     {
       "Name": "Chig Okonkwo",
@@ -812,8 +812,8 @@
       "_Team Targets": "123",
       "_Team Rec Yards": "895",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "67",
-      "Opportunity Grade": "52"
+      "Efficiency Grade": "64",
+      "Opportunity Grade": "50"
     },
     {
       "Name": "Chris Manhertz",
@@ -888,7 +888,7 @@
       "_Team Targets": "221",
       "_Team Rec Yards": "1685",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "50",
+      "Efficiency Grade": "47",
       "Opportunity Grade": "66"
     },
     {
@@ -926,8 +926,8 @@
       "_Team Targets": "224",
       "_Team Rec Yards": "1784",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "43",
-      "Opportunity Grade": "49"
+      "Efficiency Grade": "38",
+      "Opportunity Grade": "47"
     },
     {
       "Name": "Colson Yankoff",
@@ -955,17 +955,17 @@
       "FP": "3.6",
       "Routes Run": "37",
       "Routes/G": "6.17",
-      "Targets/Route Run": "0.11",
+      "Targets/Route Run": "",
       "YAC": "14",
       "YAC/Rec": "7",
-      "YPRR": "0.43",
+      "YPRR": "",
       "RACR": "1.17",
       "WOPR": "0.04",
       "_Team Targets": "187",
       "_Team Rec Yards": "1285",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "32",
-      "Opportunity Grade": "13"
+      "Efficiency Grade": "37",
+      "Opportunity Grade": "12"
     },
     {
       "Name": "Colston Loveland",
@@ -1002,7 +1002,7 @@
       "_Team Targets": "224",
       "_Team Rec Yards": "1784",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "53",
+      "Efficiency Grade": "50",
       "Opportunity Grade": "85"
     },
     {
@@ -1078,7 +1078,7 @@
       "_Team Targets": "160",
       "_Team Rec Yards": "1504",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "90",
+      "Efficiency Grade": "91",
       "Opportunity Grade": "81"
     },
     {
@@ -1145,17 +1145,17 @@
       "FP": "9.4",
       "Routes Run": "57",
       "Routes/G": "8.14",
-      "Targets/Route Run": "0.19",
+      "Targets/Route Run": "",
       "YAC": "34",
       "YAC/Rec": "5.67",
-      "YPRR": "0.6",
+      "YPRR": "",
       "RACR": "1.16",
       "WOPR": "0.11",
       "_Team Targets": "195",
       "_Team Rec Yards": "1179",
       "_Team Rec TD": "4",
       "Efficiency Grade": "29",
-      "Opportunity Grade": "32"
+      "Opportunity Grade": "27"
     },
     {
       "Name": "Darnell Washington",
@@ -1192,7 +1192,7 @@
       "_Team Targets": "246",
       "_Team Rec Yards": "1699",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "68",
+      "Efficiency Grade": "66",
       "Opportunity Grade": "73"
     },
     {
@@ -1230,8 +1230,8 @@
       "_Team Targets": "211",
       "_Team Rec Yards": "1759",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "77",
-      "Opportunity Grade": "70"
+      "Efficiency Grade": "75",
+      "Opportunity Grade": "69"
     },
     {
       "Name": "David Njoku",
@@ -1269,7 +1269,7 @@
       "_Team Rec Yards": "401",
       "_Team Rec TD": "2",
       "Efficiency Grade": "84",
-      "Opportunity Grade": "58"
+      "Opportunity Grade": "59"
     },
     {
       "Name": "Davis Allen",
@@ -1297,17 +1297,17 @@
       "FP": "30.3",
       "Routes Run": "65",
       "Routes/G": "9.29",
-      "Targets/Route Run": "0.22",
+      "Targets/Route Run": "",
       "YAC": "42",
       "YAC/Rec": "4.2",
-      "YPRR": "1.28",
+      "YPRR": "",
       "RACR": "1.03",
       "WOPR": "0.11",
       "_Team Targets": "271",
       "_Team Rec Yards": "2002",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "46",
-      "Opportunity Grade": "60"
+      "Efficiency Grade": "42",
+      "Opportunity Grade": "57"
     },
     {
       "Name": "Dawson Knox",
@@ -1344,8 +1344,8 @@
       "_Team Targets": "160",
       "_Team Rec Yards": "1504",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "19",
-      "Opportunity Grade": "48"
+      "Efficiency Grade": "16",
+      "Opportunity Grade": "47"
     },
     {
       "Name": "Drew Sample",
@@ -1382,8 +1382,8 @@
       "_Team Targets": "130",
       "_Team Rec Yards": "1018",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "43",
-      "Opportunity Grade": "46"
+      "Efficiency Grade": "39",
+      "Opportunity Grade": "45"
     },
     {
       "Name": "Durham Smythe",
@@ -1411,17 +1411,17 @@
       "FP": "1.4",
       "Routes Run": "29",
       "Routes/G": "9.67",
-      "Targets/Route Run": "0.07",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "0",
-      "YPRR": "0.14",
+      "YPRR": "",
       "RACR": "0.5",
       "WOPR": "0.04",
       "_Team Targets": "82",
       "_Team Rec Yards": "844",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "8",
-      "Opportunity Grade": "26"
+      "Efficiency Grade": "6",
+      "Opportunity Grade": "28"
     },
     {
       "Name": "E.J. Jenkins",
@@ -1449,10 +1449,10 @@
       "FP": "0",
       "Routes Run": "16",
       "Routes/G": "5.33",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "94",
@@ -1496,7 +1496,7 @@
       "_Team Targets": "179",
       "_Team Rec Yards": "1585",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "84",
+      "Efficiency Grade": "85",
       "Opportunity Grade": "71"
     },
     {
@@ -1525,17 +1525,17 @@
       "FP": "0",
       "Routes Run": "9",
       "Routes/G": "9",
-      "Targets/Route Run": "0.11",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.07",
       "_Team Targets": "33",
       "_Team Rec Yards": "211",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "13"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "12"
     },
     {
       "Name": "Elijah Arroyo",
@@ -1572,8 +1572,8 @@
       "_Team Targets": "53",
       "_Team Rec Yards": "430",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "48",
-      "Opportunity Grade": "28"
+      "Efficiency Grade": "45",
+      "Opportunity Grade": "27"
     },
     {
       "Name": "Elijah Higgins",
@@ -1611,7 +1611,7 @@
       "_Team Rec Yards": "1330",
       "_Team Rec TD": "9",
       "Efficiency Grade": "81",
-      "Opportunity Grade": "59"
+      "Opportunity Grade": "58"
     },
     {
       "Name": "Eric Saubert",
@@ -1639,17 +1639,17 @@
       "FP": "11",
       "Routes Run": "35",
       "Routes/G": "5",
-      "Targets/Route Run": "0.14",
+      "Targets/Route Run": "",
       "YAC": "21",
       "YAC/Rec": "7",
-      "YPRR": "0.57",
+      "YPRR": "",
       "RACR": "1.39",
       "WOPR": "0.03",
       "_Team Targets": "215",
       "_Team Rec Yards": "1726",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "30",
-      "Opportunity Grade": "27"
+      "Efficiency Grade": "33",
+      "Opportunity Grade": "25"
     },
     {
       "Name": "Erick All",
@@ -1686,7 +1686,7 @@
       "_Team Targets": "90",
       "_Team Rec Yards": "689",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "52",
+      "Efficiency Grade": "50",
       "Opportunity Grade": "49"
     },
     {
@@ -1724,8 +1724,8 @@
       "_Team Targets": "196",
       "_Team Rec Yards": "1271",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "53",
-      "Opportunity Grade": "61"
+      "Efficiency Grade": "50",
+      "Opportunity Grade": "59"
     },
     {
       "Name": "Feleipe Franks",
@@ -1753,10 +1753,10 @@
       "FP": "0",
       "Routes Run": "2",
       "Routes/G": "0.4",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "182",
@@ -1791,17 +1791,17 @@
       "FP": "36.2",
       "Routes Run": "53",
       "Routes/G": "8.83",
-      "Targets/Route Run": "0.26",
+      "Targets/Route Run": "",
       "YAC": "37",
       "YAC/Rec": "3.36",
-      "YPRR": "1.36",
+      "YPRR": "",
       "RACR": "1.06",
       "WOPR": "0.14",
       "_Team Targets": "203",
       "_Team Rec Yards": "1714",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "40",
-      "Opportunity Grade": "65"
+      "Efficiency Grade": "31",
+      "Opportunity Grade": "61"
     },
     {
       "Name": "Gavin Bartholomew",
@@ -1829,17 +1829,17 @@
       "FP": "12.4",
       "Routes Run": "27",
       "Routes/G": "9",
-      "Targets/Route Run": "0.3",
+      "Targets/Route Run": "",
       "YAC": "52",
       "YAC/Rec": "7.43",
-      "YPRR": "2",
+      "YPRR": "",
       "RACR": "3.72",
       "WOPR": "0.17",
       "_Team Targets": "86",
       "_Team Rec Yards": "626",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "68",
-      "Opportunity Grade": "54"
+      "Efficiency Grade": "60",
+      "Opportunity Grade": "46"
     },
     {
       "Name": "George Kittle",
@@ -1876,7 +1876,7 @@
       "_Team Targets": "205",
       "_Team Rec Yards": "1748",
       "_Team Rec TD": "15",
-      "Efficiency Grade": "87",
+      "Efficiency Grade": "88",
       "Opportunity Grade": "95"
     },
     {
@@ -1915,7 +1915,7 @@
       "_Team Rec Yards": "972",
       "_Team Rec TD": "4",
       "Efficiency Grade": "83",
-      "Opportunity Grade": "67"
+      "Opportunity Grade": "66"
     },
     {
       "Name": "Gunnar Helm",
@@ -1952,8 +1952,8 @@
       "_Team Targets": "173",
       "_Team Rec Yards": "1077",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "35",
-      "Opportunity Grade": "53"
+      "Efficiency Grade": "30",
+      "Opportunity Grade": "51"
     },
     {
       "Name": "Harold Fannin Jr.",
@@ -1979,19 +1979,19 @@
       "FUM": "1",
       "FP/G": "9.53",
       "FP": "66.7",
-      "Routes Run": "29",
-      "Routes/G": "4.14",
-      "Targets/Route Run": "1.34",
+      "Routes Run": "201",
+      "Routes/G": "28.71",
+      "Targets/Route Run": "0.19",
       "YAC": "155",
       "YAC/Rec": "6.2",
-      "YPRR": "8.86",
+      "YPRR": "1.28",
       "RACR": "1.33",
       "WOPR": "0.39",
       "_Team Targets": "207",
       "_Team Rec Yards": "1482",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "79",
-      "Opportunity Grade": "75"
+      "Efficiency Grade": "64",
+      "Opportunity Grade": "79"
     },
     {
       "Name": "Hayden Rucci",
@@ -2019,17 +2019,17 @@
       "FP": "7.7",
       "Routes Run": "12",
       "Routes/G": "4",
-      "Targets/Route Run": "0.08",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "0",
-      "YPRR": "0.58",
+      "YPRR": "",
       "RACR": "1",
       "WOPR": "0.03",
       "_Team Targets": "90",
       "_Team Rec Yards": "551",
       "_Team Rec TD": "2",
       "Efficiency Grade": "26",
-      "Opportunity Grade": "28"
+      "Opportunity Grade": "31"
     },
     {
       "Name": "Hunter Henry",
@@ -2067,7 +2067,7 @@
       "_Team Rec Yards": "1830",
       "_Team Rec TD": "13",
       "Efficiency Grade": "82",
-      "Opportunity Grade": "77"
+      "Opportunity Grade": "75"
     },
     {
       "Name": "Hunter Long",
@@ -2095,17 +2095,17 @@
       "FP": "3.5",
       "Routes Run": "19",
       "Routes/G": "4.75",
-      "Targets/Route Run": "0.11",
+      "Targets/Route Run": "",
       "YAC": "1",
       "YAC/Rec": "0.5",
-      "YPRR": "0.79",
+      "YPRR": "",
       "RACR": "1.06",
       "WOPR": "0.03",
       "_Team Targets": "148",
       "_Team Rec Yards": "818",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "35",
-      "Opportunity Grade": "11"
+      "Efficiency Grade": "33",
+      "Opportunity Grade": "10"
     },
     {
       "Name": "Ian Thomas",
@@ -2133,17 +2133,17 @@
       "FP": "17",
       "Routes Run": "37",
       "Routes/G": "9.25",
-      "Targets/Route Run": "0.14",
+      "Targets/Route Run": "",
       "YAC": "35",
       "YAC/Rec": "7",
-      "YPRR": "1.62",
+      "YPRR": "",
       "RACR": "3.63",
       "WOPR": "0.06",
       "_Team Targets": "156",
       "_Team Rec Yards": "1217",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "79",
-      "Opportunity Grade": "33"
+      "Efficiency Grade": "80",
+      "Opportunity Grade": "32"
     },
     {
       "Name": "Isaiah Likely",
@@ -2209,17 +2209,17 @@
       "FP": "0",
       "Routes Run": "21",
       "Routes/G": "7",
-      "Targets/Route Run": "0.05",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.05",
       "_Team Targets": "74",
       "_Team Rec Yards": "669",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "8"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "7"
     },
     {
       "Name": "Jackson Meeks",
@@ -2247,17 +2247,17 @@
       "FP": "1.8",
       "Routes Run": "7",
       "Routes/G": "7",
-      "Targets/Route Run": "0.14",
+      "Targets/Route Run": "",
       "YAC": "3",
       "YAC/Rec": "3",
-      "YPRR": "1.14",
+      "YPRR": "",
       "RACR": "1.6",
       "WOPR": "0.07",
       "_Team Targets": "31",
       "_Team Rec Yards": "269",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "45",
-      "Opportunity Grade": "21"
+      "Efficiency Grade": "43",
+      "Opportunity Grade": "18"
     },
     {
       "Name": "Jake Briningstool",
@@ -2285,17 +2285,17 @@
       "FP": "1.9",
       "Routes Run": "11",
       "Routes/G": "3.67",
-      "Targets/Route Run": "0.18",
+      "Targets/Route Run": "",
       "YAC": "5",
       "YAC/Rec": "5",
-      "YPRR": "0.82",
+      "YPRR": "",
       "RACR": "1.13",
       "WOPR": "0.06",
       "_Team Targets": "75",
       "_Team Rec Yards": "655",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "37",
-      "Opportunity Grade": "18"
+      "Efficiency Grade": "36",
+      "Opportunity Grade": "12"
     },
     {
       "Name": "Jake Ferguson",
@@ -2332,8 +2332,8 @@
       "_Team Targets": "266",
       "_Team Rec Yards": "1851",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "31",
-      "Opportunity Grade": "69"
+      "Efficiency Grade": "27",
+      "Opportunity Grade": "68"
     },
     {
       "Name": "Jelani Woods",
@@ -2361,17 +2361,17 @@
       "FP": "7.9",
       "Routes Run": "28",
       "Routes/G": "5.6",
-      "Targets/Route Run": "0.18",
+      "Targets/Route Run": "",
       "YAC": "20",
       "YAC/Rec": "5",
-      "YPRR": "1.39",
+      "YPRR": "",
       "RACR": "1.31",
       "WOPR": "0.07",
       "_Team Targets": "138",
       "_Team Rec Yards": "1161",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "57",
-      "Opportunity Grade": "27"
+      "Efficiency Grade": "55",
+      "Opportunity Grade": "23"
     },
     {
       "Name": "Jeremy Ruckert",
@@ -2408,8 +2408,8 @@
       "_Team Targets": "124",
       "_Team Rec Yards": "1070",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "41",
-      "Opportunity Grade": "54"
+      "Efficiency Grade": "38",
+      "Opportunity Grade": "52"
     },
     {
       "Name": "John Bates",
@@ -2446,8 +2446,8 @@
       "_Team Targets": "117",
       "_Team Rec Yards": "846",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "30",
-      "Opportunity Grade": "42"
+      "Efficiency Grade": "25",
+      "Opportunity Grade": "40"
     },
     {
       "Name": "Johnny Mundt",
@@ -2484,8 +2484,8 @@
       "_Team Targets": "165",
       "_Team Rec Yards": "945",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "15",
-      "Opportunity Grade": "22"
+      "Efficiency Grade": "12",
+      "Opportunity Grade": "21"
     },
     {
       "Name": "Jonnu Smith",
@@ -2522,8 +2522,8 @@
       "_Team Targets": "163",
       "_Team Rec Yards": "1170",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "82",
-      "Opportunity Grade": "43"
+      "Efficiency Grade": "80",
+      "Opportunity Grade": "41"
     },
     {
       "Name": "Josh Cuevas",
@@ -2551,17 +2551,17 @@
       "FP": "26.9",
       "Routes Run": "45",
       "Routes/G": "9",
-      "Targets/Route Run": "0.24",
+      "Targets/Route Run": "",
       "YAC": "92",
       "YAC/Rec": "10.22",
-      "YPRR": "2.64",
+      "YPRR": "",
       "RACR": "7.43",
       "WOPR": "0.14",
       "_Team Targets": "145",
       "_Team Rec Yards": "1135",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "90",
-      "Opportunity Grade": "60"
+      "Efficiency Grade": "87",
+      "Opportunity Grade": "56"
     },
     {
       "Name": "Josh Oliver",
@@ -2589,17 +2589,17 @@
       "FP": "7.6",
       "Routes Run": "17",
       "Routes/G": "5.67",
-      "Targets/Route Run": "0.29",
+      "Targets/Route Run": "",
       "YAC": "24",
       "YAC/Rec": "8",
-      "YPRR": "2.71",
+      "YPRR": "",
       "RACR": "3.25",
       "WOPR": "0.14",
       "_Team Targets": "67",
       "_Team Rec Yards": "462",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "86",
-      "Opportunity Grade": "40"
+      "Efficiency Grade": "82",
+      "Opportunity Grade": "30"
     },
     {
       "Name": "Juwan Johnson",
@@ -2636,8 +2636,8 @@
       "_Team Targets": "263",
       "_Team Rec Yards": "1721",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "63",
-      "Opportunity Grade": "82"
+      "Efficiency Grade": "61",
+      "Opportunity Grade": "81"
     },
     {
       "Name": "Keleki Latu",
@@ -2665,10 +2665,10 @@
       "FP": "0",
       "Routes Run": "8",
       "Routes/G": "1.6",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "134",
@@ -2712,7 +2712,7 @@
       "_Team Targets": "197",
       "_Team Rec Yards": "1623",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "70",
+      "Efficiency Grade": "69",
       "Opportunity Grade": "59"
     },
     {
@@ -2788,8 +2788,8 @@
       "_Team Targets": "192",
       "_Team Rec Yards": "1479",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "67",
-      "Opportunity Grade": "80"
+      "Efficiency Grade": "64",
+      "Opportunity Grade": "79"
     },
     {
       "Name": "Kylen Granson",
@@ -2817,17 +2817,17 @@
       "FP": "0",
       "Routes Run": "1",
       "Routes/G": "1",
-      "Targets/Route Run": "1",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.1",
       "_Team Targets": "35",
       "_Team Rec Yards": "170",
       "_Team Rec TD": "0",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "20"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "6"
     },
     {
       "Name": "Luke Farrell",
@@ -2855,17 +2855,17 @@
       "FP": "6.3",
       "Routes Run": "64",
       "Routes/G": "9.14",
-      "Targets/Route Run": "0.08",
+      "Targets/Route Run": "",
       "YAC": "16",
       "YAC/Rec": "5.33",
-      "YPRR": "0.52",
+      "YPRR": "",
       "RACR": "1.83",
       "WOPR": "0.05",
       "_Team Targets": "205",
       "_Team Rec Yards": "1748",
       "_Team Rec TD": "15",
-      "Efficiency Grade": "46",
-      "Opportunity Grade": "19"
+      "Efficiency Grade": "55",
+      "Opportunity Grade": "20"
     },
     {
       "Name": "Luke Schoonmaker",
@@ -2893,17 +2893,17 @@
       "FP": "6",
       "Routes Run": "25",
       "Routes/G": "8.33",
-      "Targets/Route Run": "0.12",
+      "Targets/Route Run": "",
       "YAC": "7",
       "YAC/Rec": "2.33",
-      "YPRR": "1.2",
+      "YPRR": "",
       "RACR": "1.43",
       "WOPR": "0.06",
       "_Team Targets": "112",
       "_Team Rec Yards": "767",
       "_Team Rec TD": "4",
       "Efficiency Grade": "53",
-      "Opportunity Grade": "19"
+      "Opportunity Grade": "18"
     },
     {
       "Name": "Mark Andrews",
@@ -2940,7 +2940,7 @@
       "_Team Targets": "198",
       "_Team Rec Yards": "1694",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "45",
+      "Efficiency Grade": "43",
       "Opportunity Grade": "79"
     },
     {
@@ -2978,8 +2978,8 @@
       "_Team Targets": "72",
       "_Team Rec Yards": "471",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "60",
-      "Opportunity Grade": "29"
+      "Efficiency Grade": "55",
+      "Opportunity Grade": "28"
     },
     {
       "Name": "Marlin Klein",
@@ -3007,17 +3007,17 @@
       "FP": "2.6",
       "Routes Run": "7",
       "Routes/G": "7",
-      "Targets/Route Run": "0.14",
+      "Targets/Route Run": "",
       "YAC": "2",
       "YAC/Rec": "2",
-      "YPRR": "2.29",
+      "YPRR": "",
       "RACR": "1.14",
       "WOPR": "0.07",
       "_Team Targets": "37",
       "_Team Rec Yards": "274",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "75",
-      "Opportunity Grade": "22"
+      "Efficiency Grade": "69",
+      "Opportunity Grade": "20"
     },
     {
       "Name": "Mason Taylor",
@@ -3054,8 +3054,8 @@
       "_Team Targets": "110",
       "_Team Rec Yards": "936",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "49",
-      "Opportunity Grade": "77"
+      "Efficiency Grade": "45",
+      "Opportunity Grade": "75"
     },
     {
       "Name": "Matthew Hibner",
@@ -3083,17 +3083,17 @@
       "FP": "18",
       "Routes Run": "39",
       "Routes/G": "9.75",
-      "Targets/Route Run": "0.13",
+      "Targets/Route Run": "",
       "YAC": "45",
       "YAC/Rec": "9",
-      "YPRR": "1.79",
+      "YPRR": "",
       "RACR": "6.46",
       "WOPR": "0.1",
       "_Team Targets": "107",
       "_Team Rec Yards": "1093",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "85",
-      "Opportunity Grade": "48"
+      "Efficiency Grade": "86",
+      "Opportunity Grade": "50"
     },
     {
       "Name": "Michael Mayer",
@@ -3130,8 +3130,8 @@
       "_Team Targets": "254",
       "_Team Rec Yards": "1938",
       "_Team Rec TD": "16",
-      "Efficiency Grade": "71",
-      "Opportunity Grade": "69"
+      "Efficiency Grade": "70",
+      "Opportunity Grade": "67"
     },
     {
       "Name": "Mike Gesicki",
@@ -3168,8 +3168,8 @@
       "_Team Targets": "183",
       "_Team Rec Yards": "1446",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "65",
-      "Opportunity Grade": "77"
+      "Efficiency Grade": "63",
+      "Opportunity Grade": "75"
     },
     {
       "Name": "Mitchell Evans",
@@ -3206,8 +3206,8 @@
       "_Team Targets": "211",
       "_Team Rec Yards": "1759",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "79",
-      "Opportunity Grade": "40"
+      "Efficiency Grade": "78",
+      "Opportunity Grade": "39"
     },
     {
       "Name": "Mo Alie-Cox",
@@ -3244,8 +3244,8 @@
       "_Team Targets": "137",
       "_Team Rec Yards": "879",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "40",
-      "Opportunity Grade": "44"
+      "Efficiency Grade": "36",
+      "Opportunity Grade": "43"
     },
     {
       "Name": "Nate Adkins",
@@ -3273,16 +3273,16 @@
       "FP": "20.6",
       "Routes Run": "27",
       "Routes/G": "6.75",
-      "Targets/Route Run": "0.19",
+      "Targets/Route Run": "",
       "YAC": "12",
       "YAC/Rec": "3",
-      "YPRR": "1.48",
+      "YPRR": "",
       "RACR": "1.33",
       "WOPR": "0.08",
       "_Team Targets": "112",
       "_Team Rec Yards": "827",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "56",
+      "Efficiency Grade": "50",
       "Opportunity Grade": "57"
     },
     {
@@ -3320,8 +3320,8 @@
       "_Team Targets": "150",
       "_Team Rec Yards": "1291",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "47",
-      "Opportunity Grade": "51"
+      "Efficiency Grade": "43",
+      "Opportunity Grade": "49"
     },
     {
       "Name": "Nick Muse",
@@ -3349,17 +3349,17 @@
       "FP": "8.2",
       "Routes Run": "14",
       "Routes/G": "2.8",
-      "Targets/Route Run": "0.14",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "0",
-      "YPRR": "0.14",
+      "YPRR": "",
       "RACR": "1",
       "WOPR": "0.02",
       "_Team Targets": "141",
       "_Team Rec Yards": "1111",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "7",
-      "Opportunity Grade": "28"
+      "Efficiency Grade": "5",
+      "Opportunity Grade": "27"
     },
     {
       "Name": "Noah Fant",
@@ -3396,8 +3396,8 @@
       "_Team Targets": "216",
       "_Team Rec Yards": "1435",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "43",
-      "Opportunity Grade": "65"
+      "Efficiency Grade": "40",
+      "Opportunity Grade": "64"
     },
     {
       "Name": "Noah Gray",
@@ -3435,7 +3435,7 @@
       "_Team Rec Yards": "1474",
       "_Team Rec TD": "9",
       "Efficiency Grade": "85",
-      "Opportunity Grade": "50"
+      "Opportunity Grade": "48"
     },
     {
       "Name": "Oronde Gadsden II",
@@ -3461,19 +3461,19 @@
       "FUM": "0",
       "FP/G": "4.75",
       "FP": "28.5",
-      "Routes Run": "",
-      "Routes/G": "",
-      "Targets/Route Run": "",
+      "Routes Run": "104",
+      "Routes/G": "17.33",
+      "Targets/Route Run": "0.2",
       "YAC": "39",
       "YAC/Rec": "3.25",
-      "YPRR": "",
+      "YPRR": "0.99",
       "RACR": "1.2",
       "WOPR": "0.26",
       "_Team Targets": "174",
       "_Team Rec Yards": "1141",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "40",
-      "Opportunity Grade": "71"
+      "Efficiency Grade": "38",
+      "Opportunity Grade": "69"
     },
     {
       "Name": "Oscar Delp",
@@ -3501,17 +3501,17 @@
       "FP": "6",
       "Routes Run": "27",
       "Routes/G": "5.4",
-      "Targets/Route Run": "0.15",
+      "Targets/Route Run": "",
       "YAC": "10",
       "YAC/Rec": "2.5",
-      "YPRR": "0.74",
+      "YPRR": "",
       "RACR": "1.49",
       "WOPR": "0.04",
       "_Team Targets": "171",
       "_Team Rec Yards": "1056",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "25",
-      "Opportunity Grade": "17"
+      "Efficiency Grade": "19",
+      "Opportunity Grade": "13"
     },
     {
       "Name": "Pat Freiermuth",
@@ -3548,8 +3548,8 @@
       "_Team Targets": "246",
       "_Team Rec Yards": "1699",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "51",
-      "Opportunity Grade": "78"
+      "Efficiency Grade": "48",
+      "Opportunity Grade": "77"
     },
     {
       "Name": "Patrick Herbert",
@@ -3577,17 +3577,17 @@
       "FP": "0",
       "Routes Run": "3",
       "Routes/G": "3",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "31",
       "_Team Rec Yards": "189",
       "_Team Rec TD": "1",
       "Efficiency Grade": "",
-      "Opportunity Grade": "1"
+      "Opportunity Grade": "2"
     },
     {
       "Name": "Payne Durham",
@@ -3615,10 +3615,10 @@
       "FP": "1.5",
       "Routes Run": "18",
       "Routes/G": "9",
-      "Targets/Route Run": "0.11",
+      "Targets/Route Run": "",
       "YAC": "3",
       "YAC/Rec": "3",
-      "YPRR": "0.28",
+      "YPRR": "",
       "RACR": "1.25",
       "WOPR": "0.06",
       "_Team Targets": "60",
@@ -3653,17 +3653,17 @@
       "FP": "1.7",
       "Routes Run": "1",
       "Routes/G": "1",
-      "Targets/Route Run": "1",
+      "Targets/Route Run": "",
       "YAC": "8",
       "YAC/Rec": "8",
-      "YPRR": "7",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.04",
       "_Team Targets": "38",
       "_Team Rec Yards": "269",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "66",
-      "Opportunity Grade": "24"
+      "Efficiency Grade": "51",
+      "Opportunity Grade": "11"
     },
     {
       "Name": "Quintin Morris",
@@ -3691,17 +3691,17 @@
       "FP": "1.7",
       "Routes Run": "16",
       "Routes/G": "4",
-      "Targets/Route Run": "0.13",
+      "Targets/Route Run": "",
       "YAC": "4",
       "YAC/Rec": "4",
-      "YPRR": "0.44",
+      "YPRR": "",
       "RACR": "1.17",
       "WOPR": "0.03",
       "_Team Targets": "110",
       "_Team Rec Yards": "992",
       "_Team Rec TD": "7",
       "Efficiency Grade": "21",
-      "Opportunity Grade": "12"
+      "Opportunity Grade": "8"
     },
     {
       "Name": "Robert Tonyan",
@@ -3729,17 +3729,17 @@
       "FP": "1.2",
       "Routes Run": "7",
       "Routes/G": "7",
-      "Targets/Route Run": "0.14",
+      "Targets/Route Run": "",
       "YAC": "2",
       "YAC/Rec": "2",
-      "YPRR": "0.29",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.05",
       "_Team Targets": "31",
       "_Team Rec Yards": "292",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "10",
-      "Opportunity Grade": "26"
+      "Efficiency Grade": "8",
+      "Opportunity Grade": "24"
     },
     {
       "Name": "Sam LaPorta",
@@ -3776,8 +3776,8 @@
       "_Team Targets": "219",
       "_Team Rec Yards": "1788",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "79",
-      "Opportunity Grade": "89"
+      "Efficiency Grade": "78",
+      "Opportunity Grade": "88"
     },
     {
       "Name": "Sam Roush",
@@ -3805,17 +3805,17 @@
       "FP": "6.3",
       "Routes Run": "23",
       "Routes/G": "4.6",
-      "Targets/Route Run": "0.22",
+      "Targets/Route Run": "",
       "YAC": "37",
       "YAC/Rec": "12.33",
-      "YPRR": "1.43",
+      "YPRR": "",
       "RACR": "1.97",
       "WOPR": "0.06",
       "_Team Targets": "168",
       "_Team Rec Yards": "1207",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "65",
-      "Opportunity Grade": "27"
+      "Efficiency Grade": "64",
+      "Opportunity Grade": "19"
     },
     {
       "Name": "Seydou Traore",
@@ -3843,17 +3843,17 @@
       "FP": "0",
       "Routes Run": "6",
       "Routes/G": "3",
-      "Targets/Route Run": "0.17",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.09",
       "_Team Targets": "47",
       "_Team Rec Yards": "345",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "12"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "5"
     },
     {
       "Name": "T.J. Hockenson",
@@ -3890,8 +3890,8 @@
       "_Team Targets": "153",
       "_Team Rec Yards": "1088",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "66",
-      "Opportunity Grade": "87"
+      "Efficiency Grade": "67",
+      "Opportunity Grade": "88"
     },
     {
       "Name": "Tanner Arkin",
@@ -3919,17 +3919,17 @@
       "FP": "0",
       "Routes Run": "6",
       "Routes/G": "6",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "31",
       "_Team Rec Yards": "374",
       "_Team Rec TD": "4",
       "Efficiency Grade": "",
-      "Opportunity Grade": "3"
+      "Opportunity Grade": "4"
     },
     {
       "Name": "Tanner Hudson",
@@ -3966,8 +3966,8 @@
       "_Team Targets": "155",
       "_Team Rec Yards": "1154",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "25",
-      "Opportunity Grade": "53"
+      "Efficiency Grade": "20",
+      "Opportunity Grade": "50"
     },
     {
       "Name": "Teagan Quitoriano",
@@ -4004,8 +4004,8 @@
       "_Team Targets": "46",
       "_Team Rec Yards": "299",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "38",
-      "Opportunity Grade": "60"
+      "Efficiency Grade": "34",
+      "Opportunity Grade": "59"
     },
     {
       "Name": "Terrance Ferguson",
@@ -4042,8 +4042,8 @@
       "_Team Targets": "106",
       "_Team Rec Yards": "885",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "59",
-      "Opportunity Grade": "66"
+      "Efficiency Grade": "57",
+      "Opportunity Grade": "67"
     },
     {
       "Name": "Theo Johnson",
@@ -4080,8 +4080,8 @@
       "_Team Targets": "142",
       "_Team Rec Yards": "937",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "55",
-      "Opportunity Grade": "48"
+      "Efficiency Grade": "50",
+      "Opportunity Grade": "46"
     },
     {
       "Name": "Thomas Fidone II",
@@ -4107,19 +4107,19 @@
       "FUM": "0",
       "FP/G": "1.95",
       "FP": "3.9",
-      "Routes Run": "5",
-      "Routes/G": "2.5",
-      "Targets/Route Run": "0.2",
+      "Routes Run": "20",
+      "Routes/G": "10",
+      "Targets/Route Run": "0.05",
       "YAC": "10",
       "YAC/Rec": "10",
-      "YPRR": "5.8",
+      "YPRR": "1.45",
       "RACR": "1.53",
       "WOPR": "0.05",
       "_Team Targets": "70",
       "_Team Rec Yards": "647",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "91",
-      "Opportunity Grade": "21"
+      "Efficiency Grade": "80",
+      "Opportunity Grade": "17"
     },
     {
       "Name": "Tommy Tremble",
@@ -4156,8 +4156,8 @@
       "_Team Targets": "211",
       "_Team Rec Yards": "1759",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "54",
-      "Opportunity Grade": "61"
+      "Efficiency Grade": "52",
+      "Opportunity Grade": "60"
     },
     {
       "Name": "Travis Kelce",
@@ -4194,8 +4194,8 @@
       "_Team Targets": "179",
       "_Team Rec Yards": "1474",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "92",
-      "Opportunity Grade": "76"
+      "Efficiency Grade": "93",
+      "Opportunity Grade": "75"
     },
     {
       "Name": "Trey McBride",
@@ -4233,7 +4233,7 @@
       "_Team Rec Yards": "1607",
       "_Team Rec TD": "10",
       "Efficiency Grade": "59",
-      "Opportunity Grade": "98"
+      "Opportunity Grade": "99"
     },
     {
       "Name": "Treyton Welch",
@@ -4261,17 +4261,17 @@
       "FP": "0",
       "Routes Run": "7",
       "Routes/G": "3.5",
-      "Targets/Route Run": "0.14",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.03",
       "_Team Targets": "99",
       "_Team Rec Yards": "696",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "9"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "4"
     },
     {
       "Name": "Tucker Kraft",
@@ -4308,8 +4308,8 @@
       "_Team Targets": "263",
       "_Team Rec Yards": "1958",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "72",
-      "Opportunity Grade": "83"
+      "Efficiency Grade": "71",
+      "Opportunity Grade": "82"
     },
     {
       "Name": "Tyler Conklin",
@@ -4337,16 +4337,16 @@
       "FP": "1.4",
       "Routes Run": "9",
       "Routes/G": "9",
-      "Targets/Route Run": "0.11",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "0",
-      "YPRR": "0.44",
+      "YPRR": "",
       "RACR": "1",
       "WOPR": "0.06",
       "_Team Targets": "31",
       "_Team Rec Yards": "303",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "15",
+      "Efficiency Grade": "12",
       "Opportunity Grade": "17"
     },
     {
@@ -4384,8 +4384,8 @@
       "_Team Targets": "241",
       "_Team Rec Yards": "1675",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "67",
-      "Opportunity Grade": "69"
+      "Efficiency Grade": "66",
+      "Opportunity Grade": "67"
     },
     {
       "Name": "Tyler Warren",
@@ -4422,8 +4422,8 @@
       "_Team Targets": "166",
       "_Team Rec Yards": "1021",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "53",
-      "Opportunity Grade": "89"
+      "Efficiency Grade": "51",
+      "Opportunity Grade": "88"
     },
     {
       "Name": "Will Kacmarek",
@@ -4451,17 +4451,17 @@
       "FP": "5.4",
       "Routes Run": "36",
       "Routes/G": "7.2",
-      "Targets/Route Run": "0.17",
+      "Targets/Route Run": "",
       "YAC": "17",
       "YAC/Rec": "5.67",
-      "YPRR": "0.67",
+      "YPRR": "",
       "RACR": "0.7",
       "WOPR": "0.1",
       "_Team Targets": "128",
       "_Team Rec Yards": "849",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "35",
-      "Opportunity Grade": "26"
+      "Efficiency Grade": "36",
+      "Opportunity Grade": "21"
     },
     {
       "Name": "Will Mallory",
@@ -4498,8 +4498,8 @@
       "_Team Targets": "59",
       "_Team Rec Yards": "377",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "28",
-      "Opportunity Grade": "51"
+      "Efficiency Grade": "25",
+      "Opportunity Grade": "49"
     },
     {
       "Name": "Zach Ertz",
@@ -4527,17 +4527,17 @@
       "FP": "5.2",
       "Routes Run": "26",
       "Routes/G": "8.67",
-      "Targets/Route Run": "0.31",
+      "Targets/Route Run": "",
       "YAC": "8",
       "YAC/Rec": "2.67",
-      "YPRR": "0.85",
+      "YPRR": "",
       "RACR": "0.89",
       "WOPR": "0.21",
       "_Team Targets": "87",
       "_Team Rec Yards": "466",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "29",
-      "Opportunity Grade": "44"
+      "Efficiency Grade": "23",
+      "Opportunity Grade": "35"
     },
     {
       "Name": "A.J. Brown",
@@ -4574,8 +4574,8 @@
       "_Team Targets": "91",
       "_Team Rec Yards": "734",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "40",
-      "Opportunity Grade": "63"
+      "Efficiency Grade": "39",
+      "Opportunity Grade": "64"
     },
     {
       "Name": "Adonai Mitchell",
@@ -4612,8 +4612,8 @@
       "_Team Targets": "88",
       "_Team Rec Yards": "749",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "54",
-      "Opportunity Grade": "54"
+      "Efficiency Grade": "55",
+      "Opportunity Grade": "55"
     },
     {
       "Name": "Alec Pierce",
@@ -4650,7 +4650,7 @@
       "_Team Targets": "59",
       "_Team Rec Yards": "376",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "67",
+      "Efficiency Grade": "68",
       "Opportunity Grade": "46"
     },
     {
@@ -4726,8 +4726,8 @@
       "_Team Targets": "219",
       "_Team Rec Yards": "1788",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "67",
-      "Opportunity Grade": "96"
+      "Efficiency Grade": "69",
+      "Opportunity Grade": "97"
     },
     {
       "Name": "Andrei Iosivas",
@@ -4764,8 +4764,8 @@
       "_Team Targets": "65",
       "_Team Rec Yards": "461",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "16",
-      "Opportunity Grade": "36"
+      "Efficiency Grade": "14",
+      "Opportunity Grade": "35"
     },
     {
       "Name": "Andrew Armstrong",
@@ -4802,8 +4802,8 @@
       "_Team Targets": "61",
       "_Team Rec Yards": "437",
       "_Team Rec TD": "0",
-      "Efficiency Grade": "20",
-      "Opportunity Grade": "36"
+      "Efficiency Grade": "18",
+      "Opportunity Grade": "35"
     },
     {
       "Name": "Anthony Gould",
@@ -4907,17 +4907,17 @@
       "FP": "0",
       "Routes Run": "2",
       "Routes/G": "1",
-      "Targets/Route Run": "0.5",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.04",
       "_Team Targets": "59",
       "_Team Rec Yards": "462",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "18"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "4"
     },
     {
       "Name": "Ashton Dulin",
@@ -4945,17 +4945,17 @@
       "FP": "5.9",
       "Routes Run": "24",
       "Routes/G": "8",
-      "Targets/Route Run": "0.29",
+      "Targets/Route Run": "",
       "YAC": "12",
       "YAC/Rec": "4",
-      "YPRR": "1.21",
+      "YPRR": "",
       "RACR": "0.76",
       "WOPR": "0.19",
       "_Team Targets": "79",
       "_Team Rec Yards": "417",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "34",
-      "Opportunity Grade": "33"
+      "Efficiency Grade": "31",
+      "Opportunity Grade": "23"
     },
     {
       "Name": "Barion Brown",
@@ -4983,17 +4983,17 @@
       "FP": "10",
       "Routes Run": "12",
       "Routes/G": "2",
-      "Targets/Route Run": "0.33",
+      "Targets/Route Run": "",
       "YAC": "17",
       "YAC/Rec": "4.25",
-      "YPRR": "5.17",
+      "YPRR": "",
       "RACR": "1.32",
       "WOPR": "0.06",
       "_Team Targets": "223",
       "_Team Rec Yards": "1466",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "75",
-      "Opportunity Grade": "22"
+      "Efficiency Grade": "66",
+      "Opportunity Grade": "11"
     },
     {
       "Name": "Ben Skowronek",
@@ -5021,17 +5021,17 @@
       "FP": "12.2",
       "Routes Run": "10",
       "Routes/G": "3.33",
-      "Targets/Route Run": "0.4",
+      "Targets/Route Run": "",
       "YAC": "2",
       "YAC/Rec": "0.67",
-      "YPRR": "3.2",
+      "YPRR": "",
       "RACR": "1.47",
       "WOPR": "0.07",
       "_Team Targets": "107",
       "_Team Rec Yards": "778",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "51",
-      "Opportunity Grade": "39"
+      "Efficiency Grade": "33",
+      "Opportunity Grade": "29"
     },
     {
       "Name": "Bo Melton",
@@ -5059,17 +5059,17 @@
       "FP": "8.4",
       "Routes Run": "66",
       "Routes/G": "9.43",
-      "Targets/Route Run": "0.15",
+      "Targets/Route Run": "",
       "YAC": "10",
       "YAC/Rec": "2",
-      "YPRR": "0.52",
+      "YPRR": "",
       "RACR": "0.48",
       "WOPR": "0.1",
       "_Team Targets": "263",
       "_Team Rec Yards": "1958",
       "_Team Rec TD": "13",
       "Efficiency Grade": "15",
-      "Opportunity Grade": "17"
+      "Opportunity Grade": "14"
     },
     {
       "Name": "Brandin Cooks",
@@ -5106,7 +5106,7 @@
       "_Team Targets": "124",
       "_Team Rec Yards": "959",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "28",
+      "Efficiency Grade": "26",
       "Opportunity Grade": "41"
     },
     {
@@ -5144,8 +5144,8 @@
       "_Team Targets": "72",
       "_Team Rec Yards": "465",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "41",
-      "Opportunity Grade": "20"
+      "Efficiency Grade": "39",
+      "Opportunity Grade": "19"
     },
     {
       "Name": "Braxton Berrios",
@@ -5173,17 +5173,17 @@
       "FP": "0",
       "Routes Run": "14",
       "Routes/G": "3.5",
-      "Targets/Route Run": "0.07",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.01",
       "_Team Targets": "111",
       "_Team Rec Yards": "729",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "5"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "4"
     },
     {
       "Name": "Brenen Thompson",
@@ -5220,7 +5220,7 @@
       "_Team Targets": "26",
       "_Team Rec Yards": "192",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "28",
+      "Efficiency Grade": "26",
       "Opportunity Grade": "32"
     },
     {
@@ -5247,19 +5247,19 @@
       "FUM": "0",
       "FP/G": "4.25",
       "FP": "25.5",
-      "Routes Run": "",
-      "Routes/G": "",
-      "Targets/Route Run": "",
+      "Routes Run": "99",
+      "Routes/G": "16.5",
+      "Targets/Route Run": "0.19",
       "YAC": "7",
       "YAC/Rec": "0.78",
-      "YPRR": "",
+      "YPRR": "1.06",
       "RACR": "0.73",
       "WOPR": "0.27",
       "_Team Targets": "178",
       "_Team Rec Yards": "1480",
       "_Team Rec TD": "14",
       "Efficiency Grade": "31",
-      "Opportunity Grade": "61"
+      "Opportunity Grade": "56"
     },
     {
       "Name": "Britain Covey",
@@ -5334,8 +5334,8 @@
       "_Team Targets": "263",
       "_Team Rec Yards": "1721",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "18",
-      "Opportunity Grade": "52"
+      "Efficiency Grade": "16",
+      "Opportunity Grade": "51"
     },
     {
       "Name": "Brycen Tremayne",
@@ -5372,8 +5372,8 @@
       "_Team Targets": "211",
       "_Team Rec Yards": "1759",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "60",
-      "Opportunity Grade": "30"
+      "Efficiency Grade": "59",
+      "Opportunity Grade": "29"
     },
     {
       "Name": "Caleb Douglas",
@@ -5410,7 +5410,7 @@
       "_Team Targets": "71",
       "_Team Rec Yards": "625",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "91",
+      "Efficiency Grade": "92",
       "Opportunity Grade": "71"
     },
     {
@@ -5448,8 +5448,8 @@
       "_Team Targets": "137",
       "_Team Rec Yards": "858",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "55",
-      "Opportunity Grade": "30"
+      "Efficiency Grade": "53",
+      "Opportunity Grade": "29"
     },
     {
       "Name": "Carnell Tate",
@@ -5486,8 +5486,8 @@
       "_Team Targets": "195",
       "_Team Rec Yards": "1179",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "63",
-      "Opportunity Grade": "77"
+      "Efficiency Grade": "64",
+      "Opportunity Grade": "78"
     },
     {
       "Name": "CeeDee Lamb",
@@ -5524,8 +5524,8 @@
       "_Team Targets": "266",
       "_Team Rec Yards": "1851",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "70",
-      "Opportunity Grade": "96"
+      "Efficiency Grade": "72",
+      "Opportunity Grade": "97"
     },
     {
       "Name": "Charlie Jones",
@@ -5553,17 +5553,17 @@
       "FP": "8.6",
       "Routes Run": "18",
       "Routes/G": "4.5",
-      "Targets/Route Run": "0.17",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "0",
-      "YPRR": "3.67",
+      "YPRR": "",
       "RACR": "0.93",
       "WOPR": "0.06",
       "_Team Targets": "151",
       "_Team Rec Yards": "1223",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "73",
-      "Opportunity Grade": "17"
+      "Efficiency Grade": "64",
+      "Opportunity Grade": "13"
     },
     {
       "Name": "Chimere Dike",
@@ -5591,17 +5591,17 @@
       "FP": "11.3",
       "Routes Run": "19",
       "Routes/G": "2.71",
-      "Targets/Route Run": "0.37",
+      "Targets/Route Run": "",
       "YAC": "30",
       "YAC/Rec": "5",
-      "YPRR": "2.79",
+      "YPRR": "",
       "RACR": "1.05",
       "WOPR": "0.06",
       "_Team Targets": "195",
       "_Team Rec Yards": "1179",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "56",
-      "Opportunity Grade": "26"
+      "Efficiency Grade": "41",
+      "Opportunity Grade": "13"
     },
     {
       "Name": "Chris Bell",
@@ -5638,7 +5638,7 @@
       "_Team Targets": "149",
       "_Team Rec Yards": "1057",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "50",
+      "Efficiency Grade": "49",
       "Opportunity Grade": "34"
     },
     {
@@ -5667,10 +5667,10 @@
       "FP": "3.6",
       "Routes Run": "34",
       "Routes/G": "5.67",
-      "Targets/Route Run": "0.12",
+      "Targets/Route Run": "",
       "YAC": "1",
       "YAC/Rec": "1",
-      "YPRR": "0.18",
+      "YPRR": "",
       "RACR": "0.13",
       "WOPR": "0.06",
       "_Team Targets": "158",
@@ -5703,19 +5703,19 @@
       "FUM": "0",
       "FP/G": "7.59",
       "FP": "53.1",
-      "Routes Run": "",
-      "Routes/G": "",
-      "Targets/Route Run": "",
+      "Routes Run": "207",
+      "Routes/G": "29.57",
+      "Targets/Route Run": "0.16",
       "YAC": "180",
       "YAC/Rec": "6.67",
-      "YPRR": "",
+      "YPRR": "1.17",
       "RACR": "3.76",
       "WOPR": "0.32",
       "_Team Targets": "198",
       "_Team Rec Yards": "1180",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "52",
-      "Opportunity Grade": "46"
+      "Efficiency Grade": "48",
+      "Opportunity Grade": "50"
     },
     {
       "Name": "Chris Moore",
@@ -5752,7 +5752,7 @@
       "_Team Targets": "73",
       "_Team Rec Yards": "745",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "76",
+      "Efficiency Grade": "77",
       "Opportunity Grade": "47"
     },
     {
@@ -5790,8 +5790,8 @@
       "_Team Targets": "263",
       "_Team Rec Yards": "1721",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "70",
-      "Opportunity Grade": "89"
+      "Efficiency Grade": "71",
+      "Opportunity Grade": "91"
     },
     {
       "Name": "Christian Watson",
@@ -5828,8 +5828,8 @@
       "_Team Targets": "263",
       "_Team Rec Yards": "1958",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "86",
-      "Opportunity Grade": "87"
+      "Efficiency Grade": "87",
+      "Opportunity Grade": "88"
     },
     {
       "Name": "Cody White",
@@ -5895,17 +5895,17 @@
       "FP": "2.9",
       "Routes Run": "7",
       "Routes/G": "3.5",
-      "Targets/Route Run": "0.29",
+      "Targets/Route Run": "",
       "YAC": "2",
       "YAC/Rec": "1",
-      "YPRR": "1.29",
+      "YPRR": "",
       "RACR": "1.58",
       "WOPR": "0.06",
       "_Team Targets": "68",
       "_Team Rec Yards": "489",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "23",
-      "Opportunity Grade": "22"
+      "Efficiency Grade": "13",
+      "Opportunity Grade": "11"
     },
     {
       "Name": "Coleman Owen",
@@ -5980,7 +5980,7 @@
       "_Team Targets": "215",
       "_Team Rec Yards": "1726",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "42",
+      "Efficiency Grade": "41",
       "Opportunity Grade": "56"
     },
     {
@@ -6018,7 +6018,7 @@
       "_Team Targets": "196",
       "_Team Rec Yards": "1271",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "34",
+      "Efficiency Grade": "32",
       "Opportunity Grade": "66"
     },
     {
@@ -6047,17 +6047,17 @@
       "FP": "7.5",
       "Routes Run": "20",
       "Routes/G": "5",
-      "Targets/Route Run": "0.3",
+      "Targets/Route Run": "",
       "YAC": "17",
       "YAC/Rec": "5.67",
-      "YPRR": "2.25",
+      "YPRR": "",
       "RACR": "0.9",
       "WOPR": "0.14",
       "_Team Targets": "113",
       "_Team Rec Yards": "846",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "64",
-      "Opportunity Grade": "28"
+      "Efficiency Grade": "58",
+      "Opportunity Grade": "17"
     },
     {
       "Name": "Dalen Cambre",
@@ -6085,10 +6085,10 @@
       "FP": "0",
       "Routes Run": "1",
       "Routes/G": "1",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "52",
@@ -6123,17 +6123,17 @@
       "FP": "5.6",
       "Routes Run": "18",
       "Routes/G": "3.6",
-      "Targets/Route Run": "0.17",
+      "Targets/Route Run": "",
       "YAC": "14",
       "YAC/Rec": "7",
-      "YPRR": "2",
+      "YPRR": "",
       "RACR": "1.41",
       "WOPR": "0.03",
       "_Team Targets": "175",
       "_Team Rec Yards": "1339",
       "_Team Rec TD": "13",
       "Efficiency Grade": "73",
-      "Opportunity Grade": "14"
+      "Opportunity Grade": "10"
     },
     {
       "Name": "Darius Cooper",
@@ -6170,7 +6170,7 @@
       "_Team Targets": "220",
       "_Team Rec Yards": "1359",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "63",
+      "Efficiency Grade": "61",
       "Opportunity Grade": "57"
     },
     {
@@ -6208,7 +6208,7 @@
       "_Team Targets": "233",
       "_Team Rec Yards": "1702",
       "_Team Rec TD": "11",
-      "Efficiency Grade": "35",
+      "Efficiency Grade": "33",
       "Opportunity Grade": "29"
     },
     {
@@ -6246,8 +6246,8 @@
       "_Team Targets": "242",
       "_Team Rec Yards": "1807",
       "_Team Rec TD": "11",
-      "Efficiency Grade": "78",
-      "Opportunity Grade": "84"
+      "Efficiency Grade": "79",
+      "Opportunity Grade": "85"
     },
     {
       "Name": "David Moore",
@@ -6275,17 +6275,17 @@
       "FP": "3.7",
       "Routes Run": "11",
       "Routes/G": "2.75",
-      "Targets/Route Run": "0.36",
+      "Targets/Route Run": "",
       "YAC": "28",
       "YAC/Rec": "28",
-      "YPRR": "2.45",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.08",
       "_Team Targets": "145",
       "_Team Rec Yards": "1111",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "69",
-      "Opportunity Grade": "23"
+      "Efficiency Grade": "64",
+      "Opportunity Grade": "10"
     },
     {
       "Name": "David Sills",
@@ -6387,19 +6387,19 @@
       "FUM": "0",
       "FP/G": "12.08",
       "FP": "60.4",
-      "Routes Run": "",
-      "Routes/G": "",
-      "Targets/Route Run": "",
+      "Routes Run": "97",
+      "Routes/G": "19.4",
+      "Targets/Route Run": "0.21",
       "YAC": "167",
       "YAC/Rec": "10.44",
-      "YPRR": "",
+      "YPRR": "2.12",
       "RACR": "5.46",
       "WOPR": "0.25",
       "_Team Targets": "137",
       "_Team Rec Yards": "1196",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "74",
-      "Opportunity Grade": "80"
+      "Efficiency Grade": "75",
+      "Opportunity Grade": "72"
     },
     {
       "Name": "Deion Burks",
@@ -6427,17 +6427,17 @@
       "FP": "11.9",
       "Routes Run": "27",
       "Routes/G": "5.4",
-      "Targets/Route Run": "0.26",
+      "Targets/Route Run": "",
       "YAC": "11",
       "YAC/Rec": "2.75",
-      "YPRR": "2.15",
+      "YPRR": "",
       "RACR": "0.63",
       "WOPR": "0.15",
       "_Team Targets": "161",
       "_Team Rec Yards": "997",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "56",
-      "Opportunity Grade": "26"
+      "Efficiency Grade": "49",
+      "Opportunity Grade": "16"
     },
     {
       "Name": "Demarcus Robinson",
@@ -6474,7 +6474,7 @@
       "_Team Targets": "55",
       "_Team Rec Yards": "492",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "78",
+      "Efficiency Grade": "79",
       "Opportunity Grade": "62"
     },
     {
@@ -6550,7 +6550,7 @@
       "_Team Targets": "207",
       "_Team Rec Yards": "1482",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "75",
+      "Efficiency Grade": "76",
       "Opportunity Grade": "80"
     },
     {
@@ -6579,17 +6579,17 @@
       "FP": "2",
       "Routes Run": "22",
       "Routes/G": "3.67",
-      "Targets/Route Run": "0.14",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "0",
-      "YPRR": "0.27",
+      "YPRR": "",
       "RACR": "0.33",
       "WOPR": "0.06",
       "_Team Targets": "174",
       "_Team Rec Yards": "1141",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "9",
-      "Opportunity Grade": "12"
+      "Efficiency Grade": "8",
+      "Opportunity Grade": "9"
     },
     {
       "Name": "Devaughn Vele",
@@ -6626,7 +6626,7 @@
       "_Team Targets": "263",
       "_Team Rec Yards": "1721",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "48",
+      "Efficiency Grade": "47",
       "Opportunity Grade": "80"
     },
     {
@@ -6664,8 +6664,8 @@
       "_Team Targets": "36",
       "_Team Rec Yards": "291",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "34",
-      "Opportunity Grade": "14"
+      "Efficiency Grade": "32",
+      "Opportunity Grade": "13"
     },
     {
       "Name": "Devin Duvernay",
@@ -6740,8 +6740,8 @@
       "_Team Targets": "125",
       "_Team Rec Yards": "835",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "61",
-      "Opportunity Grade": "89"
+      "Efficiency Grade": "63",
+      "Opportunity Grade": "90"
     },
     {
       "Name": "Devontez Walker",
@@ -6778,8 +6778,8 @@
       "_Team Targets": "140",
       "_Team Rec Yards": "1072",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "45",
-      "Opportunity Grade": "42"
+      "Efficiency Grade": "43",
+      "Opportunity Grade": "41"
     },
     {
       "Name": "DJ Moore",
@@ -6816,7 +6816,7 @@
       "_Team Targets": "112",
       "_Team Rec Yards": "1039",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "74",
+      "Efficiency Grade": "75",
       "Opportunity Grade": "68"
     },
     {
@@ -6855,7 +6855,7 @@
       "_Team Rec Yards": "1699",
       "_Team Rec TD": "13",
       "Efficiency Grade": "50",
-      "Opportunity Grade": "77"
+      "Opportunity Grade": "78"
     },
     {
       "Name": "Dohnte Meyers",
@@ -6893,7 +6893,7 @@
       "_Team Rec Yards": "1653",
       "_Team Rec TD": "15",
       "Efficiency Grade": "48",
-      "Opportunity Grade": "41"
+      "Opportunity Grade": "40"
     },
     {
       "Name": "Dontayvion Wicks",
@@ -6930,7 +6930,7 @@
       "_Team Targets": "187",
       "_Team Rec Yards": "1148",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "67",
+      "Efficiency Grade": "68",
       "Opportunity Grade": "71"
     },
     {
@@ -6968,8 +6968,8 @@
       "_Team Targets": "192",
       "_Team Rec Yards": "1479",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "89",
-      "Opportunity Grade": "81"
+      "Efficiency Grade": "91",
+      "Opportunity Grade": "82"
     },
     {
       "Name": "Dyami Brown",
@@ -7006,7 +7006,7 @@
       "_Team Targets": "187",
       "_Team Rec Yards": "1285",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "28",
+      "Efficiency Grade": "27",
       "Opportunity Grade": "37"
     },
     {
@@ -7033,19 +7033,19 @@
       "FUM": "0",
       "FP/G": "4.71",
       "FP": "28.24",
-      "Routes Run": "18",
-      "Routes/G": "3",
-      "Targets/Route Run": "0.83",
+      "Routes Run": "74",
+      "Routes/G": "12.33",
+      "Targets/Route Run": "0.2",
       "YAC": "25",
       "YAC/Rec": "2.5",
-      "YPRR": "6.33",
+      "YPRR": "1.54",
       "RACR": "1.24",
       "WOPR": "0.16",
       "_Team Targets": "178",
       "_Team Rec Yards": "1652",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "58",
-      "Opportunity Grade": "52"
+      "Efficiency Grade": "46",
+      "Opportunity Grade": "49"
     },
     {
       "Name": "Elic Ayomanor",
@@ -7120,7 +7120,7 @@
       "_Team Targets": "77",
       "_Team Rec Yards": "426",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "20",
+      "Efficiency Grade": "18",
       "Opportunity Grade": "20"
     },
     {
@@ -7197,7 +7197,7 @@
       "_Team Rec Yards": "1116",
       "_Team Rec TD": "5",
       "Efficiency Grade": "39",
-      "Opportunity Grade": "84"
+      "Opportunity Grade": "85"
     },
     {
       "Name": "Garrett Wilson",
@@ -7234,8 +7234,8 @@
       "_Team Targets": "197",
       "_Team Rec Yards": "1623",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "63",
-      "Opportunity Grade": "81"
+      "Efficiency Grade": "64",
+      "Opportunity Grade": "82"
     },
     {
       "Name": "George Pickens",
@@ -7272,8 +7272,8 @@
       "_Team Targets": "266",
       "_Team Rec Yards": "1851",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "63",
-      "Opportunity Grade": "83"
+      "Efficiency Grade": "65",
+      "Opportunity Grade": "84"
     },
     {
       "Name": "Germie Bernard",
@@ -7310,8 +7310,8 @@
       "_Team Targets": "209",
       "_Team Rec Yards": "1478",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "52",
-      "Opportunity Grade": "69"
+      "Efficiency Grade": "53",
+      "Opportunity Grade": "70"
     },
     {
       "Name": "Greg Dortch",
@@ -7339,10 +7339,10 @@
       "FP": "0",
       "Routes Run": "3",
       "Routes/G": "0.5",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "160",
@@ -7462,7 +7462,7 @@
       "_Team Targets": "95",
       "_Team Rec Yards": "661",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "66",
+      "Efficiency Grade": "67",
       "Opportunity Grade": "31"
     },
     {
@@ -7500,8 +7500,8 @@
       "_Team Targets": "197",
       "_Team Rec Yards": "1623",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "59",
-      "Opportunity Grade": "38"
+      "Efficiency Grade": "57",
+      "Opportunity Grade": "37"
     },
     {
       "Name": "J. Michael Sturdivant",
@@ -7576,8 +7576,8 @@
       "_Team Targets": "89",
       "_Team Rec Yards": "787",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "33",
-      "Opportunity Grade": "57"
+      "Efficiency Grade": "32",
+      "Opportunity Grade": "58"
     },
     {
       "Name": "Ja'Marr Chase",
@@ -7614,8 +7614,8 @@
       "_Team Targets": "214",
       "_Team Rec Yards": "1653",
       "_Team Rec TD": "15",
-      "Efficiency Grade": "59",
-      "Opportunity Grade": "86"
+      "Efficiency Grade": "60",
+      "Opportunity Grade": "87"
     },
     {
       "Name": "Ja'Seem Reed",
@@ -7643,17 +7643,17 @@
       "FP": "0",
       "Routes Run": "6",
       "Routes/G": "6",
-      "Targets/Route Run": "0.17",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.06",
       "_Team Targets": "39",
       "_Team Rec Yards": "329",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "21"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "17"
     },
     {
       "Name": "Jack Bech",
@@ -7728,8 +7728,8 @@
       "_Team Targets": "205",
       "_Team Rec Yards": "1748",
       "_Team Rec TD": "15",
-      "Efficiency Grade": "24",
-      "Opportunity Grade": "18"
+      "Efficiency Grade": "22",
+      "Opportunity Grade": "17"
     },
     {
       "Name": "Jahan Dotson",
@@ -7767,7 +7767,7 @@
       "_Team Rec Yards": "1479",
       "_Team Rec TD": "10",
       "Efficiency Grade": "66",
-      "Opportunity Grade": "61"
+      "Opportunity Grade": "60"
     },
     {
       "Name": "Jahdae Walker",
@@ -7795,17 +7795,17 @@
       "FP": "7.1",
       "Routes Run": "28",
       "Routes/G": "7",
-      "Targets/Route Run": "0.07",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "0",
-      "YPRR": "0.04",
+      "YPRR": "",
       "RACR": "0.5",
       "WOPR": "0.04",
       "_Team Targets": "129",
       "_Team Rec Yards": "1077",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "7",
-      "Opportunity Grade": "29"
+      "Efficiency Grade": "6",
+      "Opportunity Grade": "32"
     },
     {
       "Name": "Jakobi Meyers",
@@ -7842,7 +7842,7 @@
       "_Team Targets": "178",
       "_Team Rec Yards": "1480",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "68",
+      "Efficiency Grade": "69",
       "Opportunity Grade": "72"
     },
     {
@@ -7880,7 +7880,7 @@
       "_Team Targets": "235",
       "_Team Rec Yards": "1330",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "45",
+      "Efficiency Grade": "44",
       "Opportunity Grade": "41"
     },
     {
@@ -7918,8 +7918,8 @@
       "_Team Targets": "172",
       "_Team Rec Yards": "1430",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "70",
-      "Opportunity Grade": "84"
+      "Efficiency Grade": "72",
+      "Opportunity Grade": "85"
     },
     {
       "Name": "Jalen Cropper",
@@ -7985,17 +7985,17 @@
       "FP": "0",
       "Routes Run": "3",
       "Routes/G": "3",
-      "Targets/Route Run": "0.33",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.07",
       "_Team Targets": "35",
       "_Team Rec Yards": "217",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "19"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "7"
     },
     {
       "Name": "Jalen Nailor",
@@ -8032,7 +8032,7 @@
       "_Team Targets": "170",
       "_Team Rec Yards": "1282",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "23",
+      "Efficiency Grade": "21",
       "Opportunity Grade": "47"
     },
     {
@@ -8070,8 +8070,8 @@
       "_Team Targets": "179",
       "_Team Rec Yards": "1474",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "27",
-      "Opportunity Grade": "40"
+      "Efficiency Grade": "25",
+      "Opportunity Grade": "39"
     },
     {
       "Name": "Jalen Tolbert",
@@ -8099,17 +8099,17 @@
       "FP": "3.2",
       "Routes Run": "12",
       "Routes/G": "6",
-      "Targets/Route Run": "0.25",
+      "Targets/Route Run": "",
       "YAC": "5",
       "YAC/Rec": "5",
-      "YPRR": "1.83",
+      "YPRR": "",
       "RACR": "0.35",
       "WOPR": "0.13",
       "_Team Targets": "43",
       "_Team Rec Yards": "222",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "63",
-      "Opportunity Grade": "36"
+      "Efficiency Grade": "61",
+      "Opportunity Grade": "29"
     },
     {
       "Name": "Jamaal Pritchett",
@@ -8184,7 +8184,7 @@
       "_Team Targets": "219",
       "_Team Rec Yards": "1788",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "69",
+      "Efficiency Grade": "70",
       "Opportunity Grade": "81"
     },
     {
@@ -8222,8 +8222,8 @@
       "_Team Targets": "145",
       "_Team Rec Yards": "1055",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "46",
-      "Opportunity Grade": "33"
+      "Efficiency Grade": "44",
+      "Opportunity Grade": "32"
     },
     {
       "Name": "Jauan Jennings",
@@ -8260,8 +8260,8 @@
       "_Team Targets": "134",
       "_Team Rec Yards": "945",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "33",
-      "Opportunity Grade": "27"
+      "Efficiency Grade": "31",
+      "Opportunity Grade": "26"
     },
     {
       "Name": "Jaxon Smith-Njigba",
@@ -8298,8 +8298,8 @@
       "_Team Targets": "215",
       "_Team Rec Yards": "1726",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "85",
-      "Opportunity Grade": "96"
+      "Efficiency Grade": "86",
+      "Opportunity Grade": "97"
     },
     {
       "Name": "Jayden Reed",
@@ -8336,7 +8336,7 @@
       "_Team Targets": "69",
       "_Team Rec Yards": "532",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "21",
+      "Efficiency Grade": "19",
       "Opportunity Grade": "49"
     },
     {
@@ -8375,7 +8375,7 @@
       "_Team Rec Yards": "1271",
       "_Team Rec TD": "7",
       "Efficiency Grade": "47",
-      "Opportunity Grade": "72"
+      "Opportunity Grade": "73"
     },
     {
       "Name": "Jaylin Lane",
@@ -8403,17 +8403,17 @@
       "FP": "4.5",
       "Routes Run": "15",
       "Routes/G": "3.75",
-      "Targets/Route Run": "0.13",
+      "Targets/Route Run": "",
       "YAC": "23",
       "YAC/Rec": "11.5",
-      "YPRR": "1.67",
+      "YPRR": "",
       "RACR": "0.5",
       "WOPR": "0.03",
       "_Team Targets": "129",
       "_Team Rec Yards": "786",
       "_Team Rec TD": "8",
       "Efficiency Grade": "64",
-      "Opportunity Grade": "12"
+      "Opportunity Grade": "10"
     },
     {
       "Name": "Jaylin Noel",
@@ -8450,7 +8450,7 @@
       "_Team Targets": "231",
       "_Team Rec Yards": "1867",
       "_Team Rec TD": "11",
-      "Efficiency Grade": "85",
+      "Efficiency Grade": "86",
       "Opportunity Grade": "58"
     },
     {
@@ -8488,7 +8488,7 @@
       "_Team Targets": "177",
       "_Team Rec Yards": "1338",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "37",
+      "Efficiency Grade": "36",
       "Opportunity Grade": "41"
     },
     {
@@ -8517,17 +8517,17 @@
       "FP": "4.2",
       "Routes Run": "1",
       "Routes/G": "0.5",
-      "Targets/Route Run": "1",
+      "Targets/Route Run": "",
       "YAC": "1",
       "YAC/Rec": "1",
-      "YPRR": "32",
+      "YPRR": "",
       "RACR": "1.03",
       "WOPR": "0.09",
       "_Team Targets": "62",
       "_Team Rec Yards": "476",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "75",
-      "Opportunity Grade": "24"
+      "Efficiency Grade": "64",
+      "Opportunity Grade": "11"
     },
     {
       "Name": "Jimmy Horn Jr.",
@@ -8553,8 +8553,8 @@
       "FUM": "0",
       "FP/G": "0",
       "FP": "0",
-      "Routes Run": "",
-      "Routes/G": "",
+      "Routes Run": "7",
+      "Routes/G": "7",
       "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
@@ -8565,7 +8565,7 @@
       "_Team Rec Yards": "361",
       "_Team Rec TD": "3",
       "Efficiency Grade": "",
-      "Opportunity Grade": "7"
+      "Opportunity Grade": "9"
     },
     {
       "Name": "John Metchie III",
@@ -8591,19 +8591,19 @@
       "FUM": "0",
       "FP/G": "5",
       "FP": "25",
-      "Routes Run": "20",
-      "Routes/G": "4",
-      "Targets/Route Run": "0.85",
+      "Routes Run": "85",
+      "Routes/G": "17",
+      "Targets/Route Run": "0.2",
       "YAC": "39",
       "YAC/Rec": "4.33",
-      "YPRR": "5",
+      "YPRR": "1.18",
       "RACR": "0.79",
       "WOPR": "0.2",
       "_Team Targets": "177",
       "_Team Rec Yards": "1398",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "58",
-      "Opportunity Grade": "55"
+      "Efficiency Grade": "42",
+      "Opportunity Grade": "53"
     },
     {
       "Name": "Jonathan Mingo",
@@ -8631,17 +8631,17 @@
       "FP": "6",
       "Routes Run": "49",
       "Routes/G": "9.8",
-      "Targets/Route Run": "0.16",
+      "Targets/Route Run": "",
       "YAC": "1",
       "YAC/Rec": "0.33",
-      "YPRR": "0.61",
+      "YPRR": "",
       "RACR": "0.3",
       "WOPR": "0.12",
       "_Team Targets": "195",
       "_Team Rec Yards": "1296",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "18",
-      "Opportunity Grade": "22"
+      "Efficiency Grade": "17",
+      "Opportunity Grade": "20"
     },
     {
       "Name": "Jordan Addison",
@@ -8678,7 +8678,7 @@
       "_Team Targets": "124",
       "_Team Rec Yards": "859",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "55",
+      "Efficiency Grade": "54",
       "Opportunity Grade": "59"
     },
     {
@@ -8716,7 +8716,7 @@
       "_Team Targets": "94",
       "_Team Rec Yards": "849",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "81",
+      "Efficiency Grade": "82",
       "Opportunity Grade": "35"
     },
     {
@@ -8754,8 +8754,8 @@
       "_Team Targets": "160",
       "_Team Rec Yards": "1063",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "10",
-      "Opportunity Grade": "12"
+      "Efficiency Grade": "8",
+      "Opportunity Grade": "11"
     },
     {
       "Name": "Josh Cameron",
@@ -8783,17 +8783,17 @@
       "FP": "31.7",
       "Routes Run": "53",
       "Routes/G": "8.83",
-      "Targets/Route Run": "0.23",
+      "Targets/Route Run": "",
       "YAC": "71",
       "YAC/Rec": "8.88",
-      "YPRR": "2.21",
+      "YPRR": "",
       "RACR": "2.7",
       "WOPR": "0.14",
       "_Team Targets": "178",
       "_Team Rec Yards": "1480",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "72",
-      "Opportunity Grade": "54"
+      "Efficiency Grade": "70",
+      "Opportunity Grade": "51"
     },
     {
       "Name": "Josh Downs",
@@ -8831,7 +8831,7 @@
       "_Team Rec Yards": "1398",
       "_Team Rec TD": "4",
       "Efficiency Grade": "50",
-      "Opportunity Grade": "58"
+      "Opportunity Grade": "59"
     },
     {
       "Name": "Josh Palmer",
@@ -8868,7 +8868,7 @@
       "_Team Targets": "116",
       "_Team Rec Yards": "1090",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "73",
+      "Efficiency Grade": "74",
       "Opportunity Grade": "52"
     },
     {
@@ -8906,8 +8906,8 @@
       "_Team Targets": "120",
       "_Team Rec Yards": "841",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "72",
-      "Opportunity Grade": "85"
+      "Efficiency Grade": "74",
+      "Opportunity Grade": "86"
     },
     {
       "Name": "Justin Watson",
@@ -8935,17 +8935,17 @@
       "FP": "1.7",
       "Routes Run": "2",
       "Routes/G": "2",
-      "Targets/Route Run": "0.5",
+      "Targets/Route Run": "",
       "YAC": "4",
       "YAC/Rec": "4",
-      "YPRR": "3.5",
+      "YPRR": "",
       "RACR": "2.33",
       "WOPR": "0.06",
       "_Team Targets": "32",
       "_Team Rec Yards": "165",
       "_Team Rec TD": "0",
-      "Efficiency Grade": "50",
-      "Opportunity Grade": "25"
+      "Efficiency Grade": "32",
+      "Opportunity Grade": "12"
     },
     {
       "Name": "Kaden Davis",
@@ -8973,10 +8973,10 @@
       "FP": "0",
       "Routes Run": "1",
       "Routes/G": "1",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "26",
@@ -9087,17 +9087,17 @@
       "FP": "1.3",
       "Routes Run": "4",
       "Routes/G": "0.57",
-      "Targets/Route Run": "0.5",
+      "Targets/Route Run": "",
       "YAC": "4",
       "YAC/Rec": "4",
-      "YPRR": "0.75",
+      "YPRR": "",
       "RACR": "1.5",
       "WOPR": "0.02",
       "_Team Targets": "198",
       "_Team Rec Yards": "1180",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "19",
-      "Opportunity Grade": "19"
+      "Efficiency Grade": "18",
+      "Opportunity Grade": "6"
     },
     {
       "Name": "KaVontae Turpin",
@@ -9125,17 +9125,17 @@
       "FP": "14.9",
       "Routes Run": "36",
       "Routes/G": "6",
-      "Targets/Route Run": "0.19",
+      "Targets/Route Run": "",
       "YAC": "19",
       "YAC/Rec": "4.75",
-      "YPRR": "1.08",
+      "YPRR": "",
       "RACR": "3.14",
       "WOPR": "0.06",
       "_Team Targets": "240",
       "_Team Rec Yards": "1639",
       "_Team Rec TD": "10",
       "Efficiency Grade": "34",
-      "Opportunity Grade": "22"
+      "Opportunity Grade": "17"
     },
     {
       "Name": "Kayshon Boutte",
@@ -9210,8 +9210,8 @@
       "_Team Targets": "207",
       "_Team Rec Yards": "1482",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "58",
-      "Opportunity Grade": "56"
+      "Efficiency Grade": "59",
+      "Opportunity Grade": "57"
     },
     {
       "Name": "Ke'Shawn Williams",
@@ -9286,8 +9286,8 @@
       "_Team Targets": "36",
       "_Team Rec Yards": "204",
       "_Team Rec TD": "0",
-      "Efficiency Grade": "26",
-      "Opportunity Grade": "62"
+      "Efficiency Grade": "24",
+      "Opportunity Grade": "63"
     },
     {
       "Name": "Keenan Allen",
@@ -9325,7 +9325,7 @@
       "_Team Rec Yards": "1255",
       "_Team Rec TD": "4",
       "Efficiency Grade": "46",
-      "Opportunity Grade": "76"
+      "Opportunity Grade": "78"
     },
     {
       "Name": "Kendrick Bourne",
@@ -9362,7 +9362,7 @@
       "_Team Targets": "237",
       "_Team Rec Yards": "1441",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "44",
+      "Efficiency Grade": "43",
       "Opportunity Grade": "61"
     },
     {
@@ -9400,7 +9400,7 @@
       "_Team Targets": "160",
       "_Team Rec Yards": "1504",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "71",
+      "Efficiency Grade": "72",
       "Opportunity Grade": "70"
     },
     {
@@ -9427,19 +9427,19 @@
       "FUM": "0",
       "FP/G": "1.7",
       "FP": "1.7",
-      "Routes Run": "",
-      "Routes/G": "",
-      "Targets/Route Run": "",
+      "Routes Run": "10",
+      "Routes/G": "10",
+      "Targets/Route Run": "0.1",
       "YAC": "1",
       "YAC/Rec": "1",
-      "YPRR": "",
+      "YPRR": "0.7",
       "RACR": "1.17",
       "WOPR": "0.07",
       "_Team Targets": "32",
       "_Team Rec Yards": "252",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "22",
-      "Opportunity Grade": "13"
+      "Efficiency Grade": "20",
+      "Opportunity Grade": "14"
     },
     {
       "Name": "Kevin Coleman Jr.",
@@ -9465,18 +9465,18 @@
       "FUM": "0",
       "FP/G": "2.92",
       "FP": "14.6",
-      "Routes Run": "2",
-      "Routes/G": "0.4",
-      "Targets/Route Run": "9",
+      "Routes Run": "85",
+      "Routes/G": "17",
+      "Targets/Route Run": "0.21",
       "YAC": "7",
       "YAC/Rec": "1.4",
-      "YPRR": "18",
+      "YPRR": "0.42",
       "RACR": "0.09",
       "WOPR": "0.35",
       "_Team Targets": "126",
       "_Team Rec Yards": "860",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "41",
+      "Efficiency Grade": "13",
       "Opportunity Grade": "55"
     },
     {
@@ -9505,16 +9505,16 @@
       "FP": "2.8",
       "Routes Run": "19",
       "Routes/G": "6.33",
-      "Targets/Route Run": "0.05",
+      "Targets/Route Run": "",
       "YAC": "3",
       "YAC/Rec": "3",
-      "YPRR": "0.95",
+      "YPRR": "",
       "RACR": "1.2",
       "WOPR": "0.04",
       "_Team Targets": "81",
       "_Team Rec Yards": "789",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "52",
+      "Efficiency Grade": "61",
       "Opportunity Grade": "10"
     },
     {
@@ -9552,8 +9552,8 @@
       "_Team Targets": "160",
       "_Team Rec Yards": "1504",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "75",
-      "Opportunity Grade": "72"
+      "Efficiency Grade": "76",
+      "Opportunity Grade": "73"
     },
     {
       "Name": "Kolbe Katsis",
@@ -9628,7 +9628,7 @@
       "_Team Targets": "217",
       "_Team Rec Yards": "1619",
       "_Team Rec TD": "11",
-      "Efficiency Grade": "54",
+      "Efficiency Grade": "53",
       "Opportunity Grade": "42"
     },
     {
@@ -9667,7 +9667,7 @@
       "_Team Rec Yards": "1830",
       "_Team Rec TD": "13",
       "Efficiency Grade": "71",
-      "Opportunity Grade": "31"
+      "Opportunity Grade": "30"
     },
     {
       "Name": "Ladd McConkey",
@@ -9704,7 +9704,7 @@
       "_Team Targets": "153",
       "_Team Rec Yards": "1020",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "69",
+      "Efficiency Grade": "70",
       "Opportunity Grade": "60"
     },
     {
@@ -9733,17 +9733,17 @@
       "FP": "8.4",
       "Routes Run": "40",
       "Routes/G": "5.71",
-      "Targets/Route Run": "0.13",
+      "Targets/Route Run": "",
       "YAC": "43",
       "YAC/Rec": "10.75",
-      "YPRR": "1.1",
+      "YPRR": "",
       "RACR": "0.92",
       "WOPR": "0.04",
       "_Team Targets": "198",
       "_Team Rec Yards": "1694",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "48",
-      "Opportunity Grade": "14"
+      "Efficiency Grade": "53",
+      "Opportunity Grade": "12"
     },
     {
       "Name": "Laquon Treadwell",
@@ -9780,7 +9780,7 @@
       "_Team Targets": "225",
       "_Team Rec Yards": "1398",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "47",
+      "Efficiency Grade": "46",
       "Opportunity Grade": "47"
     },
     {
@@ -9819,7 +9819,7 @@
       "_Team Rec Yards": "167",
       "_Team Rec TD": "1",
       "Efficiency Grade": "0",
-      "Opportunity Grade": "12"
+      "Opportunity Grade": "11"
     },
     {
       "Name": "Lil'Jordan Humphrey",
@@ -9847,17 +9847,17 @@
       "FP": "3.3",
       "Routes Run": "17",
       "Routes/G": "5.67",
-      "Targets/Route Run": "0.24",
+      "Targets/Route Run": "",
       "YAC": "4",
       "YAC/Rec": "2",
-      "YPRR": "0.76",
+      "YPRR": "",
       "RACR": "0.82",
       "WOPR": "0.12",
       "_Team Targets": "76",
       "_Team Rec Yards": "633",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "16",
-      "Opportunity Grade": "23"
+      "Efficiency Grade": "14",
+      "Opportunity Grade": "14"
     },
     {
       "Name": "Luke McCaffrey",
@@ -9885,17 +9885,17 @@
       "FP": "0",
       "Routes Run": "5",
       "Routes/G": "1.67",
-      "Targets/Route Run": "0.2",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.04",
       "_Team Targets": "88",
       "_Team Rec Yards": "682",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "11"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "4"
     },
     {
       "Name": "Luther Burden III",
@@ -9921,19 +9921,19 @@
       "FUM": "1",
       "FP/G": "13.86",
       "FP": "97",
-      "Routes Run": "27",
-      "Routes/G": "3.86",
-      "Targets/Route Run": "1.74",
+      "Routes Run": "183",
+      "Routes/G": "26.14",
+      "Targets/Route Run": "0.26",
       "YAC": "250",
       "YAC/Rec": "7.14",
-      "YPRR": "18.19",
+      "YPRR": "2.68",
       "RACR": "1.48",
       "WOPR": "0.5",
       "_Team Targets": "224",
       "_Team Rec Yards": "1784",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "87",
-      "Opportunity Grade": "76"
+      "Efficiency Grade": "85",
+      "Opportunity Grade": "83"
     },
     {
       "Name": "Mack Hollins",
@@ -10008,7 +10008,7 @@
       "_Team Targets": "220",
       "_Team Rec Yards": "1359",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "32",
+      "Efficiency Grade": "30",
       "Opportunity Grade": "59"
     },
     {
@@ -10037,10 +10037,10 @@
       "FP": "0",
       "Routes Run": "10",
       "Routes/G": "1.43",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "207",
@@ -10113,17 +10113,17 @@
       "FP": "2.4",
       "Routes Run": "35",
       "Routes/G": "5",
-      "Targets/Route Run": "0.26",
+      "Targets/Route Run": "",
       "YAC": "7",
       "YAC/Rec": "3.5",
-      "YPRR": "0.34",
+      "YPRR": "",
       "RACR": "0.09",
       "WOPR": "0.11",
       "_Team Targets": "254",
       "_Team Rec Yards": "1938",
       "_Team Rec TD": "16",
-      "Efficiency Grade": "15",
-      "Opportunity Grade": "28"
+      "Efficiency Grade": "17",
+      "Opportunity Grade": "19"
     },
     {
       "Name": "Malik McClain",
@@ -10151,10 +10151,10 @@
       "FP": "0",
       "Routes Run": "12",
       "Routes/G": "4",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "94",
@@ -10198,8 +10198,8 @@
       "_Team Targets": "233",
       "_Team Rec Yards": "1702",
       "_Team Rec TD": "11",
-      "Efficiency Grade": "70",
-      "Opportunity Grade": "90"
+      "Efficiency Grade": "72",
+      "Opportunity Grade": "92"
     },
     {
       "Name": "Malik Washington",
@@ -10236,8 +10236,8 @@
       "_Team Targets": "149",
       "_Team Rec Yards": "1057",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "62",
-      "Opportunity Grade": "59"
+      "Efficiency Grade": "63",
+      "Opportunity Grade": "60"
     },
     {
       "Name": "Marquez Valdes-Scantling",
@@ -10274,7 +10274,7 @@
       "_Team Targets": "85",
       "_Team Rec Yards": "536",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "20",
+      "Efficiency Grade": "18",
       "Opportunity Grade": "19"
     },
     {
@@ -10312,7 +10312,7 @@
       "_Team Targets": "67",
       "_Team Rec Yards": "475",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "50",
+      "Efficiency Grade": "49",
       "Opportunity Grade": "26"
     },
     {
@@ -10339,19 +10339,19 @@
       "FUM": "0",
       "FP/G": "5.58",
       "FP": "33.5",
-      "Routes Run": "8",
-      "Routes/G": "1.33",
-      "Targets/Route Run": "2.63",
+      "Routes Run": "154",
+      "Routes/G": "25.67",
+      "Targets/Route Run": "0.14",
       "YAC": "8",
       "YAC/Rec": "0.89",
-      "YPRR": "15.63",
+      "YPRR": "0.81",
       "RACR": "0.33",
       "WOPR": "0.3",
       "_Team Targets": "208",
       "_Team Rec Yards": "1283",
       "_Team Rec TD": "11",
-      "Efficiency Grade": "56",
-      "Opportunity Grade": "60"
+      "Efficiency Grade": "33",
+      "Opportunity Grade": "58"
     },
     {
       "Name": "Marvin Mims Jr.",
@@ -10377,19 +10377,19 @@
       "FUM": "0",
       "FP/G": "3.16",
       "FP": "15.8",
-      "Routes Run": "10",
-      "Routes/G": "2",
-      "Targets/Route Run": "1.1",
+      "Routes Run": "41",
+      "Routes/G": "8.2",
+      "Targets/Route Run": "",
       "YAC": "74",
       "YAC/Rec": "10.57",
-      "YPRR": "8.2",
+      "YPRR": "",
       "RACR": "0.96",
       "WOPR": "0.21",
       "_Team Targets": "136",
       "_Team Rec Yards": "797",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "68",
-      "Opportunity Grade": "33"
+      "Efficiency Grade": "56",
+      "Opportunity Grade": "24"
     },
     {
       "Name": "Matthew Golden",
@@ -10426,8 +10426,8 @@
       "_Team Targets": "263",
       "_Team Rec Yards": "1958",
       "_Team Rec TD": "13",
-      "Efficiency Grade": "74",
-      "Opportunity Grade": "92"
+      "Efficiency Grade": "75",
+      "Opportunity Grade": "94"
     },
     {
       "Name": "Michael Pittman",
@@ -10464,7 +10464,7 @@
       "_Team Targets": "107",
       "_Team Rec Yards": "812",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "50",
+      "Efficiency Grade": "48",
       "Opportunity Grade": "36"
     },
     {
@@ -10503,7 +10503,7 @@
       "_Team Rec Yards": "1607",
       "_Team Rec TD": "10",
       "Efficiency Grade": "44",
-      "Opportunity Grade": "84"
+      "Opportunity Grade": "85"
     },
     {
       "Name": "Mike Evans",
@@ -10540,7 +10540,7 @@
       "_Team Targets": "166",
       "_Team Rec Yards": "1460",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "78",
+      "Efficiency Grade": "80",
       "Opportunity Grade": "85"
     },
     {
@@ -10578,8 +10578,8 @@
       "_Team Targets": "81",
       "_Team Rec Yards": "720",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "48",
-      "Opportunity Grade": "53"
+      "Efficiency Grade": "49",
+      "Opportunity Grade": "54"
     },
     {
       "Name": "Montorie Foster Jr",
@@ -10645,17 +10645,17 @@
       "FP": "11.8",
       "Routes Run": "33",
       "Routes/G": "5.5",
-      "Targets/Route Run": "0.21",
+      "Targets/Route Run": "",
       "YAC": "25",
       "YAC/Rec": "5",
-      "YPRR": "0.79",
+      "YPRR": "",
       "RACR": "1",
       "WOPR": "0.06",
       "_Team Targets": "153",
       "_Team Rec Yards": "1088",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "24",
-      "Opportunity Grade": "26"
+      "Efficiency Grade": "25",
+      "Opportunity Grade": "19"
     },
     {
       "Name": "Nick Westbrook-Ikhine",
@@ -10683,17 +10683,17 @@
       "FP": "0",
       "Routes Run": "8",
       "Routes/G": "4",
-      "Targets/Route Run": "0.13",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.04",
       "_Team Targets": "72",
       "_Team Rec Yards": "410",
       "_Team Rec TD": "0",
-      "Efficiency Grade": "0",
-      "Opportunity Grade": "8"
+      "Efficiency Grade": "",
+      "Opportunity Grade": "5"
     },
     {
       "Name": "Nico Collins",
@@ -10730,7 +10730,7 @@
       "_Team Targets": "156",
       "_Team Rec Yards": "1347",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "71",
+      "Efficiency Grade": "72",
       "Opportunity Grade": "82"
     },
     {
@@ -10795,19 +10795,19 @@
       "FUM": "0",
       "FP/G": "0",
       "FP": "0",
-      "Routes Run": "",
-      "Routes/G": "",
-      "Targets/Route Run": "",
+      "Routes Run": "12",
+      "Routes/G": "12",
+      "Targets/Route Run": "0.08",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "",
+      "YPRR": "0",
       "RACR": "0",
       "WOPR": "0.16",
       "_Team Targets": "21",
       "_Team Rec Yards": "118",
       "_Team Rec TD": "0",
-      "Efficiency Grade": "",
-      "Opportunity Grade": "9"
+      "Efficiency Grade": "0",
+      "Opportunity Grade": "11"
     },
     {
       "Name": "Olamide Zaccheaus",
@@ -10844,7 +10844,7 @@
       "_Team Targets": "160",
       "_Team Rec Yards": "1266",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "12",
+      "Efficiency Grade": "9",
       "Opportunity Grade": "23"
     },
     {
@@ -10871,18 +10871,18 @@
       "FUM": "0",
       "FP/G": "16.27",
       "FP": "48.8",
-      "Routes Run": "23",
-      "Routes/G": "7.67",
-      "Targets/Route Run": "0.57",
+      "Routes Run": "51",
+      "Routes/G": "17",
+      "Targets/Route Run": "0.25",
       "YAC": "112",
       "YAC/Rec": "9.33",
-      "YPRR": "10.78",
+      "YPRR": "4.86",
       "RACR": "3.64",
       "WOPR": "0.4",
       "_Team Targets": "81",
       "_Team Rec Yards": "754",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "96",
+      "Efficiency Grade": "97",
       "Opportunity Grade": "72"
     },
     {
@@ -10920,8 +10920,8 @@
       "_Team Targets": "178",
       "_Team Rec Yards": "1480",
       "_Team Rec TD": "14",
-      "Efficiency Grade": "80",
-      "Opportunity Grade": "89"
+      "Efficiency Grade": "81",
+      "Opportunity Grade": "91"
     },
     {
       "Name": "Pat Bryant",
@@ -10958,7 +10958,7 @@
       "_Team Targets": "125",
       "_Team Rec Yards": "819",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "70",
+      "Efficiency Grade": "71",
       "Opportunity Grade": "55"
     },
     {
@@ -10996,8 +10996,8 @@
       "_Team Targets": "192",
       "_Team Rec Yards": "1285",
       "_Team Rec TD": "8",
-      "Efficiency Grade": "73",
-      "Opportunity Grade": "93"
+      "Efficiency Grade": "75",
+      "Opportunity Grade": "94"
     },
     {
       "Name": "Quentin Johnston",
@@ -11072,8 +11072,8 @@
       "_Team Targets": "91",
       "_Team Rec Yards": "812",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "83",
-      "Opportunity Grade": "67"
+      "Efficiency Grade": "84",
+      "Opportunity Grade": "68"
     },
     {
       "Name": "Rashid Shaheed",
@@ -11110,8 +11110,8 @@
       "_Team Targets": "215",
       "_Team Rec Yards": "1726",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "40",
-      "Opportunity Grade": "49"
+      "Efficiency Grade": "39",
+      "Opportunity Grade": "50"
     },
     {
       "Name": "Rashod Bateman",
@@ -11148,7 +11148,7 @@
       "_Team Targets": "198",
       "_Team Rec Yards": "1694",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "64",
+      "Efficiency Grade": "65",
       "Opportunity Grade": "56"
     },
     {
@@ -11186,8 +11186,8 @@
       "_Team Targets": "46",
       "_Team Rec Yards": "299",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "62",
-      "Opportunity Grade": "56"
+      "Efficiency Grade": "63",
+      "Opportunity Grade": "57"
     },
     {
       "Name": "Roman Wilson",
@@ -11224,7 +11224,7 @@
       "_Team Targets": "174",
       "_Team Rec Yards": "1234",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "64",
+      "Efficiency Grade": "65",
       "Opportunity Grade": "59"
     },
     {
@@ -11262,7 +11262,7 @@
       "_Team Targets": "224",
       "_Team Rec Yards": "1784",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "68",
+      "Efficiency Grade": "69",
       "Opportunity Grade": "61"
     },
     {
@@ -11339,7 +11339,7 @@
       "_Team Rec Yards": "1851",
       "_Team Rec TD": "13",
       "Efficiency Grade": "57",
-      "Opportunity Grade": "69"
+      "Opportunity Grade": "70"
     },
     {
       "Name": "Ryan Miller",
@@ -11367,17 +11367,17 @@
       "FP": "18.2",
       "Routes Run": "16",
       "Routes/G": "5.33",
-      "Targets/Route Run": "0.25",
+      "Targets/Route Run": "",
       "YAC": "37",
       "YAC/Rec": "12.33",
-      "YPRR": "5.75",
+      "YPRR": "",
       "RACR": "4.69",
       "WOPR": "0.12",
       "_Team Targets": "75",
       "_Team Rec Yards": "492",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "91",
-      "Opportunity Grade": "40"
+      "Efficiency Grade": "89",
+      "Opportunity Grade": "34"
     },
     {
       "Name": "Savion Williams",
@@ -11443,10 +11443,10 @@
       "FP": "0",
       "Routes Run": "1",
       "Routes/G": "0.2",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "202",
@@ -11491,7 +11491,7 @@
       "_Team Rec Yards": "465",
       "_Team Rec TD": "3",
       "Efficiency Grade": "0",
-      "Opportunity Grade": "29"
+      "Opportunity Grade": "28"
     },
     {
       "Name": "Skyy Moore",
@@ -11528,8 +11528,8 @@
       "_Team Targets": "181",
       "_Team Rec Yards": "1408",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "22",
-      "Opportunity Grade": "42"
+      "Efficiency Grade": "20",
+      "Opportunity Grade": "43"
     },
     {
       "Name": "Stefon Diggs",
@@ -11566,8 +11566,8 @@
       "_Team Targets": "164",
       "_Team Rec Yards": "1086",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "43",
-      "Opportunity Grade": "84"
+      "Efficiency Grade": "44",
+      "Opportunity Grade": "86"
     },
     {
       "Name": "Sterling Shepard",
@@ -11604,8 +11604,8 @@
       "_Team Targets": "51",
       "_Team Rec Yards": "440",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "8",
-      "Opportunity Grade": "33"
+      "Efficiency Grade": "7",
+      "Opportunity Grade": "32"
     },
     {
       "Name": "Tai Felton",
@@ -11642,7 +11642,7 @@
       "_Team Targets": "111",
       "_Team Rec Yards": "794",
       "_Team Rec TD": "3",
-      "Efficiency Grade": "37",
+      "Efficiency Grade": "35",
       "Opportunity Grade": "26"
     },
     {
@@ -11671,17 +11671,17 @@
       "FP": "5.5",
       "Routes Run": "6",
       "Routes/G": "6",
-      "Targets/Route Run": "0.17",
+      "Targets/Route Run": "",
       "YAC": "26",
       "YAC/Rec": "26",
-      "YPRR": "7.17",
+      "YPRR": "",
       "RACR": "2.53",
       "WOPR": "0.11",
       "_Team Targets": "28",
       "_Team Rec Yards": "153",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "95",
-      "Opportunity Grade": "28"
+      "Efficiency Grade": "94",
+      "Opportunity Grade": "25"
     },
     {
       "Name": "Tay Martin",
@@ -11745,19 +11745,19 @@
       "FUM": "0",
       "FP/G": "5.63",
       "FP": "33.8",
-      "Routes Run": "",
-      "Routes/G": "",
-      "Targets/Route Run": "",
+      "Routes Run": "143",
+      "Routes/G": "23.83",
+      "Targets/Route Run": "0.16",
       "YAC": "28",
       "YAC/Rec": "2.55",
-      "YPRR": "",
+      "YPRR": "1.17",
       "RACR": "0.54",
       "WOPR": "0.36",
       "_Team Targets": "173",
       "_Team Rec Yards": "991",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "51",
-      "Opportunity Grade": "64"
+      "Efficiency Grade": "47",
+      "Opportunity Grade": "59"
     },
     {
       "Name": "Tee Higgins",
@@ -11794,8 +11794,8 @@
       "_Team Targets": "214",
       "_Team Rec Yards": "1653",
       "_Team Rec TD": "15",
-      "Efficiency Grade": "85",
-      "Opportunity Grade": "75"
+      "Efficiency Grade": "87",
+      "Opportunity Grade": "76"
     },
     {
       "Name": "Terry McLaurin",
@@ -11832,8 +11832,8 @@
       "_Team Targets": "151",
       "_Team Rec Yards": "1053",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "70",
-      "Opportunity Grade": "72"
+      "Efficiency Grade": "71",
+      "Opportunity Grade": "73"
     },
     {
       "Name": "Tetairoa McMillan",
@@ -11870,7 +11870,7 @@
       "_Team Targets": "211",
       "_Team Rec Yards": "1759",
       "_Team Rec TD": "12",
-      "Efficiency Grade": "73",
+      "Efficiency Grade": "75",
       "Opportunity Grade": "88"
     },
     {
@@ -11908,8 +11908,8 @@
       "_Team Targets": "198",
       "_Team Rec Yards": "1180",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "77",
-      "Opportunity Grade": "48"
+      "Efficiency Grade": "78",
+      "Opportunity Grade": "47"
     },
     {
       "Name": "Theo Wease Jr.",
@@ -11935,19 +11935,19 @@
       "FUM": "0",
       "FP/G": "3.35",
       "FP": "6.7",
-      "Routes Run": "",
-      "Routes/G": "",
-      "Targets/Route Run": "",
+      "Routes Run": "40",
+      "Routes/G": "20",
+      "Targets/Route Run": "0.1",
       "YAC": "6",
       "YAC/Rec": "2",
-      "YPRR": "",
+      "YPRR": "0.93",
       "RACR": "1.19",
       "WOPR": "0.16",
       "_Team Targets": "57",
       "_Team Rec Yards": "325",
       "_Team Rec TD": "1",
-      "Efficiency Grade": "47",
-      "Opportunity Grade": "44"
+      "Efficiency Grade": "40",
+      "Opportunity Grade": "39"
     },
     {
       "Name": "Tim Patrick",
@@ -11984,7 +11984,7 @@
       "_Team Targets": "58",
       "_Team Rec Yards": "434",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "38",
+      "Efficiency Grade": "36",
       "Opportunity Grade": "32"
     },
     {
@@ -12060,7 +12060,7 @@
       "_Team Targets": "138",
       "_Team Rec Yards": "1096",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "41",
+      "Efficiency Grade": "39",
       "Opportunity Grade": "44"
     },
     {
@@ -12098,7 +12098,7 @@
       "_Team Targets": "138",
       "_Team Rec Yards": "937",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "73",
+      "Efficiency Grade": "74",
       "Opportunity Grade": "60"
     },
     {
@@ -12136,8 +12136,8 @@
       "_Team Targets": "254",
       "_Team Rec Yards": "1938",
       "_Team Rec TD": "16",
-      "Efficiency Grade": "76",
-      "Opportunity Grade": "79"
+      "Efficiency Grade": "77",
+      "Opportunity Grade": "80"
     },
     {
       "Name": "Trent Sherfield",
@@ -12165,10 +12165,10 @@
       "FP": "0",
       "Routes Run": "2",
       "Routes/G": "2",
-      "Targets/Route Run": "0",
+      "Targets/Route Run": "",
       "YAC": "0",
       "YAC/Rec": "",
-      "YPRR": "0",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0",
       "_Team Targets": "18",
@@ -12250,7 +12250,7 @@
       "_Team Targets": "158",
       "_Team Rec Yards": "1057",
       "_Team Rec TD": "6",
-      "Efficiency Grade": "40",
+      "Efficiency Grade": "38",
       "Opportunity Grade": "30"
     },
     {
@@ -12288,8 +12288,8 @@
       "_Team Targets": "134",
       "_Team Rec Yards": "1027",
       "_Team Rec TD": "7",
-      "Efficiency Grade": "29",
-      "Opportunity Grade": "17"
+      "Efficiency Grade": "27",
+      "Opportunity Grade": "16"
     },
     {
       "Name": "Tylan Wallace",
@@ -12317,16 +12317,16 @@
       "FP": "2.2",
       "Routes Run": "13",
       "Routes/G": "6.5",
-      "Targets/Route Run": "0.08",
+      "Targets/Route Run": "",
       "YAC": "13",
       "YAC/Rec": "13",
-      "YPRR": "0.92",
+      "YPRR": "",
       "RACR": "0",
       "WOPR": "0.03",
       "_Team Targets": "55",
       "_Team Rec Yards": "308",
       "_Team Rec TD": "2",
-      "Efficiency Grade": "52",
+      "Efficiency Grade": "62",
       "Opportunity Grade": "13"
     },
     {
@@ -12364,8 +12364,8 @@
       "_Team Targets": "118",
       "_Team Rec Yards": "1037",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "84",
-      "Opportunity Grade": "64"
+      "Efficiency Grade": "86",
+      "Opportunity Grade": "65"
     },
     {
       "Name": "Wan'Dale Robinson",
@@ -12402,8 +12402,8 @@
       "_Team Targets": "195",
       "_Team Rec Yards": "1179",
       "_Team Rec TD": "4",
-      "Efficiency Grade": "36",
-      "Opportunity Grade": "77"
+      "Efficiency Grade": "35",
+      "Opportunity Grade": "78"
     },
     {
       "Name": "Xavier Hutchinson",
@@ -12440,8 +12440,8 @@
       "_Team Targets": "231",
       "_Team Rec Yards": "1867",
       "_Team Rec TD": "11",
-      "Efficiency Grade": "57",
-      "Opportunity Grade": "65"
+      "Efficiency Grade": "58",
+      "Opportunity Grade": "66"
     },
     {
       "Name": "Xavier Legette",
@@ -12517,7 +12517,7 @@
       "_Team Rec Yards": "885",
       "_Team Rec TD": "6",
       "Efficiency Grade": "0",
-      "Opportunity Grade": "21"
+      "Opportunity Grade": "20"
     },
     {
       "Name": "Xavier Worthy",
@@ -12554,8 +12554,8 @@
       "_Team Targets": "179",
       "_Team Rec Yards": "1474",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "46",
-      "Opportunity Grade": "68"
+      "Efficiency Grade": "45",
+      "Opportunity Grade": "69"
     },
     {
       "Name": "Zachariah Branch",
@@ -12583,17 +12583,17 @@
       "FP": "19.2",
       "Routes Run": "57",
       "Routes/G": "8.14",
-      "Targets/Route Run": "0.21",
+      "Targets/Route Run": "",
       "YAC": "64",
       "YAC/Rec": "6.4",
-      "YPRR": "1.12",
+      "YPRR": "",
       "RACR": "0.89",
       "WOPR": "0.11",
       "_Team Targets": "192",
       "_Team Rec Yards": "1479",
       "_Team Rec TD": "10",
-      "Efficiency Grade": "36",
-      "Opportunity Grade": "34"
+      "Efficiency Grade": "35",
+      "Opportunity Grade": "30"
     },
     {
       "Name": "Zavion Thomas",
@@ -12621,17 +12621,17 @@
       "FP": "9.8",
       "Routes Run": "24",
       "Routes/G": "4",
-      "Targets/Route Run": "0.21",
+      "Targets/Route Run": "",
       "YAC": "31",
       "YAC/Rec": "6.2",
-      "YPRR": "1.54",
+      "YPRR": "",
       "RACR": "3.3",
       "WOPR": "0.04",
       "_Team Targets": "198",
       "_Team Rec Yards": "1515",
       "_Team Rec TD": "5",
-      "Efficiency Grade": "45",
-      "Opportunity Grade": "18"
+      "Efficiency Grade": "40",
+      "Opportunity Grade": "11"
     },
     {
       "Name": "Zay Flowers",
@@ -12668,8 +12668,8 @@
       "_Team Targets": "169",
       "_Team Rec Yards": "1459",
       "_Team Rec TD": "9",
-      "Efficiency Grade": "90",
-      "Opportunity Grade": "87"
+      "Efficiency Grade": "91",
+      "Opportunity Grade": "88"
     }
   ]
 }

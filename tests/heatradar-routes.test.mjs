@@ -19,12 +19,13 @@ test("HeatRadar appends one weekly increment without rewriting prior cumulative 
   const payload = {
     season: 2026,
     weeks: [1,2,3,4,5,6,7],
-    players: [...filler, { player: "Active Player", position: "TE", team: "LA", week: 7, routes: 20 }],
+    players: [...filler, { player: "Active Player Jr.", position: "TE", team: "LA", week: 7, routes: 20 }],
   };
   const result = extendRouteArchive(archive, payload, "now");
   const week7 = result.archive.weeks.find((entry) => entry.week === 7);
   assert.equal(week7.rows.find((row) => row.Name === "Bye Player")["Routes Run"], "100");
-  assert.equal(week7.rows.find((row) => row.Name === "Active Player")["Routes Run"], "100");
-  assert.equal(week7.rows.find((row) => row.Name === "Active Player").Team, "LAR");
+  assert.equal(week7.rows.find((row) => row.Name === "Active Player Jr.")["Routes Run"], "100");
+  assert.equal(week7.rows.find((row) => row.Name === "Active Player Jr.").Team, "LAR");
+  assert.equal(week7.rows.filter((row) => row.Name.startsWith("Active Player")).length, 1);
   assert.equal(archive.weeks.length, 1);
 });
