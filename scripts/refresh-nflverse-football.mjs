@@ -12,7 +12,9 @@ const URLS = {
 };
 const targets = {
   rb: new URL(`../public/data/rb-weekly-${SEASON}.json`, import.meta.url),
+  rbLatest: new URL(`../public/data/rb-${SEASON}.json`, import.meta.url),
   receivers: new URL(`../public/data/receivers-weekly-${SEASON}.json`, import.meta.url),
+  receiversLatest: new URL(`../public/data/receivers-${SEASON}.json`, import.meta.url),
   yac: new URL(`../public/data/rb-yac-${SEASON}.json`, import.meta.url),
   defense: new URL(`../public/data/nfl-defense-vs-position-${SEASON}.json`, import.meta.url),
 };
@@ -122,7 +124,7 @@ function normalizeWeekly(stats, advanced, pbp) {
       completions:num(row.completions), passAttempts:num(row.attempts), passYards:num(row.passing_yards), passTds:num(row.passing_tds), interceptions:num(row.passing_interceptions), sacks:num(row.sacks_suffered),
       carries:num(row.carries), rushYards:num(row.rushing_yards), rushTds:num(row.rushing_tds), rushFumbles:num(row.rushing_fumbles_lost),
       targets:num(row.targets), receptions:num(row.receptions), recYards:num(row.receiving_yards), recTds:num(row.receiving_tds), recFumbles:num(row.receiving_fumbles_lost), recYac:num(row.receiving_yards_after_catch),
-      fantasyPointsPpr:num(row.fantasy_points_ppr), targetShare:maybe(row.target_share), airYardsShare:maybe(row.air_yards_share), wopr:maybe(row.wopr), racr:maybe(row.racr),
+      fantasyPoints:num(row.fantasy_points), fantasyPointsPpr:num(row.fantasy_points_ppr), targetShare:maybe(row.target_share), airYardsShare:maybe(row.air_yards_share), wopr:maybe(row.wopr), racr:maybe(row.racr),
       rush1:play.rush1 ?? 0, rush3:play.rush3 ?? 0, rush5:play.rush5 ?? 0, rush10:play.rush10 ?? num(row.rushing_10), rush20:play.rush20 ?? num(row.rushing_20),
       i5Carries:play.i5Carries ?? 0, i10Carries:play.i10Carries ?? 0, i10Rec:play.i10Rec ?? 0, i10Targets:play.i10Targets ?? 0, i20Targets:play.i20Targets ?? 0,
       teamI5Carries:redZone.i5 ?? 0, teamI10Carries:redZone.i10 ?? 0, teamTargets:team.targets ?? 0, teamRecYards:team.recYards ?? 0, teamRecTds:team.recTds ?? 0,
@@ -195,7 +197,7 @@ function buildDefenseRows(rows, endWeek) {
     for(const position of ["QB","RB","WR","TE"]){const group=all.filter(row=>row.position===position);const prefix=`${position} `;
       if(position==="QB") Object.assign(result,{[prefix+"Cmp"]:pg(sum(group,"completions"),games),[prefix+"Pass Att"]:pg(sum(group,"passAttempts"),games),[prefix+"Pass Yds"]:pg(sum(group,"passYards"),games),[prefix+"Pass TD"]:pg(sum(group,"passTds"),games),[prefix+"Int"]:pg(sum(group,"interceptions"),games),[prefix+"Sk"]:pg(sum(group,"sacks"),games),[prefix+"Rush Att"]:pg(sum(group,"carries"),games),[prefix+"Rush Yds"]:pg(sum(group,"rushYards"),games),[prefix+"Rush TD"]:pg(sum(group,"rushTds"),games)});
       else Object.assign(result,{[prefix+"Rush Att"]:pg(sum(group,"carries"),games),[prefix+"Rush Yds"]:pg(sum(group,"rushYards"),games),[prefix+"Tgt"]:pg(sum(group,"targets"),games),[prefix+"Rec"]:pg(sum(group,"receptions"),games),[prefix+"Rec Yds"]:pg(sum(group,"recYards"),games),[prefix+"TD"]:pg(sum(group,"rushTds")+sum(group,"recTds"),games)});
-      result[prefix+"Fantasy PPG"]=pg(sum(group,"fantasyPointsPpr"),games);
+      result[prefix+"Fantasy PPG"]=pg(sum(group,"fantasyPoints"),games);
     }
     return result;
   }).sort((a,b)=>a.Team.localeCompare(b.Team));
@@ -217,9 +219,11 @@ async function main() {
   const latestRb=rbWeeks.at(-1).rows;
   await Promise.all([
     atomicJson(targets.rb,{season:SEASON,source:URLS,method:"exact weekly rows accumulated through each completed week",completedThroughWeek:complete,weeks:rbWeeks}),
+    atomicJson(targets.rbLatest,{season:SEASON,source:URLS,copiedAt:capturedAt,updateMode:"automatic nflverse weekly refresh",seasonType:"Regular",scoring:"PPR",population:`RB only; all ${latestRb.length} qualifying rows`,rows:latestRb}),
     atomicJson(targets.receivers,{season:SEASON,source:URLS,method:"exact weekly rows accumulated through each completed week",completedThroughWeek:complete,weeks:receiverWeeks}),
+    atomicJson(targets.receiversLatest,{season:SEASON,source:URLS,enrichmentSources:[routeArchive?.source].filter(Boolean),copiedAt:capturedAt,updateMode:"automatic nflverse weekly refresh",seasonType:"Regular",scoring:"PPR",population:{WR:latestReceivers.filter(row=>row.POS==="WR").length,TE:latestReceivers.filter(row=>row.POS==="TE").length},rows:latestReceivers}),
     atomicJson(targets.yac,{season:SEASON,capturedAt,coverageNote:`nflverse PFR advanced rushing through Week ${complete}.`,source:"https://www.pro-football-reference.com/years/2026/rushing_advanced.htm",upstream:URLS.rushing,rows:latestRb.filter(row=>row["YAC/Att"]!=="").map(row=>({Name:row.Name,Team:row.Team,"YAC/Att":row["YAC/Att"]}))}),
-    atomicJson(targets.defense,{season:SEASON,capturedAt,coverageNote:`nflverse weekly player results through completed Week ${complete}.`,source:{weekly:URLS.players},rows:buildDefenseRows(weekly,complete)}),
+    atomicJson(targets.defense,{season:SEASON,capturedAt,coverageNote:`nflverse weekly player results through games played in live Week ${maxWeek}.`,source:{weekly:URLS.players},rows:buildDefenseRows(weekly,maxWeek)}),
   ]);
   console.log(`nflverse football data updated: ${weekly.length} player-week rows; completed Week ${complete}; live source Week ${maxWeek}.`);
 }
