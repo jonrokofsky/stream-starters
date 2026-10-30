@@ -1,7 +1,7 @@
 # Session checkpoint
 
 ## 2026-10-30 receiver Routes/G filter
-Task `SS-20261030-receiver-routes-filter` adds a responsive 0-50 minimum Routes/G slider to the All Receivers board. It filters the shared desktop/mobile row collection before sorting and shows the active threshold plus visible player count. Focused lint has zero errors, the production build passes, and a 390 px Chromium interaction changed the board from 333 players at zero to 126 at 20 Routes/G with no page overflow. Sequential Manager review recommends SHIP; user authorized push. Preserve unrelated `public/1.png`.
+Task `SS-20261030-receiver-routes-filter` adds a responsive 0-50 minimum Routes/G slider to the All Receivers board. It filters the shared desktop/mobile row collection before sorting and shows the active threshold plus visible player count. Focused lint has zero errors, the production build passes, and a 390 px Chromium interaction changed the board from 333 players at zero to 126 at 20 Routes/G with no page overflow. Commit `2245b59` is pushed to `origin/main`. Preserve unrelated `public/1.png`.
 
 ## 2026-10-30 football schedules and YPRR correction
 Task SS-20261030-football-manual-refresh-yprr removes cron triggers from all three football workflows while retaining manual dispatch. Suffix-normalized route joins collapse Jr./II/III variants, and YPRR/targets-per-route require 10 routes per game. Week 7 routes now contain 327 cumulative identities. Focused tests pass 9/9, data tests 26/26, focused lint is clean, and the production build passes. Hitter-ranking scheduling is unchanged. Preserve unrelated public/1.png.
