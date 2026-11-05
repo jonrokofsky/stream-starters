@@ -16,4 +16,4 @@ All acceptance criteria pass against the same final snapshots. Scheduled footbal
 The user already authorized publication.
 
 ## Acceptance and execution record
-2026-11-04: User requested “Push updates.” Commit and remote result will be recorded after publication.
+2026-11-04: User requested “Push updates.” Rebased commit `35cba40` was pushed successfully to `origin/main` after preserving the incoming hitter snapshot and superseding the earlier incomplete receiver snapshot with the completed Week 8 archive.
