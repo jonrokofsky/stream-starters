@@ -163,7 +163,7 @@ function buildRbRows(rows, endWeek) {
       "1+ RuYd%":percent(sum(group,"rush1"),carries),"3+ RuYd%":percent(sum(group,"rush3"),carries),"5+ RuYd%":percent(sum(group,"rush5"),carries),"10+ RuYd%":percent(sum(group,"rush10"),carries),"15+ RuYd%":"-","20+ RuYd%":percent(sum(group,"rush20"),carries),"30+ RuYd%":"-",
       "Ins. 5 Carries":String(i5),"Inside 5 Carry%":percent(i5,teamI5),"Ins. 10 Carries":String(i10),"Inside 10 Carry%":percent(i10,teamI10),
       Targets:String(targets),"Target Share":percent(targets,teamTargets),Rec:String(receptions),"Rec Yards":String(recYards),"Team Rec Yards %":percent(recYards,teamRecYards),"RecYds/Rec":receptions?format(recYards/receptions):"-","RecYds/Tgt":targets?format(recYards/targets):"-","RecYds/G":games?format(recYards/games):"-","Catch%":percent(receptions,targets),"Rec. TD":String(sum(group,"recTds")),"Ins. 10 Rec.":String(i10Rec),"Rec FUM":String(sum(group,"recFumbles")),
-      "Weighted Opp.":format(weightedOpportunity),"Weighted Opp./G":games?format(weightedOpportunity/games):"-","FP/G":games?format(fp/games):"-",FP:format(fp),"Total TD":String(sum(group,"rushTds")+sum(group,"recTds")),"YAC/Att":completeYacCoverage?format(yac/yacCarries):"",
+      "Weighted Opp.":format(weightedOpportunity),"Weighted Opp./G":games?format(weightedOpportunity/games):"-","FP/G":games?format(fp/games):"-",FP:format(fp),"Total TD":String(sum(group,"rushTds")+sum(group,"recTds")),"YAC/Att":completeYacCoverage?format(yac/yacCarries,1):"",
       "_Team Targets":String(teamTargets),"_Team Rec Yards":String(teamRecYards),"_Team I5 Carries":String(teamI5),"_Team I10 Carries":String(teamI10),"_YAC Carries":completeYacCoverage?String(yacCarries):"","_YAC Total":completeYacCoverage?String(yac):"",
     });
   }

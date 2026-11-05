@@ -1,5 +1,8 @@
 # Session checkpoint
 
+## 2026-11-04 completed Week 8 football refresh
+Task `SS-20261104-football-week8-refresh` updates 8,420 nflverse player-week rows through completed Week 8, 139 RB rows, 341 receiver rows, 105 PFR YAC/Att identities, 333 cumulative Week 8 HeatRadar route identities, and 32 defenses across the uploaded PFR QB/RB/WR/TE tables. YAC/Att now uses PFR's displayed one-decimal precision. No page structure changed and scheduled football runs remain disabled. Data tests pass 26/26, focused football tests pass 22/22, focused lint and the 18-route build pass, and four local football pages load without errors at 390 px. Sequential Manager review recommends SHIP; user authorized push. Preserve unrelated `public/1.png`.
+
 ## 2026-10-30 receiver Routes/G filter
 Task `SS-20261030-receiver-routes-filter` adds a responsive 0-50 minimum Routes/G slider to the All Receivers board. It filters the shared desktop/mobile row collection before sorting and shows the active threshold plus visible player count. Focused lint has zero errors, the production build passes, and a 390 px Chromium interaction changed the board from 333 players at zero to 126 at 20 Routes/G with no page overflow. Commit `2245b59` is pushed to `origin/main`. Preserve unrelated `public/1.png`.
 
