@@ -9,7 +9,7 @@ const yacTarget = new URL("../public/data/rb-yac-2026.json", import.meta.url);
 const rbTarget = new URL("../public/data/rb-2026.json", import.meta.url);
 const weeklyTarget = new URL("../public/data/rb-weekly-2026.json", import.meta.url);
 const source = "https://www.pro-football-reference.com/years/2026/rushing_advanced.htm";
-const aliases = { KAN: "KC", LVR: "LV", NWE: "NE", SFO: "SF", GNB: "GB", TAM: "TB", NOR: "NO" };
+const aliases = { KAN: "KC", LVR: "LV", NWE: "NE", SFO: "SF", GNB: "GB", TAM: "TB", NOR: "NO", LAR: "LA" };
 
 const lines = (await readFile(input, "utf8")).replace(/^\uFEFF/, "").trim().split(/\r?\n/);
 const headers = lines.shift().split("\t").map((value) => value.trim());
