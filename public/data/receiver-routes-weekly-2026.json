@@ -16764,251 +16764,322 @@
     },
     {
       "week": 9,
-      "copiedAt": "2026-11-11T02:10:27.456Z",
+      "copiedAt": "2026-11-13T18:52:16.254Z",
+      "source": "https://heatradar.app/nfl/routes",
       "rows": [
         {
           "Name": "Adam Trautman",
           "POS": "TE",
           "Team": "DEN",
-          "G": "9",
-          "Routes Run": "78"
+          "G": "6",
+          "Routes Run": "71"
         },
         {
           "Name": "AJ Barner",
           "POS": "TE",
           "Team": "SEA",
-          "G": "9",
-          "Routes Run": "260"
+          "G": "6",
+          "Routes Run": "235"
         },
         {
           "Name": "Andrew Ogletree",
           "POS": "TE",
           "Team": "IND",
-          "G": "9",
-          "Routes Run": "45"
+          "G": "6",
+          "Routes Run": "28"
         },
         {
           "Name": "Austin Hooper",
           "POS": "TE",
           "Team": "ATL",
-          "G": "9",
-          "Routes Run": "54"
+          "G": "6",
+          "Routes Run": "49"
         },
         {
           "Name": "Bauer Sharp",
           "POS": "TE",
           "Team": "TB",
-          "G": "9",
-          "Routes Run": "12"
+          "G": "5",
+          "Routes Run": "9"
         },
         {
           "Name": "Ben Sinnott",
           "POS": "TE",
           "Team": "WAS",
-          "G": "8",
-          "Routes Run": "74"
+          "G": "6",
+          "Routes Run": "57"
         },
         {
           "Name": "Ben Yurosek",
           "POS": "TE",
           "Team": "MIN",
-          "G": "4",
-          "Routes Run": "26"
+          "G": "1",
+          "Routes Run": "9"
+        },
+        {
+          "Name": "Benjamin Yurosek",
+          "POS": "TE",
+          "Team": "MIN",
+          "G": "",
+          "Routes Run": "7"
         },
         {
           "Name": "Blake Whiteheart",
           "POS": "TE",
           "Team": "CLE",
-          "G": "9",
-          "Routes Run": "66"
+          "G": "6",
+          "Routes Run": "53"
+        },
+        {
+          "Name": "Brayden Willis",
+          "POS": "TE",
+          "Team": "SF",
+          "G": "3",
+          "Routes Run": "5"
         },
         {
           "Name": "Brenton Strange",
           "POS": "TE",
           "Team": "JAX",
-          "G": "8",
-          "Routes Run": "180"
+          "G": "6",
+          "Routes Run": "167"
         },
         {
           "Name": "Brevin Jordan",
           "POS": "TE",
-          "Team": "HOU",
-          "G": "5",
-          "Routes Run": "16"
+          "Team": "HST",
+          "G": "3",
+          "Routes Run": "9"
         },
         {
           "Name": "Brevyn Spann-Ford",
           "POS": "TE",
           "Team": "DAL",
-          "G": "9",
-          "Routes Run": "109"
+          "G": "6",
+          "Routes Run": "103"
         },
         {
           "Name": "Brock Bowers",
           "POS": "TE",
           "Team": "LV",
-          "G": "7",
-          "Routes Run": "257"
+          "G": "4",
+          "Routes Run": "249"
         },
         {
           "Name": "Brock Wright",
           "POS": "TE",
           "Team": "DET",
-          "G": "8",
-          "Routes Run": "84"
+          "G": "5",
+          "Routes Run": "50"
         },
         {
           "Name": "Cade Otton",
           "POS": "TE",
           "Team": "TB",
-          "G": "9",
-          "Routes Run": "257"
+          "G": "6",
+          "Routes Run": "232"
         },
         {
           "Name": "Cade Stover",
           "POS": "TE",
           "Team": "HOU",
-          "G": "7",
-          "Routes Run": "27"
+          "G": "5",
+          "Routes Run": "26"
+        },
+        {
+          "Name": "Cameron Latu",
+          "POS": "TE",
+          "Team": "NE",
+          "G": "3",
+          "Routes Run": "6"
+        },
+        {
+          "Name": "Carsen Ryan",
+          "POS": "TE",
+          "Team": "CLV",
+          "G": "1",
+          "Routes Run": "1"
         },
         {
           "Name": "Charlie Kolar",
           "POS": "TE",
           "Team": "LAC",
-          "G": "6",
-          "Routes Run": "108"
+          "G": "4",
+          "Routes Run": "97"
         },
         {
           "Name": "Charlie Woerner",
           "POS": "TE",
           "Team": "ATL",
-          "G": "9",
-          "Routes Run": "78"
+          "G": "6",
+          "Routes Run": "69"
         },
         {
           "Name": "Chig Okonkwo",
           "POS": "TE",
           "Team": "WAS",
+          "G": "4",
+          "Routes Run": "106"
+        },
+        {
+          "Name": "Chigoziem Okonkwo",
+          "POS": "TE",
+          "Team": "WAS",
+          "G": "",
+          "Routes Run": "62"
+        },
+        {
+          "Name": "Chris Manhertz",
+          "POS": "TE",
+          "Team": "NYG",
           "G": "6",
-          "Routes Run": "175"
+          "Routes Run": "20"
+        },
+        {
+          "Name": "Chris Myarick",
+          "POS": "TE",
+          "Team": "LV",
+          "G": "1",
+          "Routes Run": "1"
         },
         {
           "Name": "Colby Parkinson",
           "POS": "TE",
           "Team": "LAR",
-          "G": "7",
-          "Routes Run": "117"
+          "G": "5",
+          "Routes Run": "110"
         },
         {
           "Name": "Cole Kmet",
           "POS": "TE",
           "Team": "CHI",
-          "G": "7",
-          "Routes Run": "112"
+          "G": "6",
+          "Routes Run": "105"
         },
         {
           "Name": "Colson Yankoff",
           "POS": "TE",
           "Team": "WAS",
-          "G": "8",
-          "Routes Run": "46"
+          "G": "5",
+          "Routes Run": "42"
         },
         {
           "Name": "Colston Loveland",
           "POS": "TE",
           "Team": "CHI",
-          "G": "9",
-          "Routes Run": "279"
+          "G": "6",
+          "Routes Run": "259"
         },
         {
           "Name": "Dallas Goedert",
           "POS": "TE",
           "Team": "PHI",
-          "G": "7",
-          "Routes Run": "197"
+          "G": "4",
+          "Routes Run": "185"
         },
         {
           "Name": "Dalton Kincaid",
           "POS": "TE",
           "Team": "BUF",
-          "G": "8",
-          "Routes Run": "182"
+          "G": "6",
+          "Routes Run": "170"
         },
         {
           "Name": "Dalton Schultz",
           "POS": "TE",
           "Team": "HOU",
-          "G": "8",
-          "Routes Run": "215"
+          "G": "6",
+          "Routes Run": "193"
         },
         {
           "Name": "Daniel Bellinger",
           "POS": "TE",
           "Team": "TEN",
-          "G": "8",
-          "Routes Run": "78"
+          "G": "6",
+          "Routes Run": "70"
         },
         {
           "Name": "Darnell Washington",
           "POS": "TE",
           "Team": "PIT",
-          "G": "8",
-          "Routes Run": "145"
+          "G": "6",
+          "Routes Run": "116"
         },
         {
           "Name": "Darren Waller",
           "POS": "TE",
           "Team": "CAR",
-          "G": "8",
-          "Routes Run": "198"
+          "G": "5",
+          "Routes Run": "193"
+        },
+        {
+          "Name": "David Martin-Robinson",
+          "POS": "TE",
+          "Team": "TEN",
+          "G": "1",
+          "Routes Run": "1"
         },
         {
           "Name": "David Njoku",
           "POS": "TE",
           "Team": "LAC",
           "G": "2",
-          "Routes Run": "25"
+          "Routes Run": "24"
         },
         {
           "Name": "Davis Allen",
           "POS": "TE",
           "Team": "LAR",
-          "G": "9",
-          "Routes Run": "95"
+          "G": "6",
+          "Routes Run": "75"
         },
         {
           "Name": "Dawson Knox",
           "POS": "TE",
           "Team": "BUF",
-          "G": "8",
-          "Routes Run": "137"
+          "G": "6",
+          "Routes Run": "125"
+        },
+        {
+          "Name": "Drew Ogletree",
+          "POS": "TE",
+          "Team": "IND",
+          "G": "",
+          "Routes Run": "9"
         },
         {
           "Name": "Drew Sample",
           "POS": "TE",
           "Team": "CIN",
-          "G": "8",
-          "Routes Run": "104"
+          "G": "5",
+          "Routes Run": "67"
         },
         {
           "Name": "Durham Smythe",
           "POS": "TE",
-          "Team": "BAL",
+          "Team": "BLT",
           "G": "4",
-          "Routes Run": "33"
+          "Routes Run": "29"
+        },
+        {
+          "Name": "E.J. Jenkins",
+          "POS": "TE",
+          "Team": "PHI",
+          "G": "4",
+          "Routes Run": "16"
         },
         {
           "Name": "Eli Raridon",
           "POS": "TE",
           "Team": "NE",
-          "G": "8",
-          "Routes Run": "118"
+          "G": "5",
+          "Routes Run": "110"
         },
         {
           "Name": "Eli Stowers",
           "POS": "TE",
           "Team": "PHI",
-          "G": "3",
+          "G": "",
           "Routes Run": "23"
         },
         {
@@ -17016,96 +17087,103 @@
           "POS": "TE",
           "Team": "SEA",
           "G": "6",
-          "Routes Run": "54"
+          "Routes Run": "50"
         },
         {
           "Name": "Elijah Higgins",
           "POS": "TE",
           "Team": "ARI",
-          "G": "9",
-          "Routes Run": "104"
+          "G": "6",
+          "Routes Run": "96"
         },
         {
           "Name": "Eric Saubert",
           "POS": "TE",
           "Team": "SEA",
-          "G": "9",
-          "Routes Run": "55"
+          "G": "6",
+          "Routes Run": "43"
         },
         {
           "Name": "Erick All",
           "POS": "TE",
           "Team": "CIN",
-          "G": "6",
-          "Routes Run": "44"
+          "G": "5",
+          "Routes Run": "40"
         },
         {
           "Name": "Evan Engram",
           "POS": "TE",
           "Team": "DEN",
-          "G": "9",
-          "Routes Run": "193"
+          "G": "6",
+          "Routes Run": "176"
+        },
+        {
+          "Name": "Feleipe Franks",
+          "POS": "TE",
+          "Team": "CAR",
+          "G": "1",
+          "Routes Run": "2"
         },
         {
           "Name": "Foster Moreau",
           "POS": "TE",
-          "Team": "HOU",
-          "G": "8",
-          "Routes Run": "72"
+          "Team": "HST",
+          "G": "6",
+          "Routes Run": "53"
         },
         {
           "Name": "Gavin Bartholomew",
           "POS": "TE",
           "Team": "MIN",
-          "G": "6",
-          "Routes Run": "35"
+          "G": "2",
+          "Routes Run": "27"
         },
         {
           "Name": "George Kittle",
           "POS": "TE",
           "Team": "SF",
-          "G": "8",
-          "Routes Run": "205"
+          "G": "6",
+          "Routes Run": "198"
         },
         {
           "Name": "Greg Dulcich",
           "POS": "TE",
           "Team": "MIA",
-          "G": "8",
-          "Routes Run": "180"
+          "G": "5",
+          "Routes Run": "160"
         },
         {
           "Name": "Gunnar Helm",
           "POS": "TE",
           "Team": "TEN",
-          "G": "8",
-          "Routes Run": "182"
+          "G": "6",
+          "Routes Run": "163"
         },
         {
-          "Name": "Harold Fannin",
+          "Name": "Harold Fannin Jr.",
           "POS": "TE",
           "Team": "CLE",
-          "G": "9",
-          "Routes Run": "297"
+          "G": "6",
+          "Routes Run": "277"
         },
         {
           "Name": "Hayden Rucci",
           "POS": "TE",
           "Team": "LAC",
-          "G": "6",
-          "Routes Run": "22"
+          "G": "4",
+          "Routes Run": "12"
         },
         {
           "Name": "Hunter Henry",
           "POS": "TE",
           "Team": "NE",
-          "G": "9",
-          "Routes Run": "205"
+          "G": "6",
+          "Routes Run": "194"
         },
         {
           "Name": "Hunter Long",
           "POS": "TE",
-          "Team": "ARI",
+          "Team": "ARZ",
           "G": "4",
           "Routes Run": "19"
         },
@@ -17113,29 +17191,29 @@
           "Name": "Ian Thomas",
           "POS": "TE",
           "Team": "LV",
-          "G": "9",
-          "Routes Run": "49"
+          "G": "5",
+          "Routes Run": "37"
         },
         {
           "Name": "Isaiah Likely",
           "POS": "TE",
           "Team": "NYG",
-          "G": "8",
-          "Routes Run": "264"
+          "G": "6",
+          "Routes Run": "254"
         },
         {
           "Name": "Jack Endries",
           "POS": "TE",
           "Team": "CIN",
-          "G": "4",
-          "Routes Run": "16"
+          "G": "",
+          "Routes Run": "14"
         },
         {
           "Name": "Jackson Hawes",
           "POS": "TE",
           "Team": "BUF",
-          "G": "8",
-          "Routes Run": "39"
+          "G": "6",
+          "Routes Run": "32"
         },
         {
           "Name": "Jackson Meeks",
@@ -17148,92 +17226,106 @@
           "Name": "Jake Briningstool",
           "POS": "TE",
           "Team": "KC",
-          "G": "8",
-          "Routes Run": "25"
+          "G": "5",
+          "Routes Run": "20"
         },
         {
           "Name": "Jake Ferguson",
           "POS": "TE",
           "Team": "DAL",
-          "G": "9",
-          "Routes Run": "216"
+          "G": "6",
+          "Routes Run": "199"
+        },
+        {
+          "Name": "Jake Tonges",
+          "POS": "TE",
+          "Team": "SF",
+          "G": "1",
+          "Routes Run": "4"
         },
         {
           "Name": "Jelani Woods",
           "POS": "TE",
           "Team": "NYJ",
-          "G": "9",
-          "Routes Run": "32"
+          "G": "6",
+          "Routes Run": "28"
         },
         {
           "Name": "Jeremy Ruckert",
           "POS": "TE",
           "Team": "NYJ",
-          "G": "9",
-          "Routes Run": "65"
+          "G": "6",
+          "Routes Run": "47"
         },
         {
           "Name": "John Bates",
           "POS": "TE",
           "Team": "WAS",
-          "G": "8",
-          "Routes Run": "53"
+          "G": "6",
+          "Routes Run": "46"
         },
         {
           "Name": "Johnny Mundt",
           "POS": "TE",
           "Team": "PHI",
-          "G": "9",
-          "Routes Run": "74"
+          "G": "6",
+          "Routes Run": "63"
         },
         {
           "Name": "Jonnu Smith",
           "POS": "TE",
           "Team": "GB",
-          "G": "8",
-          "Routes Run": "77"
+          "G": "6",
+          "Routes Run": "65"
         },
         {
           "Name": "Josh Cuevas",
           "POS": "TE",
           "Team": "BAL",
-          "G": "9",
-          "Routes Run": "62"
+          "G": "6",
+          "Routes Run": "53"
         },
         {
           "Name": "Josh Oliver",
           "POS": "TE",
           "Team": "MIN",
           "G": "3",
-          "Routes Run": "18"
+          "Routes Run": "17"
+        },
+        {
+          "Name": "Josh Whyle",
+          "POS": "TE",
+          "Team": "GB",
+          "G": "5",
+          "Routes Run": "15"
         },
         {
           "Name": "Juwan Johnson",
           "POS": "TE",
           "Team": "NO",
-          "G": "8",
-          "Routes Run": "234"
+          "G": "6",
+          "Routes Run": "227"
         },
         {
           "Name": "Keleki Latu",
           "POS": "TE",
           "Team": "BUF",
-          "G": "8",
-          "Routes Run": "13"
+          "G": "6",
+          "Routes Run": "11"
         },
         {
           "Name": "Kenyon Sadiq",
           "POS": "TE",
           "Team": "NYJ",
-          "G": "9",
-          "Routes Run": "139"
+          "G": "6",
+          "Routes Run": "135"
         },
         {
           "Name": "Kyle Pitts",
           "POS": "TE",
           "Team": "ATL",
-          "G": "9",
-          "Routes Run": "192"
+          "G": "6",
+          "Routes Run": "183"
         },
         {
           "Name": "Kylen Granson",
@@ -17246,365 +17338,393 @@
           "Name": "Luke Farrell",
           "POS": "TE",
           "Team": "SF",
-          "G": "8",
-          "Routes Run": "85"
+          "G": "6",
+          "Routes Run": "70"
         },
         {
           "Name": "Luke Schoonmaker",
           "POS": "TE",
           "Team": "DAL",
-          "G": "7",
-          "Routes Run": "27"
+          "G": "6",
+          "Routes Run": "25"
         },
         {
           "Name": "Mark Andrews",
           "POS": "TE",
           "Team": "BAL",
-          "G": "9",
-          "Routes Run": "206"
+          "G": "6",
+          "Routes Run": "198"
         },
         {
           "Name": "Mark Redman",
           "POS": "TE",
           "Team": "GB",
-          "G": "9",
-          "Routes Run": "61"
+          "G": "6",
+          "Routes Run": "35"
         },
         {
           "Name": "Marlin Klein",
           "POS": "TE",
-          "Team": "HOU",
-          "G": "4",
-          "Routes Run": "14"
+          "Team": "HST",
+          "G": "3",
+          "Routes Run": "7"
         },
         {
           "Name": "Mason Taylor",
           "POS": "TE",
           "Team": "NYJ",
-          "G": "7",
-          "Routes Run": "150"
+          "G": "4",
+          "Routes Run": "138"
         },
         {
           "Name": "Matthew Hibner",
           "POS": "TE",
           "Team": "BAL",
-          "G": "8",
-          "Routes Run": "62"
+          "G": "5",
+          "Routes Run": "52"
         },
         {
           "Name": "Michael Mayer",
           "POS": "TE",
           "Team": "LV",
-          "G": "9",
-          "Routes Run": "250"
+          "G": "6",
+          "Routes Run": "241"
         },
         {
           "Name": "Mike Gesicki",
           "POS": "TE",
           "Team": "CIN",
-          "G": "8",
-          "Routes Run": "191"
+          "G": "5",
+          "Routes Run": "181"
         },
         {
           "Name": "Mitchell Evans",
           "POS": "TE",
           "Team": "CAR",
-          "G": "8",
-          "Routes Run": "98"
+          "G": "5",
+          "Routes Run": "88"
         },
         {
           "Name": "Mo Alie-Cox",
           "POS": "TE",
           "Team": "IND",
-          "G": "9",
-          "Routes Run": "52"
+          "G": "6",
+          "Routes Run": "46"
         },
         {
           "Name": "Nate Adkins",
           "POS": "TE",
           "Team": "DEN",
-          "G": "9",
-          "Routes Run": "49"
+          "G": "6",
+          "Routes Run": "33"
         },
         {
           "Name": "Nate Boerkircher",
           "POS": "TE",
           "Team": "JAX",
-          "G": "8",
-          "Routes Run": "81"
+          "G": "6",
+          "Routes Run": "74"
+        },
+        {
+          "Name": "Nick Kallerup",
+          "POS": "TE",
+          "Team": "SEA",
+          "G": "1",
+          "Routes Run": "1"
         },
         {
           "Name": "Nick Muse",
           "POS": "TE",
           "Team": "ATL",
-          "G": "9",
-          "Routes Run": "17"
+          "G": "3",
+          "Routes Run": "14"
+        },
+        {
+          "Name": "Nick Vannett",
+          "POS": "TE",
+          "Team": "BLT",
+          "G": "2",
+          "Routes Run": "9"
         },
         {
           "Name": "Noah Fant",
           "POS": "TE",
           "Team": "NO",
-          "G": "7",
-          "Routes Run": "96"
+          "G": "5",
+          "Routes Run": "90"
         },
         {
           "Name": "Noah Gray",
           "POS": "TE",
           "Team": "KC",
-          "G": "8",
-          "Routes Run": "120"
+          "G": "5",
+          "Routes Run": "115"
         },
         {
-          "Name": "Oronde Gadsden",
+          "Name": "Oronde Gadsden II",
           "POS": "TE",
           "Team": "LAC",
-          "G": "8",
-          "Routes Run": "171"
+          "G": "6",
+          "Routes Run": "148"
         },
         {
           "Name": "Oscar Delp",
           "POS": "TE",
           "Team": "NO",
-          "G": "7",
-          "Routes Run": "36"
+          "G": "5",
+          "Routes Run": "27"
         },
         {
           "Name": "Pat Freiermuth",
           "POS": "TE",
           "Team": "PIT",
-          "G": "8",
-          "Routes Run": "234"
+          "G": "6",
+          "Routes Run": "202"
+        },
+        {
+          "Name": "Patrick Herbert",
+          "POS": "TE",
+          "Team": "LAC",
+          "G": "1",
+          "Routes Run": "3"
         },
         {
           "Name": "Payne Durham",
           "POS": "TE",
           "Team": "TB",
-          "G": "9",
-          "Routes Run": "19"
+          "G": "3",
+          "Routes Run": "18"
         },
         {
           "Name": "Pharaoh Brown",
           "POS": "TE",
           "Team": "IND",
-          "G": "2",
+          "G": "1",
           "Routes Run": "1"
         },
         {
           "Name": "Quintin Morris",
           "POS": "TE",
           "Team": "JAX",
-          "G": "8",
-          "Routes Run": "23"
+          "G": "5",
+          "Routes Run": "16"
         },
         {
           "Name": "Robert Tonyan",
           "POS": "TE",
           "Team": "PIT",
-          "G": "8",
-          "Routes Run": "12"
+          "G": "4",
+          "Routes Run": "7"
         },
         {
           "Name": "Sam LaPorta",
           "POS": "TE",
           "Team": "DET",
-          "G": "8",
-          "Routes Run": "255"
+          "G": "5",
+          "Routes Run": "245"
         },
         {
           "Name": "Sam Roush",
           "POS": "TE",
           "Team": "CHI",
-          "G": "9",
-          "Routes Run": "48"
+          "G": "5",
+          "Routes Run": "32"
         },
         {
           "Name": "Seydou Traore",
           "POS": "TE",
           "Team": "MIA",
-          "G": "4",
-          "Routes Run": "12"
+          "G": "1",
+          "Routes Run": "6"
         },
         {
           "Name": "T.J. Hockenson",
           "POS": "TE",
           "Team": "MIN",
-          "G": "8",
-          "Routes Run": "182"
+          "G": "5",
+          "Routes Run": "170"
+        },
+        {
+          "Name": "Tanner Arkin",
+          "POS": "TE",
+          "Team": "NE",
+          "G": "1",
+          "Routes Run": "6"
         },
         {
           "Name": "Tanner Hudson",
           "POS": "TE",
           "Team": "CIN",
           "G": "4",
-          "Routes Run": "49"
+          "Routes Run": "48"
         },
         {
           "Name": "Tanner Koziol",
           "POS": "TE",
           "Team": "JAX",
-          "G": "6",
+          "G": "3",
           "Routes Run": "20"
         },
         {
           "Name": "Teagan Quitoriano",
           "POS": "TE",
           "Team": "ARI",
-          "G": "5",
-          "Routes Run": "49"
+          "G": "2",
+          "Routes Run": "30"
         },
         {
           "Name": "Terrance Ferguson",
           "POS": "TE",
-          "Team": "LAR",
+          "Team": "LA",
           "G": "3",
-          "Routes Run": "47"
+          "Routes Run": "42"
         },
         {
           "Name": "Theo Johnson",
           "POS": "TE",
           "Team": "NYG",
-          "G": "6",
-          "Routes Run": "74"
+          "G": "5",
+          "Routes Run": "62"
         },
         {
-          "Name": "Thomas Fidone",
+          "Name": "Thomas Fidone II",
           "POS": "TE",
           "Team": "NYG",
-          "G": "2",
-          "Routes Run": "26"
+          "G": "1",
+          "Routes Run": "20"
         },
         {
           "Name": "Tommy Tremble",
           "POS": "TE",
           "Team": "CAR",
-          "G": "8",
-          "Routes Run": "154"
+          "G": "5",
+          "Routes Run": "144"
         },
         {
           "Name": "Travis Kelce",
           "POS": "TE",
           "Team": "KC",
-          "G": "8",
-          "Routes Run": "238"
+          "G": "5",
+          "Routes Run": "222"
         },
         {
           "Name": "Trey McBride",
           "POS": "TE",
           "Team": "ARI",
-          "G": "9",
-          "Routes Run": "364"
+          "G": "6",
+          "Routes Run": "349"
         },
         {
           "Name": "Treyton Welch",
           "POS": "TE",
           "Team": "NO",
-          "G": "4",
-          "Routes Run": "8"
+          "G": "2",
+          "Routes Run": "7"
         },
         {
           "Name": "Tucker Kraft",
           "POS": "TE",
           "Team": "GB",
-          "G": "9",
-          "Routes Run": "270"
+          "G": "6",
+          "Routes Run": "248"
         },
         {
           "Name": "Tyler Conklin",
           "POS": "TE",
           "Team": "DET",
-          "G": "6",
-          "Routes Run": "19"
+          "G": "3",
+          "Routes Run": "13"
         },
         {
           "Name": "Tyler Higbee",
           "POS": "TE",
           "Team": "LAR",
-          "G": "9",
-          "Routes Run": "235"
+          "G": "6",
+          "Routes Run": "223"
         },
         {
           "Name": "Tyler Warren",
           "POS": "TE",
           "Team": "IND",
-          "G": "7",
-          "Routes Run": "227"
+          "G": "5",
+          "Routes Run": "214"
         },
         {
           "Name": "Will Kacmarek",
           "POS": "TE",
           "Team": "MIA",
-          "G": "8",
-          "Routes Run": "50"
+          "G": "5",
+          "Routes Run": "41"
         },
         {
           "Name": "Will Mallory",
           "POS": "TE",
           "Team": "IND",
-          "G": "3",
-          "Routes Run": "55"
+          "G": "1",
+          "Routes Run": "47"
         },
         {
           "Name": "Zach Ertz",
           "POS": "TE",
           "Team": "PHI",
           "G": "3",
-          "Routes Run": "29"
+          "Routes Run": "26"
         },
         {
           "Name": "A.J. Brown",
           "POS": "WR",
           "Team": "NE",
-          "G": "3",
-          "Routes Run": "83"
+          "G": "2",
+          "Routes Run": "80"
         },
         {
           "Name": "Adonai Mitchell",
           "POS": "WR",
           "Team": "NYJ",
-          "G": "5",
-          "Routes Run": "140"
+          "G": "2",
+          "Routes Run": "135"
         },
         {
           "Name": "Alec Pierce",
           "POS": "WR",
           "Team": "IND",
           "G": "2",
-          "Routes Run": "29"
+          "Routes Run": "28"
         },
         {
           "Name": "Amon-Ra St. Brown",
           "POS": "WR",
           "Team": "DET",
-          "G": "8",
-          "Routes Run": "275"
+          "G": "5",
+          "Routes Run": "271"
         },
         {
           "Name": "Andrei Iosivas",
           "POS": "WR",
           "Team": "CIN",
           "G": "2",
-          "Routes Run": "49"
+          "Routes Run": "44"
         },
         {
           "Name": "Andrew Armstrong",
           "POS": "WR",
           "Team": "KC",
-          "G": "4",
-          "Routes Run": "64"
+          "G": "1",
+          "Routes Run": "42"
         },
         {
           "Name": "Anthony Gould",
           "POS": "WR",
           "Team": "IND",
-          "G": "6",
+          "G": "",
           "Routes Run": "1"
         },
         {
           "Name": "Antonio Williams",
           "POS": "WR",
           "Team": "WAS",
-          "G": "8",
-          "Routes Run": "203"
+          "G": "6",
+          "Routes Run": "199"
         },
         {
           "Name": "Arian Smith",
@@ -17617,50 +17737,50 @@
           "Name": "Ashton Dulin",
           "POS": "WR",
           "Team": "IND",
-          "G": "5",
-          "Routes Run": "41"
+          "G": "2",
+          "Routes Run": "30"
         },
         {
           "Name": "Barion Brown",
           "POS": "WR",
           "Team": "NO",
-          "G": "7",
-          "Routes Run": "15"
+          "G": "3",
+          "Routes Run": "14"
         },
         {
           "Name": "Ben Skowronek",
           "POS": "WR",
           "Team": "PIT",
           "G": "4",
-          "Routes Run": "11"
+          "Routes Run": "10"
         },
         {
           "Name": "Bo Melton",
           "POS": "WR",
           "Team": "GB",
-          "G": "9",
-          "Routes Run": "86"
+          "G": "6",
+          "Routes Run": "66"
         },
         {
           "Name": "Brandin Cooks",
           "POS": "WR",
           "Team": "SF",
-          "G": "5",
-          "Routes Run": "79"
+          "G": "3",
+          "Routes Run": "77"
         },
         {
           "Name": "Brandon Johnson",
           "POS": "WR",
           "Team": "PIT",
-          "G": "3",
-          "Routes Run": "10"
+          "G": "1",
+          "Routes Run": "5"
         },
         {
           "Name": "Brandon Smith",
           "POS": "WR",
           "Team": "PIT",
-          "G": "4",
-          "Routes Run": "65"
+          "G": "2",
+          "Routes Run": "46"
         },
         {
           "Name": "Braxton Berrios",
@@ -17674,188 +17794,223 @@
           "POS": "WR",
           "Team": "LAC",
           "G": "2",
-          "Routes Run": "18"
+          "Routes Run": "16"
         },
         {
-          "Name": "Brian Thomas",
+          "Name": "Brian Thomas Jr.",
           "POS": "WR",
           "Team": "JAX",
-          "G": "8",
-          "Routes Run": "133"
+          "G": "6",
+          "Routes Run": "111"
         },
         {
           "Name": "Bryce Lance",
           "POS": "WR",
           "Team": "NO",
-          "G": "8",
-          "Routes Run": "255"
+          "G": "6",
+          "Routes Run": "245"
         },
         {
           "Name": "Brycen Tremayne",
           "POS": "WR",
           "Team": "CAR",
-          "G": "8",
-          "Routes Run": "127"
+          "G": "5",
+          "Routes Run": "124"
         },
         {
           "Name": "Caleb Douglas",
           "POS": "WR",
           "Team": "MIA",
-          "G": "5",
-          "Routes Run": "132"
+          "G": "2",
+          "Routes Run": "126"
         },
         {
           "Name": "Calvin Ridley",
           "POS": "WR",
           "Team": "TEN",
-          "G": "7",
-          "Routes Run": "124"
+          "G": "6",
+          "Routes Run": "117"
         },
         {
           "Name": "Carnell Tate",
           "POS": "WR",
           "Team": "TEN",
-          "G": "7",
-          "Routes Run": "207"
+          "G": "6",
+          "Routes Run": "191"
+        },
+        {
+          "Name": "Cedric Tillman",
+          "POS": "WR",
+          "Team": "NO",
+          "G": "1",
+          "Routes Run": "1"
         },
         {
           "Name": "CeeDee Lamb",
           "POS": "WR",
           "Team": "DAL",
-          "G": "9",
-          "Routes Run": "312"
+          "G": "6",
+          "Routes Run": "307"
         },
         {
           "Name": "Charlie Jones",
           "POS": "WR",
           "Team": "NYG",
-          "G": "5",
-          "Routes Run": "19"
+          "G": "2",
+          "Routes Run": "18"
         },
         {
           "Name": "Chimere Dike",
           "POS": "WR",
           "Team": "TEN",
-          "G": "8",
-          "Routes Run": "65"
+          "G": "6",
+          "Routes Run": "59"
         },
         {
           "Name": "Chris Bell",
           "POS": "WR",
           "Team": "MIA",
-          "G": "8",
-          "Routes Run": "173"
+          "G": "5",
+          "Routes Run": "165"
         },
         {
           "Name": "Chris Blair",
           "POS": "WR",
           "Team": "ATL",
-          "G": "9",
-          "Routes Run": "57"
+          "G": "6",
+          "Routes Run": "42"
         },
         {
           "Name": "Chris Godwin",
           "POS": "WR",
           "Team": "TB",
-          "G": "9",
-          "Routes Run": "261"
+          "G": "6",
+          "Routes Run": "246"
         },
         {
           "Name": "Chris Moore",
           "POS": "WR",
-          "Team": "BAL",
+          "Team": "BLT",
           "G": "4",
-          "Routes Run": "35"
+          "Routes Run": "33"
         },
         {
           "Name": "Chris Olave",
           "POS": "WR",
           "Team": "NO",
-          "G": "8",
-          "Routes Run": "314"
+          "G": "6",
+          "Routes Run": "303"
+        },
+        {
+          "Name": "Christian Kirk",
+          "POS": "WR",
+          "Team": "SF",
+          "G": "",
+          "Routes Run": "14"
         },
         {
           "Name": "Christian Watson",
           "POS": "WR",
           "Team": "GB",
-          "G": "9",
-          "Routes Run": "296"
+          "G": "6",
+          "Routes Run": "279"
         },
         {
           "Name": "Cody White",
           "POS": "WR",
           "Team": "LV",
-          "G": "9",
-          "Routes Run": "91"
+          "G": "6",
+          "Routes Run": "80"
         },
         {
           "Name": "Colbie Young",
           "POS": "WR",
           "Team": "CIN",
-          "G": "6",
-          "Routes Run": "19"
+          "G": "3",
+          "Routes Run": "7"
         },
         {
           "Name": "Cooper Kupp",
           "POS": "WR",
           "Team": "SEA",
-          "G": "9",
-          "Routes Run": "264"
+          "G": "6",
+          "Routes Run": "249"
         },
         {
           "Name": "Courtland Sutton",
           "POS": "WR",
           "Team": "DEN",
-          "G": "9",
-          "Routes Run": "266"
+          "G": "6",
+          "Routes Run": "247"
         },
         {
           "Name": "Cyrus Allen",
           "POS": "WR",
           "Team": "KC",
-          "G": "8",
-          "Routes Run": "56"
+          "G": "4",
+          "Routes Run": "55"
+        },
+        {
+          "Name": "D.K. Metcalf",
+          "POS": "WR",
+          "Team": "PIT",
+          "G": "6",
+          "Routes Run": "295"
+        },
+        {
+          "Name": "Dalen Cambre",
+          "POS": "WR",
+          "Team": "NYG",
+          "G": "1",
+          "Routes Run": "1"
         },
         {
           "Name": "Dareke Young",
           "POS": "WR",
           "Team": "LV",
-          "G": "9",
-          "Routes Run": "23"
+          "G": "6",
+          "Routes Run": "18"
         },
         {
           "Name": "Darius Cooper",
           "POS": "WR",
           "Team": "PHI",
-          "G": "9",
-          "Routes Run": "233"
+          "G": "6",
+          "Routes Run": "222"
         },
         {
           "Name": "Darnell Mooney",
           "POS": "WR",
           "Team": "NYG",
-          "G": "8",
-          "Routes Run": "207"
+          "G": "6",
+          "Routes Run": "202"
         },
         {
           "Name": "Davante Adams",
           "POS": "WR",
-          "Team": "LAR",
+          "Team": "LA",
           "G": "6",
-          "Routes Run": "232"
+          "Routes Run": "212"
         },
         {
           "Name": "David Moore",
           "POS": "WR",
           "Team": "CAR",
-          "G": "6",
+          "G": "3",
           "Routes Run": "11"
+        },
+        {
+          "Name": "De'Zhaun Stribling",
+          "POS": "WR",
+          "Team": "SF",
+          "G": "1",
+          "Routes Run": "13"
         },
         {
           "Name": "DeAndre Carter",
           "POS": "WR",
           "Team": "DET",
-          "G": "3",
+          "G": "",
           "Routes Run": "2"
         },
         {
@@ -17863,49 +18018,49 @@
           "POS": "WR",
           "Team": "SF",
           "G": "5",
-          "Routes Run": "102"
+          "Routes Run": "97"
         },
         {
           "Name": "Deion Burks",
           "POS": "WR",
           "Team": "IND",
-          "G": "8",
-          "Routes Run": "52"
+          "G": "5",
+          "Routes Run": "50"
         },
         {
           "Name": "Demarcus Robinson",
           "POS": "WR",
           "Team": "SF",
-          "G": "3",
-          "Routes Run": "47"
+          "G": "2",
+          "Routes Run": "45"
         },
         {
-          "Name": "DeMario Douglas",
+          "Name": "Demario Douglas",
           "POS": "WR",
           "Team": "NE",
-          "G": "9",
-          "Routes Run": "233"
+          "G": "6",
+          "Routes Run": "231"
         },
         {
           "Name": "Denzel Boston",
           "POS": "WR",
           "Team": "CLE",
-          "G": "9",
-          "Routes Run": "327"
+          "G": "6",
+          "Routes Run": "305"
         },
         {
           "Name": "Derius Davis",
           "POS": "WR",
           "Team": "LAC",
-          "G": "8",
-          "Routes Run": "30"
+          "G": "6",
+          "Routes Run": "26"
         },
         {
           "Name": "Devaughn Vele",
           "POS": "WR",
           "Team": "NO",
-          "G": "8",
-          "Routes Run": "321"
+          "G": "6",
+          "Routes Run": "307"
         },
         {
           "Name": "Deven Thompkins",
@@ -17918,7 +18073,7 @@
           "Name": "Devin Duvernay",
           "POS": "WR",
           "Team": "ARI",
-          "G": "9",
+          "G": "",
           "Routes Run": "40"
         },
         {
@@ -17926,217 +18081,224 @@
           "POS": "WR",
           "Team": "PHI",
           "G": "4",
-          "Routes Run": "140"
+          "Routes Run": "131"
         },
         {
           "Name": "Devontez Walker",
           "POS": "WR",
-          "Team": "BAL",
-          "G": "8",
-          "Routes Run": "118"
+          "Team": "BLT",
+          "G": "5",
+          "Routes Run": "94"
         },
         {
           "Name": "DJ Moore",
           "POS": "WR",
           "Team": "BUF",
-          "G": "6",
-          "Routes Run": "136"
-        },
-        {
-          "Name": "DK Metcalf",
-          "POS": "WR",
-          "Team": "PIT",
-          "G": "8",
-          "Routes Run": "314"
+          "G": "4",
+          "Routes Run": "131"
         },
         {
           "Name": "Dohnte Meyers",
           "POS": "WR",
           "Team": "CIN",
-          "G": "8",
-          "Routes Run": "167"
+          "G": "5",
+          "Routes Run": "164"
         },
         {
           "Name": "Dontayvion Wicks",
           "POS": "WR",
           "Team": "PHI",
           "G": "6",
-          "Routes Run": "185"
+          "Routes Run": "173"
         },
         {
           "Name": "Drake London",
           "POS": "WR",
           "Team": "ATL",
-          "G": "9",
-          "Routes Run": "261"
+          "G": "6",
+          "Routes Run": "252"
         },
         {
           "Name": "Dyami Brown",
           "POS": "WR",
           "Team": "WAS",
-          "G": "7",
-          "Routes Run": "118"
+          "G": "6",
+          "Routes Run": "108"
         },
         {
-          "Name": "Efton Chism",
+          "Name": "Efton Chism III",
           "POS": "WR",
           "Team": "NE",
-          "G": "8",
-          "Routes Run": "125"
+          "G": "5",
+          "Routes Run": "118"
         },
         {
           "Name": "Elic Ayomanor",
           "POS": "WR",
           "Team": "TEN",
-          "G": "8",
-          "Routes Run": "177"
+          "G": "6",
+          "Routes Run": "170"
         },
         {
           "Name": "Elijah Moore",
           "POS": "WR",
           "Team": "PHI",
-          "G": "7",
-          "Routes Run": "64"
+          "G": "4",
+          "Routes Run": "51"
         },
         {
           "Name": "Elijah Sarratt",
           "POS": "WR",
-          "Team": "BAL",
+          "Team": "BLT",
           "G": "1",
-          "Routes Run": "11"
+          "Routes Run": "10"
         },
         {
           "Name": "Emeka Egbuka",
           "POS": "WR",
           "Team": "TB",
-          "G": "7",
-          "Routes Run": "244"
+          "G": "6",
+          "Routes Run": "229"
         },
         {
           "Name": "Garrett Wilson",
           "POS": "WR",
           "Team": "NYJ",
-          "G": "8",
-          "Routes Run": "255"
+          "G": "6",
+          "Routes Run": "248"
         },
         {
           "Name": "George Pickens",
           "POS": "WR",
           "Team": "DAL",
-          "G": "8",
-          "Routes Run": "287"
+          "G": "6",
+          "Routes Run": "270"
         },
         {
           "Name": "Germie Bernard",
           "POS": "WR",
           "Team": "PIT",
-          "G": "8",
-          "Routes Run": "215"
+          "G": "6",
+          "Routes Run": "190"
+        },
+        {
+          "Name": "Greg Dortch",
+          "POS": "WR",
+          "Team": "BUF",
+          "G": "2",
+          "Routes Run": "3"
         },
         {
           "Name": "Isaac TeSlaa",
           "POS": "WR",
           "Team": "DET",
-          "G": "8",
-          "Routes Run": "193"
+          "G": "5",
+          "Routes Run": "172"
         },
         {
           "Name": "Isaiah Bond",
           "POS": "WR",
-          "Team": "CLE",
-          "G": "9",
-          "Routes Run": "68"
+          "Team": "CLV",
+          "G": "6",
+          "Routes Run": "52"
         },
         {
           "Name": "Isaiah Williams",
           "POS": "WR",
           "Team": "NYJ",
-          "G": "9",
-          "Routes Run": "189"
+          "G": "6",
+          "Routes Run": "144"
+        },
+        {
+          "Name": "J. Michael Sturdivant",
+          "POS": "WR",
+          "Team": "GB",
+          "G": "",
+          "Routes Run": "19"
         },
         {
           "Name": "J. Sturdivant",
           "POS": "WR",
           "Team": "GB",
-          "G": "8",
-          "Routes Run": "57"
+          "G": "5",
+          "Routes Run": "29"
         },
         {
           "Name": "Ja'Kobi Lane",
           "POS": "WR",
           "Team": "BAL",
-          "G": "5",
-          "Routes Run": "104"
+          "G": "2",
+          "Routes Run": "86"
         },
         {
           "Name": "Ja'Marr Chase",
           "POS": "WR",
           "Team": "CIN",
-          "G": "8",
-          "Routes Run": "269"
+          "G": "5",
+          "Routes Run": "267"
         },
         {
           "Name": "Ja'Seem Reed",
           "POS": "WR",
           "Team": "CAR",
           "G": "1",
-          "Routes Run": "7"
+          "Routes Run": "6"
         },
         {
           "Name": "Jack Bech",
           "POS": "WR",
           "Team": "LV",
-          "G": "5",
-          "Routes Run": "59"
+          "G": "3",
+          "Routes Run": "44"
         },
         {
           "Name": "Jacob Cowing",
           "POS": "WR",
           "Team": "SF",
-          "G": "8",
-          "Routes Run": "98"
+          "G": "6",
+          "Routes Run": "91"
         },
         {
           "Name": "Jaden Bradley",
           "POS": "WR",
           "Team": "WAS",
-          "G": "1",
-          "Routes Run": "12"
+          "G": "",
+          "Routes Run": "11"
         },
         {
           "Name": "Jahan Dotson",
           "POS": "WR",
           "Team": "ATL",
-          "G": "9",
-          "Routes Run": "222"
+          "G": "6",
+          "Routes Run": "210"
         },
         {
           "Name": "Jahdae Walker",
           "POS": "WR",
           "Team": "CHI",
-          "G": "9",
-          "Routes Run": "42"
+          "G": "5",
+          "Routes Run": "28"
         },
         {
           "Name": "Jakobi Meyers",
           "POS": "WR",
           "Team": "JAX",
-          "G": "8",
-          "Routes Run": "208"
+          "G": "6",
+          "Routes Run": "189"
         },
         {
           "Name": "Jalen Brooks",
           "POS": "WR",
           "Team": "ARI",
-          "G": "7",
-          "Routes Run": "101"
+          "G": "4",
+          "Routes Run": "90"
         },
         {
           "Name": "Jalen Coker",
           "POS": "WR",
           "Team": "CAR",
-          "G": "7",
-          "Routes Run": "235"
+          "G": "4",
+          "Routes Run": "228"
         },
         {
           "Name": "Jalen McMillan",
@@ -18149,57 +18311,57 @@
           "Name": "Jalen Nailor",
           "POS": "WR",
           "Team": "LV",
-          "G": "8",
-          "Routes Run": "184"
+          "G": "5",
+          "Routes Run": "175"
         },
         {
           "Name": "Jalen Royals",
           "POS": "WR",
           "Team": "KC",
-          "G": "8",
-          "Routes Run": "100"
+          "G": "4",
+          "Routes Run": "97"
         },
         {
           "Name": "Jalen Tolbert",
           "POS": "WR",
           "Team": "MIA",
-          "G": "4",
-          "Routes Run": "19"
+          "G": "3",
+          "Routes Run": "15"
         },
         {
           "Name": "Jalin Hyatt",
           "POS": "WR",
           "Team": "NYG",
-          "G": "2",
-          "Routes Run": "9"
+          "G": "",
+          "Routes Run": "7"
         },
         {
           "Name": "Jameson Williams",
           "POS": "WR",
           "Team": "DET",
-          "G": "8",
-          "Routes Run": "275"
+          "G": "5",
+          "Routes Run": "266"
         },
         {
           "Name": "Jared Wayne",
           "POS": "WR",
-          "Team": "HST, MIA",
-          "G": "7",
-          "Routes Run": "75"
+          "Team": "HST",
+          "G": "5",
+          "Routes Run": "67"
         },
         {
           "Name": "Jauan Jennings",
           "POS": "WR",
           "Team": "MIN",
-          "G": "6",
-          "Routes Run": "156"
+          "G": "4",
+          "Routes Run": "145"
         },
         {
           "Name": "Jaxon Smith-Njigba",
           "POS": "WR",
           "Team": "SEA",
-          "G": "9",
-          "Routes Run": "297"
+          "G": "6",
+          "Routes Run": "284"
         },
         {
           "Name": "Jayden Reed",
@@ -18212,35 +18374,35 @@
           "Name": "Jaylen Waddle",
           "POS": "WR",
           "Team": "DEN",
-          "G": "9",
-          "Routes Run": "210"
+          "G": "6",
+          "Routes Run": "203"
         },
         {
           "Name": "Jaylin Lane",
           "POS": "WR",
           "Team": "WAS",
           "G": "4",
-          "Routes Run": "17"
+          "Routes Run": "15"
         },
         {
           "Name": "Jaylin Noel",
           "POS": "WR",
           "Team": "HOU",
-          "G": "7",
-          "Routes Run": "148"
+          "G": "6",
+          "Routes Run": "139"
         },
         {
           "Name": "Jerry Jeudy",
           "POS": "WR",
           "Team": "CLE",
-          "G": "9",
-          "Routes Run": "263"
+          "G": "6",
+          "Routes Run": "256"
         },
         {
           "Name": "Jeshaun Jones",
           "POS": "WR",
           "Team": "MIN",
-          "G": "2",
+          "G": "1",
           "Routes Run": "1"
         },
         {
@@ -18251,151 +18413,165 @@
           "Routes Run": "7"
         },
         {
-          "Name": "John Metchie",
+          "Name": "John Metchie III",
           "POS": "WR",
           "Team": "CAR",
-          "G": "7",
-          "Routes Run": "130"
+          "G": "4",
+          "Routes Run": "126"
         },
         {
           "Name": "Jonathan Mingo",
           "POS": "WR",
           "Team": "DAL",
-          "G": "9",
-          "Routes Run": "78"
+          "G": "6",
+          "Routes Run": "67"
         },
         {
           "Name": "Jordan Addison",
           "POS": "WR",
           "Team": "MIN",
-          "G": "7",
-          "Routes Run": "221"
+          "G": "4",
+          "Routes Run": "213"
         },
         {
           "Name": "Jordan Hudson",
           "POS": "WR",
           "Team": "DAL",
-          "G": "1",
+          "G": "",
           "Routes Run": "1"
         },
         {
           "Name": "Jordan Watkins",
           "POS": "WR",
           "Team": "SF",
-          "G": "6",
-          "Routes Run": "114"
+          "G": "4",
+          "Routes Run": "108"
         },
         {
           "Name": "Jordan Whittington",
           "POS": "WR",
           "Team": "LAR",
-          "G": "8",
-          "Routes Run": "63"
+          "G": "5",
+          "Routes Run": "54"
         },
         {
           "Name": "Jordyn Tyson",
           "POS": "WR",
           "Team": "NO",
-          "G": "1",
+          "G": "",
           "Routes Run": "16"
         },
         {
           "Name": "Josh Cameron",
           "POS": "WR",
           "Team": "JAX",
-          "G": "8",
-          "Routes Run": "73"
+          "G": "6",
+          "Routes Run": "66"
         },
         {
           "Name": "Josh Downs",
           "POS": "WR",
           "Team": "IND",
-          "G": "9",
-          "Routes Run": "311"
+          "G": "6",
+          "Routes Run": "300"
         },
         {
           "Name": "Josh Palmer",
           "POS": "WR",
           "Team": "BUF",
-          "G": "6",
-          "Routes Run": "79"
+          "G": "5",
+          "Routes Run": "66"
+        },
+        {
+          "Name": "Joshua Palmer",
+          "POS": "WR",
+          "Team": "BUF",
+          "G": "",
+          "Routes Run": "4"
         },
         {
           "Name": "Justin Jefferson",
           "POS": "WR",
           "Team": "MIN",
-          "G": "7",
-          "Routes Run": "192"
+          "G": "4",
+          "Routes Run": "183"
         },
         {
           "Name": "Justin Watson",
           "POS": "WR",
           "Team": "KC",
-          "G": "2",
+          "G": "",
           "Routes Run": "2"
+        },
+        {
+          "Name": "Kaden Davis",
+          "POS": "WR",
+          "Team": "CHI",
+          "G": "1",
+          "Routes Run": "1"
         },
         {
           "Name": "Kalif Raymond",
           "POS": "WR",
           "Team": "CHI",
-          "G": "9",
-          "Routes Run": "239"
+          "G": "6",
+          "Routes Run": "224"
         },
         {
           "Name": "Kameron Johnson",
           "POS": "WR",
           "Team": "TB",
-          "G": "9",
-          "Routes Run": "5"
+          "G": "3",
+          "Routes Run": "4"
         },
         {
           "Name": "KaVontae Turpin",
           "POS": "WR",
           "Team": "DAL",
-          "G": "6",
-          "Routes Run": "37"
+          "G": "5",
+          "Routes Run": "36"
         },
         {
           "Name": "Kayshon Boutte",
           "POS": "WR",
           "Team": "HOU",
-          "G": "8",
-          "Routes Run": "191"
+          "G": "6",
+          "Routes Run": "175"
         },
         {
           "Name": "KC Concepcion",
           "POS": "WR",
           "Team": "CLE",
-          "G": "9",
-          "Routes Run": "270"
+          "G": "6",
+          "Routes Run": "267"
         },
         {
           "Name": "KeAndre Lambert-Smith",
           "POS": "WR",
           "Team": "LAC",
-          "G": "3",
-          "Routes Run": "66"
+          "G": "1",
+          "Routes Run": "61"
         },
         {
           "Name": "Keenan Allen",
           "POS": "WR",
           "Team": "IND",
-          "G": "8",
-          "Routes Run": "210"
+          "G": "5",
+          "Routes Run": "206"
         },
         {
           "Name": "Kendrick Bourne",
           "POS": "WR",
           "Team": "ARI",
-          "G": "8",
-          "Routes Run": "236"
+          "G": "6",
+          "Routes Run": "220"
         },
         {
           "Name": "Keon Coleman",
           "POS": "WR",
           "Team": "BUF",
-          "G": "8",
-          "Routes Run": "203"
+          "G": "6",
+          "Routes Run": "185"
         },
         {
           "Name": "Kevin Austin",
@@ -18405,361 +18581,368 @@
           "Routes Run": "10"
         },
         {
-          "Name": "Kevin Coleman",
+          "Name": "Kevin Coleman Jr.",
           "POS": "WR",
           "Team": "MIA",
-          "G": "8",
-          "Routes Run": "111"
+          "G": "5",
+          "Routes Run": "94"
         },
         {
           "Name": "KhaDarel Hodge",
           "POS": "WR",
           "Team": "SF",
-          "G": "4",
-          "Routes Run": "23"
+          "G": "2",
+          "Routes Run": "21"
         },
         {
           "Name": "Khalil Shakir",
           "POS": "WR",
           "Team": "BUF",
-          "G": "8",
-          "Routes Run": "201"
+          "G": "6",
+          "Routes Run": "190"
         },
         {
           "Name": "Konata Mumpfield",
           "POS": "WR",
           "Team": "LAR",
-          "G": "9",
-          "Routes Run": "184"
+          "G": "6",
+          "Routes Run": "174"
         },
         {
           "Name": "Kyle Williams",
           "POS": "WR",
           "Team": "NE",
-          "G": "9",
-          "Routes Run": "155"
+          "G": "6",
+          "Routes Run": "152"
         },
         {
           "Name": "Ladd McConkey",
           "POS": "WR",
           "Team": "LAC",
-          "G": "6",
-          "Routes Run": "129"
+          "G": "5",
+          "Routes Run": "124"
         },
         {
           "Name": "LaJohntay Wester",
           "POS": "WR",
           "Team": "BAL",
-          "G": "9",
-          "Routes Run": "46"
+          "G": "4",
+          "Routes Run": "42"
         },
         {
           "Name": "Laquon Treadwell",
           "POS": "WR",
           "Team": "IND",
-          "G": "9",
-          "Routes Run": "265"
+          "G": "6",
+          "Routes Run": "246"
         },
         {
           "Name": "Lewis Bond",
           "POS": "WR",
-          "Team": "HOU",
+          "Team": "HST",
           "G": "2",
-          "Routes Run": "15"
+          "Routes Run": "13"
         },
         {
           "Name": "Lil'Jordan Humphrey",
           "POS": "WR",
           "Team": "DEN",
-          "G": "5",
-          "Routes Run": "24"
+          "G": "3",
+          "Routes Run": "22"
         },
         {
           "Name": "Luke McCaffrey",
           "POS": "WR",
           "Team": "WAS",
-          "G": "5",
-          "Routes Run": "12"
+          "G": "1",
+          "Routes Run": "11"
         },
         {
-          "Name": "Luther Burden",
+          "Name": "Luther Burden III",
           "POS": "WR",
           "Team": "CHI",
-          "G": "9",
-          "Routes Run": "243"
+          "G": "6",
+          "Routes Run": "234"
         },
         {
           "Name": "Mack Hollins",
           "POS": "WR",
           "Team": "NE",
-          "G": "5",
-          "Routes Run": "125"
+          "G": "",
+          "Routes Run": "34"
         },
         {
           "Name": "Makai Lemon",
           "POS": "WR",
           "Team": "PHI",
-          "G": "9",
-          "Routes Run": "323"
+          "G": "6",
+          "Routes Run": "313"
+        },
+        {
+          "Name": "Malachi Corley",
+          "POS": "WR",
+          "Team": "CLV",
+          "G": "3",
+          "Routes Run": "10"
         },
         {
           "Name": "Malachi Fields",
           "POS": "WR",
           "Team": "NYG",
-          "G": "8",
-          "Routes Run": "231"
+          "G": "6",
+          "Routes Run": "215"
         },
         {
           "Name": "Malik Benson",
           "POS": "WR",
           "Team": "LV",
-          "G": "7",
-          "Routes Run": "38"
+          "G": "6",
+          "Routes Run": "35"
+        },
+        {
+          "Name": "Malik McClain",
+          "POS": "WR",
+          "Team": "NYJ",
+          "G": "2",
+          "Routes Run": "12"
         },
         {
           "Name": "Malik Nabers",
           "POS": "WR",
           "Team": "NYG",
-          "G": "8",
-          "Routes Run": "271"
+          "G": "6",
+          "Routes Run": "265"
         },
         {
           "Name": "Malik Washington",
           "POS": "WR",
           "Team": "MIA",
-          "G": "8",
-          "Routes Run": "219"
+          "G": "5",
+          "Routes Run": "211"
         },
         {
           "Name": "Marquez Valdes-Scantling",
           "POS": "WR",
           "Team": "LAC",
           "G": "3",
-          "Routes Run": "52"
+          "Routes Run": "45"
         },
         {
           "Name": "Marquise Brown",
           "POS": "WR",
           "Team": "PHI",
-          "G": "4",
-          "Routes Run": "82"
+          "G": "1",
+          "Routes Run": "81"
         },
         {
-          "Name": "Marvin Harrison",
+          "Name": "Marvin Harrison Jr.",
           "POS": "WR",
-          "Team": "ARZ, HST",
-          "G": "7",
-          "Routes Run": "173"
+          "Team": "HOU",
+          "G": "5",
+          "Routes Run": "168"
         },
         {
-          "Name": "Marvin Mims",
+          "Name": "Marvin Mims Jr.",
           "POS": "WR",
           "Team": "DEN",
-          "G": "7",
+          "G": "4",
           "Routes Run": "60"
         },
         {
           "Name": "Matthew Golden",
           "POS": "WR",
           "Team": "GB",
-          "G": "9",
-          "Routes Run": "320"
+          "G": "6",
+          "Routes Run": "309"
         },
         {
           "Name": "Michael Pittman",
           "POS": "WR",
           "Team": "PIT",
           "G": "3",
-          "Routes Run": "99"
+          "Routes Run": "90"
         },
         {
           "Name": "Michael Wilson",
           "POS": "WR",
           "Team": "ARI",
-          "G": "9",
-          "Routes Run": "359"
+          "G": "6",
+          "Routes Run": "350"
         },
         {
           "Name": "Mike Evans",
           "POS": "WR",
           "Team": "SF",
           "G": "6",
-          "Routes Run": "123"
+          "Routes Run": "115"
         },
         {
           "Name": "Mitchell Tinsley",
           "POS": "WR",
           "Team": "CIN",
-          "G": "4",
-          "Routes Run": "43"
+          "G": "2",
+          "Routes Run": "39"
         },
         {
           "Name": "Myles Price",
           "POS": "WR",
           "Team": "MIN",
-          "G": "8",
-          "Routes Run": "63"
+          "G": "4",
+          "Routes Run": "59"
         },
         {
           "Name": "Nick Westbrook-Ikhine",
           "POS": "WR",
           "Team": "IND",
-          "G": "3",
+          "G": "2",
           "Routes Run": "8"
         },
         {
           "Name": "Nico Collins",
           "POS": "WR",
           "Team": "HOU",
-          "G": "6",
-          "Routes Run": "184"
+          "G": "4",
+          "Routes Run": "176"
         },
         {
           "Name": "Odell Beckham",
           "POS": "WR",
-          "Team": "MIN, NYG",
-          "G": "4",
-          "Routes Run": "14"
+          "Team": "NYG",
+          "G": "3",
+          "Routes Run": "12"
         },
         {
           "Name": "Olamide Zaccheaus",
           "POS": "WR",
           "Team": "ATL",
-          "G": "8",
-          "Routes Run": "119"
+          "G": "6",
+          "Routes Run": "109"
         },
         {
-          "Name": "Omar Cooper",
+          "Name": "Omar Cooper Jr.",
           "POS": "WR",
           "Team": "NYJ",
-          "G": "5",
-          "Routes Run": "112"
+          "G": "2",
+          "Routes Run": "85"
         },
         {
           "Name": "Parker Washington",
           "POS": "WR",
           "Team": "JAX",
-          "G": "8",
-          "Routes Run": "212"
+          "G": "6",
+          "Routes Run": "199"
         },
         {
           "Name": "Pat Bryant",
           "POS": "WR",
           "Team": "DEN",
-          "G": "5",
-          "Routes Run": "122"
+          "G": "4",
+          "Routes Run": "115"
         },
         {
           "Name": "Puka Nacua",
           "POS": "WR",
           "Team": "LAR",
-          "G": "7",
-          "Routes Run": "250"
+          "G": "4",
+          "Routes Run": "247"
         },
         {
           "Name": "Quentin Johnston",
           "POS": "WR",
           "Team": "LAC",
-          "G": "7",
-          "Routes Run": "220"
+          "G": "5",
+          "Routes Run": "203"
         },
         {
           "Name": "Rashee Rice",
           "POS": "WR",
           "Team": "KC",
-          "G": "6",
-          "Routes Run": "146"
+          "G": "4",
+          "Routes Run": "133"
         },
         {
           "Name": "Rashid Shaheed",
           "POS": "WR",
           "Team": "SEA",
-          "G": "7",
-          "Routes Run": "151"
+          "G": "6",
+          "Routes Run": "143"
         },
         {
           "Name": "Rashod Bateman",
           "POS": "WR",
           "Team": "BAL",
-          "G": "9",
-          "Routes Run": "220"
+          "G": "6",
+          "Routes Run": "207"
         },
         {
           "Name": "Reggie Virgil",
           "POS": "WR",
           "Team": "ARI",
-          "G": "5",
-          "Routes Run": "56"
+          "G": "2",
+          "Routes Run": "54"
         },
         {
           "Name": "Roman Wilson",
           "POS": "WR",
           "Team": "PIT",
           "G": "5",
-          "Routes Run": "122"
+          "Routes Run": "112"
         },
         {
           "Name": "Rome Odunze",
           "POS": "WR",
           "Team": "CHI",
-          "G": "9",
-          "Routes Run": "320"
-        },
-        {
-          "Name": "Romeo Doubs",
-          "POS": "WR",
-          "Team": "NE",
           "G": "6",
-          "Routes Run": "146"
+          "Routes Run": "296"
         },
         {
           "Name": "Ryan Flournoy",
           "POS": "WR",
           "Team": "DAL",
-          "G": "9",
-          "Routes Run": "297"
+          "G": "6",
+          "Routes Run": "283"
         },
         {
           "Name": "Ryan Miller",
           "POS": "WR",
-          "Team": "NE, MIA",
-          "G": "5",
-          "Routes Run": "23"
+          "Team": "MIA",
+          "G": "4",
+          "Routes Run": "16"
         },
         {
           "Name": "Savion Williams",
           "POS": "WR",
           "Team": "GB",
-          "G": "4",
-          "Routes Run": "100"
+          "G": "1",
+          "Routes Run": "98"
         },
         {
           "Name": "Simi Fehoko",
           "POS": "WR",
           "Team": "ARI",
-          "G": "9",
-          "Routes Run": "45"
+          "G": "1",
+          "Routes Run": "25"
         },
         {
           "Name": "Skyler Bell",
           "POS": "WR",
           "Team": "BUF",
           "G": "2",
-          "Routes Run": "39"
+          "Routes Run": "31"
         },
         {
           "Name": "Skyy Moore",
           "POS": "WR",
           "Team": "GB",
           "G": "5",
-          "Routes Run": "64"
+          "Routes Run": "62"
         },
         {
           "Name": "Stefon Diggs",
           "POS": "WR",
           "Team": "WAS",
-          "G": "7",
-          "Routes Run": "193"
+          "G": "5",
+          "Routes Run": "189"
         },
         {
           "Name": "Sterling Shepard",
@@ -18772,197 +18955,204 @@
           "Name": "Tai Felton",
           "POS": "WR",
           "Team": "MIN",
-          "G": "7",
-          "Routes Run": "91"
+          "G": "3",
+          "Routes Run": "78"
         },
         {
           "Name": "Tank Dell",
           "POS": "WR",
           "Team": "HOU",
-          "G": "2",
+          "G": "",
           "Routes Run": "28"
         },
         {
           "Name": "Tay Martin",
           "POS": "WR",
           "Team": "DET",
-          "G": "8",
+          "G": "",
           "Routes Run": "1"
         },
         {
           "Name": "Ted Hurst",
           "POS": "WR",
           "Team": "TB",
-          "G": "9",
-          "Routes Run": "173"
+          "G": "6",
+          "Routes Run": "150"
         },
         {
           "Name": "Tee Higgins",
           "POS": "WR",
           "Team": "CIN",
-          "G": "8",
-          "Routes Run": "280"
+          "G": "5",
+          "Routes Run": "271"
         },
         {
           "Name": "Terry McLaurin",
           "POS": "WR",
           "Team": "WAS",
           "G": "5",
-          "Routes Run": "132"
+          "Routes Run": "130"
         },
         {
           "Name": "Tetairoa McMillan",
           "POS": "WR",
           "Team": "CAR",
-          "G": "8",
-          "Routes Run": "311"
+          "G": "5",
+          "Routes Run": "306"
         },
         {
           "Name": "Tez Johnson",
           "POS": "WR",
           "Team": "TB",
-          "G": "9",
-          "Routes Run": "132"
+          "G": "6",
+          "Routes Run": "121"
         },
         {
           "Name": "Theo Wease",
           "POS": "WR",
           "Team": "LAC",
           "G": "2",
-          "Routes Run": "49"
+          "Routes Run": "40"
         },
         {
           "Name": "Tim Patrick",
           "POS": "WR",
           "Team": "NYJ",
-          "G": "3",
-          "Routes Run": "59"
+          "G": "2",
+          "Routes Run": "53"
         },
         {
           "Name": "Tory Horton",
           "POS": "WR",
           "Team": "SEA",
-          "G": "8",
-          "Routes Run": "108"
+          "G": "5",
+          "Routes Run": "106"
         },
         {
           "Name": "Travis Hunter",
           "POS": "WR",
           "Team": "JAX",
-          "G": "8",
-          "Routes Run": "28"
+          "G": "5",
+          "Routes Run": "18"
         },
         {
           "Name": "Tre Harris",
           "POS": "WR",
           "Team": "LAC",
-          "G": "7",
-          "Routes Run": "181"
+          "G": "5",
+          "Routes Run": "167"
         },
         {
           "Name": "Tre Tucker",
           "POS": "WR",
           "Team": "LV",
-          "G": "9",
-          "Routes Run": "272"
+          "G": "6",
+          "Routes Run": "259"
+        },
+        {
+          "Name": "Trent Sherfield",
+          "POS": "WR",
+          "Team": "BUF",
+          "G": "1",
+          "Routes Run": "2"
         },
         {
           "Name": "Treylon Burks",
           "POS": "WR",
           "Team": "WAS",
-          "G": "6",
-          "Routes Run": "134"
+          "G": "5",
+          "Routes Run": "132"
         },
         {
           "Name": "Troy Franklin",
           "POS": "WR",
           "Team": "DEN",
-          "G": "9",
-          "Routes Run": "137"
+          "G": "6",
+          "Routes Run": "130"
         },
         {
           "Name": "Tutu Atwell",
           "POS": "WR",
           "Team": "LAR",
-          "G": "6",
-          "Routes Run": "118"
+          "G": "3",
+          "Routes Run": "97"
         },
         {
           "Name": "Tylan Wallace",
           "POS": "WR",
           "Team": "CLE",
-          "G": "7",
-          "Routes Run": "41"
+          "G": "4",
+          "Routes Run": "24"
         },
         {
           "Name": "Tyquan Thornton",
           "POS": "WR",
           "Team": "KC",
           "G": "4",
-          "Routes Run": "98"
+          "Routes Run": "88"
         },
         {
           "Name": "Van Jefferson",
           "POS": "WR",
           "Team": "WAS",
-          "G": "3",
-          "Routes Run": "29"
+          "G": "1",
+          "Routes Run": "26"
         },
         {
           "Name": "Wan'Dale Robinson",
           "POS": "WR",
           "Team": "TEN",
-          "G": "8",
-          "Routes Run": "228"
+          "G": "6",
+          "Routes Run": "223"
         },
         {
           "Name": "Xavier Hutchinson",
           "POS": "WR",
           "Team": "HOU",
-          "G": "8",
-          "Routes Run": "195"
+          "G": "6",
+          "Routes Run": "185"
         },
         {
           "Name": "Xavier Legette",
           "POS": "WR",
           "Team": "CAR",
           "G": "2",
-          "Routes Run": "53"
+          "Routes Run": "50"
         },
         {
           "Name": "Xavier Smith",
           "POS": "WR",
-          "Team": "LAR",
+          "Team": "LA",
           "G": "3",
-          "Routes Run": "59"
+          "Routes Run": "53"
         },
         {
           "Name": "Xavier Worthy",
           "POS": "WR",
           "Team": "KC",
-          "G": "8",
-          "Routes Run": "261"
+          "G": "5",
+          "Routes Run": "248"
         },
         {
           "Name": "Zachariah Branch",
           "POS": "WR",
           "Team": "ATL",
-          "G": "8",
-          "Routes Run": "64"
+          "G": "6",
+          "Routes Run": "57"
         },
         {
           "Name": "Zavion Thomas",
           "POS": "WR",
           "Team": "CHI",
-          "G": "8",
-          "Routes Run": "35"
+          "G": "4",
+          "Routes Run": "34"
         },
         {
           "Name": "Zay Flowers",
           "POS": "WR",
           "Team": "BAL",
-          "G": "8",
-          "Routes Run": "212"
+          "G": "5",
+          "Routes Run": "209"
         }
       ]
     }
